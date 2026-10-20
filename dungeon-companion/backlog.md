@@ -96,9 +96,14 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Opcional: colocar no inventário da sessão o item dos kits escolhidos no Habilidoso (hoje só dá
       a proficiência, como no livro).
 - [ ] Opcional: mostrar na ficha de onde vem o PV máximo (dado rolado × média por nível).
+- [ ] Quadro do Mestre: rolagens ocultas somem quando o log de 30 rolagens por sessão enche — se
+      incomodar, guardar mais (ou guardar as ocultas à parte) na api.
+- [ ] Quadro do Mestre: dano em área não aplica resistência do alvo sozinho (mestre marca ½).
+- [ ] Quadro do Mestre: descanso do grupo não atualiza ficha/ações já abertas dos jogadores
+      (só ao reabrir).
 
 ## Técnico
 
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
-- [ ] `session-panel.component.scss` está no limite do orçamento de 32 kB — se crescer, quebrar o
-      componente em vez de subir o limite.
+- [ ] `session-panel.component.scss` está no limite do orçamento de 32 kB (~31,3 kB depois da
+      1.2.0) — se crescer, quebrar o componente em vez de subir o limite.

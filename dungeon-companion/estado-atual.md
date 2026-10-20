@@ -27,10 +27,11 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.1.7 (2026-10-18) — notas em `/novidades`
+- **Versão do sistema**: 1.2.0 (2026-10-20, Quadro do Mestre) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `9215902`, web `1a18269` (reorganização de `.claude`/`CLAUDE.md`, sem versão; a última entrega com versão foi api `838169a`, web `cb4b879`) — todos enviados, nada pendente nos repos.
-- **Testes**: api 412 (`npm run test:unit`), web 291 (`npm run test:run`) —
+- **Últimos commits**: api `47a7b08`, web `d4e6a65` (versão 1.2.0) — todos enviados, nada
+  pendente nos repos.
+- **Testes**: api 422 (`npm run test:unit`), web 321 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -44,6 +45,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Subclasses (conteúdo do livro) | gravado em `rules.ts`; alguns pontos sem conferência | [`conceitos/subclasses.md`](conceitos/subclasses.md) |
 | Descrições de magia (361) | auditadas contra o livro | [`historico/spells-progress.md`](historico/spells-progress.md) |
 | LGPD | 16 itens técnicos feitos; faltam itens fora do código | [`conceitos/lgpd.md`](conceitos/lgpd.md) |
+| Quadro do Mestre (gaveta lateral só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
@@ -56,6 +58,7 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   equipamento inicial no inventário dos 20 jogadores em sessão.
 - **2026-10-17**: tabela `session_reference_image` + coluna `game_session.shown_reference_image_id`.
 - **2026-10-18**: talento Habilidoso das fichas #146 e #145 (4 perícias treinadas + `choice_data`).
+- **2026-10-20**: coluna `game_session.dm_notes` (TEXT, nula) — anotações do Quadro do Mestre (1.2.0). Rodado antes do deploy da api, autorizado pelo usuário; 16 sessões, todas com `dm_notes` nulo.
 
 ## LGPD
 

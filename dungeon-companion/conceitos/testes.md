@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-18
+atualizado: 2026-10-20
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -13,8 +13,8 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
-| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 412 (em 2026-10-18) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 291 (em 2026-10-18) |
+| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 422 (em 2026-10-20) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 321 (em 2026-10-20) |
 
 ---
 
@@ -337,6 +337,32 @@ Fases 1 a 3 descritas em `dungeon-companion/conceitos/tracos-mecanicos.md` (seç
   bônus, reação, vazio não); em combate pede confirmação e cancelar não gasta o espaço;
   confirmar lança; fora de combate lança sem perguntar.
 
+### Quadro do Mestre (2026-10-20, versão 1.2.0)
+
+Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
+
+- Web `dm-board/dm-board.component.spec.ts`: nome do monstro (apelido / slug em Title Case);
+  status do combate; contador de revelados; fechar; rolagens ocultas (filtro e etiqueta
+  SECRETO/OCULTA); visão do grupo (PV da sessão + CA/PP/CD/efeitos da ficha, Inspiração Bárdica,
+  ficha que falha vira "—", sem personagem não busca); descanso (todos marcados, jogadores e NPCs
+  separados, desmarcar, pulados com motivo, erro da API, nada marcado não chama); área (metade
+  arredonda pra baixo, 0 sai da lista, emitir limpa, valor inválido); anotações (carregar,
+  pendente, salvar, salvar no `ngOnDestroy`, falha ao carregar bloqueia salvar); apagar sessão
+  (código certo/errado, erro da API, não salva anotação de sessão apagada). O mock de
+  `GameSessionService`/`CharacterService` repassa pra variável do teste porque vários testes trocam
+  o mock depois do `configureTestingModule`.
+- Web `session-panel.component.spec.ts`: dano/cura em área (valor por alvo, PV temporário primeiro,
+  cura de jogador para no máximo sem pedir PV temporário, alvo ausente ignorado); sessão apagada
+  (jogador vê o aviso, mestre não).
+- Api `game-session.service.unit.ts`: `partyRest` (validação, só mestre, longo pula 0 PV e mantém
+  PV temporário nos eventos, curto só recarrega, sem descanso não avisa); anotações (só mestre lê
+  e grava, branco vira `null`, tipo e limite de 10.000); `deleteSession` publica `session_deleted`
+  só quando apagou.
+- Api `character-sheet.service.unit.ts`: `shortRest` recarrega só recursos de descanso curto sem
+  mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
+  não).
+- Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
 ### Aplicar em vários alvos (2026-10-18)
 
 - Web `roll-modal.component.spec.ts` ("vários alvos de uma vez"): Bola de Fogo em 5 alvos com
@@ -446,7 +472,7 @@ Todos os tipos de evento de `SessionEvent`: adicionar/remover jogador e NPC; PV/
 (só do alvo certo, jogador sem personagem ignorado); XP de jogador e NPC; PV de NPC; monstro
 adicionado/PV/imagem/status (atributos mesclados no snapshot); revelar (sem duplicar, inclusive
 pro jogador que não tem a lista de monstros) e esconder; remover/derrotar; rolagem nova no topo
-com limite de 30; magia lançada não altera estado; os 6 eventos de combate substituem o combate;
+com limite de 30; magia lançada, descanso do grupo e sessão apagada não alteram estado; os 6 eventos de combate substituem o combate;
 fim do combate esconde só os monstros indicados. Também garante que o reducer **não muta** o
 estado anterior.
 

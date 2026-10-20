@@ -19,7 +19,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   `@service(Cls)` procura o binding pela classe e quebra com binding duplicado. Por isso esses
   quatro são injetados com `@inject('services.NomeDaClasse')` (chave literal). Os demais services
   só têm o binding do booter e usam `@service(Cls)`. Service novo: não registrar à mão, usar
-  `@service()`.
+  `@service()`. **Os testes unitários não pegam o erro** (constroem o service com `new`): a api só
+  quebra ao subir. Na 1.2.0 o `GameSessionService` recebeu o `CharacterSheetService` com
+  `@service` e só foi pego na revisão antes do deploy. Pra conferir, subir a app e resolver o
+  binding: `app.boot()` + `app.get('services.GameSessionService')` (não precisa de requisição).
 - **`@types/multer`** falha em build limpo no Render (não localmente). Solução: `declare module
   'multer'` em `src/types/multer.ts` (`.ts`, não `.d.ts`: o `tsconfig` exclui `**/*.d.ts`) +
   interface `MulterFile` local no controller.
@@ -30,7 +33,8 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 ## Banco
 
 - `docs/database/database.sql` e `database_inserts.sql` usam **CRLF**: editar preservando (não
-  usar `sed -i`). Regra completa: `.claude/rules/banco-de-dados.md` da api.
+  usar `sed -i`; em Python, `open(p, newline='')` na leitura **e** na escrita — o `open()` padrão
+  converte o arquivo inteiro pra LF e o diff vira 700+ linhas). Regra completa: `.claude/rules/banco-de-dados.md` da api.
 - Migração que o código novo lê **roda antes do deploy da api**, senão a api nova quebra ao subir.
 - A tabela `spell` tem uma coluna `damage` (preenchida em 114 das 361) que a API **não usa**: a
   mecânica está em `spell-mechanics.ts`.

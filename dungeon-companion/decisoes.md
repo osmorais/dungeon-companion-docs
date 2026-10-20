@@ -55,6 +55,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   monstro **revelado** (não cura monstro). → diário, versão 1.1.1
 - **2026-10-18** — Conjuração longa (1 minuto ou mais) em combate é **aviso com confirmação**, não
   trava (o mestre pode liberar). → diário, versão 1.1.3
+- **2026-10-20** — Funções do mestre na sessão ficam num **Quadro do Mestre em gaveta lateral**
+  (não aba nem modal), entregue em 4 fases na ordem: reorganizar o que existe → rolagens ocultas
+  e visão do grupo → descanso do grupo e dano em área → anotações e apagar sessão. As 4 fases
+  saíram juntas como **1.2.0**. → `conceitos/quadro-do-mestre.md`
+- **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
+  junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
 
 ## Privacidade e segurança
 

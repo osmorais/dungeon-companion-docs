@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-17
+atualizado: 2026-10-20
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -28,6 +28,7 @@ Superfície pequena, nenhum dado sensível (art. 5º, II):
 | Nomes livres | `character.player_name`, `player_session.player_name`, `game_session.dm_name` | Texto livre, visível pra mesa — usuário pode digitar nome real |
 | Imagens | Supabase Storage (bucket público) | Personagem, monstro e imagem de referência da sessão (`session_reference_image`, desde 2026-10-17) — usuário pode subir foto real, inclusive de terceiros |
 | Legenda da imagem de referência | `session_reference_image.title` | Opcional, até 120 caracteres, texto livre visível pra mesa (aviso no formulário) |
+| Anotações do mestre | `game_session.dm_notes` | Desde a 1.2.0 (Quadro do Mestre). Texto livre até 10.000 caracteres, só o dono da sessão lê/grava (`GET/PUT /api/game-session/{id}/dm-notes`), nunca vai no detalhe da sessão. Pode citar pessoas reais. Sai na exportação (`sessions_as_dm[].dm_notes`) e some com a sessão/conta (cascata). Coberto pela política ("anotações", "sessões de jogo") — sem mudança no texto |
 | Rolagens/ações | `session_roll_log` etc. | Já podado pras últimas 30 por sessão |
 
 Pontos positivos já existentes: coleta mínima, nome opcional, bcrypt, "esqueci a senha" não
