@@ -1,6 +1,7 @@
-# Docs dos projetos
+# Docs do Dungeon Companion
 
-Conhecimento curado dos projetos em `~/projects`, versionado em git. É a fonte de verdade
+Conhecimento curado do Dungeon Companion (Forja Arcana), versionado em git
+(`github.com/osmorais/dungeon-companion-docs`, **privado**). É a fonte de verdade
 durável entre sessões (a memória do Claude só aponta pra cá).
 
 **Como usar**: comece pelo `estado-atual.md` e pelo `backlog.md` do projeto. Os demais docs são
@@ -38,13 +39,6 @@ Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
 `dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e
 [`referencias/`](dungeon-companion/referencias/) (`livro.txt`, `magias.txt`: texto do Livro do
 Jogador; usar `magias.txt` para magias).
-
-## WedSnap
-
-| Doc | Tipo | Resumo |
-|---|---|---|
-| [`wed-snap/status.md`](wed-snap/status.md) | estado | Estado em produção e arquitetura atual (vale sobre a spec) |
-| [`wed-snap/context.md`](wed-snap/context.md) | historico | Spec original do projeto |
 
 ## Manutenção
 
