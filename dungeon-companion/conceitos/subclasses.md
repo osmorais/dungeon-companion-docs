@@ -1,3 +1,10 @@
+---
+resumo: Conteúdo mecânico das subclasses extraído do livro, gravado em rules.ts (SUBCLASSES), com nível de confiança.
+tipo: conceito
+status: ativo (pontos não confirmados no backlog)
+atualizado: 2026-09-10
+---
+
 # Dungeon Companion — Subclasses (Fase 2): registro do conteúdo coletado
 
 Este documento registra o conteúdo mecânico de subclasse extraído das fotos do livro (PHB)
@@ -11,7 +18,7 @@ processo). Esse `.md` é a versão legível e persistente do que foi extraído �
 `rules.ts` continua sendo a fonte de verdade (é o que a aplicação de fato usa), mas este
 arquivo serve de referência humana e de registro do que ainda não foi confirmado.
 
-Ver também `dungeon-companion-levelup-plan.md` (seção "Fase 2 — pendências futuras") pras
+Ver também `dungeon-companion/historico/levelup-plan.md` (seção "Fase 2 — pendências futuras") pras
 simplificações deliberadas (sub-sistemas complexos demais pra modelar nesta fase, como a
 tabela de Surto de Magia Selvagem do Feiticeiro).
 

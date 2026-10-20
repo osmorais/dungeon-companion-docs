@@ -1,0 +1,56 @@
+# Docs dos projetos
+
+Conhecimento curado dos projetos em `~/projects`, versionado em git. É a fonte de verdade
+durável entre sessões (a memória do Claude só aponta pra cá).
+
+**Como usar**: comece pelo `estado-atual.md` e pelo `backlog.md` do projeto. Os demais docs são
+abertos só quando a tarefa toca a área. Cada doc começa com um cabeçalho
+(`resumo`/`tipo`/`status`/`atualizado`).
+
+**Tipos**: `estado` (onde estamos), `backlog` (o que falta), `decisoes` (o que o usuário decidiu),
+`gotchas` (armadilhas), `conceito` (como funciona hoje, mantido atualizado), `procedimento` (passo
+a passo), `historico` (congelado: registro do que aconteceu; não editar, não seguir "próximos
+passos" de lá).
+
+## Dungeon Companion (Forja Arcana)
+
+| Doc | Tipo | Resumo |
+|---|---|---|
+| [`estado-atual.md`](dungeon-companion/estado-atual.md) | estado | Versão, commits, testes, mudanças em produção. **Ler primeiro.** |
+| [`backlog.md`](dungeon-companion/backlog.md) | backlog | Todas as pendências, por área |
+| [`decisoes.md`](dungeon-companion/decisoes.md) | decisoes | Decisões do usuário (regras, escopo, privacidade) |
+| [`gotchas.md`](dungeon-companion/gotchas.md) | gotchas | Armadilhas técnicas por área |
+| [`conceitos/magias-mecanicas.md`](dungeon-companion/conceitos/magias-mecanicas.md) | conceito | Catálogo `spell-mechanics.ts`, modal de rolagem, aplicar no alvo, efeitos de tela |
+| [`conceitos/tracos-mecanicos.md`](dungeon-companion/conceitos/tracos-mecanicos.md) | conceito | Habilidades ativáveis, somas no ataque, d20 e defesas |
+| [`conceitos/lgpd.md`](dungeon-companion/conceitos/lgpd.md) | conceito | Adequação à LGPD: status de cada item, cookies, scripts |
+| [`conceitos/testes.md`](dungeon-companion/conceitos/testes.md) | conceito | Suítes unitárias da api e do web: como rodar, cobertura |
+| [`conceitos/auditoria-mecanicas.md`](dungeon-companion/conceitos/auditoria-mecanicas.md) | conceito | Classificação feature a feature (12 classes + talentos) por dificuldade de automação |
+| [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
+| [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
+| [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
+| [`historico/diario-2026-09-10_a_2026-10-18.md`](dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md) | historico | Diário de sessões (antigo `status.md`) |
+| [`historico/levelup-plan.md`](dungeon-companion/historico/levelup-plan.md) | historico | Plano e implementação do level-up (fases 1–3) |
+| [`historico/media-progress.md`](dungeon-companion/historico/media-progress.md) | historico | Implementação do bloco "Média" da auditoria, onda a onda |
+| [`historico/spells-progress.md`](dungeon-companion/historico/spells-progress.md) | historico | Auditoria das 361 descrições de magia contra o livro |
+| [`historico/imagens-orfas-2026-10-14.md`](dungeon-companion/historico/imagens-orfas-2026-10-14.md) | historico | Lista das 38 imagens órfãs no Supabase |
+
+Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
+`dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e
+[`referencias/`](dungeon-companion/referencias/) (`livro.txt`, `magias.txt`: texto do Livro do
+Jogador; usar `magias.txt` para magias).
+
+## WedSnap
+
+| Doc | Tipo | Resumo |
+|---|---|---|
+| [`wed-snap/status.md`](wed-snap/status.md) | estado | Estado em produção e arquitetura atual (vale sobre a spec) |
+| [`wed-snap/context.md`](wed-snap/context.md) | historico | Spec original do projeto |
+
+## Manutenção
+
+- Entrega concluída: atualizar `estado-atual.md`, tirar o item do `backlog.md` e registrar
+  detalhes no doc de conceito da área. Decisão nova vai pro `decisoes.md`, armadilha nova pro
+  `gotchas.md`.
+- Regra que precisa valer em todo turno vai pro `CLAUDE.md` ou `.claude/rules/` do repo, não aqui.
+- Doc encerrado vai pra `historico/` com o cabeçalho `status: encerrado`.
+- Commitar este repositório depois de mudanças relevantes.

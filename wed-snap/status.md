@@ -1,6 +1,13 @@
+---
+resumo: WedSnap em produção: arquitetura atual (Next.js com Route Handlers), gotchas de deploy, funcionalidades.
+tipo: estado
+status: ativo
+atualizado: 2026-07-30
+---
+
 # WedSnap — Status e Notas de Deploy (2026-07-30)
 
-Este documento complementa o `wed-snap-context.md` (spec original) com o estado **atual** do projeto depois da implementação e do deploy em produção. Onde este documento diverge do `wed-snap-context.md`, este é o que vale — a stack e a arquitetura mudaram desde a spec inicial.
+Este documento complementa o `wed-snap/context.md` (spec original) com o estado **atual** do projeto depois da implementação e do deploy em produção. Onde este documento diverge do `wed-snap/context.md`, este é o que vale — a stack e a arquitetura mudaram desde a spec inicial.
 
 ## Status
 

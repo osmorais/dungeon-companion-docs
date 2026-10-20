@@ -1,6 +1,13 @@
+---
+resumo: Lista das 38 imagens órfãs no Supabase (foto de 2026-10-14) para exclusão manual.
+tipo: historico
+status: aguardando ação do usuário (ver backlog)
+atualizado: 2026-10-14
+---
+
 # Dungeon Companion — Imagens órfãs no Supabase Storage (para exclusão manual)
 
-Levantado em 2026-10-14, **só leitura** (nada foi apagado). Ver `dungeon-companion-lgpd.md`, item 6.
+Levantado em 2026-10-14, **só leitura** (nada foi apagado). Ver `dungeon-companion/conceitos/lgpd.md`, item 6.
 
 - Bucket: `monster-images` — 46 arquivos no total, 8 em uso, **38 órfãos (61.0 MB)**.
 - "Órfão" = o arquivo não aparece em nenhum `image_url` de `character`, `monster_catalog` ou

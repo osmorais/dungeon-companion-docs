@@ -1,10 +1,17 @@
+---
+resumo: Cada feature das 12 classes e dos talentos classificada por dificuldade de automação (Fácil/Média/Difícil/Narrativa).
+tipo: conceito
+status: referência (classificação de 2026-09-12; o que já foi feito está no backlog/estado)
+atualizado: 2026-09-12
+---
+
 # Auditoria de Automação Mecânica — Dungeon Companion (D&D 5e)
 
 Registrado em 2026-09-12. Auditoria completa de todas as features de `featuresByLevel` (nível
 1–20) das 12 classes e suas subclasses em `rules.ts`, mais o catálogo de `feats.ts`, classificando
 cada uma por quão viável seria automatizar (hoje a maioria só existe como texto narrativo na
 ficha). Não inclui raça/sub-raça/antecedente (já auditados em 2026-09-11, ver
-`dungeon-companion-levelup-plan.md`).
+`dungeon-companion/historico/levelup-plan.md`).
 
 ## Convenções adotadas
 

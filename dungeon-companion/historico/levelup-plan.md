@@ -1,8 +1,17 @@
+---
+resumo: Plano e implementação do level-up. Fases 1–3 feitas e enviadas; o "STATUS ATUAL" abaixo é de 2026-09-10.
+tipo: historico
+status: encerrado
+atualizado: 2026-09-10
+---
+
 # Dungeon Companion — Plano: Subir de Nível (Level Up)
+
+> **Histórico — congelado.** Registro do que aconteceu; não seguir "próximos passos" daqui. Estado atual em `../estado-atual.md`, pendências em `../backlog.md`.
 
 Documento de planejamento pra funcionalidade de subir de nível um personagem já criado.
 Registrado antes da implementação começar, por pedido do usuário. Ver
-`dungeon-companion-status.md` pro contexto geral do projeto/sessões anteriores.
+`dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md` pro contexto geral do projeto/sessões anteriores.
 
 ## STATUS ATUAL (2026-09-10, fim do dia) — continuar daqui amanhã
 

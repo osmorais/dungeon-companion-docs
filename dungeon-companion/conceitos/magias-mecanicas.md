@@ -1,10 +1,17 @@
+---
+resumo: Catálogo de mecânica de magias (spell-mechanics.ts), modal de rolagem, aplicar no alvo, efeitos de tela. Fases 1–4 feitas.
+tipo: conceito
+status: ativo
+atualizado: 2026-10-16
+---
+
 # Dungeon Companion — Plano: magias mecânicas (rolar ataque/dano/cura ao lançar)
 
 Registrado em 2026-10-16. **Fases 1 a 4 e os efeitos de tela foram implementados e enviados no
 mesmo dia** — ver "Status da implementação" e "Efeitos de tela das magias" no fim. Decisões do
 usuário: catálogo no código (não em colunas do banco); aplicar dano/cura no alvo é opcional e
-segue as permissões de PV atuais. Ver `dungeon-companion-status.md` pro contexto geral e
-`dungeon-companion-spells-progress.md` pras descrições de magia.
+segue as permissões de PV atuais. Ver `dungeon-companion/estado-atual.md` pro contexto geral e
+`dungeon-companion/historico/spells-progress.md` pras descrições de magia.
 
 **Resumo do que existe hoje** (catálogo `src/services/character-sheet/spell-mechanics.ts` na api):
 - ataque mágico / acerto automático: 20 magias (inclui Lâmina Flamejante);
@@ -128,24 +135,6 @@ nos dois repos.
 - **Aplicar dano/cura direto no PV** de monstro/jogador escolhido como alvo.
 - **Concentração**, condições e buffs (Bênção +1d4, Escudo Arcano +5 CA).
 - **Crítico dobrando dados** (vale também pra arma — hoje não existe).
-
-## Fases sugeridas
-
-1. Catálogo + exposição na ficha + modal pra **ataque mágico e automático** (truques e magias com
-   círculo) + truques lançáveis. Menor escopo que já resolve o caso pedido.
-2. **Resistência com dano** (CD + inteiro/metade) + CD no anúncio das sem dano.
-3. **Cura** (`roll_type` `heal`).
-4. Efeitos sobre ataques com arma, alvo/aplicação automática de dano, crítico.
-
-Cada fase: testes de integridade do catálogo (`rules.unit.ts`), cálculo da rolagem por círculo/
-nível (`calculator.unit.ts`), fluxo do modal (`roll-modal.component.spec.ts`).
-
-## Perguntas em aberto pro usuário
-
-- Catálogo no código (recomendado) ou colunas novas na tabela `spell`?
-- Conferência do conteúdo: por círculo, como foi com as classes?
-- Raios múltiplos: um d20 por raio em sequência (fiel à regra) ou um ataque só?
-- Na resistência, o modal só mostra inteiro/metade (mestre aplica) — ok pra fase 2?
 
 ## Status da implementação
 
@@ -273,9 +262,7 @@ Destruição Divina e magias somadas); o modificador não dobra. Vale também po
   NPC/monstro entre 0 e o máximo. Usa os mesmos endpoints de PV (a API continua validando).
 
 ### Próximos passos possíveis
-Arma Elemental (bônus de ataque), Golpe Constritor/Saraivada de Espinhos/Flecha Relampejante,
-crítico também na ficha isolada (lá o ataque com arma ainda não rola dano), cura do Toque
-Vampírico e curas de valor fixo.
+No [`backlog.md`](../backlog.md), seção "Magias".
 
 ## Efeitos de tela das magias (2026-10-16, web `7ac13e1`)
 

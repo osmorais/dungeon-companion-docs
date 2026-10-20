@@ -1,3 +1,10 @@
+---
+resumo: Spec original do WedSnap (a stack mudou; ver status.md).
+tipo: historico
+status: encerrado
+atualizado: 2026-07-29
+---
+
 # Especificações do Projeto: WedSnap
 
 ## 1. Objetivo

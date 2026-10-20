@@ -1,3 +1,10 @@
+---
+resumo: Backups do repositório da api (antes da reescrita de autor) e como fazer rollback.
+tipo: procedimento
+status: ativo
+atualizado: 2026-10-14
+---
+
 # Dungeon Companion — Backups e rollback
 
 Registro dos backups existentes e de como usá-los pra rollback. Mantido de propósito (não apagar

@@ -1,8 +1,17 @@
+---
+resumo: Auditoria das 361 descrições de magia contra o livro — concluída (361/361).
+tipo: historico
+status: encerrado
+atualizado: 2026-10-16
+---
+
 # Progresso: ajuste das descrições de magias contra o livro.txt
+
+> **Histórico — congelado.** Registro do que aconteceu; não seguir "próximos passos" daqui. Estado atual em `../estado-atual.md`, pendências em `../backlog.md`.
 
 ## ATUALIZAÇÃO 3 (2026-10-16) — 4 descrições corrigidas + mecânica estruturada
 
-Durante a implementação das magias mecânicas (`dungeon-companion-magias-mecanicas.md`), 4
+Durante a implementação das magias mecânicas (`dungeon-companion/conceitos/magias-mecanicas.md`), 4
 descrições do banco divergiam do `magias.txt` e foram corrigidas direto em produção (autorizado
 pelo usuário): **Zombaria Viciosa** (dizia resistência de Carisma → Sabedoria), **Onda
 Troveante** (faltava o "+1d8 por círculo"), **Rajada Mística** (faltavam os feixes extras nos
@@ -26,7 +35,7 @@ Causa: mesmo depois da auditoria completa (361/361), várias descrições que j�
 "corretas" (mecânica base certa) ainda eram versões antigas/resumidas que **cortavam o
 parágrafo final "Em Níveis Superiores..."**, mesmo quando o livro tem esse parágrafo.
 
-Fiz uma varredura comparando TODAS as 361 descrições do banco contra `docs/magias.txt`:
+Fiz uma varredura comparando TODAS as 361 descrições do banco contra `docs/dungeon-companion/referencias/magias.txt`:
 72 magias tinham o parágrafo "Em Níveis Superiores" no livro mas não no banco. Apliquei o
 texto completo do `magias.txt` pras 72 (lista: Ajuda, Amizade Animal, Animar Mortos, Arma
 Elemental, Arma Espiritual, Arma Mágica, Armadura de Agathys, Assassino Fantasmagórico,
@@ -55,19 +64,19 @@ livro pra essas magias.
 
 ## ATUALIZAÇÃO FINAL — auditoria concluída (361/361)
 
-O usuário encontrou um segundo arquivo, `docs/magias.txt`, com o mesmo capítulo de
+O usuário encontrou um segundo arquivo, `docs/dungeon-companion/referencias/magias.txt`, com o mesmo capítulo de
 magias mas **extraído de forma limpa**: ordem alfabética, uma coluna só, sem
 contaminação/interleaving. Isso resolveu de vez o problema descrito abaixo (o
 `livro.txt` continua com colunas embaralhadas, mas `magias.txt` não tem esse problema).
 
 Escrevi um parser Python (`/tmp/.../scratchpad/parse_magias4.py`, não versionado) que
-lê `docs/magias.txt` e separa cada magia em nome + ficha técnica + descrição (usando a
+lê `docs/dungeon-companion/referencias/magias.txt` e separa cada magia em nome + ficha técnica + descrição (usando a
 linha "Duração:" como fronteira entre ficha técnica e prosa). Ele achou 360 das 361
 magias automaticamente por nome exato (a exceção, "Antipatia/Simpatia", foi só um bug
 de regex por causa da barra "/", corrigido).
 
-Com isso, apliquei todas as ~123 descrições que ainda estavam pendentes (listadas na
-seção "Próximos passos" abaixo, que agora está obsoleta) diretamente do texto do
+Com isso, apliquei todas as ~123 descrições que ainda estavam pendentes (a lista antiga de
+"Próximos passos" foi removida em 2026-10-20 por estar obsoleta; está no git de `docs/`) diretamente do texto do
 `magias.txt`, incluindo todos os casos antes marcados com `*` (contaminados no
 `livro.txt`) — no `magias.txt` nenhum deles teve problema de contaminação: Caminhar no
 Vento, Corrente de Relâmpagos, Desintegrar, Proibição, Sugestão em Massa, Dedo da
@@ -92,7 +101,7 @@ o livro.** Nenhuma commitada (é dado, não código, mesma convenção de sempre
 ## Contexto (histórico — problema original, ver atualização acima)
 
 O usuário pediu pra conferir as descrições das ~361 magias do banco (tabela `spell`)
-contra o texto oficial do livro (`docs/livro.txt`, capítulo 11 "MAGIAS", linhas
+contra o texto oficial do livro (`docs/dungeon-companion/referencias/livro.txt`, capítulo 11 "MAGIAS", linhas
 ~12856–18425) e corrigir onde estiver errado.
 
 **Problema descoberto**: esse capítulo do livro foi extraído de um PDF em duas colunas,
@@ -254,67 +263,3 @@ O restante (principalmente magias de 5º círculo em diante) ficou pra trás
 principalmente por causa da contaminação de colunas ficar mais severa nessas
 páginas do livro — muitos cabeçalhos foram achados mas o corpo do texto vizinho
 pertencia a outra magia, e não arrisquei aplicar texto errado.
-
-## Próximos passos (ainda não feitos)
-
-- **Resto das magias de 4º círculo (13 de 35)** — não localizadas ainda: Adivinhação,
-  Aura de Vida, Compulsão (achei um texto na posição do cabeçalho mas pertencia a
-  Comando — não apliquei), Conjurar Elementais Menores, Conjurar Seres da Floresta,
-  Controlar a Água, Escudo de Fogo, Guardião da Fé, Olho Arcano,
-  Pele de Pedra, Santuário Particular de Mordenkainen (achei um texto na posição do
-  cabeçalho, mas o efeito descrito — uma porta para um semiplano — não bate com a
-  mecânica real dessa magia; não apliquei, provável contaminação), Tempestade de
-  Gelo, Vinha Esmagadora.
-- **Resto das magias de 7º círculo (14 de 20)** — não localizadas, ou contaminadas
-  (marcado com *): Bola de Fogo Controlável, Conjurar Celestial, Dedo da Morte*
-  (texto pertencia a Desejo), Forma Etérea* (texto pertencia a Fogo das Fadas),
-  Isolamento, Mansão Magnífica de Mordenkainen, Miragem, Palavra Divina, Prisão
-  de Energia, Projetar Imagem* (texto pertencia a Projeção Astral), Símbolo
-  (achei as opções de efeito — Insanidade, Medo, Morte — mas não o início da
-  descrição), Simulacro* (texto pertencia a Disfarçar-se), Teletransporte,
-  Viagem Planar.
-- **Resto das magias de 6º círculo (25 de 32)** — não localizadas, ou localizadas
-  mas com texto contaminado por outra magia na mesma posição (marcado com *):
-  Aliado Planar, Ataque Visual, Caminhar no Vento*, Carne para Pedra, Conjurar
-  Fada, Corrente de Relâmpagos*, Criar Mortos-Vivos, Dança Irresistível de Otto,
-  Desintegrar* (achei texto mas pertencia a Despertar), Doença Plena, Encontrar o
-  Caminho, Esfera Congelante de Otiluke, Globo de Invulnerabilidade (achei o
-  início, falta o resto), Invocação Instantânea de Drawmij, Mover Terra, Muralha
-  de Espinhos*, Palavra de Recordação, Portal Arcano, Proibição* (texto
-  pertencia a Projeção Astral), Proteger Fortaleza, Recipiente Arcano, Sugestão
-  em Massa* (texto pertencia a Taumaturgia), Teletransporte por Árvores.
-- **Resto das magias de 5º círculo (31 de 42)** — não localizadas ainda: Aljava
-  Veloz, Âncora Planar, Animar Objetos, Caminhar em Árvores, Cone de Frio,
-  Conhecimento Lendário, Conjurar Elemental, Conjurar Saraivada, Comunhão,
-  Comunhão com a Natureza, Círculo de Teletransporte, Cúpula Antivida, Despistar,
-  Destruição Banidora, Dissipar o Bem e Mal, Dominar Pessoa, Imobilizar Monstro,
-  Ligação Telepática de Rary, Modificar Memória, Muralha de Energia, Muralha de
-  Pedra (a escola já foi corrigida antes — Conjuração→Evocação — só falta a
-  descrição), Mão de Bigby, Névoa Mortal, Onda Destrutiva, Praga, Praga de Insetos
-  (achei o início, "Um enxame de gafanhotos vorazes preenche uma esfera com raio
-  de 6 metros...", mas não a continuação exata com o dano), Reencarnação,
-  Restauração Maior, Sonho, Telecinésia, Vidência.
-
-- **Resto das magias de 2º círculo (9 de 59)** — não localizadas no livro apesar de
-  várias tentativas de busca por nome alternativo e por trechos de efeito: Aprimorar
-  Habilidade (Enhance Ability), Flecha Ácida de Melf (Melf's Acid Arrow), Força
-  Fantasmagórica (Phantasmal Force), Nublar (Blur), Oração Curativa (Prayer of
-  Healing), Patas de Aranha (Spider Climb), Pele de Árvore (Barkskin — achei um
-  texto na posição certa mas o efeito descrito não batia com a mecânica real de
-  Barkskin, parece contaminação de outra magia; não apliquei), Sentido Bestial
-  (Beast Sense), Teia (Web).
-- **Resto das magias de 3º círculo (12 de 50)** — não localizadas ainda: Destruição
-  Cegante (Blinding Smite), Espíritos Guardiões (Spirit Guardians), Flecha
-  Relampejante (Lightning Arrow), Fome de Hadar (Hunger of Hadar), Forjar Morte,
-  Montaria Fantasmagórica (Phantom Steed), Palavra Curativa em Massa (Mass Healing
-  Word), Pequena Cabana de Leomund (Tiny Hut — achei o cabeçalho/stat block mas
-  não o corpo do texto), Piskar/Piscar (Blink — mesma coisa, só stat block),
-  Velocidade (Haste), Dissipar Magia (o texto na posição do cabeçalho pertencia a
-  outra magia, Dominar Pessoa/Monstro).
-- **Orientação** (Guidance, truque) — ainda não localizada.
-- **4º círculo em diante** — ainda nada feito, mesma lógica de leitura manual aos
-  poucos.
-- Script de extração automática (`extract_spells2.py`, no mesmo diretório de
-  scratchpad, não versionado) pode ajudar a *localizar* candidatos mais rápido, mas
-  todo resultado dele precisa ser conferido manualmente antes de aplicar — não é
-  confiável sozinho.

@@ -1,3 +1,10 @@
+---
+resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
+tipo: conceito
+status: ativo
+atualizado: 2026-10-17
+---
+
 # Dungeon Companion — Adequação à LGPD (uso público)
 
 Registrado em 2026-10-14. O usuário quer divulgar o sistema publicamente. Esta é a análise dos
@@ -5,7 +12,7 @@ dois repositórios (`dungeon-companion-api` e `dungeon-companion-web`) do ponto 
 (Lei 13.709/2018), com o status de cada item. **É levantamento técnico, não parecer jurídico** —
 a política de privacidade/termos finais devem passar por alguém da área antes da divulgação.
 
-Ver `dungeon-companion-status.md` pro contexto geral do projeto.
+Ver `dungeon-companion/estado-atual.md` pro contexto geral do projeto.
 
 ## Ponto de partida — dados pessoais tratados hoje
 
@@ -38,7 +45,7 @@ revela se o e-mail existe, nenhum analytics/rastreador, único cookie é o de au
 | 3 | `JWT_SECRET` com fallback público | 🔴 | ✅ Feito |
 | 4 | Política de privacidade e termos de uso | 🔴 | ✅ Feito (web `1997589`) — falta revisão jurídica |
 | 5 | Excluir conta / exportar dados / corrigir dados | 🔴 | ✅ Feito (api `1dd808f`, web `c5f8752`) — troca de e-mail segue por e-mail |
-| 6 | Imagens órfãs e públicas no Supabase | 🔴 | ✅ Feito (api `1dd808f`) — 38 órfãs antigas: exclusão manual pelo usuário (`dungeon-companion-imagens-orfas.md`) |
+| 6 | Imagens órfãs e públicas no Supabase | 🔴 | ✅ Feito (api `1dd808f`) — 38 órfãs antigas: exclusão manual pelo usuário (`dungeon-companion/historico/imagens-orfas-2026-10-14.md`) |
 | 7 | Transferência internacional / operadores | 🟡 | ✅ Coberto na política |
 | 8 | Recursos do Google carregados em todas as páginas | 🟡 | ✅ Feito (api `791be49`, web `26a54ef`) |
 | 9 | Menores de idade | 🟡 | ✅ Declaração 18+ no cadastro |
@@ -46,9 +53,9 @@ revela se o e-mail existe, nenhum analytics/rastreador, único cookie é o de au
 | 11 | Canal do titular | 🟡 | ✅ E-mail na política |
 | 12 | Retenção de dados | 🟢 | ✅ Feito (api `791be49`, web `26a54ef`) |
 | 13 | Aviso sobre nomes livres | 🟢 | ✅ Feito (api `791be49`, web `26a54ef`) |
-| 14 | Plano de resposta a incidente | 🟢 | ✅ `dungeon-companion-incidente.md` (confirmar prazos com advogado) |
+| 14 | Plano de resposta a incidente | 🟢 | ✅ `dungeon-companion/procedimentos/incidente.md` (confirmar prazos com advogado) |
 | 15 | `DELETE /api/game-session/{id}` sem checagem de dono | 🔴 | ✅ Corrigido (api `1dd808f`) |
-| 16 | Entrar na sessão / adicionar NPC com personagem de outro usuário (sem checagem de dono do `id_character`) | 🟡 | ✅ Corrigido em 2026-10-16 (api `ba62504`, `assertOwnsCharacter` em `GameSessionService`); sem exploração em produção — ver registro em `dungeon-companion-incidente.md` |
+| 16 | Entrar na sessão / adicionar NPC com personagem de outro usuário (sem checagem de dono do `id_character`) | 🟡 | ✅ Corrigido em 2026-10-16 (api `ba62504`, `assertOwnsCharacter` em `GameSessionService`); sem exploração em produção — ver registro em `dungeon-companion/procedimentos/incidente.md` |
 
 ---
 
@@ -186,7 +193,7 @@ exportado normalmente (teste unitário novo cobre isso; `findCharacterIds` virou
   todos os jogadores carrega a URL logo depois do evento. Fica órfã se não for do catálogo.
 - **Órfãs antigas** (levantamento só leitura em 2026-10-14): bucket `monster-images` com 46
   arquivos, 8 referenciados, **38 órfãos (61 MB)**. O usuário vai apagar manualmente — lista em
-  `dungeon-companion-imagens-orfas.md`.
+  `dungeon-companion/historico/imagens-orfas-2026-10-14.md`.
   Script de levantamento ficou no scratchpad da sessão (não versionado): lista o bucket e compara
   com as `image_url` das 3 tabelas.
 
@@ -258,7 +265,7 @@ Testes (API, 200 passando): `image-cleanup.service.unit.ts` (inclui helpers do s
   campos de nome do mestre (`session-create`, placeholder "Seu apelido de mestre") e de nome do
   jogador (`session-join`). O `full_name` da conta não aparece pra outros usuários, então não
   recebeu aviso.
-- **Item 14 — Incidente:** `dungeon-companion-incidente.md` — conter (tabela de credenciais pra
+- **Item 14 — Incidente:** `dungeon-companion/procedimentos/incidente.md` — conter (tabela de credenciais pra
   trocar), preservar evidências, avaliar risco, comunicar ANPD/titulares (3 dias úteis pela Res.
   15/2024; em dobro pra agente de pequeno porte, Res. 2/2022 — **confirmar**), registrar por 5
   anos, modelo de e-mail aos usuários, e registro dos achados da auditoria de 2026-10-14.
@@ -350,7 +357,7 @@ privacidade e publicar na política.
 Definir e documentar: o que acontece com contas inativas, sessões antigas, e limpeza periódica
 de tokens de redefinição expirados. O log de rolagens já é limitado a 30 por sessão.
 Pendência antiga relacionada: ~109 rolagens excedentes numa sessão específica (ver
-`dungeon-companion-status.md`) — perguntar antes de rodar qualquer DELETE.
+`dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md`) — perguntar antes de rodar qualquer DELETE.
 
 ### 13. Nomes livres
 `player_name`, `dm_name` e `full_name` são texto livre e ficam visíveis pra mesa. Um aviso nos
@@ -378,11 +385,11 @@ checklist de LGPD a cada implementação, com dado novo, permissões, exclusão/
 imagens, terceiros, segurança, retenção e necessidade de atualizar a Política/Termos, mais uma
 linha "LGPD" obrigatória no resumo final.
 
-## Scripts de verificação (`dungeon-companion-lgpd-scripts/`)
+## Scripts de verificação (`dungeon-companion/scripts/lgpd/`)
 
 Scripts Node ad-hoc usados nas sessões (não versionados nos repos). Rodar **de dentro de
 `dungeon-companion-api`** depois de `npm run build`, ex.:
-`node ~/projects/docs/dungeon-companion-lgpd-scripts/orphans-list.js`. Leem o `.env` (banco e
+`node ~/projects/docs/dungeon-companion/scripts/lgpd/orphans-list.js`. Leem o `.env` (banco e
 Supabase de **produção**).
 - `fks.js` — só leitura: lista todas as FKs (com regra de `ON DELETE`) e colunas de imagem/usuário.
   Usar ao criar tabela nova pra conferir a cascata da exclusão de conta.
@@ -404,4 +411,4 @@ Todos os 15 itens técnicos estão implementados. Restam:
    só o SRD é de uso livre.
 3. Depois do deploy do item 10: conferir nos logs do Render a linha
    `[rate-limit] IP do cliente obtido via ...` (não pode ser "conexão direta").
-4. Apagar as 38 imagens órfãs antigas (`dungeon-companion-imagens-orfas.md`).
+4. Apagar as 38 imagens órfãs antigas (`dungeon-companion/historico/imagens-orfas-2026-10-14.md`).

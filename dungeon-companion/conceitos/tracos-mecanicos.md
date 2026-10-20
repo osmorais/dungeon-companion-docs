@@ -1,10 +1,17 @@
+---
+resumo: Traços e habilidades de classe/raça/talento que rolam, somam e aplicam na sessão. Fases 1–4 feitas; limites em "O que ficou de fora".
+tipo: conceito
+status: ativo
+atualizado: 2026-10-16
+---
+
 # Dungeon Companion — Plano: traços e habilidades mecânicos
 
 Registrado em 2026-10-16, antes de qualquer implementação. Mesmo objetivo das magias
-(`dungeon-companion-magias-mecanicas.md`): o que hoje é só texto ou só "gasta o recurso" passa a
+(`dungeon-companion/conceitos/magias-mecanicas.md`): o que hoje é só texto ou só "gasta o recurso" passa a
 **rolar, somar e aplicar** dentro da sessão. Base: a auditoria de mecânicas
-(`dungeon-companion-mechanics-audit.md`, classificação feature a feature) e o que já foi
-automatizado desde então (`dungeon-companion-media-progress.md`, `dungeon-companion-levelup-plan.md`).
+(`dungeon-companion/conceitos/auditoria-mecanicas.md`, classificação feature a feature) e o que já foi
+automatizado desde então (`dungeon-companion/historico/media-progress.md`, `dungeon-companion/historico/levelup-plan.md`).
 
 ## Como está hoje (levantamento de 2026-10-16)
 
@@ -113,22 +120,6 @@ já ataca de novo pelo botão — ver decisões), e o resto marcado "Narrativa" 
 5. **Anúncio na mesa**: reaproveitar `spell_cast` (ou um `ability_used` irmão) pra "Thorin usou
    Retomar Fôlego", com a CD quando houver.
 
-## Fases sugeridas
-
-1. **A — Habilidades ativáveis rolam e anunciam**: Retomar Fôlego, Integridade Corporal, Curar
-   pelo Toque, Preservar a Vida, Radiação do Amanhecer, Palma Vibrante, CDs no anúncio, Criar
-   Espaço de Magia devolvendo o espaço, anúncio de todas. Menor escopo, maior ganho imediato.
-2. **B — Soma no ataque**: Ataque Furtivo, Fúria (dano), Golpe Divino, Matador de Inimigos, Arma
-   Sagrada, Mestre em Armas Grandes/Mestre-Atirador, crítico (Campeão, Crítico Brutal, Ataques
-   Selvagens), Artes Marciais e Rajada de Golpes.
-3. **Raça e talentos com recurso**: Arma de Sopro, Sortudo (Halfling e talento), Resistência
-   Implacável (precisa de recurso por raça/talento).
-4. **C/D — d20 e defesas**: Indomável, Inspiração Bárdica recebida, lembretes de vantagem,
-   resistências por tipo e Fúria ao aplicar dano, Esquiva Sobrenatural/Evasão.
-
-Cada fase com os mesmos testes das magias: integridade do catálogo e cálculo por nível na api,
-configuração do modal e fluxo no web.
-
 ## Decisões do usuário (2026-10-16)
 
 1. **Efeitos ativos (Fúria etc.) ficam guardados no personagem** até acabar (estado persistido,
@@ -136,17 +127,6 @@ configuração do modal e fluxo no web.
 2. **1×/turno trava pela vez do combate** (com combate ativo, só oferece uma vez por turno).
 3. **Inspiração Bárdica recebida fica guardada** no personagem até ser usada.
 4. **Começar pela fase 1 (A).**
-
-## Perguntas originais
-
-1. **"Em fúria" / efeitos ativos**: marcar no próprio ataque (como a Bruxaria — simples, sem
-   estado) ou guardar "Fúria ativa" no personagem até acabar (mais fiel, precisa de estado e de
-   desligar no fim do combate)?
-2. **1×/turno** (Ataque Furtivo, Golpe Divino, Matador de Inimigos): só lembrete ("1×/turno") ou
-   travar pela vez do combate (só oferece uma vez por turno quando há combate ativo)?
-3. **Inspiração Bárdica recebida**: o aliado precisa "ter" o dado guardado (estado por
-   personagem) ou basta o bardo anunciar e o aliado marcar no próximo teste?
-4. **Ordem**: começar pela fase 1 (habilidades que já têm botão) como sugerido?
 
 ## Status da implementação
 

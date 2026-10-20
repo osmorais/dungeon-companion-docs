@@ -1,3 +1,10 @@
+---
+resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
+tipo: conceito
+status: ativo
+atualizado: 2026-10-18
+---
+
 # Dungeon Companion — Testes unitários (regressão)
 
 Criado em 2026-10-14. Suíte de testes unitários dos dois repositórios, feita pra rodar **a cada
@@ -250,7 +257,7 @@ Simula o caminho completo sem banco: payload no formato do wizard → `createCha
 
 ### Traços mecânicos (2026-10-16)
 
-Fases 1 a 3 descritas em `dungeon-companion-tracos-mecanicos.md` (seção "Status"). Fase 4:
+Fases 1 a 3 descritas em `dungeon-companion/conceitos/tracos-mecanicos.md` (seção "Status"). Fase 4:
 - API `combat-features.unit.ts`: dado da Inspiração Bárdica por nível; lembretes de vantagem
   (raça/subraça, Sentido de Perigo, Fúria); defesas (resistências por raça e Fúria, Esquiva
   Sobrenatural nv5, Evasão nv7). `ability-mechanics.unit.ts`: `targets_ally` só na Inspiração.

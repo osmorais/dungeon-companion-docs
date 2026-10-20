@@ -1,7 +1,14 @@
+---
+resumo: Plano de resposta a incidente de segurança (LGPD art. 48) + registro de incidentes.
+tipo: procedimento
+status: ativo
+atualizado: 2026-10-16
+---
+
 # Forja Arcana — Plano de resposta a incidente de segurança
 
 Registrado em 2026-10-15. Roteiro pra seguir se houver (ou houver suspeita de) vazamento, acesso
-indevido ou perda de dados pessoais dos usuários. Ver `dungeon-companion-lgpd.md` (item 14).
+indevido ou perda de dados pessoais dos usuários. Ver `dungeon-companion/conceitos/lgpd.md` (item 14).
 
 > ⚠️ Prazos e regras abaixo vêm da LGPD (art. 48), do Regulamento de Comunicação de Incidente
 > (**Resolução CD/ANPD nº 15/2024**) e do regulamento de agentes de pequeno porte (**Resolução
@@ -23,7 +30,7 @@ pessoais. Exemplos neste sistema:
 - acesso indevido ao banco Neon, ao bucket do Supabase ou ao painel do Render/Hostinger;
 - falha de código que exponha dados de um usuário a outro (ex.: o endpoint que listava todas as
   sessões, corrigido em 2026-10-14);
-- perda de dados sem backup (ver `dungeon-companion-backups.md`).
+- perda de dados sem backup (ver `dungeon-companion/procedimentos/backups.md`).
 
 ## Passo 1 — Conter (imediatamente)
 
@@ -96,7 +103,7 @@ arquivo.
 
 ## Passo 6 — Depois
 
-Corrigir a causa, adicionar teste que pegaria o problema, atualizar `dungeon-companion-lgpd.md`
+Corrigir a causa, adicionar teste que pegaria o problema, atualizar `dungeon-companion/conceitos/lgpd.md`
 e, se mudou algo no tratamento de dados, a Política de Privacidade.
 
 ---
@@ -105,5 +112,5 @@ e, se mudou algo no tratamento de dados, a Política de Privacidade.
 
 | Data | Descrição | Dados/titulares | Risco | Comunicado? | Medidas |
 |---|---|---|---|---|---|
-| 2026-10-14 | Achados de auditoria antes da divulgação pública: listagem de todas as sessões com código de entrada; exclusão de sessão sem checar o dono; login Google sem checar e-mail verificado | Nomes de mestre/sessão; potencial acesso a sessões de outros | Sem evidência de exploração; base de usuários pequena e pré-lançamento | Não (avaliado sem risco relevante — **confirmar com advogado**) | Corrigido (api `ef6e72a`, `1dd808f`); ver `dungeon-companion-lgpd.md` |
-| 2026-10-16 | Entrar numa sessão (`addPlayer`) ou adicionar NPC (`addNpc`) não checava se o personagem (`id_character`, sequencial) pertencia a quem o trazia — daria pra ver nome/classe/PV/imagem de um personagem alheio e agir por ele na sessão | Dados de jogo e imagem do personagem de outro usuário | Sem evidência de exploração: conferido em produção (só leitura), 0 de 20 jogadores e 0 de 9 NPCs com personagem de outro dono | Não (sem exploração — **confirmar com advogado**) | Corrigido (api `ba62504`): 403 se o personagem não é do usuário, 404 se não existe; testes; ver item 16 de `dungeon-companion-lgpd.md` |
+| 2026-10-14 | Achados de auditoria antes da divulgação pública: listagem de todas as sessões com código de entrada; exclusão de sessão sem checar o dono; login Google sem checar e-mail verificado | Nomes de mestre/sessão; potencial acesso a sessões de outros | Sem evidência de exploração; base de usuários pequena e pré-lançamento | Não (avaliado sem risco relevante — **confirmar com advogado**) | Corrigido (api `ef6e72a`, `1dd808f`); ver `dungeon-companion/conceitos/lgpd.md` |
+| 2026-10-16 | Entrar numa sessão (`addPlayer`) ou adicionar NPC (`addNpc`) não checava se o personagem (`id_character`, sequencial) pertencia a quem o trazia — daria pra ver nome/classe/PV/imagem de um personagem alheio e agir por ele na sessão | Dados de jogo e imagem do personagem de outro usuário | Sem evidência de exploração: conferido em produção (só leitura), 0 de 20 jogadores e 0 de 9 NPCs com personagem de outro dono | Não (sem exploração — **confirmar com advogado**) | Corrigido (api `ba62504`): 403 se o personagem não é do usuário, 404 se não existe; testes; ver item 16 de `dungeon-companion/conceitos/lgpd.md` |

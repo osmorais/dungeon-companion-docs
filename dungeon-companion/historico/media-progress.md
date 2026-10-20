@@ -1,6 +1,15 @@
+---
+resumo: Implementação do bloco "Média" da auditoria, onda a onda. O que restou está no backlog.
+tipo: historico
+status: encerrado
+atualizado: 2026-10-18
+---
+
 # Progresso — Implementação do bloco "Média" da auditoria
 
-Registrado em 2026-09-12. Continuação de `dungeon-companion-mechanics-audit.md`. Objetivo:
+> **Histórico — congelado.** Registro do que aconteceu; não seguir "próximos passos" daqui. Estado atual em `../estado-atual.md`, pendências em `../backlog.md`.
+
+Registrado em 2026-09-12. Continuação de `dungeon-companion/conceitos/auditoria-mecanicas.md`. Objetivo:
 implementar todo o bloco "Média" (~55 itens), **exceto** deslocamento alternativo (voo), por
 pedido explícito do usuário. Plano original salvo em
 `/home/osmor/.claude/plans/luminous-exploring-hummingbird.md` (pode não sobreviver a limpezas —
@@ -107,12 +116,12 @@ complexo que um único contador).
    validação em `build()`/`confirmLevelUp`, tela nova no wizard de level-up).
 3. **Talentos com tela de escolha nova**: Resiliente (escolher atributo), ~~Afiar Habilidades
    (escolher 3 perícias/ferramentas)~~ — **feito em 2026-10-18** (versão 1.1.7, primeiro
-   consumidor de `choice_data`; ver `dungeon-companion-status.md`), Iniciado em Magia (escolher
+   consumidor de `choice_data`; ver `dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md`), Iniciado em Magia (escolher
    classe + 2 truques + 1 magia de 1º círculo — maior escopo). Usam o mecanismo `choice_data` do
    Pré-requisito 2.
    Segredos Mágicos do Bardo já usa uma variante disso (mas via `new_spell_ids`, não `choice_data`).
 4. ~~**Ataque Furtivo do Ladino na UI**~~ — **feito em 2026-10-16** (traços mecânicos, fase 2:
-   "Somar ao dano" no modal de ataque da sessão, 1×/turno; ver `dungeon-companion-tracos-mecanicos.md`).
+   "Somar ao dano" no modal de ataque da sessão, 1×/turno; ver `dungeon-companion/conceitos/tracos-mecanicos.md`).
 5. **Catálogos grandes** (deixar por último, cada um é como uma feature própria):
    Invocações Místicas do Bruxo, Metamágica do Feiticeiro em detalhe (hoje só o contador
    existe), Manobras do Mestre de Batalha do Guerreiro.
