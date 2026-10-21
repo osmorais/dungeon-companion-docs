@@ -83,6 +83,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   px, então só 11 px ocupam espaço; `background-clip: padding-box` impede a foto de aparecer pelas
   frestas da moldura. O componente **não** pode redefinir `border` do card (perde a moldura).
   Destaque/hover vira `box-shadow`. Originais + `process.py` em `design/frames/`.
+  Avisos em tela cheia: `.framed-toast` (`--toast-frame`, `72 / 34px`, `border: 24px`); os
+  componentes dos avisos também não podem definir `border`. Imagem nova: o `process.py` corta a
+  margem transparente e imprime onde a faixa/canto terminam pra recalibrar.
 - **Checkbox nativo e recusa** (1.3.11): o checkbox se marca sozinho no clique; se a ação for
   recusada (limite, API), `[checked]` não muda e o DOM fica marcado sem ter gravado. Passar o
   `$event` e voltar `target.checked` no erro/recusa (ver `togglePrepared`/`battleTogglePrepared`).

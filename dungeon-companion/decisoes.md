@@ -61,6 +61,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-21** — Sessão desktop (1.3.11): **largura fixa** (1440 px), mas os cards dos aventureiros
   **acompanham a altura** da tela (esticam no quadro; avatar por `vh`); até 6 cabem em 1080p.
   Cards de personagem com **moldura pixel art por tema** (gerada pelo usuário).
+- **2026-10-21** — Avisos em tela cheia da sessão com **moldura por tema** (1.3.13); a **troca de
+  vez mostra o card inteiro** do personagem (como na sessão), não só o avatar; monstro só com imagem
+  e nome (jogador não vê PV de monstro).
 - **2026-10-21** — Preparar magia é permitido **até o personagem rolar a iniciativa** (1.3.11) — a
   pergunta "Deseja selecionar suas magias preparadas?" aparece com a luta já criada. Depois de
   rolar, travado. → `conceitos/magias-mecanicas.md` não muda (regra de combate)
