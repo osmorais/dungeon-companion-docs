@@ -73,6 +73,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   (a primeira proposta, em cinza, ficou "monótona"). As artes de fundo continuam visíveis no
   Sombrio, só um pouco escurecidas (o usuário achou escuro demais com brilho 35%). Troca no botão
   TEMA do rodapé, guardada no navegador. → `gotchas.md`, "Web (Angular)"
+- **2026-10-21** — Tela da sessão (1.3.2): nome, mestre, código e jogadores no **topo da página,
+  sem quadro**; botões POLLING, EFEITOS e ATUALIZAR **saem da tela** (o mestre mantém polling e
+  efeitos no Quadro do Mestre; jogador fica sem os dois — oferecido devolver efeitos em outro
+  lugar). No desktop a sessão cabe **numa tela só, sem rolar a página**, com os quadros alinhados
+  e rolagem por dentro. Cards dos aventureiros todos do mesmo tamanho. → `gotchas.md`, "Web"
+- **2026-10-21** — Barras de rolagem no estilo do tema no site todo. → `gotchas.md`, "Web"
 - **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
   junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
 

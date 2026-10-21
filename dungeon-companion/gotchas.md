@@ -56,6 +56,17 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   hex fixo não muda com o tema. Ficam fixas de propósito: efeitos de tela cheia (dano, magia,
   modal-burst), cores com significado (vermelho de erro, verde de cura, barra de PV) e as cores
   de avatar.
+- **Sessão desktop em página única** (1.3.2): `.container` tem `height: calc(100vh - 48px)` (os
+  48px são o `padding-bottom` do body, reservado pro rodapé global) e é coluna flex: topo
+  (`.session-topbar`) + `.layout` com `flex: 1; min-height: 0`. Os quadros laterais são
+  `absolute; top: 0; bottom: 0` do `.layout` — por isso o espaço de baixo fica no padding do
+  `.container`, nunca no `.layout` (senão eles passam da base do quadro do meio). A coluna do
+  meio rola por dentro e o último fieldset dela não tem margem e estica (`flex: 1 0 auto`), pra
+  base alinhar. Quadro novo na coluna do meio herda isso; conteúdo que cresce rola dentro do
+  quadro, não na página. `.players-grid` usa `grid-auto-rows: 1fr` (cards da mesma altura).
+- **Barras de rolagem** (1.3.2): globais no `styles.scss` com `::-webkit-scrollbar*` nas cores do
+  tema; o `scrollbar-color` (Firefox) só entra em `@supports not selector(::-webkit-scrollbar)`,
+  porque o Chrome ignora os `::-webkit-*` quando `scrollbar-color` está definido.
 - **Carregamento sem overlay bloqueante** (1.3.1): o `loadingInterceptor` ainda chama
   `LoadingOverlayService.show()` em toda requisição sem `SKIP_LOADING_OVERLAY` (e o `hide()` segura
   2 s), mas o `LoadingOverlayComponent` só faz **um dragão atravessar a tela** (sem
