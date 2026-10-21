@@ -15,10 +15,16 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 
 - Componente `dungeon-companion-web/src/app/dm-board/` (`DmBoardComponent`, SCSS próprio — o
   `session-panel.component.scss` está no limite de 32 kB).
-- Aberto pelo botão **📜 QUADRO DO MESTRE** no cabeçalho (desktop e mobile), que substituiu
-  ROLAR DADOS / TESTE SECRETO / IMAGENS. Gaveta pela direita (340 px; tela cheia no mobile),
-  z-index 950/951 — abaixo dos modais e toasts da sessão (overlay 1000+).
-- Fecha pelo ✕, clique no fundo ou Esc. Botão que abre modal fecha a gaveta antes
+- **Desktop** (desde a 1.2.1): gaveta pela **esquerda** (340 px), aberta e fechada por uma aba
+  vertical de expandir/recolher — recolhida, `DmBoardTabComponent` fica presa na lateral esquerda
+  da tela (z-index 940); expandida, a mesma aba (◀) fica na borda direita da gaveta. Sem ✕ e sem
+  botão no cabeçalho. Estilo da aba em `dm-board-tab.scss`, usado pelos dois componentes.
+- **Mobile**: botão **📜 QUADRO DO MESTRE** no fim do quadro AVENTURA (1.2.1; antes ficava na
+  barra do topo); gaveta em tela cheia com ✕. O quadro recebe `[mobile]="isMobile()"`.
+- Na 1.2.0 o botão ficava no cabeçalho (desktop e mobile), substituindo ROLAR DADOS / TESTE
+  SECRETO / IMAGENS, e a gaveta abria pela direita.
+- z-index da gaveta 950/951 — abaixo dos modais e toasts da sessão (overlay 1000+).
+- Fecha pela aba (desktop) ou ✕ (mobile), clique no fundo ou Esc. Botão que abre modal fecha a gaveta antes
   (`closeDmBoard(); openX()` no template do session-panel); toggles mantêm aberta.
 - Só renderiza para o dono da sessão (`dmBoardOpen() && isOwner()`).
 
