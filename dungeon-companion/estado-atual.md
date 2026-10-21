@@ -27,11 +27,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.3.0 (2026-10-20, tema Sombrio) — notas em `/novidades`
+- **Versão do sistema**: 1.3.1 (2026-10-20, skeleton no site todo e dragão voando no carregamento) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `3b95c0e`, web `bc6a07b` (versão 1.3.0) — todos enviados, nada
-  pendente nos repos.
-- **Testes**: api 422 (`npm run test:unit`), web 334 (`npm run test:run`) —
+- **Últimos commits**: api `2f7102a`, web `21c90ca` (versão 1.3.1) — todos enviados. No web fica
+  de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
+  commitar — tudo em `public/` vai pro ar).
+- **Testes**: api 422 (`npm run test:unit`), web 347 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

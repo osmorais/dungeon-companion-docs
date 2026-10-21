@@ -56,14 +56,21 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   hex fixo não muda com o tema. Ficam fixas de propósito: efeitos de tela cheia (dano, magia,
   modal-burst), cores com significado (vermelho de erro, verde de cura, barra de PV) e as cores
   de avatar.
-- **Overlay de carregamento × skeleton** (1.2.3): o `loadingInterceptor` mostra o dragão em toda
-  requisição sem `SKIP_LOADING_OVERLAY` (e o `hide()` segura 2 s). A sessão chama
-  `LoadingOverlayService.suppressHttp()` no construtor e libera no `ngOnDestroy`: enquanto aberta,
-  nenhuma requisição mostra o dragão — inclusive as de modais com `CharacterService` etc. Tela
-  nova dentro da sessão precisa do próprio skeleton (`.skeleton` / `.skeleton--circle` /
-  `.skeleton-stack` no `styles.scss`, `app-skeleton-rows` em `src/app/skeleton/`) e de estado de
-  "salvando" no botão, porque o dragão não cobre mais a espera. Navegação e `show()` explícito
-  continuam mostrando o dragão.
+- **Carregamento sem overlay bloqueante** (1.3.1): o `loadingInterceptor` ainda chama
+  `LoadingOverlayService.show()` em toda requisição sem `SKIP_LOADING_OVERLAY` (e o `hide()` segura
+  2 s), mas o `LoadingOverlayComponent` só faz **um dragão atravessar a tela** (sem
+  `pointer-events`, z-index 990, abaixo dos modais) — nada impede clique. Por isso: **toda tela
+  que carrega dado precisa do próprio skeleton** (`.skeleton` / `.skeleton--circle` /
+  `.skeleton-stack` no `styles.scss`, `app-skeleton-rows` em `src/app/skeleton/`) e **todo botão
+  que grava precisa travar** com estado próprio ("SALVANDO...") — antes o overlay escondia o
+  "nenhum encontrado" e impedia o segundo clique. Texto no topo só com `show('mensagem')`. A
+  sessão chama `suppressHttp()` (sem dragão durante o jogo) e libera no `ngOnDestroy`.
+- **Sprite do dragão** (`public/dragon-sprite.png` e `dragon-sprite-sombrio.png`): grade **4×4**,
+  virado pra **direita**, fundo transparente, as 4 linhas formam um ciclo de 16 quadros de bater de
+  asas. Vem da variável de tema `--dragon-sprite`, usada pelo `LoadingOverlayComponent`
+  (`background-size: 400% 400%`) e pelo `dragon-animation` (wizard/servidor acordando, 512 px).
+  Trocar a imagem mantendo a grade não exige mexer no CSS. Tudo em `public/` vai pro ar: não
+  deixar cópia antiga lá dentro.
 - **Assets**: `src/assets/*.png`, referenciados como `assets/nome.png` (sem barra inicial).
 - **`<select [(ngModel)]>` com opções assíncronas** fica visualmente vazio: chamar
   `cdr.detectChanges()` depois de preencher as opções.

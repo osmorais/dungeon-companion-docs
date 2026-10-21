@@ -61,9 +61,13 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   saíram juntas como **1.2.0**. → `conceitos/quadro-do-mestre.md`
 - **2026-10-20** — Quadro do Mestre abre por uma **aba de expandir/recolher à esquerda**, igual no
   desktop e no celular (sem ✕ nem botão no cabeçalho). → `conceitos/quadro-do-mestre.md`
-- **2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
-  pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.
-  → `gotchas.md`, "Web (Angular)"
+- ~~**2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
+  pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.~~
+- **2026-10-20** — Skeleton no **site todo** (1.3.1): o overlay que bloqueava a tela acabou. Durante
+  o carregamento **um** dragão atravessa a tela em altura/sentido/tamanho sorteados, sem bloquear.
+  Dentro da sessão o dragão continua desligado (escolha de implementação, oferecida ao usuário
+  pra ligar). Cada tema tem o próprio sprite: dragão vermelho (fantasia) e **dracolich** (sombrio),
+  gerados pelo usuário. → `gotchas.md`, "Web (Angular)"
 - **2026-10-20** — Dois temas de cor: **FANTASIA** (o visual original, padrão) e **SOMBRIO**, com
   base nas cores escolhidas pelo usuário: fundo `#1C0B0B`, painel `#40251A`, destaque `#D8A33E`
   (a primeira proposta, em cinza, ficou "monótona"). As artes de fundo continuam visíveis no

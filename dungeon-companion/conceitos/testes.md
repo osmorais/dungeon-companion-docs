@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 422 (em 2026-10-20) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 334 (em 2026-10-20) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 347 (em 2026-10-20) |
 
 ---
 
@@ -362,6 +362,17 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Carregamento sem overlay bloqueante (2026-10-20, versão 1.3.1)
+
+- Web `loading-overlay/flying-dragons.spec.ts`: limites do sorteio (`randomDragon`: altura 5–65%,
+  sentido, 3,5–6 s, 140–220 px); sem carregamento não há dragão; entra um só; quem termina dá
+  lugar a outro enquanto carrega; acabou o carregamento, ninguém novo entra; carregamento emendado
+  não duplica.
+- Web `loading-overlay.spec.ts`: mensagem só com `show('...')`.
+- Web `skeleton/loading-states.spec.ts`: lista de personagens em skeleton até chegar e saindo dele
+  no erro; entrar em sessão e criar sessão com um clique só (erro destrava); CRIAR PERSONAGEM no
+  início busca as opções uma vez.
 
 ### Tema de cores (2026-10-20, versão 1.3.0)
 
