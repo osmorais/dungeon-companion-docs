@@ -51,6 +51,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   jogador). → diário, "Pendências da criação"
 - **2026-10-16** — Validação de armadura só na criação; trocar armadura na ficha continua livre.
   → diário, "Correções da criação de ficha"
+- **2026-10-21** — Identidade visual mobile (1.3.5): listagens usam **os cards da Home, soltos sobre
+  o fundo, sem quadro em volta** (escolhido entre "quadro + cards" e "só quadros da sessão").
+  Cabeçalho ← + título igual em todas as telas. Formulários e a tela da sessão mantêm os quadros
+  com legenda. → `gotchas.md`, "Web"
 - **2026-10-21** — Revelar e combate andam juntos nos dois sentidos: entrar na luta revela o
   monstro, e **revelar com combate em andamento coloca o monstro na luta** (como o "+ ADICIONAR";
   1.3.4). Esconder durante o combate **não** tira da luta (oferecido ao usuário, sem pedido).

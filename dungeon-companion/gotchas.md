@@ -64,6 +64,12 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   meio rola por dentro e o último fieldset dela não tem margem e estica (`flex: 1 0 auto`), pra
   base alinhar. Quadro novo na coluna do meio herda isso; conteúdo que cresce rola dentro do
   quadro, não na página. `.players-grid` usa `grid-auto-rows: 1fr` (cards da mesma altura).
+- **Identidade mobile** (1.3.5): classes globais no `styles.scss` — `.m-header`/`.m-back`/`.m-title`,
+  `.m-card-list` + `.m-card` (`-icon`, `-thumb`, `-body`, `-title`, `-desc`, `-arrow`, `-delete`;
+  modificadores `--selected`, `--highlight`, `--disabled`, `--deletable`), `.m-pagination`/
+  `.m-page-btn`/`.m-page-info`, `.m-total`, `.m-empty`. Tela mobile nova usa essas classes;
+  **não redefinir cabeçalho/card/paginação no componente** — foi assim que as listas ficaram
+  diferentes da Home. A Home também usa o `.m-card`.
 - **Ícones** (1.3.3): sem emoji no site. Ícone é `<img class="ui-icon" src="assets/icons/NOME.png"
   alt="" />` (classe global no `styles.scss`, 1,5em — acompanha a fonte em volta). Dentro de
   `{{ }}` não dá pra pôr `<img>`: tirar o ícone da string e usar `@if` antes da interpolação. Os
