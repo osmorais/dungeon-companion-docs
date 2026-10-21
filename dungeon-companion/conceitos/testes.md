@@ -13,8 +13,8 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
-| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 426 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 357 (em 2026-10-21) |
+| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 428 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 360 (em 2026-10-21) |
 
 ---
 
@@ -362,6 +362,13 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Magias preparadas no início da luta (2026-10-21, versão 1.3.11)
+
+- Api `character-sheet.service.unit.ts` ("preparar magia × combate"): antes de rolar a
+  iniciativa pode; já na ordem de turnos recusa (409) sem gravar.
+- Web `session-panel.component.spec.ts` ("magias preparadas antes da luta"): recusa da API volta
+  o checkbox e mostra a mensagem; limite atingido não chama a API; preparo aceito conta.
 
 ### Menu inicial numa tela só (2026-10-21, versão 1.3.9)
 

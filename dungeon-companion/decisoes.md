@@ -58,6 +58,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-21** — Menu inicial **numa tela só** (1.3.9): SOU JOGADOR / SOU MESTRE à esquerda e as
   opções do escolhido abrem **à direita** (no celular, logo abaixo, em sanfona); sem tela de
   VOLTAR. **Grimório de Magias fora dos papéis** ("PARA TODOS"), porque mestre e jogador usam.
+- **2026-10-21** — Sessão desktop (1.3.11): **largura fixa** (1440 px), mas os cards dos aventureiros
+  **acompanham a altura** da tela (esticam no quadro; avatar por `vh`); até 6 cabem em 1080p.
+  Cards de personagem com **moldura pixel art por tema** (gerada pelo usuário).
+- **2026-10-21** — Preparar magia é permitido **até o personagem rolar a iniciativa** (1.3.11) — a
+  pergunta "Deseja selecionar suas magias preparadas?" aparece com a luta já criada. Depois de
+  rolar, travado. → `conceitos/magias-mecanicas.md` não muda (regra de combate)
 - **2026-10-21** — Menu inicial **sem o título "Bem-vindo, aventureiro"** e **cabendo na tela, sem
   rolar** (1.3.10): altura da tela menos o rodapé, logo limitada pela altura, cards compactos.
 - **2026-10-21** — Listagens desktop no **tamanho da sessão** (1.3.7): mesmo contêiner e topo da

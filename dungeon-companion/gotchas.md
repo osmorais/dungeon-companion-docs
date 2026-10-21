@@ -74,6 +74,17 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Centralizar na vertical com rolagem** (1.3.10, Home): num contêiner com `overflow-y: auto`,
   `justify-content: center` corta o topo quando o conteúdo passa da altura (não dá pra rolar até
   ele). Usar `margin: auto 0` no filho: centraliza quando cabe e rola certo quando não cabe.
+- **Moldura dos cards** (1.3.11): `.framed-card` (global) usa `border-image: var(--card-frame) 72 /
+  22px round` com `border: 11px` — a imagem é desenhada com 22 px mas a faixa termina em ~12–13
+  px, então só 11 px ocupam espaço; `background-clip: padding-box` impede a foto de aparecer pelas
+  frestas da moldura. O componente **não** pode redefinir `border` do card (perde a moldura).
+  Destaque/hover vira `box-shadow`. Originais + `process.py` em `design/frames/`.
+- **Checkbox nativo e recusa** (1.3.11): o checkbox se marca sozinho no clique; se a ação for
+  recusada (limite, API), `[checked]` não muda e o DOM fica marcado sem ter gravado. Passar o
+  `$event` e voltar `target.checked` no erro/recusa (ver `togglePrepared`/`battleTogglePrepared`).
+- **Preparo de magia × combate** (1.3.11): `CombatRepository.isCharacterPreparationLocked` só
+  trava com o participante já na ordem (`initiative_total` não nulo); alimenta tanto o
+  `setSpellPrepared` quanto o `in_active_combat` da ficha.
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do
