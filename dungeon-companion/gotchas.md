@@ -108,6 +108,11 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   saber de um monstro. O array `monsters` completo é só do mestre. Campo novo de monstro pro
   jogador entra ali.
 - Evento com dado restrito ao mestre entra em `DM_ONLY_EVENT_TYPES`.
+- **Revelar × combate** (1.3.4): `GameSessionService.revealMonster` publica `monster_revealed` e
+  depois `joinActiveCombat` chama `CombatService.addParticipants` se houver combate ativo e o
+  monstro não estiver nele (gera `combat_participants_added`). A ordem importa: como o monstro já
+  está revelado quando o `addParticipants` roda, o `revealMonsters` dele não acha nada novo e o
+  anúncio não se repete.
 
 ## Deploy / infraestrutura
 

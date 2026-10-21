@@ -51,6 +51,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   jogador). → diário, "Pendências da criação"
 - **2026-10-16** — Validação de armadura só na criação; trocar armadura na ficha continua livre.
   → diário, "Correções da criação de ficha"
+- **2026-10-21** — Revelar e combate andam juntos nos dois sentidos: entrar na luta revela o
+  monstro, e **revelar com combate em andamento coloca o monstro na luta** (como o "+ ADICIONAR";
+  1.3.4). Esconder durante o combate **não** tira da luta (oferecido ao usuário, sem pedido).
+  → `gotchas.md`, "Sessão em tempo real"
 - **2026-10-17** — Jogador aplica dano/cura em qualquer jogador e NPC da sessão, e **dano** em
   monstro **revelado** (não cura monstro). → diário, versão 1.1.1
 - **2026-10-18** — Conjuração longa (1 minuto ou mais) em combate é **aviso com confirmação**, não
