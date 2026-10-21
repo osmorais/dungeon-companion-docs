@@ -64,6 +64,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   passiva e XP; ROLAR DADO e IMPRIMIR na linha das abas; sem o VOLTAR do rodapé; quadros
   (fieldset) da sessão mantidos. **Truques e círculos de magia começam fechados.** Usuário
   classificou como melhoria (C). → `gotchas.md`, "Web"
+- **2026-10-21** — Dinheiro da ficha fica **no card do personagem** (1.3.15), junto do PV e da XP,
+  com edição no lugar (celular: linha abaixo do PV; desktop: coluna da experiência). Saiu da aba
+  ARMAS / quadro de equipamento. Oferecido pôr junto do equipamento (✎ da CA) se preferir.
 - **2026-10-21** — Menu inicial **numa tela só** (1.3.9): SOU JOGADOR / SOU MESTRE à esquerda e as
   opções do escolhido abrem **à direita** (no celular, logo abaixo, em sanfona); sem tela de
   VOLTAR. **Grimório de Magias fora dos papéis** ("PARA TODOS"), porque mestre e jogador usam.
