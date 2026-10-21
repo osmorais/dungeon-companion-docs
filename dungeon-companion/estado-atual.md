@@ -27,9 +27,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.2.1 (2026-10-20, Quadro do Mestre mais fácil de achar) — notas em `/novidades`
+- **Versão do sistema**: 1.2.2 (2026-10-20, Quadro do Mestre com aba também no celular) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `17a4852`, web `f641f8a` (versão 1.2.1; a 1.2.0 foi api `47a7b08`,
+- **Últimos commits**: api `129ba9b`, web `e7b314c` (versão 1.2.2; a 1.2.0 foi api `47a7b08`,
   web `d4e6a65`) — todos enviados, nada pendente nos repos.
 - **Testes**: api 422 (`npm run test:unit`), web 321 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
@@ -45,7 +45,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Subclasses (conteúdo do livro) | gravado em `rules.ts`; alguns pontos sem conferência | [`conceitos/subclasses.md`](conceitos/subclasses.md) |
 | Descrições de magia (361) | auditadas contra o livro | [`historico/spells-progress.md`](historico/spells-progress.md) |
 | LGPD | 16 itens técnicos feitos; faltam itens fora do código | [`conceitos/lgpd.md`](conceitos/lgpd.md) |
-| Quadro do Mestre (gaveta lateral só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); posição ajustada na 1.2.1 | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
+| Quadro do Mestre (gaveta lateral só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); aba de expandir/recolher à esquerda (1.2.1 desktop, 1.2.2 celular) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
