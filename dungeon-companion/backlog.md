@@ -101,6 +101,8 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Quadro do Mestre: dano em área não aplica resistência do alvo sozinho (mestre marca ½).
 - [ ] Quadro do Mestre: descanso do grupo não atualiza ficha/ações já abertas dos jogadores
       (só ao reabrir).
+- [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha, wizard de criação e
+      conta (1.3.6 cobriu criar/entrar em sessão e catalogar monstro).
 
 ## Técnico
 

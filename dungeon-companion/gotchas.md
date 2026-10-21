@@ -69,7 +69,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   modificadores `--selected`, `--highlight`, `--disabled`, `--deletable`), `.m-pagination`/
   `.m-page-btn`/`.m-page-info`, `.m-total`, `.m-empty`. Tela mobile nova usa essas classes;
   **não redefinir cabeçalho/card/paginação no componente** — foi assim que as listas ficaram
-  diferentes da Home. A Home também usa o `.m-card`.
+  diferentes da Home. A Home também usa o `.m-card`. Formulários (1.3.6): `.m-section` +
+  `.m-section-title` (no lugar de fieldset/legend), `.m-field`/`.m-label`/`.m-input`
+  (`--code`)/`.m-hint`, escolhas em `.m-card` (`--compact`, `--selected` + ícone ✓), lista longa
+  em `.m-scroll`, leitura em `.m-box`, botão `retro-btn m-submit`, erro em `.m-error`.
 - **Ícones** (1.3.3): sem emoji no site. Ícone é `<img class="ui-icon" src="assets/icons/NOME.png"
   alt="" />` (classe global no `styles.scss`, 1,5em — acompanha a fonte em volta). Dentro de
   `{{ }}` não dá pra pôr `<img>`: tirar o ícone da string e usar `@if` antes da interpolação. Os
