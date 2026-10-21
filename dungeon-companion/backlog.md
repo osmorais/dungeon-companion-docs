@@ -18,8 +18,8 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 
 - [ ] **Revisão jurídica** da Política de Privacidade, dos Termos de Uso e dos prazos do plano de
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
-- [ ] **Avisar os usuários** da mudança da Política em 17/10 (imagens de referência) — decidir se
-      e como.
+- [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência) e 20/10
+      (preferência de tema no navegador, 1.3.0) — decidir se e como.
 - [ ] **Direitos autorais**: descrições de magias e várias subclasses vieram do Livro do Jogador em
       português (só o SRD é de uso livre). Risco para a divulgação.
 - [ ] Conferir nos logs do Render a linha `[rate-limit] IP do cliente obtido via ...` (não pode ser

@@ -48,6 +48,14 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   SCSS próprio. Keyframes e classes compartilhadas vão pro `styles.scss` global.
 - **Prettier**: `session-panel.component.ts/html/scss` têm débito antigo. Antes de formatar,
   confirmar com `git stash` se o aviso já existia (também no `CLAUDE.md`).
+- **Temas de cor** (1.3.0): `ThemeService` põe `data-theme` (`fantasia` | `sombrio`) no `<html>` e
+  guarda em `localStorage` (`dc.theme`). `styles.scss` tem o `:root` (fantasia) e o
+  `:root[data-theme='sombrio']`, que só troca variáveis. **Cor nova de interface usa variável**
+  (`--bg-color`, `--panel-bg`, `--accent-color`, `--border-color`, `--btn-color(-hover)`,
+  `--label-title-color`, `--text-color`, `--text-soft`, `--sheet-label-color`, `--gold-color`) —
+  hex fixo não muda com o tema. Ficam fixas de propósito: efeitos de tela cheia (dano, magia,
+  modal-burst), cores com significado (vermelho de erro, verde de cura, barra de PV) e as cores
+  de avatar.
 - **Overlay de carregamento × skeleton** (1.2.3): o `loadingInterceptor` mostra o dragão em toda
   requisição sem `SKIP_LOADING_OVERLAY` (e o `hide()` segura 2 s). A sessão chama
   `LoadingOverlayService.suppressHttp()` no construtor e libera no `ngOnDestroy`: enquanto aberta,

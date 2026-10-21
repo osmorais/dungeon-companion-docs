@@ -27,11 +27,11 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.2.3 (2026-10-20, skeleton loader na sessão) — notas em `/novidades`
+- **Versão do sistema**: 1.3.0 (2026-10-20, tema Sombrio) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `8e8b717`, web `cf7b85f` (versão 1.2.3; a 1.2.0 foi api `47a7b08`,
-  web `d4e6a65`) — todos enviados, nada pendente nos repos.
-- **Testes**: api 422 (`npm run test:unit`), web 329 (`npm run test:run`) —
+- **Últimos commits**: api `3b95c0e`, web `bc6a07b` (versão 1.3.0) — todos enviados, nada
+  pendente nos repos.
+- **Testes**: api 422 (`npm run test:unit`), web 334 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -62,6 +62,6 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
 
 ## LGPD
 
-A Política de Privacidade mudou em 17/10 (imagens de referência). **Falta o usuário decidir** se e
-como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
+A Política de Privacidade mudou em 17/10 (imagens de referência) e em 20/10 (preferência de tema
+no armazenamento local, versão 1.3.0). **Falta o usuário decidir** se e como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
 [`conceitos/lgpd.md`](conceitos/lgpd.md).

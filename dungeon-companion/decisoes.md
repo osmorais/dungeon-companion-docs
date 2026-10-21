@@ -64,6 +64,11 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
   pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.
   → `gotchas.md`, "Web (Angular)"
+- **2026-10-20** — Dois temas de cor: **FANTASIA** (o visual original, padrão) e **SOMBRIO**, com
+  base nas cores escolhidas pelo usuário: fundo `#1C0B0B`, painel `#40251A`, destaque `#D8A33E`
+  (a primeira proposta, em cinza, ficou "monótona"). As artes de fundo continuam visíveis no
+  Sombrio, só um pouco escurecidas (o usuário achou escuro demais com brilho 35%). Troca no botão
+  TEMA do rodapé, guardada no navegador. → `gotchas.md`, "Web (Angular)"
 - **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
   junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
 

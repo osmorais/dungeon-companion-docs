@@ -379,6 +379,12 @@ preferência de ligar/desligar o impacto de dano na sessão. Não é dado pessoa
 não vai pro servidor; continua sem precisar de banner. Seção 6 da Política atualizada (data
 `LEGAL_LAST_UPDATED` já era 15/10/2026). Web `b034838`.
 
+**2026-10-20 — tema de cores (1.3.0):** novo item no `localStorage`, `dc.theme`
+(`fantasia`/`sombrio`). Mesmo caso dos efeitos de tela: preferência do navegador, não é dado
+pessoal nem rastreamento, não vai pro servidor, sem banner. Seção 6 da Política passou a citar as
+duas preferências; `LEGAL_LAST_UPDATED` = 20/10/2026. Web `bc6a07b`. Avisar os usuários: decisão
+pendente do usuário (backlog).
+
 ## Regra permanente para novas implementações
 
 Desde 2026-10-15 os dois repositórios têm `.claude/rules/lgpd.md` (referenciado no `CLAUDE.md`):

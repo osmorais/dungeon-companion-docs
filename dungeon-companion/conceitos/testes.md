@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 422 (em 2026-10-20) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 329 (em 2026-10-20) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 334 (em 2026-10-20) |
 
 ---
 
@@ -362,6 +362,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Tema de cores (2026-10-20, versão 1.3.0)
+
+- Web `services/theme.service.spec.ts`: sem preferência usa FANTASIA e marca o `<html>`; alternar
+  troca o `data-theme` e grava `dc.theme`; lê a preferência salva; valor desconhecido cai no
+  padrão; navegador sem armazenamento usa o padrão e troca só na tela.
 
 ### Skeleton loader na sessão (2026-10-20, versão 1.2.3)
 
