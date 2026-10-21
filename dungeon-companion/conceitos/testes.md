@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 422 (em 2026-10-20) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 321 (em 2026-10-20) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 329 (em 2026-10-20) |
 
 ---
 
@@ -362,6 +362,16 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Skeleton loader na sessão (2026-10-20, versão 1.2.3)
+
+- Web `loading-overlay/loading-overlay.spec.ts` (interceptor real com `HttpTestingController`):
+  requisição normal mostra o overlay; com `suppressHttp()` não mostra; liberar volta ao normal e
+  liberar duas vezes não desconta de outra tela; `SKIP_LOADING_OVERLAY` e `show()` explícito
+  continuam valendo.
+- Web `skeleton/skeleton-rows.component.spec.ts`: uma linha por row, larguras que se repetem.
+- Web `session-panel.component.spec.ts`: a sessão desliga o overlay ao abrir e libera no destroy.
+- `dm-board.component.spec.ts`: `GroupRow.hasSheet` (CA/PP/CD em skeleton até a ficha chegar).
 
 ### Aplicar em vários alvos (2026-10-18)
 

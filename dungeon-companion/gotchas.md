@@ -48,6 +48,14 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   SCSS próprio. Keyframes e classes compartilhadas vão pro `styles.scss` global.
 - **Prettier**: `session-panel.component.ts/html/scss` têm débito antigo. Antes de formatar,
   confirmar com `git stash` se o aviso já existia (também no `CLAUDE.md`).
+- **Overlay de carregamento × skeleton** (1.2.3): o `loadingInterceptor` mostra o dragão em toda
+  requisição sem `SKIP_LOADING_OVERLAY` (e o `hide()` segura 2 s). A sessão chama
+  `LoadingOverlayService.suppressHttp()` no construtor e libera no `ngOnDestroy`: enquanto aberta,
+  nenhuma requisição mostra o dragão — inclusive as de modais com `CharacterService` etc. Tela
+  nova dentro da sessão precisa do próprio skeleton (`.skeleton` / `.skeleton--circle` /
+  `.skeleton-stack` no `styles.scss`, `app-skeleton-rows` em `src/app/skeleton/`) e de estado de
+  "salvando" no botão, porque o dragão não cobre mais a espera. Navegação e `show()` explícito
+  continuam mostrando o dragão.
 - **Assets**: `src/assets/*.png`, referenciados como `assets/nome.png` (sem barra inicial).
 - **`<select [(ngModel)]>` com opções assíncronas** fica visualmente vazio: chamar
   `cdr.detectChanges()` depois de preencher as opções.

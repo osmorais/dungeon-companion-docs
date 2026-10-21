@@ -55,6 +55,9 @@ pelos dois).
 | SESSÃO | Código, jogadores, POLLING e EFEITOS (pro mestre saíram do cabeçalho; jogadores ainda veem lá) |
 | ENCERRAR SESSÃO | Apagar a sessão, confirmando com o código |
 
+Carregamento (1.2.3): anotações mostram um bloco de skeleton enquanto carregam, e CA/PP/CD do
+grupo ficam em skeleton até a ficha chegar (`GroupRow.hasSheet`); depois, "—" quando não há valor.
+
 Fora da gaveta: rolagens ocultas ganharam **🔒** no histórico e no toast de rolagem (só o mestre
 recebe essas rolagens, então só ele vê).
 

@@ -59,6 +59,11 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   (não aba nem modal), entregue em 4 fases na ordem: reorganizar o que existe → rolagens ocultas
   e visão do grupo → descanso do grupo e dano em área → anotações e apagar sessão. As 4 fases
   saíram juntas como **1.2.0**. → `conceitos/quadro-do-mestre.md`
+- **2026-10-20** — Quadro do Mestre abre por uma **aba de expandir/recolher à esquerda**, igual no
+  desktop e no celular (sem ✕ nem botão no cabeçalho). → `conceitos/quadro-do-mestre.md`
+- **2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
+  pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.
+  → `gotchas.md`, "Web (Angular)"
 - **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
   junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
 
