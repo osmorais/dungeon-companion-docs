@@ -55,6 +55,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   o fundo, sem quadro em volta** (escolhido entre "quadro + cards" e "só quadros da sessão").
   Cabeçalho ← + título igual em todas as telas. ~~Formulários e a tela da sessão mantêm os quadros
   com legenda.~~ → `gotchas.md`, "Web"
+- **2026-10-21** — Listagens desktop no **tamanho da sessão** (1.3.7): mesmo contêiner e topo da
+  sessão, itens em grade de cards. Lista de personagens com avatar, fundo, PV, CA, INI, PP,
+  atributos e XP (da ficha calculada de cada um). Sem linha clara (borda padrão de fieldset) em
+  volta das opções. Usuário classificou como **melhoria** (1.3.7, não 1.4.0). → `gotchas.md`, "Web"
 - **2026-10-21** — Formulários mobile no mesmo padrão (1.3.6): criar sessão, entrar em aventura e
   catalogar monstro **sem quadros** — seções com título, campos e escolhas em cards, botão largo
   no fim. A tela da sessão mantém os quadros. Login/cadastro/senha, wizard e conta ficaram de fora

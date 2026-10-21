@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 426 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 348 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 353 (em 2026-10-21) |
 
 ---
 
@@ -362,6 +362,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Lista de personagens completa (2026-10-21, versão 1.3.7)
+
+- Web `character-list/character-card.spec.ts`: card montado da ficha com atributos na ordem do
+  livro; "pode subir de nível" (e nível 20 não sobe); barra de XP; sinal do modificador; a lista
+  busca a ficha de cada personagem e tolera ficha que falha.
 
 ### Monstro revelado entra no combate (2026-10-21, versão 1.3.4)
 

@@ -64,6 +64,15 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   meio rola por dentro e o último fieldset dela não tem margem e estica (`flex: 1 0 auto`), pra
   base alinhar. Quadro novo na coluna do meio herda isso; conteúdo que cresce rola dentro do
   quadro, não na página. `.players-grid` usa `grid-auto-rows: 1fr` (cards da mesma altura).
+- **Páginas desktop** (1.3.7): `.page` (largura da sessão), `.page-topbar` (+ `-name`, `-meta`,
+  `-back`, `-code`; a sessão usa o mesmo), `.page-toolbar`, `.d-grid`/`.d-card` (+ `-head`,
+  `-icon`, `-title`, `-desc`, `-value`, `-code`, `--deletable`) no `styles.scss`; paginação, total
+  e vazio reaproveitam `.m-pagination`/`.m-empty`. A lista de personagens busca a ficha de cada
+  personagem da página (`getCharacterById(id, true)` em paralelo, `character-list/character-card.ts`)
+  porque o endpoint de lista não traz avatar/atributos e a CA/atributos gravados ficam velhos — e
+  ele é usado com 100 itens por criar/entrar em sessão, então não dá pra montar ficha lá.
+- **`fieldset` sem classe de quadro** não tem borda (regra global no `styles.scss`). Quadro com
+  borda é sempre explícito (`.retro-panel`, `.mobile-panel`…).
 - **Identidade mobile** (1.3.5): classes globais no `styles.scss` — `.m-header`/`.m-back`/`.m-title`,
   `.m-card-list` + `.m-card` (`-icon`, `-thumb`, `-body`, `-title`, `-desc`, `-arrow`, `-delete`;
   modificadores `--selected`, `--highlight`, `--disabled`, `--deletable`), `.m-pagination`/
