@@ -79,6 +79,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   lugar). No desktop a sessão cabe **numa tela só, sem rolar a página**, com os quadros alinhados
   e rolagem por dentro. Cards dos aventureiros todos do mesmo tamanho. → `gotchas.md`, "Web"
 - **2026-10-21** — Barras de rolagem no estilo do tema no site todo. → `gotchas.md`, "Web"
+- **2026-10-21** — Sem emojis no site (1.3.3): ícones em **pixel art** gerados pelo usuário no
+  ChatGPT (duas folhas 4×4), inclusive refazendo AÇÕES/FICHA/ITENS no mesmo estilo. Símbolos da
+  fonte (✕ ← → ▶ ▲ ▼ ✓ ★ ✎ ✦ ✚ ↻) continuam como texto. → `gotchas.md`, "Web"
 - **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
   junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
 

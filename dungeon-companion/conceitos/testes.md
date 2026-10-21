@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 422 (em 2026-10-20) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 347 (em 2026-10-20) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 348 (em 2026-10-21) |
 
 ---
 
@@ -362,6 +362,11 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Ícones em pixel art (2026-10-21, versão 1.3.3)
+
+- Web `session-panel.component.spec.ts`: `turnBanner` — mestre na vez de NPC precisa agir (d20),
+  na vez de jogador só aguarda.
 
 ### Carregamento sem overlay bloqueante (2026-10-20, versão 1.3.1)
 

@@ -64,6 +64,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   meio rola por dentro e o último fieldset dela não tem margem e estica (`flex: 1 0 auto`), pra
   base alinhar. Quadro novo na coluna do meio herda isso; conteúdo que cresce rola dentro do
   quadro, não na página. `.players-grid` usa `grid-auto-rows: 1fr` (cards da mesma altura).
+- **Ícones** (1.3.3): sem emoji no site. Ícone é `<img class="ui-icon" src="assets/icons/NOME.png"
+  alt="" />` (classe global no `styles.scss`, 1,5em — acompanha a fonte em volta). Dentro de
+  `{{ }}` não dá pra pôr `<img>`: tirar o ícone da string e usar `@if` antes da interpolação. Os
+  32 ícones (96 px) saem de `design/icons/` (folhas originais + `slice.py` + README com o uso de
+  cada um) — fora de `public/` e `src/assets/` porque tudo lá vai pro ar. Ícone novo: gerar no
+  mesmo estilo (pixel art 16-bit, contorno #1C0B0B, paleta marrom/dourado, fundo transparente,
+  folha 1024×1024 em grade 4×4, ícone centrado em cada célula) e rodar o `slice.py`.
 - **Barras de rolagem** (1.3.2): globais no `styles.scss` com `::-webkit-scrollbar*` nas cores do
   tema; o `scrollbar-color` (Firefox) só entra em `@supports not selector(::-webkit-scrollbar)`,
   porque o Chrome ignora os `::-webkit-*` quando `scrollbar-color` está definido.
