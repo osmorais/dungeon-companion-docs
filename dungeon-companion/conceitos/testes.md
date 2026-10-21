@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 426 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 353 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 357 (em 2026-10-21) |
 
 ---
 
@@ -362,6 +362,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Menu inicial numa tela só (2026-10-21, versão 1.3.9)
+
+- Web `home/home.component.spec.ts`: começa sem papel; abre/troca/fecha papel com as opções
+  certas; Grimório fora das opções do mestre; cada opção navega e CRIAR PERSONAGEM trava
+  enquanto busca.
 
 ### Lista de personagens completa (2026-10-21, versão 1.3.7)
 
