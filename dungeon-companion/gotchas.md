@@ -74,6 +74,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Centralizar na vertical com rolagem** (1.3.10, Home): num contêiner com `overflow-y: auto`,
   `justify-content: center` corta o topo quando o conteúdo passa da altura (não dá pra rolar até
   ele). Usar `margin: auto 0` no filho: centraliza quando cabe e rola certo quando não cabe.
+- **Rolagens na sessão** (1.3.12): rolagem nova entra numa fila de avisos em tela cheia (até 10 s
+  cada). Tudo que "revela" o resultado — histórico, impacto de dano, reação do Tom — acontece no
+  `playNextRollToast` (quando o aviso aparece), não no `checkForNewRolls` (quando chega). Exceção:
+  rolagem do próprio jogador com o modal de ações/iniciativa aberto (sem aviso) revela na hora.
 - **Moldura dos cards** (1.3.11): `.framed-card` (global) usa `border-image: var(--card-frame) 72 /
   22px round` com `border: 11px` — a imagem é desenhada com 22 px mas a faixa termina em ~12–13
   px, então só 11 px ocupam espaço; `background-clip: padding-box` impede a foto de aparecer pelas

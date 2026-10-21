@@ -27,12 +27,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.3.11 (2026-10-21, cards da sessão pela altura, molduras, magias preparadas no início da luta) — notas em `/novidades`
+- **Versão do sistema**: 1.3.12 (2026-10-21, Tom comenta a rolagem só quando ela aparece) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `7d97f53`, web `ec332a4` (versão 1.3.11) — todos enviados. No web fica
+- **Últimos commits**: api `db6687d`, web `cfe6021` (versão 1.3.12) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 428 (`npm run test:unit`), web 360 (`npm run test:run`) —
+- **Testes**: api 428 (`npm run test:unit`), web 361 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
