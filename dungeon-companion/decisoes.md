@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-21
 ---
 
 # Dungeon Companion — Decisões
@@ -55,6 +55,15 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   o fundo, sem quadro em volta** (escolhido entre "quadro + cards" e "só quadros da sessão").
   Cabeçalho ← + título igual em todas as telas. ~~Formulários e a tela da sessão mantêm os quadros
   com legenda.~~ → `gotchas.md`, "Web"
+- **2026-10-21** — Ficha de personagem no padrão visual (1.3.14). **Celular**: cabeçalho ← +
+  "FICHA", card do personagem com a moldura dos cards da sessão e a **imagem de fundo dentro do
+  card** (não mais na página inteira; oferecido voltar), conteúdo em seções/cards/caixas do padrão
+  `.m-*`, tocar na perícia rola o teste. **Abas em linhas de 4, sem rolar pro lado** (o usuário
+  achou arrastar pouco intuitivo). **Desktop**: topo das listagens (← VOLTAR + nome grande), card
+  com moldura reunindo retrato, PV, CA, iniciativa, movimento, bônus de proficiência, percepção
+  passiva e XP; ROLAR DADO e IMPRIMIR na linha das abas; sem o VOLTAR do rodapé; quadros
+  (fieldset) da sessão mantidos. **Truques e círculos de magia começam fechados.** Usuário
+  classificou como melhoria (C). → `gotchas.md`, "Web"
 - **2026-10-21** — Menu inicial **numa tela só** (1.3.9): SOU JOGADOR / SOU MESTRE à esquerda e as
   opções do escolhido abrem **à direita** (no celular, logo abaixo, em sanfona); sem tela de
   VOLTAR. **Grimório de Magias fora dos papéis** ("PARA TODOS"), porque mestre e jogador usam.

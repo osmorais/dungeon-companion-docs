@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-21
 ---
 
 # Dungeon Companion — Gotchas
@@ -92,6 +92,15 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Preparo de magia × combate** (1.3.11): `CombatRepository.isCharacterPreparationLocked` só
   trava com o participante já na ordem (`initiative_total` não nulo); alimenta tanto o
   `setSpellPrepared` quanto o `in_active_combat` da ficha.
+- **Ficha de personagem** (1.3.14): o SCSS da ficha define `.roll-trigger-btn`,
+  `.equipment-edit-btn` e `.level-up-btn` **depois** do bloco mobile, com o mesmo peso — um
+  modificador simples (`.mobile-roll-btn`) perde pra eles. Usar seletor composto
+  (`.roll-trigger-btn.mobile-roll-btn`). Classes compartilhadas entre desktop e celular
+  (`.spell-slots-bar`, `.spell-circle-header`, `.hit-dice-*`) ganham a cara mobile por
+  `.mobile-tab-content .x`, sem mexer no desktop. O card do personagem usa `.framed-card` (não
+  definir `border`). Círculos de magia: o componente guarda os **abertos** (`expandedCircles`),
+  então tudo começa fechado. Fonte do SCSS ~31,8 kB, mas compilado ~24,4 kB (o orçamento olha o
+  compilado).
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do

@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-21
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 428 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 363 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 365 (em 2026-10-21) |
 
 ---
 
@@ -52,6 +52,8 @@ npm test              # modo watch (fica rodando a cada alteração)
 ```
 
 - Especificações ficam ao lado do código, com sufixo `.spec.ts`.
+- `npx vitest run <arquivo>` sozinho **não** roda os specs (falha sem testes: o ambiente do
+  Angular vem do builder `@angular/build:unit-test`). Rodar a suíte com `npm run test:run`.
 - Fábricas de dados de teste ficam em `src/testing/session-fixtures.ts` — essa pasta está
   excluída do build da aplicação em `tsconfig.app.json`, então nunca entra no bundle.
 
@@ -98,6 +100,7 @@ src/testing/session-fixtures.ts                          # player, npc, monster,
 src/app/services/session-event.reducer.spec.ts           # reducer dos eventos do socket
 src/app/constants/rules-constants.spec.ts                # constantes de regras (espelho do backend)
 src/app/session-panel/session-panel.component.spec.ts    # lógica do painel de sessão
+src/app/character-sheet/character-sheet.component.spec.ts # lógica da ficha (círculos de magia)
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -362,6 +365,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Ficha no padrão visual (2026-10-21, versão 1.3.14)
+
+- Web `character-sheet.component.spec.ts` (novo, primeiro da ficha): truques e círculos começam
+  fechados; clicar abre e fecha só o círculo clicado. Instancia o componente sem `id` (não busca
+  a ficha), com `CharacterService` vazio.
 
 ### Troca de vez com o card inteiro (2026-10-21, versão 1.3.13)
 

@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-21
 ---
 
 # Dungeon Companion — Estado atual
@@ -27,12 +27,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.3.13 (2026-10-21, molduras nos avisos e troca de vez com o card inteiro) — notas em `/novidades`
+- **Versão do sistema**: 1.3.14 (2026-10-21, ficha de personagem no padrão visual do site, celular e desktop) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `c2234c3`, web `f6fb750` (versão 1.3.13) — todos enviados. No web fica
+- **Últimos commits**: api `63e8fe1`, web `b2585fb` (versão 1.3.14) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 428 (`npm run test:unit`), web 363 (`npm run test:run`) —
+- **Testes**: api 428 (`npm run test:unit`), web 365 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
