@@ -71,6 +71,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   personagem da página (`getCharacterById(id, true)` em paralelo, `character-list/character-card.ts`)
   porque o endpoint de lista não traz avatar/atributos e a CA/atributos gravados ficam velhos — e
   ele é usado com 100 itens por criar/entrar em sessão, então não dá pra montar ficha lá.
+- **Centralizar na vertical com rolagem** (1.3.10, Home): num contêiner com `overflow-y: auto`,
+  `justify-content: center` corta o topo quando o conteúdo passa da altura (não dá pra rolar até
+  ele). Usar `margin: auto 0` no filho: centraliza quando cabe e rola certo quando não cabe.
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do

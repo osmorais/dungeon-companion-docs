@@ -58,6 +58,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-21** — Menu inicial **numa tela só** (1.3.9): SOU JOGADOR / SOU MESTRE à esquerda e as
   opções do escolhido abrem **à direita** (no celular, logo abaixo, em sanfona); sem tela de
   VOLTAR. **Grimório de Magias fora dos papéis** ("PARA TODOS"), porque mestre e jogador usam.
+- **2026-10-21** — Menu inicial **sem o título "Bem-vindo, aventureiro"** e **cabendo na tela, sem
+  rolar** (1.3.10): altura da tela menos o rodapé, logo limitada pela altura, cards compactos.
 - **2026-10-21** — Listagens desktop no **tamanho da sessão** (1.3.7): mesmo contêiner e topo da
   sessão, itens em grade de cards. Lista de personagens com avatar, fundo, PV, CA, INI, PP,
   atributos e XP (da ficha calculada de cada um). Sem linha clara (borda padrão de fieldset) em

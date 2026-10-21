@@ -27,9 +27,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.3.9 (2026-10-21, menu inicial numa tela só) — notas em `/novidades`
+- **Versão do sistema**: 1.3.10 (2026-10-21, menu inicial sem título e cabendo na tela) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `f5baec3`, web `6611d4f` (versão 1.3.9) — todos enviados. No web fica
+- **Últimos commits**: api `952f2a2`, web `c725a69` (versão 1.3.10) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **Testes**: api 426 (`npm run test:unit`), web 357 (`npm run test:run`) —
