@@ -142,6 +142,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-22** — **Ataque com arma no aviso da mesa** (1.6.1, melhoria): mesmo aviso único do
   lançamento de magia, com a carta da arma. Habilidades de classe continuam fora (opcional no
   backlog). → `conceitos/cartas.md`
+- **2026-10-22** — **Quadro do Mestre por ordem de uso** (1.6.6): o que o mestre mais usa no jogo
+  aparece primeiro; e um **GRIMÓRIO com todas as magias e busca** no quadro (como o das ações, mas
+  com o catálogo inteiro). Ordem escolhida por mim (combate, dados e magias, grupo, área, cena,
+  rolagens ocultas, depois organização). → `conceitos/quadro-do-mestre.md`
 - **2026-10-22** — **Baralho e mão** na gaveta de ações (1.6.5): armas e magias prontas como
   baralhos; tocar abre a mão em tela cheia, em carrossel, como a "mão" de card games (Yu-Gi-Oh).
   Clique fora de botão/carta fecha a mão. Botões ATACAR/LANÇAR da mão com mais impacto visual.

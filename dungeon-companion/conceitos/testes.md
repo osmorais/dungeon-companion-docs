@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 433 (em 2026-10-22) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 432 (em 2026-10-22) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 436 (em 2026-10-22) |
 
 ---
 
@@ -109,6 +109,7 @@ src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de la
 src/app/spell-cast/spell-cast-context.spec.ts             # etapa com magia ou arma, verbo do aviso
 src/app/spell-cast/spell-cast-stage.component.spec.ts     # carta virada, dados rolando, revelação
 src/app/game-card/card-hand.component.spec.ts             # a "mão": navegação, arrastar, clique fora
+src/app/spell-catalog-list/spell-grimoire.component.spec.ts # grimório do mestre: busca, páginas, Esc
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -373,6 +374,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Grimório do mestre (2026-10-22, versão 1.6.6)
+
+- Web `spell-grimoire.component.spec.ts` (novo): carrega o catálogo em cartas (20 por página); busca
+  com espera e volta pra página 1; paginação não passa das pontas; Esc fecha, mas não junto com a
+  carta em tela cheia.
 
 ### Baralho e mão (2026-10-22, versão 1.6.5)
 

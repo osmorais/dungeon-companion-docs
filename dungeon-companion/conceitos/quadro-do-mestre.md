@@ -95,20 +95,33 @@ pelos dois).
 
 ## Seções
 
+Ordem pelo uso durante o jogo desde a **1.6.6** (web `5ba371b`): primeiro o que o mestre usa na
+mesa, depois o que é de preparação e organização.
+
 | Seção | O que faz |
 |---|---|
-| DADOS | Rolar dados (pública/oculta) e teste secreto — mesmos modais de antes |
-| ROLAGENS OCULTAS | `recent_rolls` com `is_hidden`, mais nova primeiro. Etiqueta **SECRETO** (resposta de jogador, `id_character != null`) ou **OCULTA** (do mestre) |
+| COMBATE | Status, iniciar / adicionar / encerrar (os botões continuam também no painel de combate) |
+| DADOS E MAGIAS | Rolar dados (pública/oculta), teste secreto e **GRIMÓRIO** (todas as magias, 1.6.6 — ver abaixo) |
 | GRUPO | Tabela nome / CA / PV / PP / CD + efeitos ativos e Inspiração Bárdica. PV vem do `detail` (ao vivo); o resto vem da ficha (`getCharacterById`, buscada ao abrir e no ↻; ficha que falha mostra "—") |
-| ANOTAÇÕES | Texto privado do mestre, até 10.000 caracteres |
-| DESCANSO | Curto ou longo pro grupo, com checklist de jogadores e NPCs |
 | DANO / CURA EM ÁREA | Valor + alvos (jogadores, NPCs, monstros) com **½** por alvo |
 | CENA | Imagens de referência + lista de monstros com VISÍVEL/OCULTO |
-| COMBATE | Status, iniciar / adicionar / encerrar (os botões continuam também no painel de combate) |
+| ROLAGENS OCULTAS | `recent_rolls` com `is_hidden`, mais nova primeiro. Etiqueta **SECRETO** (resposta de jogador, `id_character != null`) ou **OCULTA** (do mestre) |
+| ANOTAÇÕES | Texto privado do mestre, até 10.000 caracteres |
+| DESCANSO | Curto ou longo pro grupo, com checklist de jogadores e NPCs |
 | MESA | + NPC, + monstro (continuam também no rodapé das listas) |
 | RECOMPENSAS | Distribuir XP (saiu do painel de combate) |
 | SESSÃO | Código, jogadores, POLLING e EFEITOS (pro mestre saíram do cabeçalho; jogadores ainda veem lá) |
 | ENCERRAR SESSÃO | Apagar a sessão, confirmando com o código |
+
+### Grimório do mestre (1.6.6)
+
+- Botão **GRIMÓRIO (TODAS AS MAGIAS)** em DADOS E MAGIAS → `grimoire` → o session-panel fecha o
+  quadro e abre `app-spell-grimoire` (`dungeon-companion-web/src/app/spell-catalog-list/spell-grimoire.component.*`,
+  genérico): todas as magias do catálogo (`SpellCatalogService.getCatalog`), busca pelo nome (espera
+  300 ms e volta pra página 1), 20 por página, cartas (`.card-grid`) e a carta em tela cheia ao tocar.
+  Camada 190.
+- Fecha pelo VOLTAR, fundo ou Esc e **reabre o quadro** (`dmGrimoireOpen`). O Esc que fecha a carta
+  em tela cheia não fecha o grimório junto (`viewerJustClosed`).
 
 Carregamento (1.2.3; desde a 1.3.1 o skeleton vale no site todo — ver `gotchas.md`): anotações mostram um bloco de skeleton enquanto carregam, e CA/PP/CD do
 grupo ficam em skeleton até a ficha chegar (`GroupRow.hasSheet`); depois, "—" quando não há valor.
