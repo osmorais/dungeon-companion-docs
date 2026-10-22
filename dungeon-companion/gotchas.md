@@ -32,6 +32,11 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 ## Banco
 
+- **postgres.js: `${sql(keys)}` logo depois de `INSERT INTO tabela (...,`** vira lista de **valores**
+  (`UNDEFINED_VALUE`), não de colunas. Montar as colunas uma a uma (`keys.map(k => sql\`${sql(k)}\`)`
+  juntadas). Os testes unitários (banco simulado) não pegam: testar a SQL nova no banco real numa
+  transação desfeita (achado no ranking, 1.7.0; `GameSessionRepository.bumpStats`).
+
 - `docs/database/database.sql` e `database_inserts.sql` usam **CRLF**: editar preservando (não
   usar `sed -i`; em Python, `open(p, newline='')` na leitura **e** na escrita — o `open()` padrão
   converte o arquivo inteiro pra LF e o diff vira 700+ linhas). Regra completa: `.claude/rules/banco-de-dados.md` da api.
@@ -42,6 +47,21 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   (primeiro consumidor: talento Habilidoso).
 
 ## Web (Angular)
+
+- **Molduras de barra por imagem** (1.7.1): o começo do trilho fica sob os enfeites da moldura, então
+  valor pequeno some (1 PV de 47) — o preenchimento tem mínimo de 7% (`FRAME_BAR_MIN_FILL`). E o
+  mixin `frame-bar.geometry` estiliza `.xp-bar .fb-medal` (2 classes): regra de cor do medalhão com
+  1 classe perde — escrever `.xp-bar .xp-level--filled`.
+
+- **Avatar — cor de pele não pode ser filtro CSS** (corrigido na 1.6.10): `filter: brightness()`
+  na imagem do corpo escurece tudo, inclusive o branco dos olhos. O corpo vem de
+  `assets/avatar/race_skin/`, recolorido só nos pixels de pele. Tom novo = regerar com
+  `scripts/avatar/skin.py`. Detalhes em [`conceitos/avatar.md`](conceitos/avatar.md).
+- **Avatar — folhas do ChatGPT**: não vêm em grade de 64×64 nem com fundo transparente limpo
+  (brilho semitransparente), cada peça sai numa escala diferente e às vezes com couro cabeludo
+  em cor de pele (que não acompanha o tom escolhido). Recortar por componente com alfa > 128,
+  tirar a pele, encaixar caixa a caixa conferindo numa prévia sobre a base, e gerar as cores pela
+  paleta dos arquivos que já existem.
 
 - **Orçamento de SCSS** (também no `CLAUDE.md` do web): `anyComponentStyle.maximumError` está em
   32 kB por causa do `session-panel.component.scss` (compilado ~29,1 kB na 1.3.16; o orçamento olha

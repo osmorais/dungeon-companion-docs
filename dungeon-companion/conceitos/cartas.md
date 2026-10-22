@@ -120,6 +120,14 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
   habilidades de classe ("USOU"), Resistência Implacável e magias somadas no acerto de arma.
 - Sem socket (modo POLLING), não há etapas: as rolagens aparecem como avisos avulsos, como antes.
 
+### Dano/cura aplicado no aviso (1.7.1, web `2026e36`, api `fcd4abf`)
+- Aplicar o dano/cura de um lançamento num alvo aparece **dentro do aviso** ("APLICOU 8 de dano em
+  Goblin, Orc", borda vermelha/verde), sem o aviso "APLICOU" por cima — decisão do usuário.
+- O modal de rolagem manda a etapa de novo com `applied` (lista `label/amount/kind`, até 30,
+  validada na api) a cada aplicação; o pedido de aplicar leva `cast_id`, a api repete no
+  `amount_applied`, e a mesa (`onAmountApplied`) não abre o aviso avulso quando ele vem. Fora de
+  lançamento continua o aviso "APLICOU". `appliedLines` junta alvos seguidos com o mesmo valor.
+
 ## Cartas de arma (1.6.0)
 
 - **Uma arte por arma**: 37 do catálogo + ataque desarmado, em 3 folhas (4×4, 4×4, 3×2) geradas no

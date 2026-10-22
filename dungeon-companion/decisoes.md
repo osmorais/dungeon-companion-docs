@@ -192,6 +192,28 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   fonte (✕ ← → ▶ ▲ ▼ ✓ ★ ✎ ✦ ✚ ↻) continuam como texto. → `gotchas.md`, "Web"
 - **2026-10-20** — Bruxo recupera os espaços de Magia de Pacto no descanso curto (correção pedida
   junto com o Quadro do Mestre). → `conceitos/quadro-do-mestre.md`
+- **2026-10-22** — Criação de personagem com barra de progresso e as cartas de magia/arma nas
+  etapas de escolha; no celular, em painéis no padrão do site (1.6.7–1.6.8).
+- **2026-10-22** — O Tom (assistente da criação) tem OK pra fechar a fala e um botão pra desativar
+  a ajuda, lembrado no navegador (1.6.8). → `conceitos/lgpd.md`
+- **2026-10-22** — Personalizador de avatar sem lista de seleção: abas com miniaturas, mantendo o
+  estilo do site (1.6.9). Novas opções de avatar vêm de folhas que o usuário gera no ChatGPT;
+  ordem combinada: cabelos (feito) → barbas → roupas → chapéus → rostos. → `conceitos/avatar.md`
+- **2026-10-22** — Cor de pele muda só a pele (não escurecer olhos/boca) e cada raça tem tons da
+  sua lore: elfo lunar/drow, anão e gnomo cinza-pedra, meio-orc verde/cinza, tiefling
+  vermelho/carmesim/roxo/azul, draconato nas 10 linhagens de dragão (1.6.10). → `conceitos/avatar.md`
+- **2026-10-22** — Ranking **global** (todos os usuários veem), com avatar e nome do personagem, o
+  **nome de jogador da mesa** (não o nome da conta, que pode vir do Google) e o nome da sessão;
+  sair do ranking em /conta (1.7.0). → `conceitos/ranking.md`
+- **2026-10-22** — Dano e cura **rolados** contam no ranking mesmo sem aplicar no alvo ("passou do
+  teste de ataque, pode contar"); golpe final e dano sofrido continuam no aplicado. → `conceitos/ranking.md`
+- **2026-10-22** — Ranking em **lista** (1º ao 10º), sem pódio (1.7.1). → `conceitos/ranking.md`
+- **2026-10-22** — Dano/cura aplicado dentro de um lançamento aparece **no aviso do lançamento**, sem
+  o aviso "APLICOU" por cima (1.7.1). → `conceitos/cartas.md`
+- **2026-10-22** — DANO/CURA no próprio PV saiu do card e foi pra **gaveta de ações**; o mestre
+  continua com os dos cards. Nível do card virou **barra de XP** (dourada ao poder subir), e card,
+  avisos e toasts ganharam molduras (anel do avatar, barras) geradas pelo usuário (1.7.1).
+  → `conceitos/molduras.md`
 
 ## Privacidade e segurança
 

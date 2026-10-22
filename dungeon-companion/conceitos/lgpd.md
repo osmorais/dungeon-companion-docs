@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -384,6 +384,21 @@ não vai pro servidor; continua sem precisar de banner. Seção 6 da Política a
 pessoal nem rastreamento, não vai pro servidor, sem banner. Seção 6 da Política passou a citar as
 duas preferências; `LEGAL_LAST_UPDATED` = 20/10/2026. Web `bc6a07b`. Avisar os usuários: decisão
 pendente do usuário (backlog).
+
+**2026-10-22 — Tom (1.6.8):** novo item no `localStorage`, `dc.tom` (ajuda do Tom ligada ou
+desligada; `TomService`). Mesmo caso das outras preferências: não é dado pessoal nem rastreamento,
+não vai pro servidor, sem banner. Seção 6 da Política passou a citar as três preferências;
+`LEGAL_LAST_UPDATED` = 22/10/2026. Web `41f9cf3`. Avisar os usuários: mesma decisão pendente.
+
+**2026-10-22 — Ranking global (1.7.0):** dado novo por personagem e sessão
+(`character_session_stats`: dano, cura, rolagens, 20/1 naturais, magias, XP…) e coluna
+`users.show_in_ranking`. A página `/ranking` (só logado) mostra a **todos os usuários** o avatar e o
+nome do personagem, o nome de jogador daquela mesa (não o `full_name`) e o nome da sessão —
+decisão do usuário. Opção de sair em /conta (padrão: aparece); entra na exportação
+(`ranking_stats`) e some com a conta, a sessão ou o personagem (cascata). Política: seções 2, 3
+(legítimo interesse), 4 ("Todos os usuários (ranking)"), 7 e 8. A dica de apelido ao entrar na
+sessão passou a citar o ranking. Avisar os usuários: mesma decisão pendente. Web `e0e6040`, api
+`69c8e8f`. Ver [`ranking.md`](ranking.md).
 
 ## Regra permanente para novas implementações
 

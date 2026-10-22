@@ -18,8 +18,9 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 
 - [ ] **Revisão jurídica** da Política de Privacidade, dos Termos de Uso e dos prazos do plano de
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
-- [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência) e 20/10
-      (preferência de tema no navegador, 1.3.0) — decidir se e como.
+- [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência), 20/10
+      (preferência de tema no navegador, 1.3.0), 22/10 (preferência do Tom, 1.6.8) e 22/10 (ranking
+      global, 1.7.0) — decidir se e como.
 - [ ] **Direitos autorais**: descrições de magias e várias subclasses vieram do Livro do Jogador em
       português (só o SRD é de uso livre). Risco para a divulgação.
 - [ ] Conferir nos logs do Render a linha `[rate-limit] IP do cliente obtido via ...` (não pode ser
@@ -45,6 +46,20 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 Contexto: [`conceitos/cartas.md`](conceitos/cartas.md).
 
 - [ ] Opcional: habilidades de classe com rolagem no aviso de lançamento (ficaram de fora na 1.5.0).
+
+## Avatar
+
+Contexto: [`conceitos/avatar.md`](conceitos/avatar.md). O usuário gera as folhas no ChatGPT e
+coloca em `artes/avatar/<categoria>/`; o recorte segue o mesmo processo dos cabelos.
+
+- [ ] **Barbas** novas (próxima categoria pedida).
+- [ ] **Roupas** novas (folha masculina e feminina).
+- [ ] **Chapéus/elmos**: camada nova acima do cabelo + aba nova no personalizador.
+- [ ] Mover as folhas das molduras pra `artes/molduras/` e corrigir o nome `modulras-card-sombrio.png`
+      (lembrar de ajustar `scripts/molduras/frames.py` e o comentário no `styles.scss` do web).
+- [ ] **Rostos** (sobrancelha, olhos, nariz, boca): exige refazer as 18 bases sem rosto (9 raças ×
+      2 gêneros) e regerar `race_skin/`; draconato fica de fora. A aba ROSTO (hoje só sorriso)
+      vira essas quatro escolhas.
 
 ## Traços e habilidades mecânicos
 
@@ -107,12 +122,17 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Quadro do Mestre: dano em área não aplica resistência do alvo sozinho (mestre marca ½).
 - [ ] Quadro do Mestre: descanso do grupo não atualiza ficha/ações já abertas dos jogadores
       (só ao reabrir).
-- [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha, wizard de criação e
-      conta (1.3.6 cobriu criar/entrar em sessão e catalogar monstro).
+- [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha e conta (1.3.6 cobriu
+      criar/entrar em sessão e catalogar monstro; 1.6.8, o wizard de criação).
 - [ ] Decidir (oferecido na 1.3.16): esconder o quadro AVENTUREIROS da sessão no celular quando não
       há jogador.
 - [ ] Opcional (oferecido na 1.3.18): depois de executar uma rolagem aberta pelas ações, reabrir a
       gaveta de ações quando o aviso do resultado some (hoje ela fecha pra mostrar o resultado).
+
+- [ ] **Conferir a altura dos cards** com as molduras (1.7.1): antes cabiam 2 linhas de 3 cards
+      sem rolar em 1080p; o anel e as barras deixaram o card mais alto (avatar já foi diminuído).
+- [ ] Ranking: NPCs e monstros não entram; "monstros derrotados" só conta com dano **aplicado**
+      (o mestre aplicando pelos cards não passa pela api de aplicar, então não conta).
 
 ## Técnico
 

@@ -28,6 +28,9 @@ passos" de lá).
 | [`conceitos/auditoria-mecanicas.md`](dungeon-companion/conceitos/auditoria-mecanicas.md) | conceito | Classificação feature a feature (12 classes + talentos) por dificuldade de automação |
 | [`conceitos/quadro-do-mestre.md`](dungeon-companion/conceitos/quadro-do-mestre.md) | conceito | Quadro do Mestre (1.2.0): seções da gaveta, descanso do grupo, dano em área, anotações, apagar sessão; gavetas de baixo no celular (1.3.16); ordem por uso e grimório do mestre (1.6.6) |
 | [`conceitos/cartas.md`](dungeon-companion/conceitos/cartas.md) | conceito | Cartas de magia (1.4.0) e de arma (1.6.0), e aviso de lançamento de magia com as cartas (1.5.0) |
+| [`conceitos/avatar.md`](dungeon-companion/conceitos/avatar.md) | conceito | Avatar em camadas: personalizador em abas (1.6.9), penteados novos, tons de pele por raça (1.6.10), como acrescentar opções |
+| [`conceitos/ranking.md`](dungeon-companion/conceitos/ranking.md) | conceito | Ranking global (1.7.0): o que conta, tabela de estatísticas, endpoint, tela e privacidade |
+| [`conceitos/molduras.md`](dungeon-companion/conceitos/molduras.md) | conceito | Molduras do card (anel, barras de XP e vida), barra de XP e DANO/CURA na gaveta (1.7.1) |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
