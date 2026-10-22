@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 428 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 372 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 381 (em 2026-10-21) |
 
 ---
 
@@ -101,7 +101,6 @@ src/app/services/session-event.reducer.spec.ts           # reducer dos eventos d
 src/app/constants/rules-constants.spec.ts                # constantes de regras (espelho do backend)
 src/app/session-panel/session-panel.component.spec.ts    # lógica do painel de sessão
 src/app/character-sheet/character-sheet.component.spec.ts # lógica da ficha (círculos de magia)
-src/app/character-drawer/character-drawer.component.spec.ts # gaveta AÇÕES DE PERSONAGEM (celular)
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -366,6 +365,18 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Ações reorganizadas e grimório (2026-10-21, versão 1.3.18)
+
+- Web `player-actions-modal.component.spec.ts` ("grimório", novo): abre em PRONTAS e volta às
+  ações; abas e magias por aba pra quem prepara; TODAS pra quem não prepara; cor do card
+  (pronta / dá pra preparar / bloqueada sem vaga ou em combate).
+- Web `session-panel.component.spec.ts`: "gaveta de ações: destaque" (PV ao vivo com temporário,
+  NPC sem PV ao vivo, personagem da vez, ITENS abre o próprio inventário) e "volta da ficha aberta
+  pelas ações" (`fromActions` na ida, reabrir + limpar URL na volta).
+- Web `character-sheet.component.spec.ts` ("voltar"): com `fromActions` volta reabrindo as ações;
+  sem, volta sem reabrir.
+- Saiu `character-drawer.component.spec.ts` (3 testes): a gaveta intermediária virou só a barra.
 
 ### Sessão no celular com gavetas (2026-10-21, versão 1.3.16)
 

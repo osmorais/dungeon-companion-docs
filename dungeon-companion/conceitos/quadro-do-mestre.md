@@ -23,7 +23,7 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
   + `--attached`, `-bar-label`, `-hint`, `-arrow`, `.bottom-drawer`, `.bottom-drawer-backdrop`,
   `.bottom-drawer-body`), o mesmo das gavetas AÇÕES DE PERSONAGEM, ações e inventário (ver
   abaixo). Celular: largura toda, base da tela, até 85vh. Desktop: largura dos quadros
-  (`min(1440px, 96vw)`, como o `.container`), acima do rodapé (48 px); as seções do quadro se
+  (`min(1440px, 96vw)`, como o `.container`), na base da tela (o rodapé foi pro topo na 1.3.18); as seções do quadro se
   distribuem em colunas (`column-width: 320px`).
 - Histórico da posição: 1.2.0 — botão no cabeçalho (substituiu ROLAR DADOS / TESTE SECRETO /
   IMAGENS) e gaveta pela direita; 1.2.1 — aba à esquerda no desktop e, no celular, botão no
@@ -40,15 +40,14 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 
 ### Gaveta AÇÕES DE PERSONAGEM (jogador; celular 1.3.16, desktop 1.3.17)
 
-- `CharacterDrawerComponent` (`dungeon-companion-web/src/app/character-drawer/`): mesma gaveta de
-  baixo do quadro, pro jogador que tem personagem na sessão (`myPlayer()` no session-panel:
-  jogador da sessão com o `user_id` de quem está logado; `null` pro mestre).
-- Botões AÇÕES, FINALIZAR e ATRASAR (quando é a vez dele e pode), FICHA e ITENS — os mesmos que
-  ficavam no card, que agora só mostra esses botões pro mestre (celular e desktop). Guarda só o
-  aberto/fechado; cada botão fecha a gaveta e emite (`run`), e o session-panel chama o que já
-  chamava. Esc recolhe.
-- Junto na 1.3.16 (sessão no celular): TEMA/SAIR no topo e sem ficar fixo (`footerOnTop` no
-  `app.ts`, rota `/session/:id`), quadros vazios escondidos e ROLAGENS recolhida
+- `CharacterDrawerComponent` (`dungeon-companion-web/src/app/character-drawer/`): desde a 1.3.18
+  é **só a barra** presa na base, pro jogador que tem personagem na sessão (`myPlayer()` no
+  session-panel: jogador da sessão com o `user_id` de quem está logado; `null` pro mestre). Tocar
+  emite `open` e o session-panel abre direto a gaveta de ações do personagem (não existe mais a
+  tela intermediária com AÇÕES/FICHA/ITENS da 1.3.16). A barra some enquanto as ações ou o
+  inventário estão abertos. Os botões FICHA/ITENS/FINALIZAR saíram do card do jogador; o mestre
+  continua com eles nos cards.
+- Junto na 1.3.16 (sessão no celular): quadros vazios escondidos e ROLAGENS recolhida
   (`mobileRollsOpen`). Com o COMBATE escondido sem luta, o mestre inicia a luta pelo quadro.
 
 ### Ações e inventário como gaveta (1.3.17)
@@ -56,10 +55,33 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 - `PlayerActionsModalComponent` e `PlayerInventoryModalComponent` (abertos pelos cards do mestre
   ou pela gaveta do jogador) usam a mesma gaveta de baixo, com o nome na barra do topo ("▼
   INVENTÁRIO — NOME") no lugar do título e do ✕. Fecham pela barra ou pelo fundo.
-- Desktop: as seções das ações vão em colunas (`column-width: 360px`); o inventário fica numa
-  coluna central de até 900 px.
+- Desktop: o inventário fica numa coluna central de até 900 px.
 - O modal de rolagem e os detalhes de magia/item abertos de dentro das ações continuam como
   janela, por cima (z-index 200).
+
+### Tela de ações e grimório (1.3.18)
+
+- **Destaque** (`.pa-hero`): PV (ao vivo — `liveHp` vem do session-panel, `liveHpFor`; NPC usa o
+  da ficha), CA, CD/ATQ de magia (só conjurador), dados de vida; botões FINALIZAR TURNO/ATRASAR
+  (`canEndTurn` = `isCharacterCurrentTurn(id) && canEndCurrentTurn()`), ROLAR DADO e, pro jogador
+  abrindo o próprio personagem (`showLinks`), FICHA e ITENS (`openMyInventory`). Efeitos ativos
+  logo abaixo.
+- **Colunas fixas** (`.pa-columns`/`.pa-col`, grid `auto-fit minmax(300px, 1fr)`): COMBATE (armas,
+  habilidades por recurso, recursos de classe) | MAGIAS (espaços, preparadas, botão ABRIR
+  GRIMÓRIO) | TESTES E DESCANSO (resistências 2 por linha, perícias, descansos). Na 1.3.17 eram
+  CSS `columns`, que redistribuíam as seções quando algo abria — por isso "mudava de lugar".
+- **Grimório**: `view` = `'actions' | 'grimoire'` no `PlayerActionsModalComponent`; a barra do
+  topo vira "◀ VOLTAR ÀS AÇÕES". Abas `grimoireTabs()`: PRONTAS (truques + preparadas; TODAS pra
+  quem não prepara) e um por círculo; abre sempre em PRONTAS. Cards (`grimoireSpells()`) com
+  LANÇAR / LANÇAR NVx e PREPARAR / ✓ PREPARADA; o card inteiro abre a descrição (botões com
+  `stopPropagation`). Estado do card `spellCardState`: `ready` (faixa dourada à esquerda),
+  `preparable` (cor normal), `locked` (sem vaga ou em combate, opacidade 0.7). Espaços de magia
+  num `<ng-template #slotsBar>` usado nas duas telas.
+- **Voltar às ações**: rolagem aberta pelas ações tem `backLabel` no `RollModalComponent` ("◀
+  VOLTAR ÀS AÇÕES"/"AO GRIMÓRIO"; executar a rolagem ainda fecha a gaveta). Ficha aberta pelas
+  ações: `viewCharacterSheet(id, true)` → `?fromActions=<id>`; o voltar da ficha
+  ("← VOLTAR ÀS AÇÕES") navega pra `/session/:id?reopenActions=<id>`, e o session-panel
+  (`reopenActions` input + effect) reabre as ações quando a sessão carrega e limpa a URL.
 
 ## Arquitetura
 

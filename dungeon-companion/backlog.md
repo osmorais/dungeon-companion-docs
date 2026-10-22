@@ -103,8 +103,10 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       (só ao reabrir).
 - [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha, wizard de criação e
       conta (1.3.6 cobriu criar/entrar em sessão e catalogar monstro).
-- [ ] Decidir (oferecido na 1.3.16): TEMA/SAIR no topo em **todas** as telas do celular (hoje só na
-      sessão) e esconder o quadro AVENTUREIROS quando não há jogador.
+- [ ] Decidir (oferecido na 1.3.16): esconder o quadro AVENTUREIROS da sessão no celular quando não
+      há jogador.
+- [ ] Opcional (oferecido na 1.3.18): depois de executar uma rolagem aberta pelas ações, reabrir a
+      gaveta de ações quando o aviso do resultado some (hoje ela fecha pra mostrar o resultado).
 
 ## Técnico
 

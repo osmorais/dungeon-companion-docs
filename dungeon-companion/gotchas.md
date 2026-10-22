@@ -57,8 +57,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   hex fixo não muda com o tema. Ficam fixas de propósito: efeitos de tela cheia (dano, magia,
   modal-burst), cores com significado (vermelho de erro, verde de cura, barra de PV) e as cores
   de avatar.
-- **Sessão desktop em página única** (1.3.2): `.container` tem `height: calc(100vh - 48px)` (os
-  48px são o `padding-bottom` do body, reservado pro rodapé global) e é coluna flex: topo
+- **Rodapé no topo** (1.3.18): TEMA/SAIR é `position: absolute; top: 0` no `app.ts` (rola com a
+  página) com altura `--footer-height` (40px, no `:root`); o `body` reserva com `padding-top`.
+  Tela de altura fixa (Home, sessão desktop) desconta `var(--footer-height)`, não mais 48px.
+  `absolute` e não estático: com `body` flex centralizado, um rodapé no fluxo descia junto com o
+  conteúdo centralizado.
+- **Sessão desktop em página única** (1.3.2): `.container` tem `height: calc(100vh -
+  var(--footer-height))` (rodapé global no topo desde a 1.3.18) e é coluna flex: topo
   (`.session-topbar`) + `.layout` com `flex: 1; min-height: 0`. Os quadros laterais são
   `absolute; top: 0; bottom: 0` do `.layout` — por isso o espaço de baixo fica no padding do
   `.container`, nunca no `.layout` (senão eles passam da base do quadro do meio). A coluna do
@@ -107,10 +112,14 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   modais de ações e de inventário) — não no `styles.scss`, porque regra de componente ganha da
   global. **z-index baixo de propósito** (barra 140, gaveta 146): com 940 a barra ficava por cima
   do modal de ações (150) e do de rolagem (200). Modal novo da sessão que precise ficar acima da
-  barra: z-index maior que 146. Celular: barra (58 px + puxador de 14 px) cabe no `padding-bottom`
-  do `body` (48 px) + o do `.mobile-container`; desktop: `.container--drawer`. Rodapé
-  no topo: o `app.ts` renderiza o mesmo `<ng-template #footer>` antes ou depois do
-  `<router-outlet>` (`footerOnTop`), com `.global-footer--top` estático e `width: 100vw`.
+  barra: z-index maior que 146. Espaço da barra (58 px + puxador de 14 px): celular, `padding-bottom`
+  de 88 px no `.mobile-container`; desktop, `.container--drawer` (84 px).
+- **Ações em colunas** (1.3.18): não usar CSS `columns` pra seções que abrem/fecham (círculo,
+  habilidade) — o navegador redistribui tudo entre as colunas e a informação "pula". Usar grid
+  com colunas fixas (`.pa-col`), cada seção sempre na sua.
+- **Input de rota no componente**: `withComponentInputBinding` liga query params a `input()`
+  (`sessionId`/`fromActions` na ficha, `reopenActions` na sessão). Nos testes sem template, dá pra
+  trocar o input por uma função (`(c as any).fromActions = () => '7'`) antes de chamar o método.
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do

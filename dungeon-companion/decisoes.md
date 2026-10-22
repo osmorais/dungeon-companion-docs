@@ -118,6 +118,19 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   próprio card. **Modais de ações e de inventário abrem como gaveta** (celular e desktop). A barra
   recolhida precisa **parecer clicável**: puxador, seta animada e "TOQUE PARA ABRIR". O rodapé no
   desktop continua embaixo. Versão como melhoria (1.3.17). → `conceitos/quadro-do-mestre.md`
+- **2026-10-21** — TEMA/SAIR **no topo de todas as telas, no celular e no desktop** (1.3.18; antes
+  só na sessão do celular), rolando com a página. Substitui o "rodapé no topo só na sessão" da
+  1.3.16 e o "rodapé no desktop continua embaixo" da 1.3.17. → `gotchas.md`, "Web"
+- **2026-10-21** — Gaveta de ações (1.3.18): **sem a tela intermediária** — a barra AÇÕES DE
+  PERSONAGEM abre direto as ações, com as **informações e ações principais em destaque** no topo
+  (PV, CA, CD/ATQ de magia, dados de vida; finalizar/atrasar, rolar dado, ficha, itens). Nada pode
+  **mudar de lugar** ao abrir uma magia ou habilidade (colunas fixas: combate | magias | testes e
+  descanso). Magias num **GRIMÓRIO próprio** (segunda tela da gaveta), com abas por círculo, cards
+  maiores, lançar e preparar; **card inteiro abre a descrição**; card que dá pra preparar **não
+  pode parecer bloqueado**, e o PREPARAR reage ao mouse quando dá pra preparar; cards no **estilo
+  das linhas de resistência/perícia/arma**. **Navegação de volta** às ações a partir do grimório,
+  da rolagem e da ficha. Escolha minha, oferecida: depois de executar uma rolagem a gaveta fecha
+  (pra mostrar o resultado), como antes. → `conceitos/quadro-do-mestre.md`
 - ~~**2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
   pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.~~
 - **2026-10-20** — Skeleton no **site todo** (1.3.1): o overlay que bloqueava a tela acabou. Durante
