@@ -36,13 +36,13 @@ Em `artes/spell-cards/` (salvos em 2026-10-21):
 | `back-sombrio.png` | Verso da carta, tema Sombrio |
 | `school-<escola>.png` | Ilustração por escola: `abjuracao`, `adivinhacao`, `conjuracao`, `encantamento`, `evocacao`, `ilusao`, `necromancia`, `transmutacao` |
 
-Em `artes/weapon-cards/` (a gerar):
+Em `artes/weapon-cards/` (salvos em 2026-10-22):
 
 | Arquivo | O quê |
 |---|---|
-| `weapons-1.png` | Folha de armas 1 (4×4) |
-| `weapons-2.png` | Folha de armas 2 (4×4) |
-| `weapons-3.png` | Folha de armas 3 (3×2) |
+| `weapon-1.png` | Folha de armas 1 (4×4) |
+| `weapon-2.png` | Folha de armas 2 (4×4) |
+| `weapon-3.png` | Folha de armas 3 (3×2) |
 
 ## Prompt das armas (ChatGPT)
 
@@ -67,7 +67,7 @@ Weapons in reading order (left to right, top to bottom):
 [LISTA]
 ```
 
-### Folha 1 — `weapons-1.png` — `[GRADE]` = `4 columns × 4 rows, 1024×1024 px`
+### Folha 1 — `weapon-1.png` — `[GRADE]` = `4 columns × 4 rows, 1024×1024 px`
 
 | Célula | Arma (id) | `[LISTA]` |
 |---|---|---|
@@ -88,7 +88,7 @@ Weapons in reading order (left to right, top to bottom):
 | 15 | Alabarda (15) | `15. halberd` |
 | 16 | Cimitarra (16) | `16. scimitar` |
 
-### Folha 2 — `weapons-2.png` — `[GRADE]` = `4 columns × 4 rows, 1024×1024 px`
+### Folha 2 — `weapon-2.png` — `[GRADE]` = `4 columns × 4 rows, 1024×1024 px`
 
 | Célula | Arma (id) | `[LISTA]` |
 |---|---|---|
@@ -109,7 +109,7 @@ Weapons in reading order (left to right, top to bottom):
 | 15 | Rapieira (31) | `15. rapier (thin blade with ornate cup hilt)` |
 | 16 | Tridente (32) | `16. trident` |
 
-### Folha 3 — `weapons-3.png` — `[GRADE]` = `3 columns × 2 rows, 1536×1024 px`
+### Folha 3 — `weapon-3.png` — `[GRADE]` = `3 columns × 2 rows, 1536×1024 px`
 
 | Célula | Arma (id) | `[LISTA]` |
 |---|---|---|
@@ -120,7 +120,7 @@ Weapons in reading order (left to right, top to bottom):
 | 5 | Zarabatana (37) | `5. blowgun with a dart` |
 | 6 | Ataque desarmado | `6. clenched fist wrapped in leather hand wraps (unarmed strike)` |
 
-Saída do recorte (a fazer): `src/assets/cards/weapon-<id>.webp` e `weapon-unarmed.webp`. Arma nova no
+Saída do recorte (`design/weapon-cards/process.py`): `src/assets/cards/weapon-<id>.webp` e `weapon-unarmed.webp`. Arma nova no
 catálogo: gerar uma imagem avulsa no mesmo estilo e salvar com o id dela.
 
 ## Prompt das magias (ChatGPT)
