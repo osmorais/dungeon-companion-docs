@@ -135,6 +135,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   de classe; armas quando houver as cartas de arma). Aviso some **8 s** depois do fim; magia de
   resistência **só mostra a CD** (o mestre resolve, como antes). Versão 1.5.0. Na carta em tela cheia,
   valores longos sem corte e descrição expansível (LER TUDO). → `conceitos/cartas.md`
+- **2026-10-22** — **Armas em cartas** (1.6.0, funcionalidade nova): mesma carta das magias, arte por
+  arma, ATACAR embaixo de cada carta na gaveta de ações e na ficha, tela cheia no lugar do modal da
+  arma. Categoria simples/marcial guardada no web pelo nome (escolha minha, sem coluna nova no
+  banco). → `conceitos/cartas.md`
 - **2026-10-21** — TEMA/SAIR **no topo de todas as telas, no celular e no desktop** (1.3.18; antes
   só na sessão do celular), rolando com a página. Substitui o "rodapé no topo só na sessão" da
   1.3.16 e o "rodapé no desktop continua embaixo" da 1.3.17. → `gotchas.md`, "Web"

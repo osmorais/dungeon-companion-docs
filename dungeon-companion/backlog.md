@@ -44,9 +44,6 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 
 Contexto: [`conceitos/cartas.md`](conceitos/cartas.md).
 
-- [ ] Cartas de arma: usuário gera as 3 folhas (`procedimentos/artes-cartas.md`, salvar em
-      `artes/weapon-cards/`); depois recorte, `weaponToCard`, cartas na coluna COMBATE e decidir a
-      categoria simples/marcial (o banco não tem).
 - [ ] Opcional: ataque com arma no mesmo aviso de lançamento (quando as cartas de arma existirem).
 - [ ] Opcional: habilidades de classe com rolagem no aviso de lançamento (ficaram de fora na 1.5.0).
 

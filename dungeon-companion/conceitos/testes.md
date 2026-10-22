@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 431 (em 2026-10-22) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 408 (em 2026-10-22) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 414 (em 2026-10-22) |
 
 ---
 
@@ -102,6 +102,7 @@ src/app/constants/rules-constants.spec.ts                # constantes de regras 
 src/app/session-panel/session-panel.component.spec.ts    # lógica do painel de sessão
 src/app/character-sheet/character-sheet.component.spec.ts # lógica da ficha (círculos de magia)
 src/app/game-card/spell-card.spec.ts                      # magia → carta, escola, cor da carta
+src/app/game-card/weapon-card.spec.ts                     # arma → carta, categoria, cor por dano
 src/app/game-card/game-card.component.spec.ts             # LER TUDO / RECOLHER
 src/app/game-card/card-viewer.component.spec.ts           # carta em tela cheia (Esc)
 src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de lançamento
@@ -369,6 +370,13 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Armas em cartas (2026-10-22, versão 1.6.0)
+
+- Web `weapon-card.spec.ts` (novo): simples × marcial (sem ligar pra acento/caixa); carta da arma
+  (bônus, arte, faixa, dano com modificador, peso); arma fora do catálogo usa o ícone; cor por tipo
+  de dano; carta do desarmado. `player-actions-modal.component.spec.ts`: ATACAR na carta em tela
+  cheia fecha a carta e abre a rolagem.
 
 ### Cartas de magia e aviso de lançamento (2026-10-21/22, versões 1.4.0 e 1.5.0)
 

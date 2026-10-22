@@ -1,5 +1,5 @@
 ---
-resumo: Cartas de card game (magias na 1.4.0; armas a seguir) e o aviso de lançamento de magia da mesa (1.5.0): componentes, imagens, eventos e fluxo.
+resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0) e o aviso de lançamento de magia da mesa (1.5.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
 atualizado: 2026-10-22
@@ -9,8 +9,8 @@ atualizado: 2026-10-22
 
 Magias viraram cartas na **1.4.0** (web `be10d57`) e o lançamento de magia ganhou um aviso único
 pra mesa com as cartas na **1.5.0** (código: web `31232a9`, api `95e1d64`, commitados pelo usuário;
-versão, testes, verso da carta e ajustes: web `76153a5`, api `2e2a361`). As cartas foram feitas
-pensando nas **armas**, que vêm em seguida (ver "Próximo: cartas de arma").
+versão, testes, verso da carta e ajustes: web `76153a5`, api `2e2a361`). As **armas** viraram
+cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 
 ## Imagens
 
@@ -103,13 +103,26 @@ pensando nas **armas**, que vêm em seguida (ver "Próximo: cartas de arma").
   habilidades de classe ("USOU"), Resistência Implacável e magias somadas no acerto de arma.
 - Sem socket (modo POLLING), não há etapas: as rolagens aparecem como avisos avulsos, como antes.
 
-## Próximo: cartas de arma
+## Cartas de arma (1.6.0)
 
-- Decidido: **uma arte por arma** (37 do catálogo + ataque desarmado), em 3 folhas (4×4, 4×4, 3×2)
-  geradas no ChatGPT — prompt e ordem das células em `procedimentos/artes-cartas.md`. Originais vão
-  em `artes/weapon-cards/`; o recorte grava `src/assets/cards/weapon-<id>.webp`.
-- Mesma moldura e mesma carta: falta o `weaponToCard` (medalhão = bônus de ataque, faixa =
-  categoria · alcance, pergaminho = dano/tipo/propriedades, fundo da arte pela cor do tipo de dano).
-- O banco **não tem a categoria** (simples/marcial): deduzir pela ordem (ids 1–14 simples, 15–37
-  marciais) ou criar coluna — decidir na hora.
-- O aviso de lançamento recebe `GameCardData`, então o ataque com arma pode usar o mesmo palco.
+- **Uma arte por arma**: 37 do catálogo + ataque desarmado, em 3 folhas (4×4, 4×4, 3×2) geradas no
+  ChatGPT — prompt e ordem das células em `procedimentos/artes-cartas.md`. Originais em
+  [`artes/weapon-cards/`](../artes/weapon-cards/) (`weapon-1.png` a `weapon-3.png`).
+- `dungeon-companion-web/design/weapon-cards/process.py` recorta em `src/assets/cards/weapon-<id>.webp`
+  (id do catálogo `weapon`) e `weapon-unarmed.webp`, 384×384 com fundo transparente. O gerador não
+  respeita a grade (arma passando da célula, ponta da vizinha entrando), então o recorte procura
+  numa área 30% maior que a célula e fica com as **peças opacas cujo centro cai na célula** (peça
+  menor que 3% da maior é sujeira). Leva ~1,5 min (busca em Python puro).
+- `weaponToCard` / `unarmedToCard` (`src/app/game-card/weapon-card.ts`): medalhão = bônus de ataque;
+  arte pelo id (1–37; fora disso, ícone de espada/arco); `artFit: 'contain'` (arma inteira, com
+  sombra) sobre `artBackground` = degradê pela cor do tipo de dano (cortante vermelho, perfurante
+  azul, concussão ocre; outro, neutro); faixa "SIMPLES/MARCIAL · CORPO A CORPO/DISTÂNCIA";
+  números DANO (com o modificador), TIPO, PROPRIEDADES, PESO.
+- **Categoria simples/marcial**: o banco não tem (proficiência é texto), então fica no web pela lista
+  de nomes das 14 armas simples do livro (`isSimpleWeapon`). A ordem do catálogo bate com o livro
+  (ids 1–14 simples, 15–37 marciais).
+- **Onde**: gaveta de ações (coluna COMBATE, grade com **ATACAR** embaixo; tela cheia com ATACAR
+  via `selectedWeaponCard`/`attackFromCard`) e ficha (grade com ATACAR no celular e no desktop; a
+  tela cheia substituiu o modal da arma).
+- O ataque com arma **ainda não** usa o aviso de lançamento da mesa (opcional no backlog); o palco
+  já recebe `GameCardData`, então dá pra reaproveitar.
