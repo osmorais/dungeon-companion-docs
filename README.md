@@ -30,11 +30,15 @@ passos" de lá).
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
+| [`procedimentos/artes-cartas.md`](dungeon-companion/procedimentos/artes-cartas.md) | procedimento | Prompts do ChatGPT pras artes das cartas de magia e de arma, e onde salvar |
 | [`historico/diario-2026-09-10_a_2026-10-18.md`](dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md) | historico | Diário de sessões (antigo `status.md`) |
 | [`historico/levelup-plan.md`](dungeon-companion/historico/levelup-plan.md) | historico | Plano e implementação do level-up (fases 1–3) |
 | [`historico/media-progress.md`](dungeon-companion/historico/media-progress.md) | historico | Implementação do bloco "Média" da auditoria, onda a onda |
 | [`historico/spells-progress.md`](dungeon-companion/historico/spells-progress.md) | historico | Auditoria das 361 descrições de magia contra o livro |
 | [`historico/imagens-orfas-2026-10-14.md`](dungeon-companion/historico/imagens-orfas-2026-10-14.md) | historico | Lista das 38 imagens órfãs no Supabase |
+
+Artes originais (PNG gerados no ChatGPT, grandes demais pro repositório web) em
+[`artes/`](dungeon-companion/artes/) — ver `procedimentos/artes-cartas.md`.
 
 Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
 `dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e
