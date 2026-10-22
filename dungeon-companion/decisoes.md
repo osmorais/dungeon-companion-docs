@@ -139,6 +139,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   arma, ATACAR embaixo de cada carta na gaveta de ações e na ficha, tela cheia no lugar do modal da
   arma. Categoria simples/marcial guardada no web pelo nome (escolha minha, sem coluna nova no
   banco). → `conceitos/cartas.md`
+- **2026-10-22** — **Ataque com arma no aviso da mesa** (1.6.1, melhoria): mesmo aviso único do
+  lançamento de magia, com a carta da arma. Habilidades de classe continuam fora (opcional no
+  backlog). → `conceitos/cartas.md`
 - **2026-10-21** — TEMA/SAIR **no topo de todas as telas, no celular e no desktop** (1.3.18; antes
   só na sessão do celular), rolando com a página. Substitui o "rodapé no topo só na sessão" da
   1.3.16 e o "rodapé no desktop continua embaixo" da 1.3.17. → `gotchas.md`, "Web"

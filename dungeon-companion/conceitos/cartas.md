@@ -124,5 +124,19 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 - **Onde**: gaveta de ações (coluna COMBATE, grade com **ATACAR** embaixo; tela cheia com ATACAR
   via `selectedWeaponCard`/`attackFromCard`) e ficha (grade com ATACAR no celular e no desktop; a
   tela cheia substituiu o modal da arma).
-- O ataque com arma **ainda não** usa o aviso de lançamento da mesa (opcional no backlog); o palco
-  já recebe `GameCardData`, então dá pra reaproveitar.
+- Desde a **1.6.1** o ataque com arma usa o aviso da mesa (ver "Ataque com arma no aviso").
+
+## Ataque com arma no aviso (1.6.1)
+
+- Mesmo aviso, mesmo modal e mesmo endpoint do lançamento de magia (web `52890ea`, api `7d70526`).
+  A mesa vê "THORIN **ATACOU COM** MACHADO DE BATALHA" (`castVerb`) + a carta da arma + ataque →
+  acertou/errou → dano. Vale pro desarmado (carta do punho), inclusive os golpes do Monge.
+- `SpellCastContext` ficou genérico: `idSpell` **ou** `weapon` (`WeaponCardInfo`). Na gaveta,
+  `rollAttack` / `rollUnarmed` chamam `startWeaponCast` (só com `sessionId` — a ficha isolada não
+  tem mesa e segue sem aviso).
+- **API**: `POST /spell-cast-stage` aceita `weapon` no lugar de `id_spell` (exatamente um dos dois).
+  A carta da arma vem do cliente porque bônus e modificador dependem da ficha; `validWeaponCard`
+  limita textos e exige inteiros em faixa. O evento leva `spell` **ou** `weapon` (o outro `null`).
+- Mesa: `weaponInfoToCard` remonta a carta (`id_weapon` null = desarmado).
+- **Deploy**: api antes do web — a api antiga recusa a etapa com arma, e enquanto isso a mesa não vê
+  o aviso dos ataques (as rolagens com `cast_id` também não viram aviso avulso).

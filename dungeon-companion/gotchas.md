@@ -129,6 +129,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   são mandadas em fila (promises encadeadas) e cada uma leva a situação inteira; a mesa ignora
   `open` depois de `done`. O socket entrega `roll_added` antes de `spell_cast_stage` (quem lança
   manda a etapa só depois da resposta do `/roll`).
+- **Mudança de contrato do socket/endpoint entre api e web** (1.6.1): quando o web passa a mandar um
+  campo que a api antiga recusa (ex.: `weapon` no `/spell-cast-stage`), fazer o **push da api
+  primeiro** (Render) e só depois o do web (Hostinger).
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do

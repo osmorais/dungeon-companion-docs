@@ -44,7 +44,6 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 
 Contexto: [`conceitos/cartas.md`](conceitos/cartas.md).
 
-- [ ] Opcional: ataque com arma no mesmo aviso de lançamento (quando as cartas de arma existirem).
 - [ ] Opcional: habilidades de classe com rolagem no aviso de lançamento (ficaram de fora na 1.5.0).
 
 ## Traços e habilidades mecânicos
