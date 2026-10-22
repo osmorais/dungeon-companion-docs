@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 433 (em 2026-10-22) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 420 (em 2026-10-22) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 424 (em 2026-10-22) |
 
 ---
 
@@ -107,6 +107,7 @@ src/app/game-card/game-card.component.spec.ts             # LER TUDO / RECOLHER
 src/app/game-card/card-viewer.component.spec.ts           # carta em tela cheia (Esc)
 src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de lançamento
 src/app/spell-cast/spell-cast-context.spec.ts             # etapa com magia ou arma, verbo do aviso
+src/app/spell-cast/spell-cast-stage.component.spec.ts     # carta virada, dados rolando, revelação
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -371,6 +372,12 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Cartas viradas e rolagens com impacto (2026-10-22, versão 1.6.2)
+
+- Web `spell-cast-stage.component.spec.ts` (novo, timers falsos): nenhuma rolagem enquanto a carta
+  vira; dados rolando e depois o total; dano treme e ataque não; várias rolagens uma por vez.
+  `session-panel`: impacto de dano toca uma vez, no total revelado, e não no ataque.
 
 ### Ataque com arma no aviso (2026-10-22, versão 1.6.1)
 

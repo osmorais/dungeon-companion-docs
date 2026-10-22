@@ -142,6 +142,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-22** — **Ataque com arma no aviso da mesa** (1.6.1, melhoria): mesmo aviso único do
   lançamento de magia, com a carta da arma. Habilidades de classe continuam fora (opcional no
   backlog). → `conceitos/cartas.md`
+- **2026-10-22** — No aviso de magia/ataque a carta aparece **primeiro virada pra baixo** e vira; o
+  resultado das rolagens ganha **mais impacto visual** (1.6.2: dados rolando, total grande com
+  clarão, carimbo, tremida no dano). → `conceitos/cartas.md`
 - **2026-10-21** — TEMA/SAIR **no topo de todas as telas, no celular e no desktop** (1.3.18; antes
   só na sessão do celular), rolando com a página. Substitui o "rodapé no topo só na sessão" da
   1.3.16 e o "rodapé no desktop continua embaixo" da 1.3.17. → `gotchas.md`, "Web"
