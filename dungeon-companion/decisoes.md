@@ -142,6 +142,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-22** — **Ataque com arma no aviso da mesa** (1.6.1, melhoria): mesmo aviso único do
   lançamento de magia, com a carta da arma. Habilidades de classe continuam fora (opcional no
   backlog). → `conceitos/cartas.md`
+- **2026-10-22** — **Tom fora da sessão no celular** (1.6.4); no desktop continua. As reações seguem
+  calculadas (`tomState`), só não são desenhadas (`@if (!isMobile() && …)` no session-panel).
 - **2026-10-22** — No aviso de magia/ataque a carta aparece **primeiro virada pra baixo** e vira; o
   resultado das rolagens ganha **mais impacto visual** (1.6.2: dados rolando, total grande com
   clarão, carimbo, tremida no dano). → `conceitos/cartas.md`
