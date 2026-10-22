@@ -32,6 +32,8 @@ Em `artes/spell-cards/` (salvos em 2026-10-21):
 |---|---|
 | `frame-fantasia.png` | Moldura da carta, tema Fantasia |
 | `frame-sombrio.png` | Moldura da carta, tema Sombrio (mesmo layout) |
+| `back-fantasia.png` | Verso da carta, tema Fantasia (vale pra magias e armas) |
+| `back-sombrio.png` | Verso da carta, tema Sombrio |
 | `school-<escola>.png` | Ilustração por escola: `abjuracao`, `adivinhacao`, `conjuracao`, `encantamento`, `evocacao`, `ilusao`, `necromancia`, `transmutacao` |
 
 Em `artes/weapon-cards/` (a gerar):
@@ -172,3 +174,27 @@ Theme: [TEMA]
 | `school-ilusao.png` | `Illusion magic: mirrored double images and a shimmering doorway that fades into nothing, shifting masks in the air, accent color iridescent purple and cyan.` |
 | `school-necromancia.png` | `Necromancy magic: a skull on an altar wreathed in green ghostly flames, bony hands rising from the ground, accent color sickly green and black.` |
 | `school-transmutacao.png` | `Transmutation magic: an alchemical circle turning stone into gold, a flask pouring liquid that changes into a butterfly, accent color emerald and gold.` |
+
+## Prompt do verso da carta (ChatGPT)
+
+Um verso por tema, igual pra magia e arma (é o "baralho" da mesa). Usado na animação da carta
+jogada e virando no aviso de lançamento. Mesmas proporções da frente pra encaixar no giro.
+
+### Verso — tema Fantasia (`back-fantasia.png`)
+
+```
+16-bit pixel art trading card BACK side for a fantasy RPG deck, vertical, aspect ratio 5:7 (1060x1484 px), same proportions and outer border thickness as a card front frame. Crisp pixel art, no anti-aliasing blur, dark outline #1C0B0B on every shape.
+
+Palette: dark reddish-brown wood/leather (#5E2D12, #1D0A0A), rust-orange borders (#99430A), gold trim and rivets (#CCAA44, #FFAA00), small accents of deep red (#6B1616).
+
+Design: an ornate symmetrical card back. Thick gold-trimmed outer border with rivets and ornate corner pieces (same style as the card front). Inside, a deep red-brown field with a subtle repeating diamond/rune lattice pattern. In the exact center, a large emblem: a glowing anvil with an arcane rune circle above it and small sparks, inside a round gold medallion. Perfectly symmetrical left/right and top/bottom (it must look the same upside down). No text, no letters, no numbers, no watermark. The area OUTSIDE the card must be fully transparent (PNG with alpha).
+```
+
+### Verso — tema Sombrio (`back-sombrio.png`)
+
+Mesmo prompt, trocando a paleta e pedindo "same layout and proportions as the previous image":
+
+```
+Palette (darker, less saturated, gothic): very dark brown-black (#1C0B0B, #40251A), worn bronze borders (#6B4329), muted old-gold trim and rivets (#D8A33E, #C9A35C), small accents of dried-blood red (#52301F). Corner pieces with subtle skull or bone motifs. The central emblem glows faintly in pale gold instead of bright orange.
+```
+
