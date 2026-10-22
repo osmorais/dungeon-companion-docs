@@ -129,6 +129,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   são mandadas em fila (promises encadeadas) e cada uma leva a situação inteira; a mesa ignora
   `open` depois de `done`. O socket entrega `roll_added` antes de `spell_cast_stage` (quem lança
   manda a etapa só depois da resposta do `/roll`).
+- **Carta virando em 3D** (1.6.3): no elemento com `transform-style: preserve-3d` (o que gira), não
+  animar `opacity` (nem pôr `filter`/`opacity < 1`) — o navegador achata o 3D e ignora o
+  `backface-visibility`, e a face da frente cobre o verso. Surgir/sumir vai num elemento de fora; a
+  face da frente leva `transform: rotateY(0deg)` pra entrar no contexto 3D.
 - **Mudança de contrato do socket/endpoint entre api e web** (1.6.1): quando o web passa a mandar um
   campo que a api antiga recusa (ex.: `weapon` no `/spell-cast-stage`), fazer o **push da api
   primeiro** (Render) e só depois o do web (Hostinger).

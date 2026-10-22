@@ -86,7 +86,12 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 - O palco emite `rollRevealed(id)` quando o total aparece; o aviso repassa e a mesa
   (`onCastRollRevealed`) toca o impacto de dano/cura e o Tom **nessa hora** — antes tocavam na
   chegada da etapa, com a carta ainda caindo. Uma vez por rolagem.
-- Movimento reduzido: carta já de frente, resultados direto, sem tremer nem clarão.
+- Movimento reduzido: carta já de frente (sem verso), resultados direto, sem tremer nem clarão. Com
+  as animações do Windows desligadas o navegador pede isso — foi oferecido mostrar o verso mesmo
+  assim (sem o giro), sem resposta ainda.
+- **1.6.3** (web `c36f9aa`): o verso não aparecia — a frente cobria o tempo todo. A opacidade
+  animada estava no mesmo elemento do giro 3D; o surgir foi pro `.cs-spell` (`cs-appear`) e o
+  `cs-throw` ficou só com `transform`. Ver `gotchas.md`.
 
 ### O que quem lança vê
 - O modal de rolagem em **modo lançamento** (`@Input() cast: SpellCastContext`): em cima o mesmo

@@ -27,9 +27,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.6.2 (2026-10-22, cartas viradas e rolagens com mais impacto no aviso) — notas em `/novidades`
+- **Versão do sistema**: 1.6.3 (2026-10-22, verso da carta aparecendo no aviso) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `8744b09`, web `4ad4759` (versão 1.6.2) — todos enviados. No web fica
+- **Últimos commits**: api `4459574`, web `c36f9aa` (versão 1.6.3) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **Testes**: api 433 (`npm run test:unit`), web 424 (`npm run test:run`) —
