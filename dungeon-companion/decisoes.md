@@ -102,8 +102,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   e visão do grupo → descanso do grupo e dano em área → anotações e apagar sessão. As 4 fases
   saíram juntas como **1.2.0**. → `conceitos/quadro-do-mestre.md`
 - ~~**2026-10-20** — Quadro do Mestre abre por uma **aba de expandir/recolher à esquerda**, igual no
-  desktop e no celular (sem ✕ nem botão no cabeçalho).~~ No celular mudou na 1.3.16 (abaixo); o
-  desktop continua com a aba à esquerda. → `conceitos/quadro-do-mestre.md`
+  desktop e no celular (sem ✕ nem botão no cabeçalho).~~ Mudou no celular na 1.3.16 e no desktop
+  na 1.3.17 (abaixo): gaveta de baixo nos dois. → `conceitos/quadro-do-mestre.md`
 - **2026-10-21** — Sessão no celular (1.3.16): **Quadro do Mestre como gaveta de baixo**, aberta por
   uma barra larga **fixa na base** da tela (fica à vista rolando a página); o jogador ganha a
   gaveta **AÇÕES DE PERSONAGEM** no mesmo formato (ações, finalizar/atrasar, ficha, itens), e esses
@@ -112,6 +112,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   aparecem** (combate sem luta, NPCs, monstros, rolagens) e **rolagens começam recolhidas**.
   Escolhas minhas, oferecidas ao usuário: AVENTUREIROS continua visível mesmo vazio; rodapé no
   topo só na sessão; versão como melhoria (1.3.16, não 1.4.0). → `conceitos/quadro-do-mestre.md`
+- **2026-10-21** — Gavetas também no desktop (1.3.17): Quadro do Mestre e AÇÕES DE PERSONAGEM pela
+  **mesma gaveta de baixo do celular** (a gaveta lateral do mestre acabou), **na largura dos quadros
+  da sessão** (não a tela toda) e acima do rodapé. No desktop o jogador também perde os botões do
+  próprio card. **Modais de ações e de inventário abrem como gaveta** (celular e desktop). A barra
+  recolhida precisa **parecer clicável**: puxador, seta animada e "TOQUE PARA ABRIR". O rodapé no
+  desktop continua embaixo. Versão como melhoria (1.3.17). → `conceitos/quadro-do-mestre.md`
 - ~~**2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
   pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.~~
 - **2026-10-20** — Skeleton no **site todo** (1.3.1): o overlay que bloqueava a tela acabou. Durante

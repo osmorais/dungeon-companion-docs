@@ -15,38 +15,51 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 
 - Componente `dungeon-companion-web/src/app/dm-board/` (`DmBoardComponent`, SCSS próprio — o
   `session-panel.component.scss` está no limite de 32 kB).
-- **Desktop**: gaveta pela **esquerda** (340 px), aberta e fechada por uma aba vertical de
-  expandir/recolher: recolhida, `DmBoardTabComponent` fica presa na lateral esquerda da tela
-  (z-index 940); expandida, a mesma aba (◀) fica na borda direita da gaveta. Sem ✕ e sem botão no
-  cabeçalho ou no quadro AVENTURA. Estilo da aba em `dm-board-tab.scss`, usado pelos dois
-  componentes.
-- **Celular** (1.3.16): gaveta **de baixo** (até 85vh). Recolhida, uma barra larga (54 px, ▲ QUADRO
-  DO MESTRE) fica presa na base da tela; aberta, a mesma barra (▼) fica no topo da gaveta e
-  recolhe, sem o cabeçalho do desktop. Os dois componentes recebem `[mobile]="isMobile()"` e trocam
-  as classes pelas de `dm-board/bottom-drawer.scss` (`.bottom-drawer-bar`, `--attached`,
-  `.bottom-drawer`, `.bottom-drawer-backdrop`), o mesmo arquivo da gaveta AÇÕES DE PERSONAGEM do
-  jogador (`character-drawer/`, ver abaixo).
+- Gaveta **de baixo**, igual no celular e no desktop (1.3.17). Recolhida, `DmBoardTabComponent` é
+  uma barra larga presa na base da tela (▲ QUADRO DO MESTRE, puxador em cima, seta animada,
+  "TOQUE PARA ABRIR"); aberta, a mesma barra (▼, "TOQUE PARA FECHAR") fica no topo da gaveta e
+  recolhe. Sem ✕ e sem cabeçalho.
+- Estilo em `dungeon-companion-web/src/app/bottom-drawer/bottom-drawer.scss` (`.bottom-drawer-bar`
+  + `--attached`, `-bar-label`, `-hint`, `-arrow`, `.bottom-drawer`, `.bottom-drawer-backdrop`,
+  `.bottom-drawer-body`), o mesmo das gavetas AÇÕES DE PERSONAGEM, ações e inventário (ver
+  abaixo). Celular: largura toda, base da tela, até 85vh. Desktop: largura dos quadros
+  (`min(1440px, 96vw)`, como o `.container`), acima do rodapé (48 px); as seções do quadro se
+  distribuem em colunas (`column-width: 320px`).
 - Histórico da posição: 1.2.0 — botão no cabeçalho (substituiu ROLAR DADOS / TESTE SECRETO /
   IMAGENS) e gaveta pela direita; 1.2.1 — aba à esquerda no desktop e, no celular, botão no
   quadro AVENTURA com gaveta em tela cheia e ✕; 1.2.2 — aba também no celular; 1.3.16 — no
-  celular, gaveta de baixo com barra fixa na base.
-- z-index da gaveta 950/951 — abaixo dos modais e toasts da sessão (overlay 1000+).
+  celular, gaveta de baixo com barra fixa na base; 1.3.17 — gaveta de baixo também no desktop.
+- Camadas (1.3.17): barra 140, fundo 145, gaveta 146 — acima do rodapé (100), abaixo do modal de
+  rolagem (200), do `.overlay` dos modais (999+) e dos toasts. Antes eram 940/950/951, e a barra
+  ficava por cima dos modais.
+- Sessão desktop com gaveta (mestre, ou jogador com personagem): `.container--drawer` põe 84 px
+  de `padding-bottom` pra barra + puxador, sem quebrar a página única.
 - Fecha pela aba, clique no fundo ou Esc. Botão que abre modal fecha a gaveta antes
   (`closeDmBoard(); openX()` no template do session-panel); toggles mantêm aberta.
 - Só renderiza para o dono da sessão (`dmBoardOpen() && isOwner()`).
 
-### Gaveta AÇÕES DE PERSONAGEM (jogador, celular, 1.3.16)
+### Gaveta AÇÕES DE PERSONAGEM (jogador; celular 1.3.16, desktop 1.3.17)
 
 - `CharacterDrawerComponent` (`dungeon-companion-web/src/app/character-drawer/`): mesma gaveta de
-  baixo do quadro, só no celular, pro jogador que tem personagem na sessão (`myPlayer()` no
-  session-panel: jogador da sessão com o `user_id` de quem está logado; `null` pro mestre).
+  baixo do quadro, pro jogador que tem personagem na sessão (`myPlayer()` no session-panel:
+  jogador da sessão com o `user_id` de quem está logado; `null` pro mestre).
 - Botões AÇÕES, FINALIZAR e ATRASAR (quando é a vez dele e pode), FICHA e ITENS — os mesmos que
-  ficavam no card, que no celular agora só mostra esses botões pro mestre. Guarda só o
+  ficavam no card, que agora só mostra esses botões pro mestre (celular e desktop). Guarda só o
   aberto/fechado; cada botão fecha a gaveta e emite (`run`), e o session-panel chama o que já
   chamava. Esc recolhe.
 - Junto na 1.3.16 (sessão no celular): TEMA/SAIR no topo e sem ficar fixo (`footerOnTop` no
   `app.ts`, rota `/session/:id`), quadros vazios escondidos e ROLAGENS recolhida
   (`mobileRollsOpen`). Com o COMBATE escondido sem luta, o mestre inicia a luta pelo quadro.
+
+### Ações e inventário como gaveta (1.3.17)
+
+- `PlayerActionsModalComponent` e `PlayerInventoryModalComponent` (abertos pelos cards do mestre
+  ou pela gaveta do jogador) usam a mesma gaveta de baixo, com o nome na barra do topo ("▼
+  INVENTÁRIO — NOME") no lugar do título e do ✕. Fecham pela barra ou pelo fundo.
+- Desktop: as seções das ações vão em colunas (`column-width: 360px`); o inventário fica numa
+  coluna central de até 900 px.
+- O modal de rolagem e os detalhes de magia/item abertos de dentro das ações continuam como
+  janela, por cima (z-index 200).
 
 ## Arquitetura
 

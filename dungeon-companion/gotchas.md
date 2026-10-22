@@ -102,11 +102,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   definir `border`). Círculos de magia: o componente guarda os **abertos** (`expandedCircles`),
   então tudo começa fechado. Fonte do SCSS ~31,8 kB, mas compilado ~24,4 kB (o orçamento olha o
   compilado).
-- **Gaveta de baixo da sessão** (1.3.16): estilo em `dm-board/bottom-drawer.scss`, incluído no
-  `styleUrls` dos três componentes que usam (quadro, aba do quadro e `character-drawer`) — não no
-  `styles.scss`, porque a regra de componente (`.dm-board`) ganharia da global. O quadro escolhe
-  as classes pelo `@Input() mobile` (`[class]="mobile ? 'bottom-drawer' : 'dm-board'"`). A barra
-  fixa tem 54 px e cabe no `padding-bottom` do `body` (48 px) + o do `.mobile-container`. Rodapé
+- **Gaveta de baixo da sessão** (1.3.16/1.3.17): estilo em `bottom-drawer/bottom-drawer.scss`,
+  incluído no `styleUrls` de cada componente que usa (quadro, aba do quadro, `character-drawer`,
+  modais de ações e de inventário) — não no `styles.scss`, porque regra de componente ganha da
+  global. **z-index baixo de propósito** (barra 140, gaveta 146): com 940 a barra ficava por cima
+  do modal de ações (150) e do de rolagem (200). Modal novo da sessão que precise ficar acima da
+  barra: z-index maior que 146. Celular: barra (58 px + puxador de 14 px) cabe no `padding-bottom`
+  do `body` (48 px) + o do `.mobile-container`; desktop: `.container--drawer`. Rodapé
   no topo: o `app.ts` renderiza o mesmo `<ng-template #footer>` antes ou depois do
   `<router-outlet>` (`footerOnTop`), com `.global-footer--top` estático e `width: 100vw`.
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
