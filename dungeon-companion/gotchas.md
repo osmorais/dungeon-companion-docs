@@ -133,6 +133,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   animar `opacity` (nem pôr `filter`/`opacity < 1`) — o navegador achata o 3D e ignora o
   `backface-visibility`, e a face da frente cobre o verso. Surgir/sumir vai num elemento de fora; a
   face da frente leva `transform: rotateY(0deg)` pra entrar no contexto 3D.
+- **Template passado pra outro componente** (1.6.5, mão): o `<ng-template>` é desenhado dentro do
+  componente que recebe (`app-card-hand`), mas leva o estilo de **quem declarou** (a gaveta). Pra
+  estilizar os botões só ali, envolver num wrapper com classe própria dentro do template
+  (`.pa-hand-actions`) — seletor com classe do componente que recebe não casa.
 - **Mudança de contrato do socket/endpoint entre api e web** (1.6.1): quando o web passa a mandar um
   campo que a api antiga recusa (ex.: `weapon` no `/spell-cast-stage`), fazer o **push da api
   primeiro** (Render) e só depois o do web (Hostinger).

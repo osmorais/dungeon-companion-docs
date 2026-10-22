@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 433 (em 2026-10-22) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 424 (em 2026-10-22) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 432 (em 2026-10-22) |
 
 ---
 
@@ -108,6 +108,7 @@ src/app/game-card/card-viewer.component.spec.ts           # carta em tela cheia 
 src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de lançamento
 src/app/spell-cast/spell-cast-context.spec.ts             # etapa com magia ou arma, verbo do aviso
 src/app/spell-cast/spell-cast-stage.component.spec.ts     # carta virada, dados rolando, revelação
+src/app/game-card/card-hand.component.spec.ts             # a "mão": navegação, arrastar, clique fora
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -372,6 +373,14 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Baralho e mão (2026-10-22, versão 1.6.5)
+
+- Web `card-hand.component.spec.ts` (novo): começa na primeira e não passa das pontas; posição no
+  carrossel; setas/Esc; arrastar > 50px; mão que encolhe; clique fora fecha (botão e carta não);
+  clique logo depois de arrastar não fecha. `player-actions-modal`: mão de magias prontas
+  (truques + preparadas, na ordem); ATACAR na mão fecha a mão (substituiu o teste da tela cheia
+  de arma).
 
 ### Cartas viradas e rolagens com impacto (2026-10-22, versão 1.6.2)
 

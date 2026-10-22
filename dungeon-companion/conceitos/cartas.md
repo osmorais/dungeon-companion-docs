@@ -138,8 +138,8 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 - **Categoria simples/marcial**: o banco não tem (proficiência é texto), então fica no web pela lista
   de nomes das 14 armas simples do livro (`isSimpleWeapon`). A ordem do catálogo bate com o livro
   (ids 1–14 simples, 15–37 marciais).
-- **Onde**: gaveta de ações (coluna COMBATE, grade com **ATACAR** embaixo; tela cheia com ATACAR
-  via `selectedWeaponCard`/`attackFromCard`) e ficha (grade com ATACAR no celular e no desktop; a
+- **Onde**: gaveta de ações (baralho ARMAS na coluna COMBATE → "mão", desde a 1.6.5; ver
+  "Baralho e mão") e ficha (grade com ATACAR no celular e no desktop; a
   tela cheia substituiu o modal da arma).
 - Desde a **1.6.1** o ataque com arma usa o aviso da mesa (ver "Ataque com arma no aviso").
 
@@ -157,3 +157,26 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 - Mesa: `weaponInfoToCard` remonta a carta (`id_weapon` null = desarmado).
 - **Deploy**: api antes do web — a api antiga recusa a etapa com arma, e enquanto isso a mesa não vê
   o aviso dos ataques (as rolagens com `cast_id` também não viram aviso avulso).
+
+## Baralho e mão (1.6.5, web `51f14d4`)
+
+Na gaveta de ações as cartas soltas bagunçavam as colunas; armas e magias viraram **baralhos** que
+abrem a **"mão"** em tela cheia, como em card games (Yu-Gi-Oh).
+
+- `app-card-deck` (`src/app/game-card/card-deck.component.ts`): até 3 cartas empilhadas (a primeira
+  por cima, as outras tortas e escurecidas), rótulo com a quantidade e "ABRIR MÃO". Na gaveta:
+  **ARMAS** (coluna COMBATE: armas + desarmado) e **MAGIAS PRONTAS** (coluna MAGIAS: truques +
+  preparadas, ou todas pra quem não prepara — o mesmo critério da aba PRONTAS do grimório). Os
+  espaços de magia e o ABRIR GRIMÓRIO continuam; os atalhos das preparadas saíram.
+- `app-card-hand` (`card-hand.component.*`), camada 190: carta da vez `full` no centro; vizinhas
+  `mini`, menores, inclinadas e escurecidas, posicionadas por `--offset` (carrossel); todas em
+  **leque** embaixo. Navega por ◀ ▶, setas do teclado, arrastar > 50px ou tocando numa carta.
+  Fecha por VOLTAR, Esc ou **clique fora de botão/carta** (`onBackdropClick`, ignorando o clique
+  que vem logo depois de arrastar). Os botões da carta da vez vêm de quem abre, por `TemplateRef`
+  com a `key` da carta.
+- Gaveta (`player-actions-modal`): `activeHand` (`'weapons' | 'spells'`), `weaponHand` / `spellHand`
+  (`HandCard[]`), `attackByKey`, `spellByKey`. Na mão de magias só tem LANÇAR
+  (`#spellCastButtons`, sem PREPARAR — preparar é no grimório). Atacar ou lançar fecha a mão.
+- **Botões da mão** (`.pa-hand-actions`, só na mão): ATACAR carmesim com espadas, LANÇAR dourado com
+  o grimório; grandes, relevo de pixel art (afunda ao apertar), brilho pulsando.
+- A ficha continua com as cartas em grade (os componentes servem pra ela, se quiser).
