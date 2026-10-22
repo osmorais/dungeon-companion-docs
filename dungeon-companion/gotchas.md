@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Gotchas
@@ -112,14 +112,23 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   modais de ações e de inventário) — não no `styles.scss`, porque regra de componente ganha da
   global. **z-index baixo de propósito** (barra 140, gaveta 146): com 940 a barra ficava por cima
   do modal de ações (150) e do de rolagem (200). Modal novo da sessão que precise ficar acima da
-  barra: z-index maior que 146. Espaço da barra (58 px + puxador de 14 px): celular, `padding-bottom`
-  de 88 px no `.mobile-container`; desktop, `.container--drawer` (84 px).
+  barra: z-index maior que 146. Espaço da barra (~58 px; sem o puxador desde a 1.3.19): celular,
+  `padding-bottom` de 74 px no `.mobile-container`; desktop, `.container--drawer` (70 px).
 - **Ações em colunas** (1.3.18): não usar CSS `columns` pra seções que abrem/fecham (círculo,
   habilidade) — o navegador redistribui tudo entre as colunas e a informação "pula". Usar grid
   com colunas fixas (`.pa-col`), cada seção sempre na sua.
 - **Input de rota no componente**: `withComponentInputBinding` liga query params a `input()`
   (`sessionId`/`fromActions` na ficha, `reopenActions` na sessão). Nos testes sem template, dá pra
   trocar o input por uma função (`(c as any).fromActions = () => '7'`) antes de chamar o método.
+- **Cartas** (1.4.0): imagens em WebP (primeiras do site). Moldura e verso **sem cortar a margem**
+  transparente — as áreas da carta são % da imagem inteira, e cortar mudaria as posições. A grade
+  `.card-grid` é global (`styles.scss`) porque três telas usam. Card que abre algo e tem botões
+  dentro: os botões chamam `$event.stopPropagation()`.
+- **Aviso de lançamento** (1.5.0): o `cast_id` das rolagens só existe no evento do socket (não no GET
+  da sessão) — por isso a mesa acha as rolagens do lançamento pelo **id** no histórico. As etapas
+  são mandadas em fila (promises encadeadas) e cada uma leva a situação inteira; a mesa ignora
+  `open` depois de `done`. O socket entrega `roll_added` antes de `spell_cast_stage` (quem lança
+  manda a etapa só depois da resposta do `/roll`).
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do

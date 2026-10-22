@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -13,8 +13,8 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
-| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 428 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 381 (em 2026-10-21) |
+| `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 431 (em 2026-10-22) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 408 (em 2026-10-22) |
 
 ---
 
@@ -101,6 +101,10 @@ src/app/services/session-event.reducer.spec.ts           # reducer dos eventos d
 src/app/constants/rules-constants.spec.ts                # constantes de regras (espelho do backend)
 src/app/session-panel/session-panel.component.spec.ts    # lógica do painel de sessão
 src/app/character-sheet/character-sheet.component.spec.ts # lógica da ficha (círculos de magia)
+src/app/game-card/spell-card.spec.ts                      # magia → carta, escola, cor da carta
+src/app/game-card/game-card.component.spec.ts             # LER TUDO / RECOLHER
+src/app/game-card/card-viewer.component.spec.ts           # carta em tela cheia (Esc)
+src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de lançamento
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -365,6 +369,21 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Cartas de magia e aviso de lançamento (2026-10-21/22, versões 1.4.0 e 1.5.0)
+
+- Web `spell-card.spec.ts`: escola com acento/desconhecida, carta da magia (truque, sem escola,
+  PREPARADA), as três cores. `card-viewer`: Esc fecha. `game-card`: LER TUDO/RECOLHER.
+- Web `player-actions-modal.component.spec.ts`: grimório abre em CARTAS e a tela cheia acompanha o
+  PREPARAR; lançamento sem dados vai `done` pra mesa; com dados abre o modal com o palco e emite
+  `ownCast`.
+- Web `roll-modal.component.spec.ts` ("lançamento de magia"): ataque pendente → acertou → dano →
+  `done` uma vez; erro manda ERROU; rolagem comum sem etapa nem `cast_id`.
+- Web `session-panel.component.spec.ts` ("aviso do lançamento de magia"): rolagem do lançamento não
+  vira aviso avulso; 8 s após terminar; etapa atrasada; fila; quem lançou não vê; tempo máximo.
+- Web `spell-cast-stage.model.spec.ts`, `session-event.reducer.spec.ts` (`spell_cast_stage`).
+- API `game-session.service.unit.ts`: `publishSpellCastStage` (publica com a carta, valida, exige
+  permissão e magia) e `cast_id` no `addRoll` (só no evento, validado).
 
 ### Ações reorganizadas e grimório (2026-10-21, versão 1.3.18)
 

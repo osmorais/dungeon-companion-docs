@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Estado atual
@@ -27,12 +27,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.3.18 (2026-10-21, ações reorganizadas, grimório próprio e TEMA/SAIR no topo) — notas em `/novidades`
+- **Versão do sistema**: 1.5.0 (2026-10-22, lançamento de magia com as cartas) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `3328adc`, web `a3a0720` (versão 1.3.18) — todos enviados. No web fica
+- **Últimos commits**: api `2e2a361`, web `76153a5` (versão 1.5.0) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 428 (`npm run test:unit`), web 381 (`npm run test:run`) —
+- **Testes**: api 431 (`npm run test:unit`), web 408 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -47,6 +47,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Descrições de magia (361) | auditadas contra o livro | [`historico/spells-progress.md`](historico/spells-progress.md) |
 | LGPD | 16 itens técnicos feitos; faltam itens fora do código | [`conceitos/lgpd.md`](conceitos/lgpd.md) |
 | Quadro do Mestre (gaveta só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); gaveta de baixo com barra fixa na base, no celular (1.3.16) e no desktop (1.3.17) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
+| Cartas (magias) e aviso de lançamento de magia | magias em cartas (1.4.0) e aviso único da mesa com as cartas (1.5.0); cartas de arma decididas, artes a gerar | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção

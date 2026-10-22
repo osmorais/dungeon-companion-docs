@@ -2,7 +2,7 @@
 resumo: Catálogo de mecânica de magias (spell-mechanics.ts), modal de rolagem, aplicar no alvo, efeitos de tela. Fases 1–4 feitas.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-16
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Plano: magias mecânicas (rolar ataque/dano/cura ao lançar)
@@ -263,6 +263,12 @@ Destruição Divina e magias somadas); o modificador não dobra. Vale também po
 
 ### Próximos passos possíveis
 No [`backlog.md`](../backlog.md), seção "Magias".
+
+## Aviso de lançamento (2026-10-22, 1.5.0)
+
+O anúncio `spell_cast` ("LANÇOU") deixou de ser usado pras magias lançadas pela gaveta: agora o
+lançamento é um aviso único com as cartas e as rolagens (`spell_cast_stage`). Ver
+[`cartas.md`](cartas.md). Magias de resistência sem dano aparecem no aviso com a CD.
 
 ## Efeitos de tela das magias (2026-10-16, web `7ac13e1`)
 

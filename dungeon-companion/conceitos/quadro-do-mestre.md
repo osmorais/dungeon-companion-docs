@@ -2,7 +2,7 @@
 resumo: Quadro do Mestre (1.2.0) — gaveta só do mestre na sessão (lateral no desktop, de baixo no celular), e a gaveta AÇÕES DE PERSONAGEM do jogador: o que tem, como cada parte funciona, endpoints e limites.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Quadro do Mestre
@@ -16,7 +16,7 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 - Componente `dungeon-companion-web/src/app/dm-board/` (`DmBoardComponent`, SCSS próprio — o
   `session-panel.component.scss` está no limite de 32 kB).
 - Gaveta **de baixo**, igual no celular e no desktop (1.3.17). Recolhida, `DmBoardTabComponent` é
-  uma barra larga presa na base da tela (▲ QUADRO DO MESTRE, puxador em cima, seta animada,
+  uma barra larga presa na base da tela (▲ QUADRO DO MESTRE, seta animada — a alça em cima saiu na 1.3.19 —,
   "TOQUE PARA ABRIR"); aberta, a mesma barra (▼, "TOQUE PARA FECHAR") fica no topo da gaveta e
   recolhe. Sem ✕ e sem cabeçalho.
 - Estilo em `dungeon-companion-web/src/app/bottom-drawer/bottom-drawer.scss` (`.bottom-drawer-bar`
@@ -32,8 +32,8 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
 - Camadas (1.3.17): barra 140, fundo 145, gaveta 146 — acima do rodapé (100), abaixo do modal de
   rolagem (200), do `.overlay` dos modais (999+) e dos toasts. Antes eram 940/950/951, e a barra
   ficava por cima dos modais.
-- Sessão desktop com gaveta (mestre, ou jogador com personagem): `.container--drawer` põe 84 px
-  de `padding-bottom` pra barra + puxador, sem quebrar a página única.
+- Sessão desktop com gaveta (mestre, ou jogador com personagem): `.container--drawer` põe 70 px
+  de `padding-bottom` pra barra, sem quebrar a página única.
 - Fecha pela aba, clique no fundo ou Esc. Botão que abre modal fecha a gaveta antes
   (`closeDmBoard(); openX()` no template do session-panel); toggles mantêm aberta.
 - Só renderiza para o dono da sessão (`dmBoardOpen() && isOwner()`).
@@ -70,7 +70,7 @@ usuário numa conversa só. Antes disso as funções do mestre ficavam espalhada
   habilidades por recurso, recursos de classe) | MAGIAS (espaços, preparadas, botão ABRIR
   GRIMÓRIO) | TESTES E DESCANSO (resistências 2 por linha, perícias, descansos). Na 1.3.17 eram
   CSS `columns`, que redistribuíam as seções quando algo abria — por isso "mudava de lugar".
-- **Grimório**: `view` = `'actions' | 'grimoire'` no `PlayerActionsModalComponent`; a barra do
+- **Grimório** (cartas desde a 1.4.0 — ver [`cartas.md`](cartas.md)): `view` = `'actions' | 'grimoire'` no `PlayerActionsModalComponent`; a barra do
   topo vira "◀ VOLTAR ÀS AÇÕES". Abas `grimoireTabs()`: PRONTAS (truques + preparadas; TODAS pra
   quem não prepara) e um por círculo; abre sempre em PRONTAS. Cards (`grimoireSpells()`) com
   LANÇAR / LANÇAR NVx e PREPARAR / ✓ PREPARADA; o card inteiro abre a descrição (botões com

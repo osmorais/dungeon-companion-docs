@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Decisões
@@ -118,6 +118,23 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   próprio card. **Modais de ações e de inventário abrem como gaveta** (celular e desktop). A barra
   recolhida precisa **parecer clicável**: puxador, seta animada e "TOQUE PARA ABRIR". O rodapé no
   desktop continua embaixo. Versão como melhoria (1.3.17). → `conceitos/quadro-do-mestre.md`
+- **2026-10-21** — Barra das gavetas **sem a alça (puxador)** em cima (1.3.19, "não curti"); ficam a
+  seta animada e o "TOQUE PARA ABRIR". → `conceitos/quadro-do-mestre.md`
+- **2026-10-21** — **Magias em cartas** de card game (1.4.0, funcionalidade nova): moldura por tema e
+  ilustração **por escola** (não por magia), geradas pelo usuário no ChatGPT, sem texto na imagem (o
+  site escreve). Cartas no grimório da sessão (com botão **CARTAS | LISTA**, sem guardar a escolha),
+  no Grimório de Magias e na **ficha também em grade**. Os detalhes de magia viraram **carta em tela
+  cheia**. Na sessão, preservar a leitura: carta mini legível, botões embaixo da carta. Originais PNG
+  **no repositório de docs**, só o script no web. → `conceitos/cartas.md`
+- **2026-10-21** — **Cartas de arma**: **uma arte por arma** (não por grupo), 37 + desarmado, em 3
+  folhas no ChatGPT; mesma moldura das magias. Implementar depois das magias. → `conceitos/cartas.md`
+- **2026-10-22** — **Lançamento de magia com aviso único** (1.5.0): a mesa só vê no fim da atuação de
+  quem lança — ataque e depois o dano **no mesmo aviso**, ou direto o dano, ou direto as cartas sem
+  dados; card do personagem + carta com **animação de carta real** (jogada e virando) + rolagens.
+  Quem lança vê o mesmo que a mesa e, embaixo, as próprias decisões. **Só magias** (não habilidades
+  de classe; armas quando houver as cartas de arma). Aviso some **8 s** depois do fim; magia de
+  resistência **só mostra a CD** (o mestre resolve, como antes). Versão 1.5.0. Na carta em tela cheia,
+  valores longos sem corte e descrição expansível (LER TUDO). → `conceitos/cartas.md`
 - **2026-10-21** — TEMA/SAIR **no topo de todas as telas, no celular e no desktop** (1.3.18; antes
   só na sessão do celular), rolando com a página. Substitui o "rodapé no topo só na sessão" da
   1.3.16 e o "rodapé no desktop continua embaixo" da 1.3.17. → `gotchas.md`, "Web"

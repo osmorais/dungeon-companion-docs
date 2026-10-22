@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-22
 ---
 
 # Dungeon Companion — Backlog
@@ -39,6 +39,16 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
 - [ ] Cura do Toque Vampírico; curas de valor fixo.
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
+
+## Cartas
+
+Contexto: [`conceitos/cartas.md`](conceitos/cartas.md).
+
+- [ ] Cartas de arma: usuário gera as 3 folhas (`procedimentos/artes-cartas.md`, salvar em
+      `artes/weapon-cards/`); depois recorte, `weaponToCard`, cartas na coluna COMBATE e decidir a
+      categoria simples/marcial (o banco não tem).
+- [ ] Opcional: ataque com arma no mesmo aviso de lançamento (quando as cartas de arma existirem).
+- [ ] Opcional: habilidades de classe com rolagem no aviso de lançamento (ficaram de fora na 1.5.0).
 
 ## Traços e habilidades mecânicos
 
