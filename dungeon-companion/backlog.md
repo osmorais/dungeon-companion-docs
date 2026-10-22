@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-20
+atualizado: 2026-10-21
 ---
 
 # Dungeon Companion — Backlog
@@ -103,9 +103,11 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       (só ao reabrir).
 - [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha, wizard de criação e
       conta (1.3.6 cobriu criar/entrar em sessão e catalogar monstro).
+- [ ] Decidir (oferecido na 1.3.16): TEMA/SAIR no topo em **todas** as telas do celular (hoje só na
+      sessão) e esconder o quadro AVENTUREIROS quando não há jogador.
 
 ## Técnico
 
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
-- [ ] `session-panel.component.scss` está no limite do orçamento de 32 kB (~31,3 kB depois da
-      1.2.0) — se crescer, quebrar o componente em vez de subir o limite.
+- [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado ~29,1 kB na
+      1.3.16) — se crescer, quebrar o componente em vez de subir o limite.

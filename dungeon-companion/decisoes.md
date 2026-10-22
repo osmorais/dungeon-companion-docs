@@ -101,8 +101,17 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   (não aba nem modal), entregue em 4 fases na ordem: reorganizar o que existe → rolagens ocultas
   e visão do grupo → descanso do grupo e dano em área → anotações e apagar sessão. As 4 fases
   saíram juntas como **1.2.0**. → `conceitos/quadro-do-mestre.md`
-- **2026-10-20** — Quadro do Mestre abre por uma **aba de expandir/recolher à esquerda**, igual no
-  desktop e no celular (sem ✕ nem botão no cabeçalho). → `conceitos/quadro-do-mestre.md`
+- ~~**2026-10-20** — Quadro do Mestre abre por uma **aba de expandir/recolher à esquerda**, igual no
+  desktop e no celular (sem ✕ nem botão no cabeçalho).~~ No celular mudou na 1.3.16 (abaixo); o
+  desktop continua com a aba à esquerda. → `conceitos/quadro-do-mestre.md`
+- **2026-10-21** — Sessão no celular (1.3.16): **Quadro do Mestre como gaveta de baixo**, aberta por
+  uma barra larga **fixa na base** da tela (fica à vista rolando a página); o jogador ganha a
+  gaveta **AÇÕES DE PERSONAGEM** no mesmo formato (ações, finalizar/atrasar, ficha, itens), e esses
+  botões saem do card dele (o mestre mantém os botões nos cards). Botões das duas gavetas maiores.
+  **TEMA/SAIR no topo da página e sem ficar fixo** (só na sessão no celular). **Quadros vazios não
+  aparecem** (combate sem luta, NPCs, monstros, rolagens) e **rolagens começam recolhidas**.
+  Escolhas minhas, oferecidas ao usuário: AVENTUREIROS continua visível mesmo vazio; rodapé no
+  topo só na sessão; versão como melhoria (1.3.16, não 1.4.0). → `conceitos/quadro-do-mestre.md`
 - ~~**2026-10-20** — Dentro da sessão, carregamento é por **skeleton** no formato do conteúdo, não
   pelo overlay do dragão (1.2.3). O dragão continua fora da sessão e na troca de página.~~
 - **2026-10-20** — Skeleton no **site todo** (1.3.1): o overlay que bloqueava a tela acabou. Durante

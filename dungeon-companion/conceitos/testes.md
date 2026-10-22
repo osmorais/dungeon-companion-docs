@@ -14,7 +14,7 @@ banco de dados, a rede ou o browser — rodam em poucos segundos.
 | Repo | Comando | Framework | Testes |
 |---|---|---|---|
 | `dungeon-companion-api` | `npm run test:unit` | Mocha + `@loopback/testlab` (should.js + sinon) | 428 (em 2026-10-21) |
-| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 365 (em 2026-10-21) |
+| `dungeon-companion-web` | `npm run test:run` | Vitest (via `ng test`, builder `@angular/build:unit-test`) | 372 (em 2026-10-21) |
 
 ---
 
@@ -101,6 +101,7 @@ src/app/services/session-event.reducer.spec.ts           # reducer dos eventos d
 src/app/constants/rules-constants.spec.ts                # constantes de regras (espelho do backend)
 src/app/session-panel/session-panel.component.spec.ts    # lógica do painel de sessão
 src/app/character-sheet/character-sheet.component.spec.ts # lógica da ficha (círculos de magia)
+src/app/character-drawer/character-drawer.component.spec.ts # gaveta AÇÕES DE PERSONAGEM (celular)
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -365,6 +366,14 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Sessão no celular com gavetas (2026-10-21, versão 1.3.16)
+
+- Web `character-drawer.component.spec.ts` (novo): começa recolhida; o botão fecha a gaveta antes
+  de emitir; Esc recolhe.
+- Web `session-panel.component.spec.ts` ("celular: gaveta AÇÕES DE PERSONAGEM e rolagens"): mestre
+  sem gaveta de personagem, jogador com a do próprio personagem, jogador sem personagem sem
+  gaveta, rolagens começam recolhidas.
 
 ### Ficha no padrão visual (2026-10-21, versão 1.3.14)
 

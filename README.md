@@ -26,7 +26,7 @@ passos" de lá).
 | [`conceitos/lgpd.md`](dungeon-companion/conceitos/lgpd.md) | conceito | Adequação à LGPD: status de cada item, cookies, scripts |
 | [`conceitos/testes.md`](dungeon-companion/conceitos/testes.md) | conceito | Suítes unitárias da api e do web: como rodar, cobertura |
 | [`conceitos/auditoria-mecanicas.md`](dungeon-companion/conceitos/auditoria-mecanicas.md) | conceito | Classificação feature a feature (12 classes + talentos) por dificuldade de automação |
-| [`conceitos/quadro-do-mestre.md`](dungeon-companion/conceitos/quadro-do-mestre.md) | conceito | Quadro do Mestre (1.2.0): seções da gaveta, descanso do grupo, dano em área, anotações, apagar sessão |
+| [`conceitos/quadro-do-mestre.md`](dungeon-companion/conceitos/quadro-do-mestre.md) | conceito | Quadro do Mestre (1.2.0): seções da gaveta, descanso do grupo, dano em área, anotações, apagar sessão; gavetas de baixo no celular (1.3.16) |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
