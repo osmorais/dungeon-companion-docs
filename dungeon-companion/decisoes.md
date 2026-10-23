@@ -220,6 +220,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   → saída de vitória (1.7.2). → `conceitos/cartas.md`
 - **2026-10-22** — Títulos dos avisos (rolagem, monstro derrotado/revelado) no dourado do tema, não
   no vermelho escuro (1.7.2).
+- **2026-10-22** — DANO/CURA no próprio PV pela gaveta toca a animação e fecha a gaveta; botões
+  CURA TOTAL e DANO TOTAL (1.7.3). → `conceitos/molduras.md`
 
 ## Privacidade e segurança
 

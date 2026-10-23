@@ -27,12 +27,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.7.2 (2026-10-22, lançamento sincronizado, rolagem dentro do aviso e animações) — notas em `/novidades`
+- **Versão do sistema**: 1.7.3 (2026-10-22, dano/cura no próprio PV com animação, CURA TOTAL e DANO TOTAL) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`).
-- **Últimos commits**: api `6ced02c`, web `b4a609b` (versão 1.7.2) — todos enviados. No web fica
+- **Últimos commits**: api `84896b7`, web `96c6176` (versão 1.7.3) — todos enviados. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 455 (`npm run test:unit`), web 501 (`npm run test:run`) —
+- **Testes**: api 455 (`npm run test:unit`), web 502 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -50,7 +50,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Cartas (magias e armas) e aviso de lançamento/ataque | magias em cartas (1.4.0), aviso único da mesa com as cartas (1.5.0), armas em cartas (1.6.0), ataque com arma no aviso (1.6.1), dano/cura aplicado dentro do aviso (1.7.1), aviso sincronizado pra todos com a rolagem dentro dele pra quem lança, quebra ao errar e saída de vitória (1.7.2) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Avatar (personalizador e camadas de imagem) | abas com miniaturas (1.6.9), 8 penteados novos (1.6.9), tons de pele por raça (1.6.10); faltam barbas, roupas, chapéus e rostos | [`conceitos/avatar.md`](conceitos/avatar.md) |
 | Ranking global (feitos das mesas) | 12 categorias, contagem desde a 1.7.0, em lista (1.7.1), opção de sair em /conta | [`conceitos/ranking.md`](conceitos/ranking.md) |
-| Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1) | [`conceitos/molduras.md`](conceitos/molduras.md) |
+| Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção

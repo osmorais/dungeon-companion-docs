@@ -44,5 +44,10 @@ Entrou na **1.7.1** (web `2026e36`, api `fcd4abf`).
 - O jogador aplica no próprio PV no destaque da gaveta (`canAdjustHp`, `adjustHp`), ao lado dos PV;
   saiu do card. O mestre continua com os controles nos cards (e também vê na gaveta). A sessão
   aplica com as regras de sempre (`adjustHpFor` → `applyPlayerDamage` / `applyPlayerHeal`).
+- **1.7.3** (web `96c6176`): aplicar fecha a gaveta (`submitHp` → `close`) e a sessão toca o impacto
+  em tela cheia das rolagens (`DamageImpactService.trigger`: golpe no dano, névoa na cura; força
+  pela fração do PV máximo, passando `1d<PV máximo>` como notação). Só pra quem aplicou e só com
+  EFEITOS ligado. Botões **CURA TOTAL** (máximo − atual; desabilitado com a vida cheia) e **DANO
+  TOTAL** (atual + temporários; desabilitado caído — a Resistência Implacável continua valendo).
 
 Pendente: conferir a altura dos cards em 1080p ([`backlog.md`](../backlog.md), "Combate e sessão").
