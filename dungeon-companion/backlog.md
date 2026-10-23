@@ -134,8 +134,14 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Ranking: NPCs e monstros não entram; "monstros derrotados" só conta com dano **aplicado**
       (o mestre aplicando pelos cards não passa pela api de aplicar, então não conta).
 
+- [ ] Conferir a sincronia do aviso de lançamento com **dois navegadores** (quem lança e a mesa) e
+      as animações de quebra/vitória (1.7.2).
+- [ ] Opcional (oferecido na 1.7.2): som na quebra (errou) e na saída de vitória.
+
 ## Técnico
 
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
+- [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (12,34 kB na 1.7.2; o erro é
+      só em 32 kB).
 - [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado ~29,1 kB na
       1.3.16) — se crescer, quebrar o componente em vez de subir o limite.

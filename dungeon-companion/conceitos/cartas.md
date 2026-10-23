@@ -68,9 +68,9 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 - **Um aviso só por lançamento** (`app-spell-cast-notice`, `src/app/spell-cast/`), que cresce:
   card do personagem (`app-character-card`) + carta da magia **jogada e virando** (cai de costas
   com o verso do tema e vira) + as rolagens (dados em pixel art, total, ACERTOU/ERROU/CRÍTICO).
-- Só aparece quando há resultado: magia de ataque abre com o ataque (AGUARDANDO… até quem lança
-  decidir) e o dano entra no mesmo aviso; magia só de dano (ou resistência + dano) abre com o dano;
-  magia sem dados abre direto, só com as cartas (e a CD, se tiver).
+- ~~Só aparece quando há resultado~~ — desde a **1.7.2** abre **no clique** (o modal manda a etapa
+  `open` sem rolagens ao abrir), pra todos ao mesmo tempo; magia sem dados abre direto, só com as
+  cartas (e a CD, se tiver). Ver "Sincronia e rolagem dentro do aviso (1.7.2)".
 - Some **8 s** depois de "terminou" (`SPELL_CAST_DONE_MS`, com barra de tempo); sem notícia de
   quem lança, some em **120 s** (`CAST_NOTICE_SAFETY_MS`). Fecha pelo ✕ ou tocando fora. Vários
   lançamentos seguidos entram em **fila**. Etapa atrasada não reabre nem volta atrás.
@@ -94,9 +94,8 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
   `cs-throw` ficou só com `transform`. Ver `gotchas.md`.
 
 ### O que quem lança vê
-- O modal de rolagem em **modo lançamento** (`@Input() cast: SpellCastContext`): em cima o mesmo
-  palco da mesa (`app-spell-cast-stage`), embaixo as decisões de sempre (rolar, acertou?, dano,
-  Destruição, aplicar). Quem lança com rolagem **não** recebe o aviso da mesa daquele lançamento
+- O modal de rolagem em **modo lançamento** (`@Input() cast: SpellCastContext`): um painel só, com o
+  palco da mesa (`app-spell-cast-stage`) e as decisões embaixo (desde a 1.7.2, ver abaixo). Quem lança com rolagem **não** recebe o aviso da mesa daquele lançamento
   (`ownCast` → `markOwnCast`); magia sem dados ele vê como a mesa.
 
 ### Como funciona
@@ -127,6 +126,32 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
   validada na api) a cada aplicação; o pedido de aplicar leva `cast_id`, a api repete no
   `amount_applied`, e a mesa (`onAmountApplied`) não abre o aviso avulso quando ele vem. Fora de
   lançamento continua o aviso "APLICOU". `appliedLines` junta alvos seguidos com o mesmo valor.
+
+## Sincronia e rolagem dentro do aviso (1.7.2, web `b4a609b`, api `6ced02c`)
+
+Decisão do usuário: o aviso aparece **ao mesmo tempo pra todos** (mestre, jogadores e quem age) e
+os dados são revelados no mesmo instante; a rolagem fica dentro do aviso **só pra quem lança**.
+
+- **Um estado pra todos**: a sessão guarda as etapas também do próprio lançamento (sem abrir o
+  aviso da mesa pra ele) e expõe `castViewFor(castId)`; a gaveta repassa como `castViewSource` ao
+  roll-modal, que desenha o palco com esse estado — o mesmo evento de socket atualiza todo mundo.
+  O painel de quem lança espera o eco do servidor (alguns décimos); sem eco em 2,5 s
+  (`CAST_ECHO_WAIT_MS`, modo sem tempo real) usa o palco local.
+- **Anúncio no clique**: `ngOnInit` do roll-modal manda a etapa `open` sem rolagens. Fechar sem
+  rolar manda `phase: 'cancel'` (api aceita; não conta magia no ranking) e a mesa tira o aviso
+  (`cancelCast`, também da fila).
+- **Painel de quem lança** (`.roll-cast-stage` + `<ng-template #controls>`): sem título, sem dados
+  e sem TOTAL (o palco mostra), linha "SUA JOGADA", pergunta no tom do título do palco, escolhas
+  em fichas, botão principal em relevo (vermelho; verde na cura), aplicar na largura das
+  rolagens, ✕ no canto e sem VOLTAR. As decisões só aparecem quando o palco revela a rolagem
+  (`holdDecisions`: rolando, registrando ou esperando `rollRevealed`; segurança 6 s).
+- **Dado cortado**: vantagem/desvantagem corta o d20 que não vale no palco (`droppedDice`).
+- **Errou** (`cast-shatter`): depois do carimbo, trinca a partir do ponto de impacto, treme e
+  estilhaça em 12 cacos (`SHARDS`, triângulos em `clip-path`) que caem girando; `confirmMiss` manda
+  o `done` na hora. A mesa quebra quando o último ataque errou e já foi revelado.
+- **Concluiu dano/cura** (`cast-triumph`): corte dourado (cura: onda verde), faíscas e o painel
+  se recolhendo; a mesa toca o mesmo 1,5 s depois do dano revelado (`TRIUMPH_READ_MS`) e fecha.
+- Aplicar: TODOS vira NENHUM com todos marcados (`toggleAllTargets`).
 
 ## Cartas de arma (1.6.0)
 

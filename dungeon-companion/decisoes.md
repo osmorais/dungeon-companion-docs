@@ -214,6 +214,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   continua com os dos cards. Nível do card virou **barra de XP** (dourada ao poder subir), e card,
   avisos e toasts ganharam molduras (anel do avatar, barras) geradas pelo usuário (1.7.1).
   → `conceitos/molduras.md`
+- **2026-10-22** — Lançamento **sincronizado**: o aviso aparece ao mesmo tempo pra todos e os dados
+  são revelados no mesmo instante; a rolagem (vantagem, acertou?, dano, aplicar) fica dentro do
+  aviso **só pra quem lança**, sem título nem dados repetidos; errou → o aviso se quebra; concluiu
+  → saída de vitória (1.7.2). → `conceitos/cartas.md`
+- **2026-10-22** — Títulos dos avisos (rolagem, monstro derrotado/revelado) no dourado do tema, não
+  no vermelho escuro (1.7.2).
 
 ## Privacidade e segurança
 

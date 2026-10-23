@@ -48,6 +48,12 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 ## Web (Angular)
 
+- **`clip-path: polygon(...)` precisa de vírgula entre os pontos** (`0% 0%, 30% 0%, …`): sem vírgula
+  o navegador ignora em silêncio e o elemento fica inteiro — os cacos da quebra (1.7.2) viraram
+  painéis inteiros girando. Há teste do formato em `cast-shatter.component.spec.ts`.
+- **Modificador de classe declarado antes da classe base perde** (mesma especificidade, vale a
+  ordem): `.roll-modal--cast` ficava atrás do `.roll-modal` — usar `.roll-modal.roll-modal--cast`.
+
 - **Molduras de barra por imagem** (1.7.1): o começo do trilho fica sob os enfeites da moldura, então
   valor pequeno some (1 PV de 47) — o preenchimento tem mínimo de 7% (`FRAME_BAR_MIN_FILL`). E o
   mixin `frame-bar.geometry` estiliza `.xp-bar .fb-medal` (2 classes): regra de cor do medalhão com
