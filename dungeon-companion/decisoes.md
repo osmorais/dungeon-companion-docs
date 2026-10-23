@@ -176,11 +176,13 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   Dentro da sessão o dragão continua desligado (escolha de implementação, oferecida ao usuário
   pra ligar). Cada tema tem o próprio sprite: dragão vermelho (fantasia) e **dracolich** (sombrio),
   gerados pelo usuário. → `gotchas.md`, "Web (Angular)"
-- **2026-10-20** — Dois temas de cor: **FANTASIA** (o visual original, padrão) e **SOMBRIO**, com
+- **2026-10-20** — Dois temas de cor: **FANTASIA** (o visual original, ~~padrão~~) e **SOMBRIO**, com
   base nas cores escolhidas pelo usuário: fundo `#1C0B0B`, painel `#40251A`, destaque `#D8A33E`
   (a primeira proposta, em cinza, ficou "monótona"). As artes de fundo continuam visíveis no
   Sombrio, só um pouco escurecidas (o usuário achou escuro demais com brilho 35%). Troca no botão
   TEMA do rodapé, guardada no navegador. → `gotchas.md`, "Web (Angular)"
+- **2026-10-22** — O **SOMBRIO é o tema padrão** (1.7.5); quem já tinha escolhido o FANTASIA
+  continua nele. → `gotchas.md`, "Web (Angular)"
 - **2026-10-21** — Tela da sessão (1.3.2): nome, mestre, código e jogadores no **topo da página,
   sem quadro**; botões POLLING, EFEITOS e ATUALIZAR **saem da tela** (o mestre mantém polling e
   efeitos no Quadro do Mestre; jogador fica sem os dois — oferecido devolver efeitos em outro
