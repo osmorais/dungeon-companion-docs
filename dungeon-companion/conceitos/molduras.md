@@ -50,4 +50,20 @@ Entrou na **1.7.1** (web `2026e36`, api `fcd4abf`).
   EFEITOS ligado. Botões **CURA TOTAL** (máximo − atual; desabilitado com a vida cheia) e **DANO
   TOTAL** (atual + temporários; desabilitado caído — a Resistência Implacável continua valendo).
 
+## 1.7.4 (web `fc71b00`)
+
+- **Gaveta na sua vez**: quando a vez passa (ou o combate começa) pro personagem deste jogador, a
+  sessão abre a gaveta de ações dele depois do aviso de troca de vez (`scheduleMyTurnDrawer` com
+  `TURN_CHANGE_TOAST_MS`; fechar o aviso abre na hora) com `turnFocus`: faixa "SUA VEZ!", destaque
+  pulsando, FINALIZAR TURNO em dourado e o título COMBATE dourado — todas as ações continuam. Não
+  abre ao recarregar no meio da vez (`turnStateSeen`), se a vez já passou, se é de outro jogador ou
+  com outra gaveta aberta. Só personagem de jogador.
+- **Barra de XP clicável**: brilhando (dá pra subir) e só pro dono (`canOpenLevelUp`,
+  `isMyCharacter`), vira botão → `/character-sheet/:id?sessionId=…&levelUp=1`, e a ficha abre a
+  subida de nível ao carregar se der pra subir (`openLevelUpIfRequested`).
+- **Avatar nas barras das gavetas**: `.bottom-drawer-avatar` (`bottom-drawer.scss`) com o anel,
+  à esquerda e sobressaindo da barra — recolhidas (`app-character-drawer` com o avatar do
+  personagem, `app-dm-board-tab` com `assets/dm.png`) e no topo das gavetas abertas (Quadro do
+  Mestre; ações e grimório com `barAvatar()`).
+
 Pendente: conferir a altura dos cards em 1080p ([`backlog.md`](../backlog.md), "Combate e sessão").

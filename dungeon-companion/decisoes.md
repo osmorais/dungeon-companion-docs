@@ -222,6 +222,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   no vermelho escuro (1.7.2).
 - **2026-10-22** — DANO/CURA no próprio PV pela gaveta toca a animação e fecha a gaveta; botões
   CURA TOTAL e DANO TOTAL (1.7.3). → `conceitos/molduras.md`
+- **2026-10-22** — Na vez do jogador a gaveta de ações abre sozinha, com foco nas ações de turno
+  mas tudo liberado; a barra de XP brilhando leva à subida de nível (só o dono); avatar com anel
+  nas barras das gavetas, mestre com a imagem padrão (1.7.4). → `conceitos/molduras.md`
 
 ## Privacidade e segurança
 

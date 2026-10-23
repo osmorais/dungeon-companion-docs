@@ -141,7 +141,7 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 ## Técnico
 
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
-- [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (12,34 kB na 1.7.2; o erro é
-      só em 32 kB).
+- [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (13,3 kB na 1.7.4; o erro é
+      só em 32 kB) — se crescer muito, separar partes (DANO/CURA, SUA VEZ) em componentes.
 - [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado ~29,1 kB na
       1.3.16) — se crescer, quebrar o componente em vez de subir o limite.
