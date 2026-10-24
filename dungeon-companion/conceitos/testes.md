@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -374,6 +374,16 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Tela inicial e sessão expirada (2026-10-24, versão 1.8.1)
+
+- `auth.guard.spec.ts`: com o `AuthService` real e o `/auth/me` respondendo 401 ou 500, o
+  `loggedInMatch` devolve `false`, apaga o token e não navega; no `authGuard` o 401 continua indo
+  pro `/login`. `auth.service.spec.ts`: `clearSession(null)` só limpa.
+- `landing.component.spec.ts`: personagem de exemplo (meio-orc bárbaro, sem cabelo/barba, pele
+  original), avatar dentro do anel, XP antes da vida.
+- `avatar-display.component.spec.ts` (novo): `basePath` troca só a base; sem cabelo/barba não monta
+  as camadas.
 
 ### Grimório do mestre (2026-10-22, versão 1.6.6)
 

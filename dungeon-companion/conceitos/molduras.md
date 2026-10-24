@@ -2,7 +2,7 @@
 resumo: Card do personagem na sessão (1.7.1): molduras de imagem (anel do avatar, barras de XP e de vida), barra de XP e DANO/CURA na gaveta de ações.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Molduras do card e barras
@@ -67,3 +67,21 @@ Entrou na **1.7.1** (web `2026e36`, api `fcd4abf`).
   Mestre; ações e grimório com `barAvatar()`).
 
 Pendente: conferir a altura dos cards em 1080p ([`backlog.md`](../backlog.md), "Combate e sessão").
+
+## Fundo padrão do card (1.8.1, web `f2ccd64`)
+
+- Arte gerada pelo usuário no ChatGPT (parede de masmorra com tochas, pixel art, centro liso e
+  escuro, detalhes só nas beiradas, sem moldura): original em
+  [`artes/card-fundo-masmorra.png`](../artes/card-fundo-masmorra.png) (1024 × 1536). No web vai
+  como `src/assets/frames/character-card-bg.webp` (512 × 768, reduzido com vizinho mais próximo,
+  ~77 KB), mesma imagem nos dois temas.
+- Variável global `--character-card-bg` no `:root` do `styles.scss`.
+- Usada no card de exemplo da tela inicial, nos cards do jogador na mesa (`.player-card` e
+  `.mobile-player-card`) e no `app-character-card` (avisos de troca de vez e de lançamento),
+  exceto monstro (`.turn-card:not(.turn-card--monster)`).
+- Personagem com imagem própria: o `[style.background-image]` do template (imagem escurecida)
+  sobrepõe o fundo padrão; o padrão vai sem escurecer. As classes `--has-bg` dos cards da mesa
+  ficaram sem regra no CSS.
+- Escrever com propriedades separadas (`background-image`, `-size`, `-position`), nunca o atalho
+  `background:` — ver `gotchas.md`.
+

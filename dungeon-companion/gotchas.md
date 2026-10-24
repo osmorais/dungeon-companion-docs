@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Gotchas
@@ -212,6 +212,17 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Assets**: `src/assets/*.png`, referenciados como `assets/nome.png` (sem barra inicial).
 - **`<select [(ngModel)]>` com opções assíncronas** fica visualmente vazio: chamar
   `cdr.detectChanges()` depois de preencher as opções.
+- **`overflow-x: hidden` num ancestral desliga o `position: sticky`** (vira contêiner de rolagem e
+  o sticky gruda nele, não na janela). Usar `overflow-x: clip` — barra do topo da tela inicial
+  (1.8.1).
+- **Atalho `background:` num `.framed-card` faz a imagem passar por baixo da moldura**: o atalho
+  volta `background-clip`/`background-origin` ao padrão (`border-box`) e desfaz o `padding-box` da
+  `.framed-card`. Usar `background-image`, `-size`, `-position` separados (fundo padrão do card,
+  1.8.1).
+- **`clearSession()` sem argumento navega pro `/login`**: chamado dentro de guard ou `canMatch`, a
+  navegação atropela a escolha da rota. Em `/` o `loggedInMatch` usa `loadCurrentUser(null)` (só
+  limpa) — ver `conceitos/tela-inicial.md`. Teste que mocka o `loadCurrentUser` com `of(null)` não
+  pega isso: usar o `AuthService` real com `HttpTestingController`.
 - **Layout mobile**: o `body` usa `display: flex; justify-content: center`, então o container
   mobile precisa de `width: 100vw` (não `100%`). Padrão completo: `/mobilize-screen`.
 - **`Zone.Identifier`**: arquivos `*:Zone.Identifier` aparecem no working directory (metadado do

@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Decisões
@@ -227,6 +227,18 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-22** — Na vez do jogador a gaveta de ações abre sozinha, com foco nas ações de turno
   mas tudo liberado; a barra de XP brilhando leva à subida de nível (só o dono); avatar com anel
   nas barras das gavetas, mestre com a imagem padrão (1.7.4). → `conceitos/molduras.md`
+- **2026-10-24** — Tela inicial: o texto pra visitante não cita D&D 5e ("RPG de fantasia",
+  "calculados automaticamente"); o aviso de marca do item 7 dos Termos fica até nova decisão.
+  → `conceitos/tela-inicial.md`
+- **2026-10-24** — Tela inicial: barra do topo sempre visível ao rolar, com ENTRAR e CRIAR CONTA
+  como botões (o usuário recusou menu suspenso); logo maior e logo grande na abertura; Tom maior.
+  → `conceitos/tela-inicial.md`
+- **2026-10-24** — Card de exemplo da tela inicial igual ao da mesa (anel do avatar, XP em cima e
+  vida embaixo), com **Gorak Dente-Solto**, bárbaro meio-orc sem cabelo e barba, pele do desenho
+  original; Tom espelhado à direita do card com o balão. A cópia do Quadro do Mestre real na tela
+  inicial foi descartada. → `conceitos/tela-inicial.md`
+- **2026-10-24** — Fundo padrão do card do personagem (parede de masmorra com tochas), o mesmo nos
+  dois temas, pra quem não tem imagem própria. → `conceitos/molduras.md`
 
 ## Privacidade e segurança
 

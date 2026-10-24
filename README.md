@@ -31,6 +31,7 @@ passos" de lá).
 | [`conceitos/avatar.md`](dungeon-companion/conceitos/avatar.md) | conceito | Avatar em camadas: personalizador em abas (1.6.9), penteados novos, tons de pele por raça (1.6.10), como acrescentar opções |
 | [`conceitos/ranking.md`](dungeon-companion/conceitos/ranking.md) | conceito | Ranking global (1.7.0): o que conta, tabela de estatísticas, endpoint, tela e privacidade |
 | [`conceitos/molduras.md`](dungeon-companion/conceitos/molduras.md) | conceito | Molduras do card (anel, barras de XP e vida), barra de XP e DANO/CURA na gaveta (1.7.1) |
+| [`conceitos/tela-inicial.md`](dungeon-companion/conceitos/tela-inicial.md) | conceito | Tela inicial pública (1.8.0): rotas e sessão expirada, seções, card de exemplo, barra fixa (1.8.1) |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |

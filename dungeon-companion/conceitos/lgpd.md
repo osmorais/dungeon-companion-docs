@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -246,7 +246,8 @@ Testes (API, 200 passando): `image-cleanup.service.unit.ts` (inclui helpers do s
 ## ✅ Concluído — 2026-10-15 (itens 8, 12, 13, 14) — api `791be49`, web `26a54ef`
 
 - **Item 8 — Google fora das páginas comuns:**
-  - Fonte "Press Start 2P" servida pelo próprio site: pacote `@fontsource/press-start-2p@5.2.7`
+  - Fonte "Press Start 2P" (e, desde a 1.8.0, a VT323 do texto corrido da tela inicial,
+    `@fontsource/vt323`) servida pelo próprio site: pacote `@fontsource/press-start-2p@5.2.7`
     (OFL-1.1, versão fixa), CSS `latin-400` + `latin-ext-400` em `angular.json → styles`; removidos
     o `@import` do Google Fonts em `styles.scss` e os `<link>` do `index.html`. O build gera os
     `.woff2` em `media/`.

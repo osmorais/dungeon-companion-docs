@@ -2,7 +2,7 @@
 resumo: Avatar em camadas (corpo, roupa, barba, cabelo, sorriso): personalizador em abas, imagens, tons de pele por raça e como acrescentar opções novas.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Avatar
@@ -70,9 +70,12 @@ uma imagem recolorida por [`scripts/avatar/skin.py`](../scripts/avatar/skin.py) 
 | meio-orc | `orc_green`, `orc_grey`, `orc_dark` |
 | draconato | `dragon_gold`, `_brass`, `_bronze`, `_copper`, `_silver`, `_red`, `_blue`, `_green`, `_black`, `_white` |
 
-Tom salvo que não existe pra raça (ex.: `medium` num meio-orc, preset antigo) cai no tom do
-desenho original (`resolveSkinColor`: tiefling vermelho, meio-orc verde, draconato ouro, demais
-`medium`). Tiefling salvo com tom humano mudou de aparência na 1.6.10 (antes era o vermelho
+Tom salvo que não existe pra raça (ex.: `medium` num meio-orc, preset antigo) cai no tom padrão
+da raça (`resolveSkinColor`: tiefling vermelho, meio-orc verde, draconato ouro, demais
+`medium`). No meio-orc o `orc_green` é mais verde que o desenho original
+(`assets/avatar/race/base_half_orc.png`, oliva puxado pro marrom), que não está entre os tons.
+O `app-avatar-display` aceita `basePath` pra trocar só a imagem do corpo (1.8.1, usado no card de
+exemplo da tela inicial pra mostrar a pele original). Tiefling salvo com tom humano mudou de aparência na 1.6.10 (antes era o vermelho
 escurecido pelo filtro).
 
 ## Acrescentar opções novas

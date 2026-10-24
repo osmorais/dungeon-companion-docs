@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Backlog
@@ -28,6 +28,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 - [ ] Apagar as **38 imagens órfãs** do Supabase (61 MB, exclusão manual pelo painel). Lista e
       cuidados: [`historico/imagens-orfas-2026-10-14.md`](historico/imagens-orfas-2026-10-14.md).
       Conferir depois com `scripts/lgpd/orphans-list.js`.
+- [ ] **Menções a D&D 5e fora da tela inicial** (oferecido na 1.8.1, sem resposta): o item 7 dos
+      Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
+      dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
+      em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 
@@ -53,6 +57,8 @@ Contexto: [`conceitos/avatar.md`](conceitos/avatar.md). O usuário gera as folha
 coloca em `artes/avatar/<categoria>/`; o recorte segue o mesmo processo dos cabelos.
 
 - [ ] **Barbas** novas (próxima categoria pedida).
+- [ ] Opcional (oferecido na 1.8.1): pele original do meio-orc (`race/base_half_orc.png`, oliva)
+      como mais um tom no personalizador — hoje só o card de exemplo da tela inicial usa.
 - [ ] **Roupas** novas (folha masculina e feminina).
 - [ ] **Chapéus/elmos**: camada nova acima do cabelo + aba nova no personalizador.
 - [ ] Mover as folhas das molduras pra `artes/molduras/` e corrigir o nome `modulras-card-sombrio.png`
@@ -137,11 +143,27 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Conferir a sincronia do aviso de lançamento com **dois navegadores** (quem lança e a mesa) e
       as animações de quebra/vitória (1.7.2).
 - [ ] Opcional (oferecido na 1.7.2): som na quebra (errou) e na saída de vitória.
+- [ ] Conferir o **fundo padrão do card** na mesa (1.8.1): o card é mais largo que a imagem (2:3),
+      então ela corta em cima e embaixo e as tochas podem sumir; o fundo vai sem escurecer — se o
+      texto ficar difícil de ler, escurecer um pouco.
+
+## Tela inicial
+
+Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
+
+- [ ] Conferir no navegador (1.8.1): logo grande na abertura empurra os botões pra baixo em
+      notebook baixo; Tom maior pode cobrir o canto do card, principalmente no celular.
+- [ ] O painel do mestre da seção MESTRES é uma ilustração própria, não o Quadro do Mestre real
+      (apontado na revisão da 1.8.0; uma tentativa de copiar o quadro real foi descartada pelo
+      usuário). Código de exemplo `K7Q2X` pode coincidir com uma mesa real — trocar por um que não
+      possa existir.
 
 ## Técnico
 
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
 - [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (13,3 kB na 1.7.4; o erro é
       só em 32 kB) — se crescer muito, separar partes (DANO/CURA, SUA VEZ) em componentes.
-- [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado ~29,1 kB na
-      1.3.16) — se crescer, quebrar o componente em vez de subir o limite.
+- [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado 28,3 kB na
+      1.8.1) — se crescer, quebrar o componente em vez de subir o limite.
+- [ ] Limpeza: as classes `player-card--has-bg` / `mobile-player-card--has-bg` do
+      `session-panel.component.html` ficaram sem regra no CSS (1.8.1).
