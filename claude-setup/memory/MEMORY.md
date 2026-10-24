@@ -1,0 +1,4 @@
+- [No self-testing](feedback_no_self_testing.md) — user tests UI changes in dungeon-companion-web/api themselves; skip browser/screenshot verification
+- [Dungeon Companion docs](project_dungeon_companion_docs.md) — read ~/projects/docs/README.md + dungeon-companion/estado-atual.md + backlog.md before any dungeon-companion work
+- [LGPD adequacy](project_lgpd.md) — read docs/dungeon-companion/conceitos/lgpd.md before any personal-data/auth/storage/privacy change
+- [Magias mecânicas](project_spell_mechanics.md) — read docs/dungeon-companion/conceitos/magias-mecanicas.md before changing spells

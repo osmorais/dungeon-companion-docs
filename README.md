@@ -46,6 +46,10 @@ passos" de lá).
 Artes originais (PNG gerados no ChatGPT, grandes demais pro repositório web) em
 [`artes/`](dungeon-companion/artes/) — ver `procedimentos/artes-cartas.md`.
 
+Configuração do Claude Code que mora fora dos repositórios (hook do brief, `/fechar-entrega`,
+`settings.json`, memória) e como instalar em outro computador:
+[`claude-setup/LEIA-ME.md`](claude-setup/LEIA-ME.md).
+
 Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
 `dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e
 [`referencias/`](dungeon-companion/referencias/) (`livro.txt`, `magias.txt`: texto do Livro do
