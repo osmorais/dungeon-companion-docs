@@ -33,6 +33,7 @@ passos" de lá).
 | [`conceitos/molduras.md`](dungeon-companion/conceitos/molduras.md) | conceito | Molduras do card (anel, barras de XP e vida), barra de XP e DANO/CURA na gaveta (1.7.1) |
 | [`conceitos/nome-de-usuario.md`](dungeon-companion/conceitos/nome-de-usuario.md) | conceito | Nome de usuário único (1.9.0): regras, sugestões, API, escolha no primeiro acesso, mesa e ranking |
 | [`conceitos/tela-inicial.md`](dungeon-companion/conceitos/tela-inicial.md) | conceito | Tela inicial pública (1.8.0): rotas e sessão expirada, seções, card de exemplo, barra fixa (1.8.1) |
+| [`conceitos/monstros.md`](dungeon-companion/conceitos/monstros.md) | conceito | Bestiário do livro: tabela `monster` (428 fichas), formato do JSON, como foi gerado, correções |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
@@ -53,7 +54,8 @@ Configuração do Claude Code que mora fora dos repositórios (hook do brief, `/
 Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
 `dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e
 [`referencias/`](dungeon-companion/referencias/) (`livro.txt`, `magias.txt`: texto do Livro do
-Jogador; usar `magias.txt` para magias).
+Jogador; usar `magias.txt` para magias; `monstros.txt`: OCR do Manual dos Monstros, já importado
+pra tabela `monster`).
 
 ## Manutenção
 

@@ -432,7 +432,8 @@ Todos os 15 itens técnicos estão implementados. Restam:
    incidente.
 2. **Direitos autorais** (não é LGPD, mas é risco pra divulgação): descrições de magias e várias
    subclasses vieram do Livro do Jogador em português (`livro.txt`/`magias.txt`), que é protegido —
-   só o SRD é de uso livre.
+   só o SRD é de uso livre. Desde a 1.10.0 o mesmo vale pras 428 fichas do Manual dos Monstros em
+   português (tabela `monster`), inclusive as que não estão no SRD, mostradas a todo mestre.
 3. Depois do deploy do item 10: conferir nos logs do Render a linha
    `[rate-limit] IP do cliente obtido via ...` (não pode ser "conexão direta").
 4. Apagar as 38 imagens órfãs antigas (`dungeon-companion/historico/imagens-orfas-2026-10-14.md`).

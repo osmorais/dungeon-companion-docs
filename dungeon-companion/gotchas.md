@@ -271,3 +271,7 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   outra). Usar `referencias/magias.txt` (extração limpa, ordem alfabética) para magias.
 - Descrição de magia corrigida no banco também é corrigida no `database_inserts.sql` (alterar a
   linha do INSERT, não acrescentar UPDATE).
+- `referencias/monstros.txt` (OCR do Manual dos Monstros) não dá pra ler com regex: ações aparecem
+  antes do cabeçalho da ficha, nomes viram "AÇÕES"/"AÇÕES LENDÁRIAS", números saem como `�`, e o
+  próprio livro em PT tem erros de cópia (ações de um monstro no outro). Pra corrigir uma ficha,
+  usar o seed da tabela `monster` (já limpo), não o OCR. → `conceitos/monstros.md`

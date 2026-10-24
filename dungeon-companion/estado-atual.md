@@ -27,7 +27,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.9.0 (2026-10-24, nome de usuário único; antes, no mesmo dia, 1.8.3:
+- **Versão do sistema**: 1.10.0 (2026-10-24, catalogar monstro a partir do bestiário do livro,
+  sem a dnd5eapi — **ainda sem commit**); antes, 1.9.0 (mesmo dia, nome de usuário único; antes, 1.8.3:
   moldura nova dos cards no tema SOMBRIO; 1.8.2: SAIR leva pro login e código de mesa de exemplo
   `XXXXX`; 1.8.1: sessão expirada volta pra tela inicial, tela inicial renovada e fundo padrão no
   card) — notas em `/novidades`
@@ -35,11 +36,14 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
 - **Últimos commits**: api `43a9ac0` (correção de testes depois da 1.9.0 `844482b`), web `f7ca9e5`
-  (versão 1.9.0) — todos enviados. Na api, da 1.8.0 à 1.8.3 só sobe o número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
+  (versão 1.9.0) — todos enviados. **Sem commit ainda** (1.10.0): na api, `docs/database/` com a
+  tabela `monster` e o seed das 428 fichas, `MonsterRepository` e o catálogo lendo a tabela (o
+  `SrdMonsterService` foi apagado); no web, as telas de catalogar lendo o bestiário. Deploy: **api
+  antes do web** (o web novo chama `/api/monster-catalog/bestiary`). Na api, da 1.8.0 à 1.8.3 só sobe o número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 480 (`npm run test:unit`), web 575 (`npm run test:run`) —
+- **Testes**: api 485 (`npm run test:unit`), web 581 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -60,6 +64,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
+| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
@@ -80,6 +85,10 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   mantida, sempre nula). Uma transação, antes do deploy da api, autorizado pelo usuário; 42
   usuários, nenhum com nome de usuário ainda (todos escolhem no próximo acesso). `schema-diff`
   vazio depois.
+- **2026-10-24**: tabela `monster` (bestiário de referência) + **428** fichas do Manual dos
+  Monstros. Uma transação, autorizado pelo usuário; lida pelo catálogo a partir da 1.10.0. 428 linhas,
+  428 slugs; `schema-diff` vazio depois. O teste da sequência consumiu o id 429 (buraco sem
+  efeito). → [`conceitos/monstros.md`](conceitos/monstros.md)
 
 ## LGPD
 
