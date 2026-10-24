@@ -243,6 +243,11 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   o FANTASIA continua com a dele (1.8.3). → `conceitos/molduras.md`
 - **2026-10-24** — Fundo padrão do card do personagem (parede de masmorra com tochas), o mesmo nos
   dois temas, pra quem não tem imagem própria. → `conceitos/molduras.md`
+- **2026-10-24** — **Nome de usuário** único no lugar do nome do herói (cadastro) e dos nomes de
+  jogador/mestre digitados na sessão: letras sem acento, números, `_` e `-`, 3–20 caracteres, único
+  sem diferenciar maiúsculas, com sugestões quando em uso. Mesa (jogador e mestre) e ranking mostram
+  o nome de usuário; dá pra trocar em Minha Conta. Contas antigas e do Google escolhem no próximo
+  acesso (não é gerado automaticamente). (1.9.0) → `conceitos/nome-de-usuario.md`
 
 ## Privacidade e segurança
 
@@ -255,6 +260,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   (atualizar a Política). → `conceitos/lgpd.md`
 - **2026-10-15** — Sem banner de cookies enquanto só existir o cookie de autenticação e
   preferências locais; analytics/pixel passa a exigir banner. → `conceitos/lgpd.md`
+- **2026-10-24** — Nome de exibição (`users.full_name`) deixou de ser coletado e foi **apagado** em
+  produção (41 contas); o nome da conta Google não é mais guardado. → `conceitos/nome-de-usuario.md`
 - **2026-10-16** — Versionamento: subir **A** só por decisão do usuário. → regra
   `versionamento.md` do web
 

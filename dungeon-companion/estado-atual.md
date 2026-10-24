@@ -27,19 +27,19 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.8.3 (2026-10-24, moldura nova dos cards no tema SOMBRIO; antes, no
-  mesmo dia, 1.8.2: SAIR leva pro login e código de mesa de exemplo `XXXXX`; 1.8.1: sessão
-  expirada volta pra tela inicial, tela inicial renovada e fundo padrão no card) — notas em `/novidades`
+- **Versão do sistema**: 1.9.0 (2026-10-24, nome de usuário único; antes, no mesmo dia, 1.8.3:
+  moldura nova dos cards no tema SOMBRIO; 1.8.2: SAIR leva pro login e código de mesa de exemplo
+  `XXXXX`; 1.8.1: sessão expirada volta pra tela inicial, tela inicial renovada e fundo padrão no
+  card) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `558aaa2`, web `0688b9d` (versão 1.8.3) — todos enviados. Na api, da
-  1.8.0 à 1.8.3 só sobe o número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
+- **Últimos commits**: api `43a9ac0` (correção de testes depois da 1.9.0 `844482b`), web `f7ca9e5`
+  (versão 1.9.0) — todos enviados. Na api, da 1.8.0 à 1.8.3 só sobe o número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 455 (`npm run test:unit`, sem mudança de código desde a 1.7.5; não rodado de
-  novo), web 551 (`npm run test:run`) —
+- **Testes**: api 480 (`npm run test:unit`), web 575 (`npm run test:run`) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -58,6 +58,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Avatar (personalizador e camadas de imagem) | abas com miniaturas (1.6.9), 8 penteados novos (1.6.9), tons de pele por raça (1.6.10); faltam barbas, roupas, chapéus e rostos | [`conceitos/avatar.md`](conceitos/avatar.md) |
 | Ranking global (feitos das mesas) | 12 categorias, contagem desde a 1.7.0, em lista (1.7.1), opção de sair em /conta | [`conceitos/ranking.md`](conceitos/ranking.md) |
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3) | [`conceitos/molduras.md`](conceitos/molduras.md) |
+| Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
@@ -73,9 +74,15 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
 - **2026-10-18**: talento Habilidoso das fichas #146 e #145 (4 perícias treinadas + `choice_data`).
 - **2026-10-20**: coluna `game_session.dm_notes` (TEXT, nula) — anotações do Quadro do Mestre (1.2.0). Rodado antes do deploy da api, autorizado pelo usuário; 16 sessões, todas com `dm_notes` nulo.
 - **2026-10-22**: tabela `character_session_stats` (ranking, 1.7.0) + índice por personagem + coluna `users.show_in_ranking` (BOOLEAN, padrão TRUE). Uma transação, antes do deploy da api, autorizado pelo usuário; 41 usuários com `true`, tabela vazia. Gravação e leitura testadas no banco numa transação desfeita (0 linhas depois).
+- **2026-10-24**: coluna `users.username` (VARCHAR(20), nula) + índice único
+  `users_username_lower_key` em `LOWER(username)` (1.9.0), e `users.full_name` apagado nas **41**
+  contas que tinham (nome de exibição antigo, que nas contas Google era o nome real; coluna
+  mantida, sempre nula). Uma transação, antes do deploy da api, autorizado pelo usuário; 42
+  usuários, nenhum com nome de usuário ainda (todos escolhem no próximo acesso). `schema-diff`
+  vazio depois.
 
 ## LGPD
 
 A Política de Privacidade mudou em 17/10 (imagens de referência), em 20/10 (preferência de tema
-no armazenamento local, versão 1.3.0) em 22/10 (preferência do Tom, versão 1.6.8) e de novo em 22/10 (ranking global, versão 1.7.0: o que aparece pra todos e a opção de sair). **Falta o usuário decidir** se e como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
+no armazenamento local, versão 1.3.0) em 22/10 (preferência do Tom, versão 1.6.8) e de novo em 22/10 (ranking global, versão 1.7.0: o que aparece pra todos e a opção de sair) e em 24/10 (nome de usuário, versão 1.9.0: público na mesa e no ranking; o nome da conta Google deixou de ser guardado). **Falta o usuário decidir** se e como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
 [`conceitos/lgpd.md`](conceitos/lgpd.md).

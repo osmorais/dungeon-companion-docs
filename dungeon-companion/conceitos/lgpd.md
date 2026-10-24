@@ -22,10 +22,11 @@ Superfície pequena, nenhum dado sensível (art. 5º, II):
 |---|---|---|
 | E-mail | `users.email` | Obrigatório, login e redefinição de senha |
 | Senha | `users.password_hash` | bcrypt custo 12 (ok). Nulo pra conta só-Google |
-| Nome | `users.full_name` | Opcional no cadastro ("NOME DO HERÓI") — pode ser nome real |
+| Nome de usuário | `users.username` | Desde a 1.9.0: obrigatório, único, visível pra mesa e no ranking (dica de apelido no campo). Troca em /conta, sai na exportação (`account.username`), some com a conta |
+| Nome (antigo) | `users.full_name` | Não é mais coletado; apagado em produção em 2026-10-24 (era o "NOME DO HERÓI" opcional e, nas contas Google, o nome real) |
 | Google ID | `users.google_id` | Login com Google |
 | Token de redefinição | `users.reset_token` / `reset_token_expires` | Guardado em texto puro (ver item 10) |
-| Nomes livres | `character.player_name`, `player_session.player_name`, `game_session.dm_name` | Texto livre, visível pra mesa — usuário pode digitar nome real |
+| Nomes livres | `character.player_name`, `player_session.player_name`, `game_session.dm_name` | Desde a 1.9.0 a sessão grava o nome de usuário nesses dois últimos (sem digitação); valores antigos continuam como reserva pra quem ainda não escolheu nome |
 | Imagens | Supabase Storage (bucket público) | Personagem, monstro e imagem de referência da sessão (`session_reference_image`, desde 2026-10-17) — usuário pode subir foto real, inclusive de terceiros |
 | Legenda da imagem de referência | `session_reference_image.title` | Opcional, até 120 caracteres, texto livre visível pra mesa (aviso no formulário) |
 | Anotações do mestre | `game_session.dm_notes` | Desde a 1.2.0 (Quadro do Mestre). Texto livre até 10.000 caracteres, só o dono da sessão lê/grava (`GET/PUT /api/game-session/{id}/dm-notes`), nunca vai no detalhe da sessão. Pode citar pessoas reais. Sai na exportação (`sessions_as_dm[].dm_notes`) e some com a sessão/conta (cascata). Coberto pela política ("anotações", "sessões de jogo") — sem mudança no texto |
@@ -435,3 +436,16 @@ Todos os 15 itens técnicos estão implementados. Restam:
 3. Depois do deploy do item 10: conferir nos logs do Render a linha
    `[rate-limit] IP do cliente obtido via ...` (não pode ser "conexão direta").
 4. Apagar as 38 imagens órfãs antigas (`dungeon-companion/historico/imagens-orfas-2026-10-14.md`).
+
+## 2026-10-24 — Nome de usuário (1.9.0)
+
+Dado novo: `users.username`, obrigatório no cadastro, único, **público** (mesa e ranking) — a
+dica de apelido aparece embaixo do campo. Minimização: o cadastro não pede mais nome de exibição,
+o login com Google não guarda mais o nome da conta Google, e os 41 `full_name` existentes foram
+apagados em produção (autorizado pelo usuário). Rota pública nova `GET /auth/username-available`
+com limite `usernameCheckIp` (120 / 15 min por IP). Troca em /conta (correção, art. 18, III);
+exportação traz o `username` no perfil; exclusão some com a linha de `users`. Política: seções 2
+(dados de conta), 4 (mesa e ranking mostram o nome de usuário) e o parágrafo de Minha Conta;
+`LEGAL_LAST_UPDATED` = 24/10/2026. Avisar os usuários: mesma decisão pendente. Api `844482b`, web
+`f7ca9e5`. Ver [`nome-de-usuario.md`](nome-de-usuario.md).
+

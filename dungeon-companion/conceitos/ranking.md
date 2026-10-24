@@ -2,15 +2,15 @@
 resumo: Ranking global dos feitos das mesas (1.7.0): o que conta, onde grava, endpoint, tela e privacidade.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-24
 ---
 
 # Dungeon Companion — Ranking
 
 Botão **RANKING** na tela inicial (PARA TODOS) → `/ranking` (logado). Mostra, **pra todos os
 usuários**, os 10 maiores feitos de cada categoria, de todas as mesas: avatar e nome do personagem,
-nome de jogador **daquela mesa** (`player_session.player_name`, o apelido digitado ao entrar — nunca
-o `full_name` da conta) e nome da sessão. Entrou na **1.7.0** (api `69c8e8f`, web `e0e6040`); virou
+**nome de usuário** atual do jogador (desde a 1.9.0, `COALESCE(u.username, ps.player_name)`; antes
+era o apelido digitado ao entrar na mesa) e nome da sessão. Entrou na **1.7.0** (api `69c8e8f`, web `e0e6040`); virou
 lista na **1.7.1** (web `2026e36`).
 
 ## O que conta

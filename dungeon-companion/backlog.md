@@ -19,8 +19,8 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 - [ ] **Revisão jurídica** da Política de Privacidade, dos Termos de Uso e dos prazos do plano de
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
 - [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência), 20/10
-      (preferência de tema no navegador, 1.3.0), 22/10 (preferência do Tom, 1.6.8) e 22/10 (ranking
-      global, 1.7.0) — decidir se e como.
+      (preferência de tema no navegador, 1.3.0), 22/10 (preferência do Tom, 1.6.8), 22/10 (ranking
+      global, 1.7.0) e 24/10 (nome de usuário, 1.9.0) — decidir se e como.
 - [ ] **Direitos autorais**: descrições de magias e várias subclasses vieram do Livro do Jogador em
       português (só o SRD é de uso livre). Risco para a divulgação.
 - [ ] Conferir nos logs do Render a linha `[rate-limit] IP do cliente obtido via ...` (não pode ser
@@ -162,6 +162,9 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 ## Técnico
 
+- [ ] Teste instável na api: o `before each` de "Criação de personagem → ficha gravada"
+      (`character-creation.unit.ts`) estourou os 2 s uma vez em 15 rodadas (máquina carregada,
+      2026-10-24). Se repetir, subir o `timeout` do bloco.
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
 - [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (13,3 kB na 1.7.4; o erro é
       só em 32 kB) — se crescer muito, separar partes (DANO/CURA, SUA VEZ) em componentes.

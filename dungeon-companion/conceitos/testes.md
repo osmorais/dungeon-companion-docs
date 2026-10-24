@@ -375,6 +375,21 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
 
+### Nome de usuário (2026-10-24, versão 1.9.0)
+
+- Api `username.service.unit.ts` (novo): regras de formato, base e candidatos das sugestões; livre,
+  em uso (sem maiúsculas), formato inválido com sugestões, o próprio nome na troca, 422/409 com
+  `details.suggestions`, corrida no índice único (`23505`) → 409.
+- Api `auth.service.unit.ts`: cadastro grava o nome de usuário, nome em uso não cria, corrida vira
+  409, `/auth/me` devolve `username` (bcrypt substituído por stub). `account.service.unit.ts`:
+  troca do nome, 409 passa adiante, tipo errado 422, perfil sem nome. `game-session.service.unit.ts`:
+  `createSession` e `addPlayer` usam o nome de usuário e recusam conta sem nome (422).
+- Web `username.spec.ts`, `username-status.component.spec.ts` (espera entre teclas com relógio
+  simulado, livre/em uso/inválido/nome atual/sem resposta/vazio) e `choose-username.component.spec.ts`
+  (novos); casos novos em `auth.guard.spec.ts` (redireciona pra `/nome-de-usuario`),
+  `auth.service.spec.ts`, `signup.component.spec.ts`, `account.component.spec.ts` e
+  `loading-states.spec.ts` (entrar/criar sessão sem nome).
+
 ### Tela inicial e sessão expirada (2026-10-24, versão 1.8.1)
 
 - `auth.guard.spec.ts`: com o `AuthService` real e o `/auth/me` respondendo 401 ou 500, o

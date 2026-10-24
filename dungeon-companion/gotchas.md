@@ -29,6 +29,12 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Pedidos de teste secreto** ficam em memória (`services/secret-roll-requests.ts`, 30 min):
   reiniciar o servidor descarta os pendentes.
 - **Erro de validação usa 422, não 401**: 401 fora de `/auth/` desloga o usuário no frontend.
+- **bcrypt (custo 12) em teste unitário estoura o timeout de 2 s** quando a máquina está carregada
+  (~1 s por hash): testes que passam por `signup`/`resetPassword` fazem
+  `sinon.stub(service, 'hashPassword').resolves('hash')` (`auth.service.unit.ts`, 1.9.0).
+- **`npm run test:unit | grep passing && git commit` commita com teste falhando**: o `&&` olha o
+  status do `grep`, não do mocha (aconteceu na 1.9.0 — a api subiu com um teste instável). Conferir
+  o código de saída do próprio comando de teste (`if npm run test:unit > log; then …`).
 
 ## Banco
 
