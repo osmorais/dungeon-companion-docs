@@ -379,7 +379,8 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
 
 - `auth.guard.spec.ts`: com o `AuthService` real e o `/auth/me` respondendo 401 ou 500, o
   `loggedInMatch` devolve `false`, apaga o token e não navega; no `authGuard` o 401 continua indo
-  pro `/login`. `auth.service.spec.ts`: `clearSession(null)` só limpa.
+  pro `/login`. `auth.service.spec.ts`: `clearSession(null)` só limpa; SAIR leva pro `/login`
+  (1.8.2 — o teste da 1.8.0 esperava `/`).
 - `landing.component.spec.ts`: personagem de exemplo (meio-orc bárbaro, sem cabelo/barba, pele
   original), avatar dentro do anel, XP antes da vida.
 - `avatar-display.component.spec.ts` (novo): `basePath` troca só a base; sem cabelo/barba não monta

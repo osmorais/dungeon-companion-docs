@@ -237,6 +237,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   vida embaixo), com **Gorak Dente-Solto**, bárbaro meio-orc sem cabelo e barba, pele do desenho
   original; Tom espelhado à direita do card com o balão. A cópia do Quadro do Mestre real na tela
   inicial foi descartada. → `conceitos/tela-inicial.md`
+- **2026-10-24** — SAIR leva pro **login**, não pra tela inicial (como era na 1.8.0) (1.8.2).
+  → `conceitos/tela-inicial.md`
+- **2026-10-24** — Moldura nova dos cards no tema SOMBRIO (caveiras e dourado, arte do usuário);
+  o FANTASIA continua com a dele (1.8.3). → `conceitos/molduras.md`
 - **2026-10-24** — Fundo padrão do card do personagem (parede de masmorra com tochas), o mesmo nos
   dois temas, pra quem não tem imagem própria. → `conceitos/molduras.md`
 

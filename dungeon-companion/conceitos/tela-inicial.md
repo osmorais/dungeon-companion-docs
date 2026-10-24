@@ -24,6 +24,9 @@ feita por outro desenvolvedor) e foi ajustada na **1.8.1** (web `d82da91` e `f2c
   - o `loggedInMatch` passa `null` (401 ou erro do servidor → tela inicial);
   - o `authGuard` das rotas protegidas continua mandando pro login.
   Testes com o `AuthService` real e `HttpTestingController` em `auth.guard.spec.ts`.
+- **SAIR (1.8.2, `3bf5f79`)**: `logout()` → `clearSession('/login')`. Na 1.8.0 ia pra `/`, mas
+  quem saía da Home já estava em `/`: o roteador ignora navegação pra mesma URL e a Home ficava
+  na tela. O `clearSession` agora só aceita `'/login'` ou `null`.
 - A tela não chama a API (o aviso de servidor acordando, `app-server-wakeup`, faz `fetch /ping` em
   qualquer página, inclusive esta).
 
@@ -31,8 +34,9 @@ feita por outro desenvolvedor) e foi ajustada na **1.8.1** (web `d82da91` e `f2c
 
 - `landing.component.*`: barra do topo (logo, menu das seções `LANDING_SECTIONS`, ENTRAR e CRIAR
   CONTA — no celular só ENTRAR), abertura (logo grande, título, texto, card de exemplo, d20 e
-  Tom), seções JOGADORES, MESTRES (painel do mestre ilustrativo), CARTAS, extras, COMO FUNCIONA,
-  chamada final (Tom forjando) e rodapé (privacidade, termos, novidades, versão).
+  Tom), seções JOGADORES, MESTRES (painel do mestre ilustrativo, com o código de mesa `XXXXX`
+  desde a 1.8.2 — um código que não pode existir), CARTAS, extras, COMO FUNCIONA, chamada final
+  (Tom forjando) e rodapé (privacidade, termos, novidades, versão).
 - `landing-cards.component.*` + `landing-cards.ts`: vitrine das cartas de magia e arma em
   carrossel circular (passa sozinho a cada 5 s; para com mouse/foco em cima, ao trocar de carta ou
   de baralho, e com "reduzir movimento").

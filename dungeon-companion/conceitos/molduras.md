@@ -85,3 +85,18 @@ Pendente: conferir a altura dos cards em 1080p ([`backlog.md`](../backlog.md), "
 - Escrever com propriedades separadas (`background-image`, `-size`, `-position`), nunca o atalho
   `background:` — ver `gotchas.md`.
 
+## Moldura nova do SOMBRIO (1.8.3, web `0688b9d`)
+
+- Arte do usuário (ChatGPT, 1254 px, caveiras e dourado): original em
+  [`artes/card-frame-sombrio.png`](../artes/card-frame-sombrio.png); no web,
+  `src/assets/frames/card-frame-sombrio.png` reduzida pra 627 px (vizinho mais próximo, ~92 KB).
+- Medidas na imagem de 627 px: faixa de cima 29–70, de baixo 33–73 (a partir da borda), laterais
+  20–60; enfeite do canto até ~111 px na horizontal, ~139 px pra baixo no alto (corrente) e
+  ~111 px embaixo.
+- Corte e largura viraram variáveis por tema no `styles.scss` (`--card-frame-slice`,
+  `--card-frame-width`, usadas no `border-image` da `.framed-card`):
+  - FANTASIA: `72` / `22px` (como antes);
+  - SOMBRIO: `140 112 113 112` / `34px 27px 28px 27px` (cima, direita, baixo, esquerda), escala
+    ~0,245 — faixa de ~10 px que termina entre 14 e 18 px, cobrindo a borda de 11 px.
+- Ao trocar uma moldura, medir de novo (ver `gotchas.md`).
+

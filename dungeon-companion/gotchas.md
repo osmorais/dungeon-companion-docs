@@ -219,6 +219,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   volta `background-clip`/`background-origin` ao padrão (`border-box`) e desfaz o `padding-box` da
   `.framed-card`. Usar `background-image`, `-size`, `-position` separados (fundo padrão do card,
   1.8.1).
+- **Navegar pra mesma URL não faz nada** (`onSameUrlNavigation` padrão `ignore`): o SAIR da 1.8.0
+  mandava pra `/`, e quem já estava na Home (`/`) ficava nela, só sem o cabeçalho de logado. Por
+  isso o SAIR vai pro `/login` (1.8.2) e o `clearSession` não aceita mais `'/'`.
+- **Moldura 9-slice com corte menor que o enfeite**: o `border-image-slice` precisa cobrir o
+  enfeite inteiro do canto (e a faixa toda de cada lado), senão o pedaço cortado se repete no meio
+  das bordas. Medir a imagem (alfa) antes de trocar uma moldura — a do SOMBRIO da 1.8.3 precisou
+  de corte por lado (`--card-frame-slice`), porque a corrente desce mais no canto de cima.
 - **`clearSession()` sem argumento navega pro `/login`**: chamado dentro de guard ou `canMatch`, a
   navegação atropela a escolha da rota. Em `/` o `loggedInMatch` usa `loadCurrentUser(null)` (só
   limpa) — ver `conceitos/tela-inicial.md`. Teste que mocka o `loadCurrentUser` com `of(null)` não

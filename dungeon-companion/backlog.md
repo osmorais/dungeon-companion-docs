@@ -146,6 +146,9 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Conferir o **fundo padrão do card** na mesa (1.8.1): o card é mais largo que a imagem (2:3),
       então ela corta em cima e embaixo e as tochas podem sumir; o fundo vai sem escurecer — se o
       texto ficar difícil de ler, escurecer um pouco.
+- [ ] Conferir a **moldura nova do SOMBRIO** (1.8.3) nos cards pequenos (mesa no celular, toasts):
+      os cantos ficaram maiores (~27–34 px contra ~22 px) e os espinhos das laterais se repetem
+      conforme a altura do card.
 
 ## Tela inicial
 
@@ -155,8 +158,7 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       notebook baixo; Tom maior pode cobrir o canto do card, principalmente no celular.
 - [ ] O painel do mestre da seção MESTRES é uma ilustração própria, não o Quadro do Mestre real
       (apontado na revisão da 1.8.0; uma tentativa de copiar o quadro real foi descartada pelo
-      usuário). Código de exemplo `K7Q2X` pode coincidir com uma mesa real — trocar por um que não
-      possa existir.
+      usuário).
 
 ## Técnico
 
