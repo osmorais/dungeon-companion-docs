@@ -1,5 +1,5 @@
 ---
-resumo: Configuração do Claude Code fora dos repositórios (hook do brief, /fechar-entrega, settings, memória) e como instalar em outro computador.
+resumo: Configuração do Claude Code fora dos repositórios (hook do brief, /fechar-entrega, /abrir-prs, settings, memória) e como instalar em outro computador.
 tipo: procedimento
 status: ativo
 atualizado: 2026-10-24
@@ -16,6 +16,7 @@ ao trocar de computador:
 | `hooks/dc-brief.sh` | `~/.claude/hooks/dc-brief.sh` | Hook de início de sessão: resumo do `estado-atual.md`, títulos do backlog e avisos de commits não registrados / mudanças sem commit |
 | `settings.json` | `~/.claude/settings.json` | Liga o hook (`SessionStart`) e os plugins `frontend-design` e `feature-dev` |
 | `commands/fechar-entrega.md` | `~/.claude/commands/fechar-entrega.md` | Comando `/fechar-entrega` |
+| `skills/abrir-prs/SKILL.md` | `~/.claude/skills/abrir-prs/SKILL.md` | Skill `/abrir-prs`: mesma branch na api, no web e no docs, commit como ddpzin, push da branch e PR pra `main` (sem merge) |
 | `memory/*.md` | `~/.claude/projects/<pasta do projeto>/memory/` | Memória do Claude (não testar a UI no navegador; ler os docs, o doc de LGPD e o de magias antes de mexer) |
 
 ## Instalar num computador novo
@@ -54,8 +55,8 @@ memória (por isso o hook e o `CLAUDE.md` de cada repo apontam pros docs também
 
 ## Manter atualizado
 
-Esta pasta é uma **cópia**. Depois de mudar o hook, o `/fechar-entrega`, o `settings.json` ou a
-memória nesta máquina:
+Esta pasta é uma **cópia**. Depois de mudar o hook, o `/fechar-entrega`, a skill `/abrir-prs`, o
+`settings.json` ou a memória nesta máquina:
 
 ```bash
 ~/projects/docs/claude-setup/sincronizar.sh   # copia ~/.claude → claude-setup/

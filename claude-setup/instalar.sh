@@ -12,10 +12,11 @@ copy_new() {
   if [ -e "$dest" ]; then echo "já existe, mantido: $dest"; else cp "$1" "$dest"; fi
 }
 
-mkdir -p "$HOME/.claude/hooks" "$HOME/.claude/commands" "$MEM"
+mkdir -p "$HOME/.claude/hooks" "$HOME/.claude/commands" "$HOME/.claude/skills/abrir-prs" "$MEM"
 copy_new "$HERE/hooks/dc-brief.sh" "$HOME/.claude/hooks"
 chmod +x "$HOME/.claude/hooks/dc-brief.sh"
 copy_new "$HERE/commands/fechar-entrega.md" "$HOME/.claude/commands"
+copy_new "$HERE/skills/abrir-prs/SKILL.md" "$HOME/.claude/skills/abrir-prs"
 for f in "$HERE"/memory/*.md; do copy_new "$f" "$MEM"; done
 
 if [ -f "$HOME/.claude/settings.json" ]; then
