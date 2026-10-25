@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Estado atual
@@ -28,22 +28,22 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 ## Versão e commits
 
 - **Versão do sistema**: 1.10.0 (2026-10-24, catalogar monstro a partir do bestiário do livro,
-  sem a dnd5eapi — **ainda sem commit**); antes, 1.9.0 (mesmo dia, nome de usuário único; antes, 1.8.3:
+  sem a dnd5eapi — feita por outro desenvolvedor e entregue por PR, merge em 2026-10-25); antes, 1.9.0 (mesmo dia, nome de usuário único; antes, 1.8.3:
   moldura nova dos cards no tema SOMBRIO; 1.8.2: SAIR leva pro login e código de mesa de exemplo
   `XXXXX`; 1.8.1: sessão expirada volta pra tela inicial, tela inicial renovada e fundo padrão no
   card) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `43a9ac0` (correção de testes depois da 1.9.0 `844482b`), web `f7ca9e5`
-  (versão 1.9.0) — todos enviados. **Sem commit ainda** (1.10.0): na api, `docs/database/` com a
-  tabela `monster` e o seed das 428 fichas, `MonsterRepository` e o catálogo lendo a tabela (o
-  `SrdMonsterService` foi apagado); no web, as telas de catalogar lendo o bestiário. Deploy: **api
-  antes do web** (o web novo chama `/api/monster-catalog/bestiary`). Na api, da 1.8.0 à 1.8.3 só sobe o número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
+- **Últimos commits**: api `1b1c62d` (merge do PR #3, versão 1.10.0 `395e250`), web `4c0d64b`
+  (merge do PR #5, versão 1.10.0 `a628317`), docs pelo PR #1 — todos na `main`. Merge da api antes
+  do web (o web novo chama `/api/monster-catalog/bestiary`). Na api, da 1.8.0 à 1.8.3 só sobe o
+  número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 485 (`npm run test:unit`), web 581 (`npm run test:run`) —
+- **Testes**: api 485 (`npm run test:unit`), web 581 (`npm run test:run`) — conferidos na
+  revisão dos PRs da 1.10.0 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

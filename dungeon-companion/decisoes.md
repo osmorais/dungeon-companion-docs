@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Decisões
@@ -277,3 +277,7 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   Checagens baratas (build, lint, testes unitários) continuam.
 - Commit e push **só com pedido explícito a cada vez**, mesmo depois de várias aprovações
   seguidas.
+- **2026-10-25** — Configuração do Claude por máquina (pasta dos repositórios, pasta dos docs,
+  identidade dos commits e conta do `gh` da skill `/abrir-prs`) fica em
+  `~/.claude/dungeon-companion.env`, fora do git; nada fixo no hook, na skill nem nos scripts.
+  → `claude-setup/LEIA-ME.md`

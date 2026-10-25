@@ -2,12 +2,14 @@
 resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, correções e próximos passos.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Monstros
 
 ## Catálogo do mestre (1.10.0)
+
+Api `395e250` (merge `1b1c62d`, PR #3), web `a628317` (merge `4c0d64b`, PR #5).
 
 - O mestre busca no **bestiário** (tabela `monster`): `GET /api/monster-catalog/bestiary` (lista
   `{index, name, challenge_rating, size, type}` ordenada por nome) e `/bestiary/{slug}` (a ficha,

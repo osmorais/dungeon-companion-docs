@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -374,6 +374,15 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Bestiário do livro (2026-10-24, versão 1.10.0)
+
+- Api `monster-catalog.service.unit.ts`: lista do bestiário, ficha pelo slug, slug fora do
+  bestiário dá 404, catalogar copia PV, CA e ficha da tabela `monster` e slug inexistente não
+  grava (repositório `MonsterRepository` substituído por stub).
+- Web `monster-format.spec.ts` (novo): ND como no livro (1/4, 1/2), deslocamento com `pairar`,
+  busca sem acento; `monster-catalog-create.component.spec.ts` (novo): a tela de catalogar lendo o
+  bestiário.
 
 ### Nome de usuário (2026-10-24, versão 1.9.0)
 

@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Backlog
@@ -22,7 +22,9 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       (preferência de tema no navegador, 1.3.0), 22/10 (preferência do Tom, 1.6.8), 22/10 (ranking
       global, 1.7.0) e 24/10 (nome de usuário, 1.9.0) — decidir se e como.
 - [ ] **Direitos autorais**: descrições de magias e várias subclasses vieram do Livro do Jogador em
-      português (só o SRD é de uso livre). Risco para a divulgação.
+      português, e desde a 1.10.0 as 428 fichas do Manual dos Monstros em português (inclusive as
+      que não estão no SRD) aparecem pra todo mestre (só o SRD é de uso livre). Risco para a
+      divulgação — apontado na revisão dos PRs da 1.10.0; decidir se mantém.
 - [ ] Conferir nos logs do Render a linha `[rate-limit] IP do cliente obtido via ...` (não pode ser
       "conexão direta").
 - [ ] Apagar as **38 imagens órfãs** do Supabase (61 MB, exclusão manual pelo painel). Lista e
