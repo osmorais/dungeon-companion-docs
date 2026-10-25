@@ -273,6 +273,9 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   baixo, botão do Google em 320 px) foram testados no iPhone SE e **dispensados**, e o da animação
   sem movimento reduzido também ficou de fora. Sugestão: entrar com e-mail **ou** nome de usuário.
   → `backlog.md`
+- **2026-10-25** — E-mail de recuperação de senha enviado por um **script PHP no próprio site**
+  (Hostinger, mesmo servidor do e-mail), chamado pela api por HTTPS com assinatura — e não pelo
+  plano pago do Render nem por um serviço de e-mail por API (terceiro novo). → `conceitos/email.md`
 
 ## Privacidade e segurança
 

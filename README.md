@@ -34,6 +34,7 @@ passos" de lá).
 | [`conceitos/nome-de-usuario.md`](dungeon-companion/conceitos/nome-de-usuario.md) | conceito | Nome de usuário único (1.9.0): regras, sugestões, API, escolha no primeiro acesso, mesa e ranking |
 | [`conceitos/tela-inicial.md`](dungeon-companion/conceitos/tela-inicial.md) | conceito | Tela inicial pública (1.8.0): rotas e sessão expirada, seções, card de exemplo, barra fixa (1.8.1) |
 | [`conceitos/monstros.md`](dungeon-companion/conceitos/monstros.md) | conceito | Bestiário do livro: tabela `monster` (428 fichas), formato do JSON, como foi gerado, correções |
+| [`conceitos/email.md`](dungeon-companion/conceitos/email.md) | conceito | E-mail de recuperação de senha (1.12.1): api → script PHP no site (Hostinger), assinatura, configuração fora do git, como testar |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |

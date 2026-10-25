@@ -686,6 +686,11 @@ mostra a versão atual e todas as versões.
   chave vazia ignorada; valores dos limites; `clientIp` (Cloudflare → último XFF → conexão).
 - `auth.service.unit.ts`: `hashResetToken` (SHA-256); esqueci a senha grava só o hash e devolve o
   token puro; redefinir busca/consome pelo hash; token inválido.
+- `email.service.unit.ts` (1.12.1): assinatura HMAC de `"<timestamp>.<corpo>"`; manda só e-mail e
+  token, assinados e com timestamp atual, pro script do site; `MAIL_RELAY_URL`; sem
+  `MAIL_RELAY_SECRET` falha sem chamar; erro do script vira mensagem com o status, sem o e-mail.
+  O script PHP não tem teste unitário (não há PHP na máquina): testado no ar, sem enviar e-mail
+  (ver `email.md`).
 
 ### Web — reducer de eventos do socket (`session-event.reducer.spec.ts`)
 

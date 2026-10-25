@@ -270,6 +270,15 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   conferir `client.storage.getBucket()` / `updateBucket({public: true})`.
 - Angular `outputPath` sem a subpasta `browser/`, pro deploy na Hostinger funcionar.
 - O `release-notes.spec.ts` confere o `package.json` do web; o da api é conferido **à mão**.
+- O **Render bloqueia SMTP** (portas 25/465/587): e-mail direto da api não sai, e o erro só
+  aparece como timeout/conexão recusada. Por isso o e-mail sai por um script PHP no site
+  (`conceitos/email.md`). HTTPS de saída funciona.
+- A Hostinger **executa PHP** no site do web: `.php` em `public/` vai pro ar junto com o build
+  (conferido em 2026-10-25). Arquivo com segredo **não** vai em `public/` (é publicado e está no
+  git): fica na pasta que contém o `public_html`, a do aviso `DO_NOT_UPLOAD_HERE` (lá não é
+  servido pelo site, mas o PHP lê).
+- O site responde **200 com a página do Angular pra qualquer endereço** que não existe (até
+  `algo.php`): um 200 não prova que um arquivo está no ar — conferir o conteúdo.
 - Nesta máquina (WSL) o **`gh` não está instalado**. Pra ler ou testar um PR: `git fetch origin
   pull/N/head:pr-N` e uma worktree no scratchpad, com o `node_modules` do repo ligado por symlink
   quando o PR não muda dependência. Apagar a worktree e a branch local `pr-N` depois — o

@@ -35,9 +35,11 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
 - [ ] **PR #7 do web** (login/cadastro, do Carlos): esperando o autor corrigir. Ainda está como
-      1.11.1 — com o #6 na `main` (1.12.0), precisa virar **1.12.1** (versão, `package.json` dos
+      1.11.1 — com a `main` em 1.12.1, precisa virar **1.12.2** (versão, `package.json` dos
       dois repos e notas). Conferir se o comentário postado ficou só com os pontos que o usuário
       manteve (ver `decisoes.md`, 2026-10-25).
+- [ ] Tirar as variáveis `SMTP_*` do Render e do `.env` local da api: sem uso desde a 1.12.1
+      (o e-mail sai pelo script do site, ver [`conceitos/email.md`](conceitos/email.md)).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 

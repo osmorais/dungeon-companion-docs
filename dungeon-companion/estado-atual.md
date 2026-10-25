@@ -27,7 +27,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.12.0 (2026-10-25, menu de seções da tela inicial no celular e no tablet;
+- **Versão do sistema**: 1.12.1 (2026-10-25, e-mail de recuperação de senha de volta, enviado
+  pelo script do site na Hostinger — o Render bloqueia SMTP); antes, 1.12.0 (mesmo dia, menu de seções da tela inicial no celular e no tablet;
   com a 1.11.1, ajuste visual da tela inicial — as duas feitas por outro desenvolvedor, Carlos
   `kaduce2009@hotmail.com`, PR #6, com dois commits nossos por cima); antes, 1.11.0 (mesmo dia,
   ações de monstro mecânicas pro mestre e carta do monstro na revelação, no painel de combate e na
@@ -40,10 +41,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: web `3121763` (merge do PR #6, 1.11.1 `85db724` e 1.12.0 `eb62c0c` do
+- **Últimos commits**: api `b60cdb5` e web `c390035` (1.12.1, na `main`, com push; antes deles,
+  web `a2f107a` — teste temporário de PHP, removido no `c390035`). Antes: web `3121763` (merge do PR #6, 1.11.1 `85db724` e 1.12.0 `eb62c0c` do
   Carlos + nossos `72a0a43` e `02b5d2c`) e, por cima, `f7ab00b` (nota da correção da vitrine nas
-  notas da 1.12.0); api `46e399e` (só sobe a versão pra 1.12.0). `f7ab00b` e `46e399e` com push em
-  2026-10-25. Antes: api `bf7ac7e` e web `b7c7720` (1.11.0, push em 2026-10-25, api antes do web; as
+  notas da 1.12.0); api `46e399e` (só sobe a versão pra 1.12.0). Antes: api `bf7ac7e` e web `b7c7720` (1.11.0, push em 2026-10-25, api antes do web; as
   duas migrações rodaram em produção antes), docs `5ccfa25`. Antes: api
   `1b1c62d` (merge do PR #3, versão 1.10.0 `395e250`), web `4c0d64b` (merge do PR #5, versão
   1.10.0 `a628317`), docs pelo PR #1. Na api, da 1.8.0 à 1.8.3 só sobe o
@@ -52,9 +53,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PR aberto no web**: **#7** do Carlos (redesenho do login e do cadastro), ainda como 1.11.1 —
-  com o #6 já na `main`, precisa virar **1.12.1** (versão, `package.json` dos dois repos e notas).
+  com a `main` em 1.12.1, precisa virar **1.12.2** (versão, `package.json` dos dois repos e notas).
   Review entregue ao usuário como comentário pra ele postar; sem commit nosso.
-- **Testes**: api 505 (`npm run test:unit`), web 643 (`npm run test:run`) — na 1.12.0 —
+- **Testes**: api 510 (`npm run test:unit`), web 643 (`npm run test:run`) — na 1.12.1 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -75,6 +76,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
+| E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1) | [`conceitos/email.md`](conceitos/email.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 

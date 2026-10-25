@@ -2,7 +2,7 @@
 resumo: Plano de resposta a incidente de segurança (LGPD art. 48) + registro de incidentes.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-16
+atualizado: 2026-10-25
 ---
 
 # Forja Arcana — Plano de resposta a incidente de segurança
@@ -26,7 +26,7 @@ indevido ou perda de dados pessoais dos usuários. Ver `dungeon-companion/concei
 
 Qualquer evento que comprometa a **confidencialidade, integridade ou disponibilidade** de dados
 pessoais. Exemplos neste sistema:
-- vazamento do `.env` / de alguma credencial (JWT_SECRET, senha do banco, chave do Supabase, SMTP);
+- vazamento do `.env` / de alguma credencial (JWT_SECRET, senha do banco, chave do Supabase, segredo ou senha do e-mail);
 - acesso indevido ao banco Neon, ao bucket do Supabase ou ao painel do Render/Hostinger;
 - falha de código que exponha dados de um usuário a outro (ex.: o endpoint que listava todas as
   sessões, corrigido em 2026-10-14);
@@ -41,7 +41,8 @@ Trocar as credenciais possivelmente expostas (no Render → Environment, e no `.
 | `JWT_SECRET` | Render | **Desloga todo mundo** (tokens antigos param de valer) — desejável se houver suspeita de token roubado |
 | `PGPASSWORD` | Neon → Roles | Atualizar no Render antes de reiniciar |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → API settings | Atualizar no Render |
-| `SMTP_PASS` | Hostinger → e-mail | Atualizar no Render |
+| Senha do e-mail do site | Hostinger → e-mail | Atualizar o `smtp_pass` do `forja-mail-config.php` (Hostinger, fora do `public_html`) — desde a 1.12.1 a api não usa mais `SMTP_PASS` |
+| `MAIL_RELAY_SECRET` | gerar outro (`openssl rand -hex 32`) | Pôr no Render **e** no `'secret'` do `forja-mail-config.php`; até os dois baterem, o e-mail de recuperação não sai. Ver `conceitos/email.md` |
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` | painel de cada um | Hoje sem uso (IA desativada) — revogar se vazou |
 | Senhas dos painéis (Render, Neon, Supabase, Hostinger, GitHub) | cada painel | Ativar 2FA onde não tiver |
 
