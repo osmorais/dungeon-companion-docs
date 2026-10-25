@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 # SessionStart: injeta o brief do Dungeon Companion (estado atual, backlog, frescor) no contexto.
-# Só age quando a sessão abre em ~/projects, na api, no web ou em ~/projects/docs.
+# Só age quando a sessão abre na pasta dos projetos, na api, no web ou nos docs.
+# Pastas: ~/.claude/dungeon-companion.env (PROJECTS_DIR, DOCS_DIR); sem ele, ~/projects e ~/projects/docs.
 
-P="$HOME/projects"
-DOCS="$P/docs/dungeon-companion"
+CONF="$HOME/.claude/dungeon-companion.env"
+# shellcheck disable=SC1090
+[ -f "$CONF" ] && . "$CONF"
+P="${PROJECTS_DIR:-$HOME/projects}"
+DOCS_ROOT="${DOCS_DIR:-$P/docs}"
+DOCS="$DOCS_ROOT/dungeon-companion"
 cwd=$(python3 -I -c 'import json,sys
 try: print(json.load(sys.stdin).get("cwd",""))
 except Exception: print("")' 2>/dev/null)
 [ -z "$cwd" ] && cwd="$PWD"
 
 case "$cwd" in
-  "$P"|"$P/dungeon-companion-api"*|"$P/dungeon-companion-web"*|"$P/docs"*) ;;
+  "$P"|"$P/dungeon-companion-api"*|"$P/dungeon-companion-web"*|"$DOCS_ROOT"*) ;;
   *) exit 0 ;;
 esac
 [ -f "$DOCS/estado-atual.md" ] || exit 0
 
-echo "=== Brief do Dungeon Companion (hook SessionStart; docs em ~/projects/docs) ==="
-[ "$cwd" = "$P" ] && echo "(Sessão aberta em ~/projects: este brief só vale se a tarefa for do Dungeon Companion.)"
+echo "=== Brief do Dungeon Companion (hook SessionStart; docs em $DOCS_ROOT) ==="
+[ "$cwd" = "$P" ] && echo "(Sessão aberta em $P: este brief só vale se a tarefa for do Dungeon Companion.)"
 echo
 
 # Frescor: commits anotados no estado-atual × HEAD real dos repos
@@ -33,8 +38,8 @@ for repo in api web; do
   dirty=$(git -C "$dir" status --porcelain 2>/dev/null | wc -l)
   [ "$dirty" -gt 0 ] && echo "AVISO: $repo tem $dirty arquivo(s) com mudança sem commit."
 done
-ddirty=$(git -C "$P/docs" status --porcelain 2>/dev/null | wc -l)
-[ "$ddirty" -gt 0 ] && echo "AVISO: ~/projects/docs tem $ddirty arquivo(s) sem commit."
+ddirty=$(git -C "$DOCS_ROOT" status --porcelain 2>/dev/null | wc -l)
+[ "$ddirty" -gt 0 ] && echo "AVISO: os docs ($DOCS_ROOT) têm $ddirty arquivo(s) sem commit."
 echo
 
 echo "--- estado-atual.md ---"
