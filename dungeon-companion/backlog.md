@@ -150,6 +150,18 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       os cantos ficaram maiores (~27–34 px contra ~22 px) e os espinhos das laterais se repetem
       conforme a altura do card.
 
+## Monstros
+
+- [ ] Monstros catalogados/em sessão antes da 1.10.0 continuam com a ficha em inglês da dnd5eapi
+      (slugs em inglês, que não existem na tabela `monster`). Decidir se migra (casar por nome) ou
+      deixa como está — a fase mecânica vai precisar dos campos estruturados.
+- [ ] **Ações de monstro mecânicas na sessão** (como as dos jogadores), só o mestre controla:
+      ataque, dano, CD, recarga/usos por dia e ações lendárias a partir dos campos estruturados
+      (`attack`, `damage`, `dc`, `usage`, `multiattack`). Dano com `note` é condicional ou
+      alternativo (duas mãos etc.) — tratar à parte.
+- [ ] Mostrar na tela do monstro o que hoje o site não lê: reações, ações lendárias, covil,
+      resistências/imunidades, sentidos, idiomas, testes de resistência e perícias.
+
 ## Tela inicial
 
 Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).

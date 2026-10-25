@@ -248,6 +248,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   sem diferenciar maiúsculas, com sugestões quando em uso. Mesa (jogador e mestre) e ranking mostram
   o nome de usuário; dá pra trocar em Minha Conta. Contas antigas e do Google escolhem no próximo
   acesso (não é gerado automaticamente). (1.9.0) → `conceitos/nome-de-usuario.md`
+- **2026-10-24** — Monstros do livro em **tabela de referência própria** (`monster`), não em
+  `monster_catalog` com `user_id` nulo; `monster_catalog` continua sendo o bestiário de cada
+  mestre. Depois, a dnd5eapi sai e as ações de monstro viram mecânicas na sessão (só o mestre
+  controla). → `conceitos/monstros.md`
+- **2026-10-24** — Quando o Manual dos Monstros em português diverge do original (habilidade que
+  falta, número errado), **vale o original**; o texto fica em português. → `conceitos/monstros.md`
 
 ## Privacidade e segurança
 
