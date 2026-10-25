@@ -37,8 +37,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `bf7ac7e` e web `b7c7720` (versão 1.11.0, na `main`, **sem push**
-  ainda — subir a api antes do web; as duas migrações já rodaram em produção). Antes: api
+- **Últimos commits**: api `bf7ac7e` e web `b7c7720` (versão 1.11.0, na `main`, push em
+  2026-10-25, api antes do web; as duas migrações rodaram em produção antes), docs `5ccfa25`. Antes: api
   `1b1c62d` (merge do PR #3, versão 1.10.0 `395e250`), web `4c0d64b` (merge do PR #5, versão
   1.10.0 `a628317`), docs pelo PR #1. Na api, da 1.8.0 à 1.8.3 só sobe o
   número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
