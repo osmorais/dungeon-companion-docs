@@ -267,6 +267,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-25** — Imagem padrão de monstro nova (cena com vários monstros, arte do usuário) **no
   site todo**, não só na carta. Aviso de revelação fica **30 s** (pra ler a descrição) e o de
   derrota 8 s. → `conceitos/cartas.md`
+- **2026-10-25** — Review do PR #7 (login/cadastro): bloqueiam o merge o **envio duplo** no login e o
+  **preenchimento automático** de senha; ficam também SCSS duplicado, canto decorativo fixo, versão
+  só no web, notas sem o cadastro e `autofocus`. Os pontos de **layout** (cadastro no celular
+  baixo, botão do Google em 320 px) foram testados no iPhone SE e **dispensados**, e o da animação
+  sem movimento reduzido também ficou de fora. Sugestão: entrar com e-mail **ou** nome de usuário.
+  → `backlog.md`
 
 ## Privacidade e segurança
 

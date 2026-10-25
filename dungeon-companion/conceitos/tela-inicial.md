@@ -1,8 +1,8 @@
 ---
-resumo: Tela inicial pública (/ pra visitantes, 1.8.0): rotas, seções, card de exemplo, vitrine de cartas e o fluxo de sessão expirada (1.8.1).
+resumo: Tela inicial pública (/ pra visitantes, 1.8.0): rotas, seções, card de exemplo, vitrine de cartas, o fluxo de sessão expirada (1.8.1) e o menu de seções no celular (1.12.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Tela inicial (visitantes)
@@ -57,3 +57,20 @@ feita por outro desenvolvedor) e foi ajustada na **1.8.1** (web `d82da91` e `f2c
   nome.
 - Tom à direita do card, espelhado (`scaleX(-1)`), com o balão em cima.
 - Texto pra visitante sem citar a marca D&D (decisão em `decisoes.md`).
+
+## Menu no celular (1.11.1 e 1.12.0, PR #6, merge `3121763`)
+
+Feito por outro desenvolvedor (Carlos; 1.11.1 `85db724`, 1.12.0 `eb62c0c`), com dois commits
+nossos por cima depois do review (`72a0a43`, `02b5d2c`). Também: o CRIAR CONTA do topo some no
+celular de verdade (`.lp-hide-mobile` dentro do `@media`), ENTRAR com 44 px de altura e a seção
+"Para toda a companhia" na grade de 4 colunas.
+
+- **Menu de seções abaixo de 1024 px**: botão de três barras (vira X). É o **mesmo** `.lp-nav` do
+  desktop, com a classe `is-open`, que vira um painel abaixo da barra, com fundo sólido. Acima de
+  1024 px volta a ser a barra horizontal. Fecha ao escolher uma seção, com Esc, tocando fora da
+  barra e ao alargar a janela (`MENU_BREAKPOINT_PX` no `.ts`, igual ao `@media` do SCSS).
+- **Dado "CRÍTICO!"** preso ao card (`.lp-sample-wrap`): pendurado pra fora no desktop, dentro do
+  canto do card no celular; o card encolhe em telas muito estreitas.
+- **Vitrine de cartas** com `isolation: isolate` (ver `gotchas.md`, "Web"): a carta da vez não
+  passa mais por cima da barra do topo.
+

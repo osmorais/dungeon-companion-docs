@@ -34,6 +34,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
+- [ ] **PR #7 do web** (login/cadastro, do Carlos): esperando o autor corrigir. Ainda está como
+      1.11.1 — com o #6 na `main` (1.12.0), precisa virar **1.12.1** (versão, `package.json` dos
+      dois repos e notas). Conferir se o comentário postado ficou só com os pontos que o usuário
+      manteve (ver `decisoes.md`, 2026-10-25).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 
@@ -182,6 +186,11 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 ## Tela inicial
 
 Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
+
+- [ ] **Entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7): o campo
+      do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail ou
+      `LOWER(username)`, com a mesma mensagem de erro nos dois casos) e resolve o preenchimento
+      automático do gerenciador de senhas (o cadastro salva o nome de usuário como identificador).
 
 - [ ] Conferir no navegador (1.8.1): logo grande na abertura empurra os botões pra baixo em
       notebook baixo; Tom maior pode cobrir o canto do card, principalmente no celular.

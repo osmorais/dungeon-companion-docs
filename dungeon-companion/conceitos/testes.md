@@ -420,6 +420,14 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   `auth.service.spec.ts`, `signup.component.spec.ts`, `account.component.spec.ts` e
   `loading-states.spec.ts` (entrar/criar sessão sem nome).
 
+### Menu da tela inicial no celular (2026-10-25, versão 1.12.0)
+
+- Web `landing.component.spec.ts`: menu começa fechado e alterna; escolher uma seção fecha; Esc,
+  toque fora da barra do topo e alargar além de 1024 px fecham (dentro da barra, não); renderizado,
+  com a página presa ao documento: um menu só (`#lp-nav` com `is-open`), todas as seções, rola
+  até a escolhida e fecha. Sem trocar o `scrollIntoView` do protótipo global (vazava pros outros
+  testes).
+
 ### Tela inicial e sessão expirada (2026-10-24, versão 1.8.1)
 
 - `auth.guard.spec.ts`: com o `AuthService` real e o `/auth/me` respondendo 401 ou 500, o

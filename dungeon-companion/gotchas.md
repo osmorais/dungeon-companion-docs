@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Gotchas
@@ -242,6 +242,12 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   WSL/Windows). Não commitar.
 - Tabelas duplicadas entre web e api (espaços de magia, armaduras, listas de magia por classe,
   perícias por classe) têm testes nos dois lados com os mesmos valores: mudou um, muda o outro.
+- **z-index empatado com uma barra fixa**: na tela inicial a carta da vez da vitrine tinha
+  z-index 50 (inline, `zIndex()` do carrossel), o mesmo da `.lp-topbar` sticky — empate, quem vem
+  depois na página ganha, e a carta passava por cima da barra ao rolar (desde a 1.8.0, achado
+  em 2026-10-25). Componente com z-index internos altos ganha `isolation: isolate` no contêiner,
+  pra a ordem valer só lá dentro. Mesma família: `backdrop-filter` num filho de um elemento que
+  já tem `backdrop-filter` não desfoca no Chromium — usar fundo sólido.
 
 ## Sessão em tempo real / permissões
 
@@ -264,6 +270,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   conferir `client.storage.getBucket()` / `updateBucket({public: true})`.
 - Angular `outputPath` sem a subpasta `browser/`, pro deploy na Hostinger funcionar.
 - O `release-notes.spec.ts` confere o `package.json` do web; o da api é conferido **à mão**.
+- Nesta máquina (WSL) o **`gh` não está instalado**. Pra ler ou testar um PR: `git fetch origin
+  pull/N/head:pr-N` e uma worktree no scratchpad, com o `node_modules` do repo ligado por symlink
+  quando o PR não muda dependência. Apagar a worktree e a branch local `pr-N` depois — o
+  `/code-review` também deixa uma cópia (`prN`).
 
 ## Conteúdo do livro
 
