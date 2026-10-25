@@ -254,6 +254,19 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   controla). → `conceitos/monstros.md`
 - **2026-10-24** — Quando o Manual dos Monstros em português diverge do original (habilidade que
   falta, número errado), **vale o original**; o texto fica em português. → `conceitos/monstros.md`
+- **2026-10-25** — Ações de monstro mecânicas em **três fases** (rolar e aplicar; usos e vez do
+  monstro; lendárias, reações e covil), **todas antes do commit**, numa versão só (1.11.0). Monstro
+  antigo da dnd5eapi fica só em texto, com aviso pra catalogar de novo. → `conceitos/monstros.md`
+- **2026-10-25** — Monstro escondido rola **oculto por padrão**; revelado, público; o mestre troca
+  em cada rolagem. → `conceitos/monstros.md`
+- **2026-10-25** — **Carta do monstro** no aviso de revelação (no estilo do lançamento, carta maior,
+  mesmo verso das cartas), no painel de combate e explodindo na derrota. A carta mostra **só tipo e
+  tamanho** (medalhão "?"), sem números de combate, porque vai pra mesa inteira. → `conceitos/cartas.md`
+- **2026-10-25** — Descrição (lore) dos **428** monstros, **inspirada no livro mas com texto
+  próprio**. → `conceitos/monstros.md`
+- **2026-10-25** — Imagem padrão de monstro nova (cena com vários monstros, arte do usuário) **no
+  site todo**, não só na carta. Aviso de revelação fica **30 s** (pra ler a descrição) e o de
+  derrota 8 s. → `conceitos/cartas.md`
 
 ## Privacidade e segurança
 

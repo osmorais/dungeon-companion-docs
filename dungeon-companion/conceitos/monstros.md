@@ -1,5 +1,5 @@
 ---
-resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, correções e próximos passos.
+resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro.
 tipo: conceito
 status: ativo
 atualizado: 2026-10-25
@@ -24,9 +24,67 @@ Api `395e250` (merge `1b1c62d`, PR #3), web `a628317` (merge `4c0d64b`, PR #5).
   monstro) e `monsterSpeedText` (`pairar: true` vira "pairar").
 - A **dnd5eapi saiu** (`SrdMonsterService` apagado na 1.10.0). Monstros catalogados antes ficam
   com a ficha em inglês da API (chaves iguais, então as telas continuam mostrando).
-- O site lê do `data_snapshot` só: `name`, `size`, `type`, `alignment`, `armor_class[0].value`,
-  `hit_points`, `hit_dice`, `speed` (chave: valor), os 6 atributos, `challenge_rating`, `xp`,
-  `special_abilities` e `actions` (`name`/`desc`).
+- O site lê do `data_snapshot`: `name`, `size`, `type`, `alignment`, `armor_class[0].value`,
+  `hit_points`, `hit_dice`, `speed` (chave: valor), os 6 atributos, `challenge_rating`, `xp` e,
+  desde a 1.11.0, os campos estruturados das habilidades e as defesas/sentidos (abaixo).
+
+## Ações mecânicas na mesa (1.11.0)
+
+Api `bf7ac7e`, web `b7c7720`. Só o mestre vê a ficha do monstro na mesa, então tudo isto é dele.
+Feito em três fases (rolar e aplicar; usos e vez do monstro; lendárias, reações e covil), entregues
+juntas na 1.11.0.
+
+- **Ficha da mesa** (`src/app/monster-actions/`, web): `monster-actions.ts` converte cada habilidade
+  estruturada num botão que abre **o mesmo modal de rolagem dos jogadores**:
+  - `attack` → ATACAR (d20 + bônus; acertou → dano no mesmo modal, crítico no 20 dobra os dados);
+  - `dc` → RESISTÊNCIA ("CD 13 de Destreza", rola o dano e o mestre aplica cheio ou metade/nada
+    por alvo). Ataque com veneno depois do acerto (Aranha Gigante) vira dois botões, o ataque e
+    "Mordida, resistência"; dano extra no acerto (chicote do Balor) fica num ataque só, com a CD
+    como lembrete (`splitAttackDamage`, conferido nas 30 fichas com esse caso);
+  - só dano → ROLAR DANO; dano com `note` (duas mãos, se agarrado) aparece como lembrete, sem somar;
+  - TESTES: as 6 resistências (bônus da ficha ou modificador), os 6 atributos e as perícias.
+- **Aplicar**: em jogadores, NPCs e outros monstros, vários de uma vez, com as defesas dos
+  personagens (Fúria, raça, Evasão, Esquiva Sobrenatural). Ao terminar a rolagem, a ficha reabre
+  com o PV atual.
+- **Visibilidade**: monstro escondido rola **oculto** por padrão, revelado rola público; o mestre
+  troca no próprio modal (o PÚBLICO/OCULTO deixou de ser só da rolagem livre).
+- **Usos** (`monster_session.action_state`, JSONB; regra pura em `src/services/monster-action-state.ts`
+  da api, `PATCH /api/game-session/monster-session/{id}/action-state`, só o dono da sessão; evento
+  `monster_action_state_updated`, só pro mestre):
+  - recarga (gasta ao usar; o **servidor** rola o d6 no início do turno do monstro e a ficha mostra
+    o resultado), por dia e por descanso; ↺ devolve um uso; DESCANSO restaura tudo;
+  - ações lendárias: contador por rodada (`legendary_count`, padrão 3), custo 1 ou 2, repostas no
+    turno do monstro; reação: uma por rodada;
+  - o gasto vai antes da rolagem: se a api recusar (422, ex.: ainda recarregando), o modal não abre.
+- **Vez do monstro**: `CombatService.onTurnStart` (api) roda nos três pontos em que a vez muda. No
+  web, a ficha do monstro abre sozinha pro mestre na vez dele, com faixa e FINALIZAR TURNO.
+- **Multiataque guiado**: "Mordida 0/1, Garra 0/2", cada um rolando pelo botão do ataque.
+- **Covil** (29 fichas com `lair_actions`): botão NO COVIL / SAIU DO COVIL (`in_lair`). Com o
+  monstro no covil, o mestre recebe o lembrete "CONTAGEM 20: AÇÕES DE COVIL" quando a vez passa de
+  quem tem 20+ pra quem tem menos (perde empates), ou na virada de rodada se ninguém tem 20
+  (`crossedLairCount`, `session-panel/turn-transition.ts`). Recarregar a página não repete.
+- **Defesas e sentidos** na ficha: vulnerabilidades, resistências, imunidades (dano e condição),
+  sentidos e idiomas — só as linhas que a ficha tem.
+- **Ficha antiga** (dnd5eapi, sem campos estruturados): só texto, com o aviso pra catalogar de novo
+  pelo bestiário (`isMechanicalStatBlock`).
+- **Segurança** (junto, na 1.11.0): rolagem e anúncio de magia **sem personagem** passaram a ser só
+  do mestre (403 pro jogador). Antes um jogador conseguia registrar rolagem com qualquer nome
+  ("Goblin", o mestre).
+
+## Descrição (lore) e carta do monstro (1.11.0)
+
+- **`monster.lore`** (TEXT): 2 a 3 frases por monstro, os 428, escritas na sessão de 2026-10-25,
+  **inspiradas no livro, mas com texto próprio** (decisão do usuário). Sem números de combate. No
+  seed, na linha do INSERT de `monster`. As bestas e os NPCs comuns ficaram mais curtos e simples.
+- A api acha a descrição **pela slug** (`monster_session.monster_api_slug`), não pela cópia da
+  ficha — vale pra monstros que já estavam nas mesas. Ficha antiga da dnd5eapi fica sem.
+- `monsterRevealCard` (`src/services/monster-reveal.ts`, api): tipo, tamanho e lore. Vai em
+  `monster_revealed`, em `revealed_monsters` (o que o jogador recebe, sem PV/CA) e, sem lore, em
+  `monster_defeated`.
+- **A carta** (`monsterToCard`, `game-card/monster-card.ts`, web): a mesma moldura das magias e
+  armas; imagem do mestre ou a padrão (`assets/monster.png`, trocada na 1.11.0 por uma cena com
+  vários monstros, 820 px); faixa "TIPO · TAMANHO"; medalhão "?"; descrição no pergaminho. Detalhe
+  dos avisos em [`cartas.md`](cartas.md), "Carta do monstro".
 
 ## Tabela `monster` (bestiário de referência)
 

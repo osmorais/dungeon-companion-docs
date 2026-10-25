@@ -154,15 +154,30 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 ## Monstros
 
+- [ ] **Decidir o papel do catálogo do mestre** depois do bestiário (1.10.0). Catalogar existia pra
+      trazer a ficha da dnd5eapi; hoje só serve pra personalizar (nome, imagem) e como atalho, mas
+      continua obrigatório pra pôr monstro na mesa (o "catalogar agora" da sessão cria entrada como
+      efeito colateral). Proposta (2026-10-25): "+ ADICIONAR" com abas BESTIÁRIO (direto da tabela
+      `monster`, sem catalogar) e MEUS MONSTROS; catálogo vira "Meus monstros" (personalizar:
+      nome editável + imagem). Em aberto: tela só de consulta ao bestiário e o nome ("Meus
+      monstros" × "Catálogo"). Sem mudança no banco (`monster_session.data_snapshot` já é cópia).
 - [ ] Monstros catalogados/em sessão antes da 1.10.0 continuam com a ficha em inglês da dnd5eapi
       (slugs em inglês, que não existem na tabela `monster`). Decidir se migra (casar por nome) ou
-      deixa como está — a fase mecânica vai precisar dos campos estruturados.
-- [ ] **Ações de monstro mecânicas na sessão** (como as dos jogadores), só o mestre controla:
-      ataque, dano, CD, recarga/usos por dia e ações lendárias a partir dos campos estruturados
-      (`attack`, `damage`, `dc`, `usage`, `multiattack`). Dano com `note` é condicional ou
-      alternativo (duas mãos etc.) — tratar à parte.
-- [ ] Mostrar na tela do monstro o que hoje o site não lê: reações, ações lendárias, covil,
-      resistências/imunidades, sentidos, idiomas, testes de resistência e perícias.
+      deixa como está. Desde a 1.11.0 eles ficam **sem as ações mecânicas** (só texto, com aviso
+      pra catalogar de novo) e **sem descrição** na carta, com tipo e tamanho em inglês.
+- [ ] **Resistência dos monstros ao dano dos jogadores**: hoje o dano entra cheio num monstro
+      resistente a fogo. A ficha já tem as listas (`damage_resistances` etc.), em texto do livro.
+- [ ] Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o modal corta o dano
+      inteiro pela metade (mesmo comportamento das magias). Resolver junto com o item acima.
+- [ ] Bestiário: o "Cuspir Veneno" da Naga Guardiã está marcado como ataque — aparece ATACAR sem
+      dano no acerto, mais o botão de resistência com o dano. Corrigir no seed e em produção.
+- [ ] Lembrete do covil usa a iniciativa de quem joga, sem olhar quem **atrasou** o turno: com
+      atraso na rodada, pode repetir ou pular.
+- [ ] Conferir no navegador (1.11.0): ficha do monstro com as ações, aviso de revelação (carta
+      caindo e virando, 30 s), carta no painel de combate e a explosão da derrota.
+- [ ] Opcional: revisar as descrições das bestas e NPCs comuns (lobo, guarda, plebeu), mais curtas
+      e simples que as dos monstros icônicos.
+- [ ] Opcional: apagar `assets/broken.png` do web, sem uso desde a 1.11.0.
 
 ## Tela inicial
 

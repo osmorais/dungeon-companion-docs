@@ -375,6 +375,27 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
 
+### Ações de monstro e carta do monstro (2026-10-25, versão 1.11.0)
+
+- Api `monster-action-state.unit.ts` (novo): usar/restaurar recarga e usos por dia/descanso,
+  limite estourado (erro), lendárias com custo e teto por rodada, reação uma vez, covil, descanso,
+  d6 do início do turno (recarrega com o mínimo, ficha mudada some da lista), validação do corpo.
+  `combat.service.unit.ts`: o início do turno de um monstro rola a recarga e avisa o mestre.
+  `game-session.service.unit.ts`: rota de usos só pro mestre; rolagem sem personagem só do mestre
+  (403 pro jogador); revelar, lista de revelados e derrota com a carta (tipo, tamanho, lore), sem
+  PV/CA. `monster-reveal.unit.ts` (novo): a carta a partir da ficha e do lore.
+- Web `monster-actions/monster-actions.spec.ts` (novo): conversão das fichas reais (Goblin, Aranha
+  Gigante, Balor, sopro de dragão), dados fixos, ataque × resistência, disponibilidade dos usos.
+  `monster-actions.component.spec.ts` (novo): botões, recarga, USAR, multiataque, lendárias,
+  descanso, d6 da recarga, testes, defesas e sentidos, covil, ficha antiga.
+  `roll-modal.component.spec.ts`: PÚBLICO/OCULTO fora da rolagem livre. `turn-transition.spec.ts`:
+  `crossedLairCount` (contagem 20, empate, virada de rodada). `session-panel.component.spec.ts`:
+  alvos do monstro, ficha fecha e reabre na rolagem, lembrete do covil, fila do aviso de revelação.
+- Web `game-card/monster-card.spec.ts`, `monster-reveal/*.spec.ts` (novos): carta do monstro
+  (imagem padrão, faixa, "?", lore), aviso de revelação, carta do painel com a tela cheia e a
+  explosão da derrota (fases com timers falsos). `session-event.reducer.spec.ts`: revelado com a
+  carta.
+
 ### Bestiário do livro (2026-10-24, versão 1.10.0)
 
 - Api `monster-catalog.service.unit.ts`: lista do bestiário, ficha pelo slug, slug fora do

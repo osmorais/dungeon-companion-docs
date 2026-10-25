@@ -1,8 +1,8 @@
 ---
-resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0) e o aviso de lançamento de magia da mesa (1.5.0): componentes, imagens, eventos e fluxo.
+resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-25
 ---
 
 # Dungeon Companion — Cartas e lançamento de magia
@@ -213,3 +213,28 @@ abrem a **"mão"** em tela cheia, como em card games (Yu-Gi-Oh).
 - **Botões da mão** (`.pa-hand-actions`, só na mão): ATACAR carmesim com espadas, LANÇAR dourado com
   o grimório; grandes, relevo de pixel art (afunda ao apertar), brilho pulsando.
 - A ficha continua com as cartas em grade (os componentes servem pra ela, se quiser).
+
+## Carta do monstro (1.11.0, web `b7c7720`, api `bf7ac7e`)
+
+Mesma carta (`app-game-card`) e mesmo verso das magias e armas. O conteúdo vem de `monsterToCard`
+(`game-card/monster-card.ts`): imagem do mestre ou a padrão, "TIPO · TAMANHO", medalhão "?" e a
+descrição (lore) — sem números de combate, porque os avisos vão pra mesa inteira (decisão do
+usuário). De onde vêm os dados: [`monstros.md`](monstros.md), "Descrição (lore) e carta do monstro".
+Os componentes ficam em `src/app/monster-reveal/`, com SCSS próprio (o da sessão está perto do
+limite).
+
+- **Revelação** (`app-monster-reveal-notice`): no estilo do aviso de lançamento — fundo escuro,
+  moldura do tema, "UM MONSTRO FOI REVELADO!", a carta **maior** que a do lançamento
+  (`clamp(230px, 74vw, 340px)`, `size="full"`, com LER TUDO) caindo de costas e virando (mesma
+  animação `cs-throw`, copiada como `mrn-throw`), e "<nome> SURGE DAS SOMBRAS". Fica **30 s**
+  (`MONSTER_ANNOUNCEMENT_MS`; eram 5 s antes da carta, 15 s na primeira versão). Vários monstros
+  entram em fila, um por vez.
+- **Painel de combate** (`app-monster-spotlight-card`): o monstro em destaque (`spotlightMonster`,
+  celular e desktop) é a carta pequena; tocar abre a carta em tela cheia (`app-card-viewer`) com a
+  descrição. Substituiu a imagem redonda.
+- **Derrota** (`app-monster-defeat-notice`): a carta cai, treme e racha em brasa
+  (`DEFEAT_CRACK_AT_MS` 450 ms), e com 1,6 s (`DEFEAT_BOOM_AT_MS`) explode — clarão, anel de fogo,
+  tremor, os 12 cacos do "errou" (`SHARDS` de `cast-shatter`) voando pra fora do centro, cada um com
+  a carta inteira recortada, e brasas; depois o nome e FOI DERROTADO! carimbados. Fica **8 s**
+  (`MONSTER_DEFEATED_TOAST_MS`). Movimento reduzido: carta em cinza, sem explosão. O
+  `assets/broken.png` (rachadura por cima da foto, aviso antigo) ficou sem uso.

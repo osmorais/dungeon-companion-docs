@@ -38,6 +38,7 @@ passos" de lá).
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
 | [`procedimentos/artes-cartas.md`](dungeon-companion/procedimentos/artes-cartas.md) | procedimento | Prompts do ChatGPT pras artes das cartas de magia e de arma, e onde salvar |
+| [`procedimentos/artes-monstros.md`](dungeon-companion/procedimentos/artes-monstros.md) | procedimento | Prompts do ChatGPT pras imagens dos monstros do bestiário (medalhão em pixel art), em levas pelos mais usados |
 | [`historico/diario-2026-09-10_a_2026-10-18.md`](dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md) | historico | Diário de sessões (antigo `status.md`) |
 | [`historico/levelup-plan.md`](dungeon-companion/historico/levelup-plan.md) | historico | Plano e implementação do level-up (fases 1–3) |
 | [`historico/media-progress.md`](dungeon-companion/historico/media-progress.md) | historico | Implementação do bloco "Média" da auditoria, onda a onda |

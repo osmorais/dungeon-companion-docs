@@ -27,23 +27,25 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.10.0 (2026-10-24, catalogar monstro a partir do bestiário do livro,
-  sem a dnd5eapi — feita por outro desenvolvedor e entregue por PR, merge em 2026-10-25); antes, 1.9.0 (mesmo dia, nome de usuário único; antes, 1.8.3:
+- **Versão do sistema**: 1.11.0 (2026-10-25, ações de monstro mecânicas pro mestre e carta do
+  monstro na revelação, no painel de combate e na derrota); antes, 1.10.0 (2026-10-24, catalogar
+  monstro a partir do bestiário do livro, sem a dnd5eapi — feita por outro desenvolvedor e entregue
+  por PR, merge em 2026-10-25); 1.9.0 (mesmo dia, nome de usuário único; antes, 1.8.3:
   moldura nova dos cards no tema SOMBRIO; 1.8.2: SAIR leva pro login e código de mesa de exemplo
   `XXXXX`; 1.8.1: sessão expirada volta pra tela inicial, tela inicial renovada e fundo padrão no
   card) — notas em `/novidades`
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `1b1c62d` (merge do PR #3, versão 1.10.0 `395e250`), web `4c0d64b`
-  (merge do PR #5, versão 1.10.0 `a628317`), docs pelo PR #1 — todos na `main`. Merge da api antes
-  do web (o web novo chama `/api/monster-catalog/bestiary`). Na api, da 1.8.0 à 1.8.3 só sobe o
+- **Últimos commits**: api `bf7ac7e` e web `b7c7720` (versão 1.11.0, na `main`, **sem push**
+  ainda — subir a api antes do web; as duas migrações já rodaram em produção). Antes: api
+  `1b1c62d` (merge do PR #3, versão 1.10.0 `395e250`), web `4c0d64b` (merge do PR #5, versão
+  1.10.0 `a628317`), docs pelo PR #1. Na api, da 1.8.0 à 1.8.3 só sobe o
   número da versão. No web há dois commits soltos (`33bab41` cria e `a00fad9`
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **Testes**: api 485 (`npm run test:unit`), web 581 (`npm run test:run`) — conferidos na
-  revisão dos PRs da 1.10.0 —
+- **Testes**: api 505 (`npm run test:unit`), web 636 (`npm run test:run`) — na 1.11.0 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -58,13 +60,13 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Descrições de magia (361) | auditadas contra o livro | [`historico/spells-progress.md`](historico/spells-progress.md) |
 | LGPD | 16 itens técnicos feitos; faltam itens fora do código | [`conceitos/lgpd.md`](conceitos/lgpd.md) |
 | Quadro do Mestre (gaveta só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); gaveta de baixo com barra fixa na base, no celular (1.3.16) e no desktop (1.3.17) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
-| Cartas (magias e armas) e aviso de lançamento/ataque | magias em cartas (1.4.0), aviso único da mesa com as cartas (1.5.0), armas em cartas (1.6.0), ataque com arma no aviso (1.6.1), dano/cura aplicado dentro do aviso (1.7.1), aviso sincronizado pra todos com a rolagem dentro dele pra quem lança, quebra ao errar e saída de vitória (1.7.2) | [`conceitos/cartas.md`](conceitos/cartas.md) |
+| Cartas (magias e armas) e aviso de lançamento/ataque | magias em cartas (1.4.0), aviso único da mesa com as cartas (1.5.0), armas em cartas (1.6.0), ataque com arma no aviso (1.6.1), dano/cura aplicado dentro do aviso (1.7.1), aviso sincronizado pra todos com a rolagem dentro dele pra quem lança, quebra ao errar e saída de vitória (1.7.2); carta do monstro: aviso de revelação, destaque no painel de combate e explosão na derrota (1.11.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Avatar (personalizador e camadas de imagem) | abas com miniaturas (1.6.9), 8 penteados novos (1.6.9), tons de pele por raça (1.6.10); faltam barbas, roupas, chapéus e rostos | [`conceitos/avatar.md`](conceitos/avatar.md) |
 | Ranking global (feitos das mesas) | 12 categorias, contagem desde a 1.7.0, em lista (1.7.1), opção de sair em /conta | [`conceitos/ranking.md`](conceitos/ranking.md) |
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
-| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0) | [`conceitos/monstros.md`](conceitos/monstros.md) |
+| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
@@ -89,6 +91,13 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   Monstros. Uma transação, autorizado pelo usuário; lida pelo catálogo a partir da 1.10.0. 428 linhas,
   428 slugs; `schema-diff` vazio depois. O teste da sequência consumiu o id 429 (buraco sem
   efeito). → [`conceitos/monstros.md`](conceitos/monstros.md)
+- **2026-10-25**: coluna `monster_session.action_state` (JSONB, nula) — usos das ações do monstro
+  na mesa (1.11.0). Uma transação, antes do deploy da api, autorizado pelo usuário; 1 monstro em
+  mesa, com a coluna nula. `schema-diff` vazio depois.
+- **2026-10-25**: coluna `monster.lore` (TEXT) + descrição dos **428** monstros do bestiário
+  (1.11.0). Uma transação que só confirmava com 428 linhas atualizadas e 428 preenchidas,
+  autorizado pelo usuário, antes do deploy da api. `schema-diff` vazio depois. No seed, a
+  descrição fica na própria linha do INSERT de `monster`.
 
 ## LGPD
 
