@@ -277,6 +277,16 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   (Hostinger, mesmo servidor do e-mail), chamado pela api por HTTPS com assinatura — e não pelo
   plano pago do Render nem por um serviço de e-mail por API (terceiro novo). → `conceitos/email.md`
 
+- **2026-10-25** — Ação do monstro na **tela de lançamento**, com a carta do monstro agindo e a
+  **carta da ação com os números** (ataque, dano, CD — os dados já mostram). Rolagem de monstro
+  **escondido fica só com o mestre**: nada vai pra mesa. → `conceitos/monstros.md`
+- **2026-10-25** — Monstros revelados num **carrossel** no painel de combate, que vai pro monstro
+  da vez; carta do monstro também na **troca de vez**; a carta do monstro **sempre com a
+  descrição**. → `conceitos/cartas.md`
+- **2026-10-25** — Ficha do monstro na **gaveta de baixo**, no visual da gaveta dos personagens, no
+  lugar do modal; o mestre abre tocando na carta do monstro; na gaveta, revelar/esconder e
+  derrotar. → `conceitos/monstros.md`
+
 ## Privacidade e segurança
 
 - **2026-10-14** — Dados ficam até o usuário excluir a conta (sem expiração de conta inativa).

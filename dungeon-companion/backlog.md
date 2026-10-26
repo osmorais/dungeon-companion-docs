@@ -35,7 +35,7 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
 - [ ] **PR #7 do web** (login/cadastro, do Carlos): esperando o autor corrigir. Ainda está como
-      1.11.1 — com a `main` em 1.12.1, precisa virar **1.12.2** (versão, `package.json` dos
+      1.11.1 — com a `main` em 1.13.0, precisa virar **1.13.1** (versão, `package.json` dos
       dois repos e notas). Conferir se o comentário postado ficou só com os pontos que o usuário
       manteve (ver `decisoes.md`, 2026-10-25).
 - [ ] Tirar as variáveis `SMTP_*` do Render e do `.env` local da api: sem uso desde a 1.12.1
@@ -179,8 +179,13 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       dano no acerto, mais o botão de resistência com o dano. Corrigir no seed e em produção.
 - [ ] Lembrete do covil usa a iniciativa de quem joga, sem olhar quem **atrasou** o turno: com
       atraso na rodada, pode repetir ou pular.
-- [ ] Conferir no navegador (1.11.0): ficha do monstro com as ações, aviso de revelação (carta
-      caindo e virando, 30 s), carta no painel de combate e a explosão da derrota.
+- [ ] Conferir no navegador (1.11.0 a 1.13.0): aviso de revelação (carta caindo e virando, 30 s),
+      explosão da derrota, carrossel trocando na vez do monstro, ataque de monstro revelado e
+      escondido na tela de lançamento, gaveta do monstro (DERROTAR, REVELAR, editar).
+- [ ] Na tela de lançamento do monstro o PÚBLICO/OCULTO some: a visibilidade segue o monstro estar
+      revelado (trocar no meio deixaria a mesa com o aviso sem as rolagens). Pra um ataque
+      secreto de monstro revelado, hoje é preciso escondê-lo antes. Decidir se vale uma opção na
+      gaveta antes de rolar.
 - [ ] Opcional: revisar as descrições das bestas e NPCs comuns (lobo, guarda, plebeu), mais curtas
       e simples que as dos monstros icônicos.
 - [ ] Opcional: apagar `assets/broken.png` do web, sem uso desde a 1.11.0.

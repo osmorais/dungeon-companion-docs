@@ -248,6 +248,14 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   em 2026-10-25). Componente com z-index internos altos ganha `isolation: isolate` no contêiner,
   pra a ordem valer só lá dentro. Mesma família: `backdrop-filter` num filho de um elemento que
   já tem `backdrop-filter` não desfoca no Chromium — usar fundo sólido.
+- **Modal de rolagem no modo lançamento não fecha sozinho**: no fim (saída de vitória ou carta
+  quebrando) ele emite `rolled` e o painel some — quem abriu precisa fechar no `(rolled)`. A
+  rolagem do monstro só escutava `(closed)` e a tela ficava escura, travada (1.13.0).
+- **Brilho em volta de carta**: as cartas têm cantos transparentes; `box-shadow` desenha um
+  retângulo em volta da caixa. Usar `filter: drop-shadow(...)`, que segue o contorno.
+- O `button.retro-btn` global tem **`margin-top: 10px`** (e `float: right`): em linha flex de
+  botões, zerar a margem de todos — zerar só de um deixa ele mais alto que os vizinhos (foi o
+  FINALIZAR TURNO dos NPCs).
 
 ## Sessão em tempo real / permissões
 

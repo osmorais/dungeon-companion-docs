@@ -1,5 +1,5 @@
 ---
-resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro.
+resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0).
 tipo: conceito
 status: ativo
 atualizado: 2026-10-25
@@ -85,6 +85,47 @@ juntas na 1.11.0.
   armas; imagem do mestre ou a padrão (`assets/monster.png`, trocada na 1.11.0 por uma cena com
   vários monstros, 820 px); faixa "TIPO · TAMANHO"; medalhão "?"; descrição no pergaminho. Detalhe
   dos avisos em [`cartas.md`](cartas.md), "Carta do monstro".
+
+## Ficha do monstro na gaveta (1.13.0)
+
+Api `0f36654`, web `d146f46`. O modal da ficha saiu; o mestre abre a ficha na **gaveta de baixo**
+(`src/app/monster-drawer/`), tocando no monstro da lista ou na carta do carrossel do combate.
+
+- Mesmo visual da gaveta de ações dos personagens: o componente usa os estilos de
+  `player-actions-modal` e `bottom-drawer` (`styleUrls`) + um SCSS próprio pequeno.
+- **Barra**: imagem do monstro no anel e o nome. **Faixa** "VEZ DE …" na vez dele.
+- **Destaque**: PV, CA, ND, dados de vida e MESA (REVELADO/ESCONDIDO); DANO, CURA, DANO TOTAL e
+  CURA TOTAL no PV (`applyMonsterHpDelta`); FINALIZAR TURNO (na vez), REVELAR/ESCONDER, DERROTAR
+  (fecha a gaveta e abre a distribuição de XP, como o botão da lista) e EDITAR STATUS (formulário
+  dentro da gaveta; o rascunho e o salvar continuam na sessão).
+- **Colunas**: MONSTRO (carta grande com a descrição, nome original e tipo, trocar imagem,
+  atributos com modificador, deslocamento, defesas), AÇÕES e TESTES. `app-monster-actions` ganhou
+  `part` (`all` | `actions` | `checks` | `traits`) pra cada coluna desenhar só a sua parte.
+- A gaveta é só desenho: entradas/saídas pra sessão, que grava. Mostra o monstro como está agora
+  (`liveMonsterDetail`, pela sessão), e **fica aberta durante a rolagem** (a rolagem está numa camada
+  acima): o multiataque guiado mantém a contagem entre um ataque e outro — antes, a ficha fechava ao
+  rolar e a contagem zerava.
+
+## Ação do monstro na tela de lançamento (1.13.0)
+
+- Ação com carta (ataque, resistência, só dano) abre o modal de rolagem em modo lançamento, como
+  magias e armas. `monster-actions.ts` monta a carta da ação junto com o botão (`card`:
+  `MonsterActionCardInfo` com até 4 números — ATAQUE, DANO, CD, SE PASSAR/SE ACERTAR — e
+  `castSave` com a CD pro palco). Testes do monstro (resistências, atributos, perícias) continuam no
+  modal comum.
+- **Api**: `POST /spell-cast-stage` aceita `monster_action` + `id_monster_session` (com
+  `id_character` nulo) no lugar de magia ou arma. Só o mestre da sessão, só **monstro revelado**
+  (escondido = 422), nome/imagem/tipo do monstro vêm do servidor (`findMonsterForCast`), não conta
+  no ranking. O evento `spell_cast_stage` ganhou `monster_action` e `monster` (nulos fora disso).
+- **Web**: `SpellCastContext` com `monsterAction`, `idMonsterSession` e `private`; quem age é a
+  carta do monstro (`CharacterCardData.monsterCard`), a carta da direita é `monsterActionToCard`
+  (imagem do monstro na arte, faixa "ATAQUE DE MONSTRO"/"EFEITO COM RESISTÊNCIA"/"DANO DE
+  MONSTRO", bônus ou CD no medalhão); verbo "ATACOU COM" ou "USOU" (`monsterCastVerb`).
+- **Monstro escondido** (`private`): o mestre rola no palco montado no próprio modal, a rolagem é
+  oculta e nada é publicado. Nas ações com carta o PÚBLICO/OCULTO some (decisão: segue o monstro
+  estar revelado).
+- A rolagem do monstro fecha no fim da jogada (`rolled`), como a rolagem livre do mestre — no modo
+  lançamento a janela só avisa e quem abriu fecha (ver `gotchas.md`).
 
 ## Tabela `monster` (bestiário de referência)
 

@@ -229,9 +229,20 @@ limite).
   animação `cs-throw`, copiada como `mrn-throw`), e "<nome> SURGE DAS SOMBRAS". Fica **30 s**
   (`MONSTER_ANNOUNCEMENT_MS`; eram 5 s antes da carta, 15 s na primeira versão). Vários monstros
   entram em fila, um por vez.
-- **Painel de combate** (`app-monster-spotlight-card`): o monstro em destaque (`spotlightMonster`,
-  celular e desktop) é a carta pequena; tocar abre a carta em tela cheia (`app-card-viewer`) com a
-  descrição. Substituiu a imagem redonda.
+- ~~**Painel de combate** (`app-monster-spotlight-card`): uma carta só, do monstro em destaque.~~
+  Desde a **1.13.0**, **carrossel** dos monstros revelados (`app-monster-carousel`): setas e um
+  ponto por monstro; vai sozinho pro monstro da vez (`spotlightMonster` → `focusId`, por
+  `linkedSignal`) e entre um turno e outro dá pra navegar. Tocar: jogador abre a carta em tela
+  cheia; mestre (`ownerMode`) abre a ficha do monstro na gaveta.
+- **Troca de vez e tela de lançamento** (1.13.0): o monstro aparece pela carta dele —
+  `CharacterCardData.monsterCard` faz o `app-character-card` desenhar a carta no lugar do card.
+  Escondido, pro jogador continua o "misterioso". No aviso de troca de vez o brilho da carta da
+  vez é `drop-shadow` (a carta tem cantos transparentes; `box-shadow` desenhava um quadrado).
+- **Descrição sempre** (1.13.0): a carta pequena sem números (só a do monstro — magias e armas
+  sempre têm) mostra a descrição rolando no pergaminho. A lore vai pra todas as cartas de monstro
+  (o mestre recebe `lore` na lista de monstros; o palco do lançamento busca a do revelado).
+- **Carta da ação do monstro** na tela de lançamento: ver `monstros.md`, "Ação do monstro na tela
+  de lançamento".
 - **Derrota** (`app-monster-defeat-notice`): a carta cai, treme e racha em brasa
   (`DEFEAT_CRACK_AT_MS` 450 ms), e com 1,6 s (`DEFEAT_BOOM_AT_MS`) explode — clarão, anel de fogo,
   tremor, os 12 cacos do "errou" (`SHARDS` de `cast-shatter`) voando pra fora do centro, cada um com

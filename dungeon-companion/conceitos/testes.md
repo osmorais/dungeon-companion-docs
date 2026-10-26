@@ -375,6 +375,23 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
 
+### Monstros com carta no combate e ficha na gaveta (2026-10-25, versão 1.13.0)
+
+- Api `game-session.service.unit.ts`: ação de monstro no `publishSpellCastStage` — mestre publica
+  com a carta da ação e o monstro (nome do servidor), sem ranking; jogador 403, monstro de outra
+  sessão 404, escondido 422; carta inválida e `id_character` não nulo 422.
+- Web: `monster-carousel.component.spec.ts` (destaque, setas/pontos dando a volta, volta pro
+  destaque quando ele muda, um monstro só, mestre abre a ficha, descrição na carta);
+  `monster-drawer.component.spec.ts` (barra, destaque, colunas, faixa da vez, DANO/CURA, ATACAR,
+  REVELAR/ESCONDER, DERROTAR, EDITAR STATUS); `character-card.component.spec.ts` (carta do monstro
+  no lugar do card; misterioso sem carta); `game-card.component.spec.ts` (carta pequena sem
+  números mostra a descrição); `monster-card.spec.ts` (`monsterActionToCard`);
+  `spell-cast-context.spec.ts` (payload e verbo da ação de monstro); `monster-actions*.spec.ts`
+  (carta da ação e `castSave`, `part`); `roll-modal.component.spec.ts` (monstro revelado publica
+  sem personagem; escondido não publica nada e rola oculto); `session-panel.component.spec.ts`
+  (lançamento do monstro revelado e escondido, palco de ação de monstro da mesa, gaveta viva e
+  aberta durante a rolagem, carta com a lore, carta na troca de vez).
+
 ### Ações de monstro e carta do monstro (2026-10-25, versão 1.11.0)
 
 - Api `monster-action-state.unit.ts` (novo): usar/restaurar recarga e usos por dia/descanso,
