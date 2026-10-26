@@ -1,5 +1,5 @@
 ---
-resumo: Prompts do ChatGPT pros fundos padrão dos cards de NPC e de monstro na mesa (1.13.1), formato e onde ligar no web.
+resumo: Prompts do ChatGPT pros fundos padrão dos cards de NPC e de monstro na mesa (1.13.1) e do fundo da tela de lançamento e dos avisos de monstro no Sombrio (1.13.2), formato e onde ligar no web.
 tipo: procedimento
 status: ativo
 atualizado: 2026-10-26
@@ -59,3 +59,33 @@ Pixels nítidos, sem anti-aliasing.
    (`npc-card-bg.webp`, `monster-card-bg.webp`).
 3. No `styles.scss`: `--npc-card-bg: url('/assets/frames/npc-card-bg.webp');` e o mesmo pro
    monstro (nos dois temas, se a variável estiver por tema).
+
+## Fundo da tela de lançamento e dos avisos (1.13.2)
+
+Variável `--notice-bg` do `styles.scss`, usada no painel da tela de lançamento da mesa
+(`spell-cast-notice`), no painel de quem lança (`.roll-cast-stage` do modal de rolagem) e nos
+avisos de monstro revelado e derrotado. Entra com `cover`. **Retrato no celular, quadrado no
+desktop** (`@media (min-width: 768px)` no fim do `styles.scss`): o retrato cortava demais no
+painel quase quadrado do desktop.
+
+| Tema | Formato | Original (`artes/`) | No web (`src/assets/frames/`) |
+|---|---|---|---|
+| Sombrio | retrato 1024×1536 | [`aviso-fundo-altar.png`](../artes/aviso-fundo-altar.png) | `notice-bg-sombrio.webp` (800×1200) |
+| Sombrio | quadrado 1254×1254 | [`aviso-fundo-altar-quadrado.png`](../artes/aviso-fundo-altar-quadrado.png) | `notice-bg-sombrio-quadrado.webp` (1000×1000) |
+| Fantasia | retrato 1024×1536 | [`aviso-fundo-fantasia.png`](../artes/aviso-fundo-fantasia.png) | `notice-bg-fantasia.webp` (800×1200) |
+| Fantasia | quadrado 1254×1254 | [`aviso-fundo-fantasia-quadrado.png`](../artes/aviso-fundo-fantasia-quadrado.png) | `notice-bg-fantasia-quadrado.webp` (1000×1000) |
+
+WebP qualidade 82. O Fantasia é um tapete carmesim com selo dourado, cercado de livros, mapas,
+moedas e velas; as versões quadradas e a do Fantasia foram geradas pelo usuário a partir do prompt
+abaixo (o do Sombrio em retrato), sem prompt próprio registrado.
+
+```
+Crie uma imagem em pixel art, estilo jogo retrô de fantasia sombria (16-bit), formato retrato 1024x1536, para ser usada como FUNDO de uma janela de jogo onde cartas são jogadas e dados são rolados (num site de RPG, tema escuro/gótico).
+
+Cena: o tampo de uma mesa antiga de pedra escura e madeira enegrecida, vista exatamente de cima (vista de topo, sem perspectiva), como uma mesa de ritual numa cripta. No centro, um círculo arcano muito sutil gravado na pedra, quase apagado, com runas ilegíveis e um brilho fraco vermelho-brasa. Nos quatro cantos, detalhes que podem ser cortados: velas derretidas com chama baixa, ossos pequenos, cera escorrida, rachaduras com brilho de brasa. O centro da imagem (a maior parte da área) deve ficar escuro, uniforme e com POUCO contraste, porque cartas, dados e texto vão ficar por cima; os detalhes interessantes ficam só perto das bordas.
+
+Paleta gótica, escura e pouco saturada: marrom-preto (#1C0B0B, #2A140C, #40251A), pedra cinza-escura (#2E2A28, #3A3330), dourado velho apagado nos detalhes (#C9A35C, #D8A33E), acentos de vermelho-sangue seco e brasa (#52301F, #8A2A12). Iluminação fraca e quente vinda das velas dos cantos; centro na penumbra.
+
+Sem cartas, sem dados, sem personagens, sem criaturas, sem texto, sem letras legíveis, sem moldura, sem bordas, sem marca d'água. Pixels nítidos, sem anti-aliasing, sem desfoque.
+```
+

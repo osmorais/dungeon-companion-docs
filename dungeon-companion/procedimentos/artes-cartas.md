@@ -2,7 +2,7 @@
 resumo: Prompts do ChatGPT pras artes das cartas de magia e de arma (molduras, escolas, folhas de armas) e onde salvar cada imagem.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-21
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Artes das cartas (magias e armas)
@@ -32,6 +32,7 @@ Em `artes/spell-cards/` (salvos em 2026-10-21):
 |---|---|
 | `frame-fantasia.png` | Moldura da carta, tema Fantasia |
 | `frame-sombrio.png` | Moldura da carta, tema Sombrio (mesmo layout) |
+| `frame-monstro-sombrio.png` | Moldura da carta do monstro, tema Sombrio (mesmo layout; caveira no lugar do medalhão), 2026-10-26 |
 | `back-fantasia.png` | Verso da carta, tema Fantasia (vale pra magias e armas) |
 | `back-sombrio.png` | Verso da carta, tema Sombrio |
 | `school-<escola>.png` | Ilustração por escola: `abjuracao`, `adivinhacao`, `conjuracao`, `encantamento`, `evocacao`, `ilusao`, `necromancia`, `transmutacao` |
@@ -151,6 +152,33 @@ same area positions as the previous image":
 
 ```
 Palette (darker, less saturated, gothic): very dark brown-black (#1C0B0B, #40251A), worn bronze borders (#6B4329), muted old-gold trim and rivets (#D8A33E, #C9A35C), small accents of dried-blood red (#52301F). Parchment text box slightly darker and greyer (#D8CDB8 to #B8A88C). Corner pieces with subtle skull or bone motifs instead of plain ornaments.
+```
+
+### Moldura do monstro — tema Sombrio (`frame-monstro-sombrio.png`, 1.13.2)
+
+Anexar `frame-sombrio.png` na conversa como referência de layout. As áreas saíram com menos de
+0,5 ponto percentual de diferença das da moldura comum (medido por preenchimento a partir do centro
+de cada área), então a carta usa as mesmas posições. Só a carta do monstro usa (`variant:
+'monster'` → `--monster-card-face`); a carta da ação de monstro fica com a moldura comum, que tem o
+medalhão do bônus/CD. No FANTASIA não há versão: a carta do monstro usa a moldura comum, com o "?".
+Preparo: `process.py` com uma pasta só com este arquivo → `card-frame-monstro-sombrio.webp`.
+
+```
+Use the attached card frame as an EXACT layout reference: same canvas size, same outer shape, and the name banner, art window, ribbon and text box in the same positions and sizes. Only change the decoration, to make a MONSTER card version of it.
+
+16-bit pixel art trading card frame for a dark fantasy RPG MONSTER card, front side, vertical, aspect ratio 5:7 (1000x1400 px). Crisp pixel art, no anti-aliasing blur, dark outline #1C0B0B on every shape.
+
+Areas (pixel coordinates on 1000x1400), all EMPTY (no text, no letters, no numbers, no symbols inside them):
+1. Name banner, top: x 258–888, y 90–169, plain flat fill.
+2. Art window: x 139–862, y 220–739, beveled inner border. The window itself must be fully TRANSPARENT.
+3. Ribbon under the art: x 185–817, y 781–848, plain flat fill.
+4. Text box, bottom: x 136–863, y 889–1268, aged parchment fill, slightly dark and grey (#D8CDB8 to #B8A88C), very subtle texture, flat enough for small text to be readable.
+
+Top-left corner (x 86–226, y 63–203), where the reference has an empty round medallion: instead, a fully drawn decorative emblem, a horned skull inside a ring of fangs, solid and detailed, with no empty center and nothing to write on.
+
+Monster theme decoration: the border is made of blackened bone and horn instead of wood, with claws curling at the four corners, small rows of fangs along the top edge, scaly texture on the side borders, and cracked horns rising from the top corners. Gothic, darker and less saturated palette: very dark brown-black (#1C0B0B, #40251A), blackened bone and horn (#6B5A45, #3A2E22), muted old-gold trim and rivets (#D8A33E, #C9A35C), dried-blood red accents (#52301F), faint ember glow in the cracks (#8A2A12). Symmetrical left/right.
+
+The area OUTSIDE the card must be fully transparent (PNG with alpha). No characters, no creatures inside the frame, no text, no watermark, no signature.
 ```
 
 ### Ilustração por escola (`school-<escola>.png`)
