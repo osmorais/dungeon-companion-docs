@@ -2,7 +2,7 @@
 resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Cartas e lançamento de magia
@@ -249,3 +249,19 @@ limite).
   a carta inteira recortada, e brasas; depois o nome e FOI DERROTADO! carimbados. Fica **8 s**
   (`MONSTER_DEFEATED_TOAST_MS`). Movimento reduzido: carta em cinza, sem explosão. O
   `assets/broken.png` (rachadura por cima da foto, aviso antigo) ficou sem uso.
+
+## Moldura do monstro e fundos dos avisos (1.13.2, web `26a05e5`)
+
+- **Moldura da carta do monstro** (SOMBRIO): `card-frame-monstro-sombrio.webp`, mesmo layout da
+  comum (áreas a menos de 0,5 ponto percentual), com uma caveira no lugar do medalhão. Só a carta
+  do monstro usa (`GameCardData.variant: 'monster'` → `.gc--monster` → `--monster-card-face`); no
+  SOMBRIO o medalhão some (`--monster-card-badge: none`). No FANTASIA não há versão: moldura comum
+  com o "?". A carta da ação de monstro fica com a moldura comum (medalhão do bônus/CD). Prompt em
+  [`procedimentos/artes-cartas.md`](../procedimentos/artes-cartas.md).
+- **Fundo por tema** (`--notice-bg`): altar à luz de velas no SOMBRIO, tapete arcano no FANTASIA;
+  retrato no celular e quadrado a partir de 768 px (`@media` no fim do `styles.scss`). Usado na tela
+  de lançamento (aviso da mesa e painel de quem lança), nos avisos de monstro revelado e derrotado,
+  e nos avisos de rolagem, de habilidade ("USOU") e de subir de nível — nesses três, só sem a foto
+  do personagem (a foto, no style do template, sobrepõe). Arquivos em
+  [`procedimentos/artes-fundos-card.md`](../procedimentos/artes-fundos-card.md).
+

@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Decisões
@@ -286,6 +286,20 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-25** — Ficha do monstro na **gaveta de baixo**, no visual da gaveta dos personagens, no
   lugar do modal; o mestre abre tocando na carta do monstro; na gaveta, revelar/esconder e
   derrotar. → `conceitos/monstros.md`
+
+- **2026-10-26** — Cards de NPC e de monstro da mesa com as **molduras dos cards dos personagens**
+  (moldura, anel, barra de vida), **fundo próprio** (taverna pros NPCs, covil pros monstros) e os
+  mesmos **botões com ícone e legenda**. → `conceitos/molduras.md`
+- **2026-10-26** — Ações do monstro como **cartas** na gaveta (baralho que abre a mão), como as
+  armas dos jogadores. → `conceitos/monstros.md`
+- **2026-10-26** — Carta do monstro com **moldura própria** no SOMBRIO, com uma caveira **no lugar
+  do medalhão** (o "?" não era necessário); a carta da ação continua com a moldura comum
+  (medalhão do bônus/CD). → `conceitos/cartas.md`
+- **2026-10-26** — Fundo por tema na tela de lançamento e nos avisos (altar no SOMBRIO, tapete no
+  FANTASIA), **retrato no celular e quadrado no desktop**; nos avisos de rolagem, habilidade e
+  nível, só quando o personagem não tem foto. → `conceitos/cartas.md`
+- **2026-10-26** — Ao aplicar dano/cura (rolagem e dano em área), **só monstros revelados**, também
+  pro mestre (antes o mestre via todos). → `conceitos/monstros.md`
 
 ## Privacidade e segurança
 

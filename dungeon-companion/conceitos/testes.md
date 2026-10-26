@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -374,6 +374,15 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Cards de NPC/monstro, ações em cartas e fundos (2026-10-26, versões 1.13.1 e 1.13.2)
+
+- Web `monster-actions.component.spec.ts`: modo cartas (ações que rolam no baralho, multiataque e
+  texto na lista; botão da mão rola com o uso; carta apagada, ↺ e contador de lendárias);
+  `monster-drawer.component.spec.ts`: baralho na coluna AÇÕES e ATACAR pela mão;
+  `game-card.component.spec.ts` / `monster-card.spec.ts`: variante `monster` só na carta do
+  monstro; `session-panel.component.spec.ts` e `dm-board.component.spec.ts`: alvos de aplicar e
+  dano em área só com monstros revelados (também pro mestre).
 
 ### Monstros com carta no combate e ficha na gaveta (2026-10-25, versão 1.13.0)
 

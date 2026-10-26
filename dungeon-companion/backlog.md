@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Backlog
@@ -179,9 +179,14 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       dano no acerto, mais o botão de resistência com o dano. Corrigir no seed e em produção.
 - [ ] Lembrete do covil usa a iniciativa de quem joga, sem olhar quem **atrasou** o turno: com
       atraso na rodada, pode repetir ou pular.
-- [ ] Conferir no navegador (1.11.0 a 1.13.0): aviso de revelação (carta caindo e virando, 30 s),
+- [ ] Conferir no navegador (1.11.0 a 1.13.2): aviso de revelação (carta caindo e virando, 30 s),
       explosão da derrota, carrossel trocando na vez do monstro, ataque de monstro revelado e
-      escondido na tela de lançamento, gaveta do monstro (DERROTAR, REVELAR, editar).
+      escondido na tela de lançamento, gaveta do monstro (DERROTAR, REVELAR, editar, mão de cartas
+      das ações cobrindo a tela toda), moldura do monstro no SOMBRIO.
+- [ ] Conferir a leitura do texto e dos dados sobre os fundos novos (1.13.1/1.13.2): taverna e
+      covil nas linhas de NPC/monstro, e principalmente o tapete do FANTASIA (mais claro) nos
+      avisos. Se ficar difícil, escurecer com um degradê por cima, só onde precisar.
+- [ ] Opcional: moldura da carta do monstro no tema FANTASIA (hoje usa a comum, com o "?").
 - [ ] Na tela de lançamento do monstro o PÚBLICO/OCULTO some: a visibilidade segue o monstro estar
       revelado (trocar no meio deixaria a mesa com o aviso sem as rolagens). Pra um ataque
       secreto de monstro revelado, hoje é preciso escondê-lo antes. Decidir se vale uma opção na

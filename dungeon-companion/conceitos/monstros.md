@@ -2,7 +2,7 @@
 resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Monstros
@@ -101,6 +101,13 @@ Api `0f36654`, web `d146f46`. O modal da ficha saiu; o mestre abre a ficha na **
 - **Colunas**: MONSTRO (carta grande com a descrição, nome original e tipo, trocar imagem,
   atributos com modificador, deslocamento, defesas), AÇÕES e TESTES. `app-monster-actions` ganhou
   `part` (`all` | `actions` | `checks` | `traits`) pra cada coluna desenhar só a sua parte.
+- **Ações em cartas** (1.13.2): na coluna AÇÕES (`asCards` + `imageUrl` no `app-monster-actions`),
+  as ações que rolam (ataque, resistência, dano, de qualquer grupo) viram um baralho
+  (`app-card-deck`) que abre a mão (`app-card-hand`), como as armas dos jogadores. Cada carta é
+  `monsterActionToCard` com a descrição da ação e etiquetas (LENDÁRIA, REAÇÃO, usos); sem uso, a
+  carta fica apagada (`locked`). Embaixo da carta da vez, ATACAR/RESISTÊNCIA/ROLAR DANO, o estado e
+  o ↺. Os contadores de lendárias e da reação ficam junto do baralho. Multiataque, habilidades só de
+  texto, covil, recarga e descanso continuam em lista.
 - A gaveta é só desenho: entradas/saídas pra sessão, que grava. Mostra o monstro como está agora
   (`liveMonsterDetail`, pela sessão), e **fica aberta durante a rolagem** (a rolagem está numa camada
   acima): o multiataque guiado mantém a contagem entre um ataque e outro — antes, a ficha fechava ao
@@ -198,3 +205,9 @@ original (o texto continua em português). Aplicadas:
 ## Próximos passos
 
 Ver `backlog.md`, seção "Monstros".
+
+## Alvos de aplicar (1.13.2)
+
+Aplicar dano/cura (rolagem e dano em área do Quadro do Mestre) lista **só monstros revelados**, pra
+todos — antes o mestre via os escondidos, e num lançamento público o nome ia pra mesa no "APLICOU …
+em …". O PV do escondido continua editável pelo card e pela gaveta.

@@ -1,8 +1,8 @@
 ---
-resumo: Card do personagem na sessão (1.7.1): molduras de imagem (anel do avatar, barras de XP e de vida), barra de XP e DANO/CURA na gaveta de ações.
+resumo: Card do personagem na sessão (1.7.1): molduras de imagem (anel do avatar, barras de XP e de vida), barra de XP e DANO/CURA na gaveta de ações; linhas de NPC e de monstro com as mesmas molduras (1.13.1).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Molduras do card e barras
@@ -99,4 +99,17 @@ Pendente: conferir a altura dos cards em 1080p ([`backlog.md`](../backlog.md), "
   - SOMBRIO: `140 112 113 112` / `34px 27px 28px 27px` (cima, direita, baixo, esquerda), escala
     ~0,245 — faixa de ~10 px que termina entre 14 e 18 px, cobrindo a borda de 11 px.
 - Ao trocar uma moldura, medir de novo (ver `gotchas.md`).
+
+## Linhas de NPC e de monstro (1.13.1, web `219d1ef`)
+
+- As linhas da mesa (desktop e celular) ganharam `framed-card`, o anel no avatar
+  (`.row-avatar-ring` 52 px, `.mobile-row-avatar-ring` 44 px; a imagem do monstro no miolo,
+  `.row-monster-image`) e `app-hp-bar` no lugar das barras finas (PV temporários dos NPCs em azul).
+- Fundo próprio por tipo, iguais nos dois temas: `--npc-card-bg` (taverna) e `--monster-card-bg`
+  (covil) no `styles.scss` — prompts e originais em
+  [`procedimentos/artes-fundos-card.md`](../procedimentos/artes-fundos-card.md).
+- Botões como os dos cards dos personagens (`player-action-btn` + `.row-action-btn`, ícone e
+  legenda, ~58 px no desktop, linha inteira no celular): NPC — AÇÕES, FINALIZAR (na vez), FICHA;
+  monstro — NA MESA/OCULTO (revelar/esconder), FINALIZAR, FICHA (gaveta), DERROTAR, DUPLICAR. Saíram
+  a chavinha de revelar, os ícones pequenos e o "VER FICHA ▶".
 

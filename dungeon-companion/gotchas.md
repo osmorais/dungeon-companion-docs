@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-26
 ---
 
 # Dungeon Companion — Gotchas
@@ -256,6 +256,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - O `button.retro-btn` global tem **`margin-top: 10px`** (e `float: right`): em linha flex de
   botões, zerar a margem de todos — zerar só de um deixa ele mais alto que os vizinhos (foi o
   FINALIZAR TURNO dos NPCs).
+- **Animação com `transform` e `fill-mode: both`**: o valor final fica aplicado, e **qualquer**
+  `transform` (até `translateY(0)`) faz o elemento virar a referência dos `position: fixed` de
+  dentro. A gaveta de baixo terminava em `translateY(0)` e a mão de cartas aberta de dentro dela
+  ficava presa na gaveta. Terminar a animação em `transform: none` (1.13.2).
 
 ## Sessão em tempo real / permissões
 
