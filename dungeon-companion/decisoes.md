@@ -311,6 +311,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   com filtros (nome, faixa de ND, tipo, tamanho, lendários, voadores, ordenação); no celular os
   filtros recolhem. Detalhe e ficha de catalogar com a cara da gaveta do monstro, ações em cartas.
   Monstro de **ND 5+** brilha em **vermelho** com o selo **PERIGOSO**. → `conceitos/monstros.md`
+- **2026-10-27** — O Tom perde a **estrela de 6 pontas** do avental (avental liso), nas 9 poses.
+  → `procedimentos/artes-tom.md`
 
 ## Privacidade e segurança
 

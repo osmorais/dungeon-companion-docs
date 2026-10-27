@@ -41,6 +41,7 @@ passos" de lá).
 | [`procedimentos/artes-cartas.md`](dungeon-companion/procedimentos/artes-cartas.md) | procedimento | Prompts do ChatGPT pras artes das cartas de magia e de arma, e onde salvar |
 | [`procedimentos/artes-fundos-card.md`](dungeon-companion/procedimentos/artes-fundos-card.md) | procedimento | Prompts do ChatGPT pros fundos padrão dos cards de NPC e de monstro na mesa (1.13.1) e onde ligar no web |
 | [`procedimentos/artes-monstros.md`](dungeon-companion/procedimentos/artes-monstros.md) | procedimento | Prompts do ChatGPT pras imagens dos monstros do bestiário (medalhão em pixel art), em levas pelos mais usados |
+| [`procedimentos/artes-tom.md`](dungeon-companion/procedimentos/artes-tom.md) | procedimento | Imagens do Tom: as 9 poses, editar todas de uma vez no ChatGPT (grade 3x3) e recortar de volta |
 | [`historico/diario-2026-09-10_a_2026-10-18.md`](dungeon-companion/historico/diario-2026-09-10_a_2026-10-18.md) | historico | Diário de sessões (antigo `status.md`) |
 | [`historico/levelup-plan.md`](dungeon-companion/historico/levelup-plan.md) | historico | Plano e implementação do level-up (fases 1–3) |
 | [`historico/media-progress.md`](dungeon-companion/historico/media-progress.md) | historico | Implementação do bloco "Média" da auditoria, onda a onda |

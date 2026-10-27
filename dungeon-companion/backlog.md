@@ -16,6 +16,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 
 ## Ações do usuário / fora do código
 
+- [ ] **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
+      diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
+      é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
+
 - [ ] **Revisão jurídica** da Política de Privacidade, dos Termos de Uso e dos prazos do plano de
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
 - [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência), 20/10

@@ -27,7 +27,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.14.0 (2026-10-27, bestiário em cartas com filtros: detalhe e
+- **Versão do sistema**: 1.14.1 (2026-10-27, Tom sem o símbolo no avental, nas 9 poses —
+  [`procedimentos/artes-tom.md`](procedimentos/artes-tom.md)); antes, 1.14.0 (mesmo dia, bestiário em cartas com filtros: detalhe e
   catalogar com a cara da gaveta do monstro, ações em cartas, filtros por ND/tipo/tamanho/
   lendários/voadores, 8 cartas por página, selo PERIGOSO — PR #8 do Carlos com commits nossos,
   merge em 2026-10-27); antes, 1.13.3 (2026-10-27, login e cadastro com visual renovado — feita por outro
@@ -51,7 +52,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `968ea90` (1.14.0: a lista do livro traz tendência, PV, CA, lendário
+- **Últimos commits**: web `db89d5b` e api `af2e9a7` (1.14.1; na api só a versão), push direto
+  na `main` em 2026-10-27, api antes do web — o GitHub avisou que a regra "mudança só por pull
+  request" da `main` foi ignorada pela conta (ver backlog). Antes: api `968ea90` (1.14.0: a lista do livro traz tendência, PV, CA, lendário
   e voa; push na `main` em 2026-10-27, antes do web). Web `6578150` (merge do PR #8
   `redesign/monster-catalog-cards`, com os nossos `1adaad4` — ajustes do code review — e `470afe7`
   — detalhe, catalogar e filtros), em 2026-10-27; sem migração. Antes: web `2897436` (merge do PR #7, com o nosso `7e44e63` — ajustes do review)
