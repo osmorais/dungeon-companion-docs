@@ -1,8 +1,8 @@
 ---
-resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0).
+resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0), bestiário do mestre e catalogar em cartas com filtros (1.14.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Monstros
@@ -23,7 +23,9 @@ Api `395e250` (merge `1b1c62d`, PR #3), web `a628317` (merge `4c0d64b`, PR #5).
 - `services/monster-format.ts` (web): `challengeRatingText` (0.25 → "1/4", usado em todo ND de
   monstro) e `monsterSpeedText` (`pairar: true` vira "pairar").
 - A **dnd5eapi saiu** (`SrdMonsterService` apagado na 1.10.0). Monstros catalogados antes ficam
-  com a ficha em inglês da API (chaves iguais, então as telas continuam mostrando).
+  com a ficha em inglês da API. **Desde a 1.14.0 o site não trata mais essas fichas** (decisão de
+  2026-10-27): `isMechanicalStatBlock`, o texto da "ficha antiga" e os "sem testes" ficaram
+  comentados no web. Elas aparecem quebradas — ver o backlog.
 - O site lê do `data_snapshot`: `name`, `size`, `type`, `alignment`, `armor_class[0].value`,
   `hit_points`, `hit_dice`, `speed` (chave: valor), os 6 atributos, `challenge_rating`, `xp` e,
   desde a 1.11.0, os campos estruturados das habilidades e as defesas/sentidos (abaixo).
@@ -201,6 +203,35 @@ original (o texto continua em português). Aplicadas:
   Homem-Chacal e outros).
 - Yuan-ti Mestiço: ações dos 3 tipos com nome repetido viraram "Mordida (Tipo 1)" etc. (o site
   usa o nome como chave da lista).
+
+## Bestiário e catalogar em cartas (1.14.0)
+
+PR #8 do web (Carlos: cartas na lista do bestiário), merge `6578150`, com commits nossos:
+`1adaad4` (code review) e `470afe7` (detalhe, catalogar, filtros); api `968ea90`.
+
+- **Carta**: `catalogMonsterCard` (catálogo) e `bestiaryMonsterCard` (livro, com o nome
+  customizado digitado) em `game-card/monster-card.ts` — a carta da revelação com o ND no
+  medalhão e o resumo "tamanho tipo, tendência. CA · PV · ND" no pergaminho. ND 5+
+  (`THREAT_CHALLENGE_RATING`) dá o estado `threat`: brilho vermelho e selo **PERIGOSO** no
+  `game-card`. Nas listas, nome e resumo maiores pelas variáveis `--gc-title-size` e
+  `--gc-desc-size` (padrão da carta pequena fora delas).
+- **Ficha fora da mesa** (`app-monster-sheet`): números em destaque e colunas MONSTRO | AÇÕES |
+  TESTES com os estilos da gaveta (`player-actions-modal.scss`), carta da lista na coluna
+  MONSTRO, ações em cartas via `app-monster-actions` com `viewOnly` (sem rolar, usar, restaurar,
+  covil, descanso nem contadores; testes viram etiquetas; lendárias "N POR RODADA"). Conteúdo
+  projetado embaixo da carta e no rodapé (`[sheetFooter]`, canto de baixo à direita). `fit`: no
+  desktop a ficha tem a altura da janela e cada coluna rola por dentro. Usada no detalhe
+  (`monster-catalog-detail`, com TROCAR IMAGEM) e no catalogar (nome customizado + CATALOGAR,
+  com o visual do ATACAR da mão). `monster-stat-block` foi apagado (sem uso).
+- **Filtros** (`monster-filters/`): `filterMonsters` (nome e `altName` sem acento, faixa de ND
+  `CR_TIERS`, tipo, tamanho, lendários, voadores; ordem `recent` | `name` com números naturais |
+  `cr`), `monsterFilterOptions` (tipos em ordem alfabética, tamanhos na ordem do livro) e o painel
+  `app-monster-filters` (coluna fixa à esquerda no desktop; no celular só a busca, o resto
+  recolhe em ▼ FILTROS). Tela de catalogar: o livro inteiro em páginas de 8 (abrir a carta e
+  voltar mantém filtros, página e rolagem). Bestiário: carrega o catálogo inteiro em lotes de 50
+  (teto da api) e filtra no navegador, padrão "mais recentes".
+- **Api**: `GET /api/monster-catalog/bestiary` passa a trazer `alignment`, `hp_max`, `ac`,
+  `legendary` (tem `legendary_actions`) e `flies` (tem `speed.voo`), pra carta e os filtros.
 
 ## Próximos passos
 

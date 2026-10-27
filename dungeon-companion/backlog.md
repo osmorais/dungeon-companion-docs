@@ -163,10 +163,12 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       `monster`, sem catalogar) e MEUS MONSTROS; catálogo vira "Meus monstros" (personalizar:
       nome editável + imagem). Em aberto: tela só de consulta ao bestiário e o nome ("Meus
       monstros" × "Catálogo"). Sem mudança no banco (`monster_session.data_snapshot` já é cópia).
-- [ ] Monstros catalogados/em sessão antes da 1.10.0 continuam com a ficha em inglês da dnd5eapi
-      (slugs em inglês, que não existem na tabela `monster`). Decidir se migra (casar por nome) ou
-      deixa como está. Desde a 1.11.0 eles ficam **sem as ações mecânicas** (só texto, com aviso
-      pra catalogar de novo) e **sem descrição** na carta, com tipo e tamanho em inglês.
+- [ ] **Fichas antigas da dnd5eapi** (catalogadas/em sessão antes da 1.10.0, ex.: Ancient Blue
+      Dragon): desde a 1.14.0 o site não as trata mais (decisão de 2026-10-27; código comentado)
+      e elas aparecem **quebradas** (ações erradas ou sumidas, "SENTIDOS: [object Object]").
+      Falta tirar de cena: o mestre remove pelo ✕ do bestiário e cataloga de novo, ou apagar em
+      produção (`monster_catalog`/`monster_session` com slug fora da tabela `monster`) — só com
+      autorização.
 - [ ] **Resistência dos monstros ao dano dos jogadores**: hoje o dano entra cheio num monstro
       resistente a fogo. A ficha já tem as listas (`damage_resistances` etc.), em texto do livro.
 - [ ] Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o modal corta o dano
@@ -190,6 +192,8 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Opcional: revisar as descrições das bestas e NPCs comuns (lobo, guarda, plebeu), mais curtas
       e simples que as dos monstros icônicos.
 - [ ] Opcional: apagar `assets/broken.png` do web, sem uso desde a 1.11.0.
+- [ ] Bestiário do mestre (1.14.0) carrega o catálogo inteiro (lotes de 50) e filtra no navegador.
+      Se algum mestre passar de algumas centenas de monstros, levar os filtros pra api.
 
 ## Tela inicial
 

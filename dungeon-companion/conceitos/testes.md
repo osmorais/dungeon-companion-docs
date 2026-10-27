@@ -375,6 +375,21 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
 
+### Bestiário em cartas e filtros (2026-10-27, versão 1.14.0)
+
+- Api `monster-catalog.service.unit.ts`: a lista do livro com os campos novos (tendência, PV, CA,
+  lendário, voa).
+- Web `monster-filters/monster-filters.spec.ts` (novo): busca sem acento e pelo outro nome,
+  faixas de ND, tipo/tamanho/lendários/voadores, as três ordens, opções e contagem.
+  `monster-filters.component.spec.ts` (novo): desktop, celular recolhido, faixa marcada, LIMPAR.
+  `monster-sheet.component.spec.ts` (novo): números, atributos e ações em cartas sem rolar.
+  `monster-catalog-detail.component.spec.ts` (novo): carta e brilho. `monster-catalog-create`:
+  cartas, filtros, 8 por página, abrir/voltar, catalogar e erro. `monster-catalog-list`: catálogo
+  em lotes de 50, 8 por página, busca pelos dois nomes, ordens, voltar página ao remover.
+  `monster-actions.component.spec.ts`: modo só leitura. `game-card.component.spec.ts`: selo
+  PERIGOSO. `monster-card.spec.ts`: cartas do catálogo e do livro. Saíram os testes da ficha
+  antiga da dnd5eapi e do `monster-stat-block` (apagado).
+
 ### Login e cadastro renovados (2026-10-27, versão 1.13.3)
 
 - Web `login.component.spec.ts`: segundo envio ignorado enquanto o primeiro carrega; Google com

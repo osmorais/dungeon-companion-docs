@@ -27,7 +27,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.13.3 (2026-10-27, login e cadastro com visual renovado — feita por outro
+- **Versão do sistema**: 1.14.0 (2026-10-27, bestiário em cartas com filtros: detalhe e
+  catalogar com a cara da gaveta do monstro, ações em cartas, filtros por ND/tipo/tamanho/
+  lendários/voadores, 8 cartas por página, selo PERIGOSO — PR #8 do Carlos com commits nossos,
+  merge em 2026-10-27); antes, 1.13.3 (2026-10-27, login e cadastro com visual renovado — feita por outro
   desenvolvedor, Carlos `kaduce2009@hotmail.com`, PR #7, com um commit nosso por cima); antes,
   1.13.2 (2026-10-26, ações do monstro em cartas na gaveta, moldura
   própria da carta do monstro no SOMBRIO, fundo por tema na tela de lançamento e nos avisos, alvos
@@ -48,7 +51,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: web `2897436` (merge do PR #7, com o nosso `7e44e63` — ajustes do review)
+- **Últimos commits**: api `968ea90` (1.14.0: a lista do livro traz tendência, PV, CA, lendário
+  e voa; push na `main` em 2026-10-27, antes do web). Web `6578150` (merge do PR #8
+  `redesign/monster-catalog-cards`, com os nossos `1adaad4` — ajustes do code review — e `470afe7`
+  — detalhe, catalogar e filtros), em 2026-10-27; sem migração. Antes: web `2897436` (merge do PR #7, com o nosso `7e44e63` — ajustes do review)
   e, por cima, `a0d3bad` (data da 1.13.3 nas notas); api `91cf4db` (só sobe a versão pra 1.13.3).
   `a0d3bad` e `91cf4db` com push em 2026-10-27. Antes: api `dec6603` e web `26a05e5` (1.13.2), antes api `f57e109` e web `219d1ef`
   (1.13.1) — na `main`, com push em 2026-10-26, sem migração; docs `96e93ec` (artes). Antes: api `0f36654` e web `d146f46` (1.13.0, na `main`, push em 2026-10-25, api
@@ -63,8 +69,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **PRs**: nenhum aberto (o #7 entrou na 1.13.3, em 2026-10-27).
-- **Testes**: api 514 (`npm run test:unit`), web 685 (`npm run test:run`) — na 1.13.3 —
+- **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
+- **Testes**: api 514 (`npm run test:unit`), web 727 (`npm run test:run`) — na 1.14.0 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -86,7 +92,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0); login e cadastro com visual renovado, e-mail como identificador do gerenciador de senhas (1.13.3) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
 | E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1) | [`conceitos/email.md`](conceitos/email.md) |
-| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2) | [`conceitos/monstros.md`](conceitos/monstros.md) |
+| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção

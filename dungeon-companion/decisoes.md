@@ -304,6 +304,13 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-27** — No login e no cadastro, o **e-mail** é o identificador pro gerenciador de senhas
   (`autocomplete="username"` no campo de e-mail das duas telas; o nome de usuário do cadastro é
   `nickname`). Entrar com o nome de usuário fica como opcional no backlog. → `conceitos/nome-de-usuario.md`
+- **2026-10-27** — Fichas antigas da **dnd5eapi** deixam de ser usadas: só os monstros do nosso
+  bestiário (tabela `monster`). O tratamento delas no web ficou **comentado**, não apagado.
+  → `conceitos/monstros.md`
+- **2026-10-27** — Bestiário (catálogo do mestre) e tela de catalogar em **cartas**, 8 por página,
+  com filtros (nome, faixa de ND, tipo, tamanho, lendários, voadores, ordenação); no celular os
+  filtros recolhem. Detalhe e ficha de catalogar com a cara da gaveta do monstro, ações em cartas.
+  Monstro de **ND 5+** brilha em **vermelho** com o selo **PERIGOSO**. → `conceitos/monstros.md`
 
 ## Privacidade e segurança
 
