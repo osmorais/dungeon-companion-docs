@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Decisões
@@ -300,6 +300,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   nível, só quando o personagem não tem foto. → `conceitos/cartas.md`
 - **2026-10-26** — Ao aplicar dano/cura (rolagem e dano em área), **só monstros revelados**, também
   pro mestre (antes o mestre via todos). → `conceitos/monstros.md`
+
+- **2026-10-27** — No login e no cadastro, o **e-mail** é o identificador pro gerenciador de senhas
+  (`autocomplete="username"` no campo de e-mail das duas telas; o nome de usuário do cadastro é
+  `nickname`). Entrar com o nome de usuário fica como opcional no backlog. → `conceitos/nome-de-usuario.md`
 
 ## Privacidade e segurança
 

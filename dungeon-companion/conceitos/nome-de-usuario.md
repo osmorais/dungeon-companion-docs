@@ -2,7 +2,7 @@
 resumo: Nome de usuário único (1.9.0): regras, sugestões, cadastro, Google, escolha no primeiro acesso, mesa e ranking.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Nome de usuário
@@ -62,6 +62,24 @@ jogador e como mestre) e no ranking. Substituiu o "NOME DO HERÓI" opcional do c
   deslogado pro login). Vale pra conta antiga e pra conta nova do Google.
 - Entrar/criar sessão: saíram os campos de nome; a tela mostra "Você entra/mestra como …".
 - Minha Conta: NOME DE USUÁRIO no lugar do NOME DE EXIBIÇÃO.
+
+## Login e cadastro renovados (1.13.3, PR #7, merge `2897436`)
+
+Feito por outro desenvolvedor (Carlos), com um commit nosso por cima depois do review
+(`7e44e63`).
+
+- Visual "quadro de missão" (cantos, sombra, legend), logo, campos com relevo, caixa de erro com
+  "!" e botão com efeito de pressionar, compartilhados pelas duas telas num bloco do
+  `styles.scss` **sob `.auth-retro`** (classe nos contêineres do login e do cadastro). Os nomes
+  das classes (`title-panel`, `auth-panel`, `form-group`, `error-msg`, `full-btn`…) também são
+  usados por outras telas — sem o escopo, o visual vazava pra elas (ver `gotchas.md`). O canto de
+  cima acompanha o tamanho da legend por `--auth-corner-top`.
+- **Gerenciador de senhas**: o e-mail é o identificador nas duas telas (`autocomplete="username"`
+  no campo de e-mail; no cadastro, o nome de usuário é `nickname`) — antes o cadastro salvava o
+  nome de usuário e o navegador o punha no campo de e-mail do login.
+- Travas de envio duplo (Enter repetido) e de Google em paralelo no login e no cadastro; Enter no
+  e-mail do login vai pra senha; foco no e-mail ao abrir só com mouse/teclado (`pointer: fine`),
+  pra não abrir o teclado por cima do logo em tela de toque.
 
 ## Ordem de deploy
 

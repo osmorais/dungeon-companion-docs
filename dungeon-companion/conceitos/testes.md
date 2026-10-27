@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -374,6 +374,13 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Login e cadastro renovados (2026-10-27, versão 1.13.3)
+
+- Web `login.component.spec.ts`: segundo envio ignorado enquanto o primeiro carrega; Google com
+  uma entrada em andamento não começa outra; foco no e-mail com mouse/teclado e não em toque
+  (`matchMedia` definido no teste — o jsdom não tem). `signup.component.spec.ts`: envio duplo e
+  Google em paralelo ignorados.
 
 ### Cards de NPC/monstro, ações em cartas e fundos (2026-10-26, versões 1.13.1 e 1.13.2)
 

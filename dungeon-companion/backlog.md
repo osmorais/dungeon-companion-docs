@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Backlog
@@ -34,10 +34,6 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
-- [ ] **PR #7 do web** (login/cadastro, do Carlos): esperando o autor corrigir. Ainda está como
-      1.11.1 — com a `main` em 1.13.0, precisa virar **1.13.1** (versão, `package.json` dos
-      dois repos e notas). Conferir se o comentário postado ficou só com os pontos que o usuário
-      manteve (ver `decisoes.md`, 2026-10-25).
 - [ ] Tirar as variáveis `SMTP_*` do Render e do `.env` local da api: sem uso desde a 1.12.1
       (o e-mail sai pelo script do site, ver [`conceitos/email.md`](conceitos/email.md)).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
@@ -199,10 +195,10 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
-- [ ] **Entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7): o campo
-      do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail ou
-      `LOWER(username)`, com a mesma mensagem de erro nos dois casos) e resolve o preenchimento
-      automático do gerenciador de senhas (o cadastro salva o nome de usuário como identificador).
+- [ ] Opcional: **entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7):
+      o campo do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail
+      ou `LOWER(username)`, com a mesma mensagem de erro nos dois casos). O preenchimento automático
+      já foi resolvido de outro jeito na 1.13.3 (o e-mail é o identificador nas duas telas).
 
 - [ ] Conferir no navegador (1.8.1): logo grande na abertura empurra os botões pra baixo em
       notebook baixo; Tom maior pode cobrir o canto do card, principalmente no celular.

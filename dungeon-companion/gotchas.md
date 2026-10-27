@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-27
 ---
 
 # Dungeon Companion — Gotchas
@@ -260,6 +260,11 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   `transform` (até `translateY(0)`) faz o elemento virar a referência dos `position: fixed` de
   dentro. A gaveta de baixo terminava em `translateY(0)` e a mão de cartas aberta de dentro dela
   ficava presa na gaveta. Terminar a animação em `transform: none` (1.13.2).
+- **Classe global com nome genérico vaza pra outras telas**: `title-panel`, `auth-panel`,
+  `form-group`, `error-msg`, `full-btn`, `auth-links`, `logo-container` são usados por várias
+  telas, cada uma com o próprio SCSS. Estilo compartilhado no `styles.scss` vai **sob uma classe
+  de escopo** (como `.auth-retro` do login/cadastro, 1.13.3) — no PR #7 o visual novo do login
+  mudou Home, sessões, Minha Conta e as outras telas de conta.
 
 ## Sessão em tempo real / permissões
 
