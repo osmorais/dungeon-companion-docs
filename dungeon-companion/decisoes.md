@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-27
+atualizado: 2026-10-28
 ---
 
 # Dungeon Companion — Decisões
@@ -313,6 +313,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   Monstro de **ND 5+** brilha em **vermelho** com o selo **PERIGOSO**. → `conceitos/monstros.md`
 - **2026-10-27** — O Tom perde a **estrela de 6 pontas** do avental (avental liso), nas 9 poses.
   → `procedimentos/artes-tom.md`
+- **2026-10-28** — XP de monstro **só no fim do combate**: derrotar não abre mais a distribuição;
+  o XP dos derrotados no combate acumula e, ao encerrar, o mestre vê o total e **escolhe** se
+  distribui (opcional). Monstro que chega a **0 PV** gera uma pergunta ao mestre se foi
+  derrotado. → `conceitos/monstros.md`
 
 ## Privacidade e segurança
 

@@ -2,7 +2,7 @@
 resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0), bestiário do mestre e catalogar em cartas com filtros (1.14.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-27
+atualizado: 2026-10-28
 ---
 
 # Dungeon Companion — Monstros
@@ -98,7 +98,7 @@ Api `0f36654`, web `d146f46`. O modal da ficha saiu; o mestre abre a ficha na **
 - **Barra**: imagem do monstro no anel e o nome. **Faixa** "VEZ DE …" na vez dele.
 - **Destaque**: PV, CA, ND, dados de vida e MESA (REVELADO/ESCONDIDO); DANO, CURA, DANO TOTAL e
   CURA TOTAL no PV (`applyMonsterHpDelta`); FINALIZAR TURNO (na vez), REVELAR/ESCONDER, DERROTAR
-  (fecha a gaveta e abre a distribuição de XP, como o botão da lista) e EDITAR STATUS (formulário
+  (fecha a gaveta e pede confirmação, como o botão da lista — 1.15.0, abaixo) e EDITAR STATUS (formulário
   dentro da gaveta; o rascunho e o salvar continuam na sessão).
 - **Colunas**: MONSTRO (carta grande com a descrição, nome original e tipo, trocar imagem,
   atributos com modificador, deslocamento, defesas), AÇÕES e TESTES. `app-monster-actions` ganhou
@@ -232,6 +232,28 @@ PR #8 do web (Carlos: cartas na lista do bestiário), merge `6578150`, com commi
   (teto da api) e filtra no navegador, padrão "mais recentes".
 - **Api**: `GET /api/monster-catalog/bestiary` passa a trazer `alignment`, `hp_max`, `ac`,
   `legendary` (tem `legendary_actions`) e `flies` (tem `speed.voo`), pra carta e os filtros.
+
+## Derrota e XP do combate (1.15.0)
+
+Api `3200b21`, web `b513c4e`. Antes, DERROTAR abria a distribuição de XP com o XP do monstro e
+encerrar o combate perguntava "os monstros foram derrotados?" (e derrotava todos os do combate).
+
+- **Derrotar** (linha do monstro e gaveta) pede confirmação — DERROTADO / AINDA NÃO — e tira o
+  monstro (`defeatMonster`), sem abrir o XP.
+- **0 PV**: o painel do mestre compara o PV de cada monstro a cada mudança da sessão
+  (`watchMonstersAtZeroHp`); quem passa de >0 pra 0 entra na fila de `defeatPrompts` (mesma
+  pergunta, com "chegou a 0 pontos de vida"). Vale pra qualquer caminho (gaveta, dano aplicado de
+  rolagem, dano em área). Não dispara na primeira carga; some se o monstro for curado ou sair.
+- **XP acumulado**: `combat_encounter.defeated_xp`. `GameSessionRepository.removeMonster` com
+  `creditCombatXp` (só a derrota) soma o `data_snapshot.xp` do monstro no combate em andamento
+  (`rolling_initiative`/`active`) do qual ele participa, na mesma transação da remoção (antes do
+  cascade apagar a participação). O evento `monster_defeated` leva `combat_xp`
+  (`{id_combat_encounter, defeated_xp}` ou nulo) e o reducer do web atualiza o encontro. O mestre
+  vê "XP ACUMULADO" ao lado da RONDA.
+- **Encerrar**: com XP acumulado, o mestre vê o total e escolhe DISTRIBUIR XP (o
+  `distribute-xp-modal` com o total sugerido e os jogadores do combate marcados; o combate só
+  encerra depois de conceder), ENCERRAR SEM XP ou VOLTAR AO COMBATE. Sem XP, encerra direto.
+  Monstros que sobraram no combate continuam na mesa e não entram no total.
 
 ## Próximos passos
 

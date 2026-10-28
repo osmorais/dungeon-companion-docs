@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-27
+atualizado: 2026-10-28
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -374,6 +374,15 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   mexer em PV; bruxo recupera a Magia de Pacto no `shortRest` e no `rollHitDie` (e outra classe
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
+
+### Derrota e XP do combate (2026-10-28, versão 1.15.0)
+
+- Api `game-session.service.unit.ts`: derrotar pede o crédito no combate e anuncia o acumulado
+  (`combat_xp`); remover (sem derrota) não credita.
+- Web `session-panel.component.spec.ts`: aviso de 0 PV (só o mestre, não na primeira carga, some
+  ao curar), DERROTAR com confirmação sem abrir o XP, encerrar com XP (distribuir e só então
+  encerrar; sem XP; voltar; fechar o XP não encerra), sem XP encerra direto.
+  `session-event.reducer.spec.ts`: `monster_defeated` atualiza o acumulado só do combate certo.
 
 ### Bestiário em cartas e filtros (2026-10-27, versão 1.14.0)
 
