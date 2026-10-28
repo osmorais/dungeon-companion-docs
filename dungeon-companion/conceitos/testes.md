@@ -375,6 +375,18 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
   não).
 - Os testes unitários **não** pegam erro de injeção de dependência (ver `gotchas.md`).
 
+### Encerrar com monstros, gaveta fecha ao rolar e multiataque (2026-10-28, versão 1.15.1)
+
+- Api `game-session.service.unit.ts`: a derrota devolve o `combat_xp`; a etapa com `sequence` vai
+  pra mesa e sequência inválida é 422.
+- Web `session-panel.component.spec.ts`: encerrar pergunta de cada monstro ("1 DE 2"), derrotado
+  soma o XP antes da pergunta do XP, nenhum derrotado encerra direto, VOLTAR desiste; carta na
+  pergunta; rolagem do monstro fecha a gaveta; multiataque abre a próxima rolagem (modal novo) e
+  fecha no fim, VOLTAR À FICHA ou o monstro sair interrompem. `monster-actions.component.spec.ts`:
+  MULTIATAQUE monta a sequência ("1/2", "2/2") e trava sem ataque rolável.
+  `player-actions-modal.component.spec.ts`: rolou fecha a gaveta, voltar sem rolar não.
+  `spell-cast-context.spec.ts` / `spell-cast-stage.component.spec.ts`: o selo "MULTIATAQUE k/N".
+
 ### Derrota e XP do combate (2026-10-28, versão 1.15.0)
 
 - Api `game-session.service.unit.ts`: derrotar pede o crédito no combate e anuncia o acumulado

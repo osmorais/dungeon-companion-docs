@@ -60,7 +60,8 @@ juntas na 1.11.0.
   - o gasto vai antes da rolagem: se a api recusar (422, ex.: ainda recarregando), o modal não abre.
 - **Vez do monstro**: `CombatService.onTurnStart` (api) roda nos três pontos em que a vez muda. No
   web, a ficha do monstro abre sozinha pro mestre na vez dele, com faixa e FINALIZAR TURNO.
-- **Multiataque guiado**: "Mordida 0/1, Garra 0/2", cada um rolando pelo botão do ataque.
+- **Multiataque**: ~~guiado ("Mordida 0/1, Garra 0/2", cada um pelo botão do ataque)~~ — desde a
+  1.15.1, em sequência na tela de lançamento (ver "Derrota e XP do combate", abaixo).
 - **Covil** (29 fichas com `lair_actions`): botão NO COVIL / SAIU DO COVIL (`in_lair`). Com o
   monstro no covil, o mestre recebe o lembrete "CONTAGEM 20: AÇÕES DE COVIL" quando a vez passa de
   quem tem 20+ pra quem tem menos (perde empates), ou na virada de rodada se ninguém tem 20
@@ -111,9 +112,9 @@ Api `0f36654`, web `d146f46`. O modal da ficha saiu; o mestre abre a ficha na **
   o ↺. Os contadores de lendárias e da reação ficam junto do baralho. Multiataque, habilidades só de
   texto, covil, recarga e descanso continuam em lista.
 - A gaveta é só desenho: entradas/saídas pra sessão, que grava. Mostra o monstro como está agora
-  (`liveMonsterDetail`, pela sessão), e **fica aberta durante a rolagem** (a rolagem está numa camada
-  acima): o multiataque guiado mantém a contagem entre um ataque e outro — antes, a ficha fechava ao
-  rolar e a contagem zerava.
+  (`liveMonsterDetail`, pela sessão), e fica aberta por baixo da rolagem (camada acima): VOLTAR À
+  FICHA antes de rolar volta pra ela. **Desde a 1.15.1, terminada a rolagem a gaveta fecha**
+  (`finishMonsterRoll`), como a dos jogadores — no multiataque, só depois do último ataque.
 
 ## Ação do monstro na tela de lançamento (1.13.0)
 
@@ -233,7 +234,7 @@ PR #8 do web (Carlos: cartas na lista do bestiário), merge `6578150`, com commi
 - **Api**: `GET /api/monster-catalog/bestiary` passa a trazer `alignment`, `hp_max`, `ac`,
   `legendary` (tem `legendary_actions`) e `flies` (tem `speed.voo`), pra carta e os filtros.
 
-## Derrota e XP do combate (1.15.0)
+## Derrota e XP do combate (1.15.0 e 1.15.1)
 
 Api `3200b21`, web `b513c4e`. Antes, DERROTAR abria a distribuição de XP com o XP do monstro e
 encerrar o combate perguntava "os monstros foram derrotados?" (e derrotava todos os do combate).
@@ -253,7 +254,19 @@ encerrar o combate perguntava "os monstros foram derrotados?" (e derrotava todos
 - **Encerrar**: com XP acumulado, o mestre vê o total e escolhe DISTRIBUIR XP (o
   `distribute-xp-modal` com o total sugerido e os jogadores do combate marcados; o combate só
   encerra depois de conceder), ENCERRAR SEM XP ou VOLTAR AO COMBATE. Sem XP, encerra direto.
-  Monstros que sobraram no combate continuam na mesa e não entram no total.
+- **Monstros que sobraram no combate** (1.15.1, api `65b8bd1`, web `c725ab9`): ao encerrar, o
+  mestre responde de cada um, na ordem do combate ("AINDA ESTÁ NO COMBATE. FOI DERROTADO?",
+  "MONSTRO 1 DE 3"): DERROTADO segue o fluxo da derrota e soma o XP; NÃO deixa na mesa; VOLTAR AO
+  COMBATE desiste de encerrar. Respondido o último (e terminadas as derrotas), segue pro XP. A
+  derrota devolve o `combat_xp` na resposta, pra o total já estar certo sem esperar o socket. A
+  pergunta (0 PV, DERROTAR, encerrar) mostra a carta do monstro (`monsterCardFor`).
+- **Multiataque em sequência** (1.15.1): MULTIATAQUE monta os ataques na ordem do livro, cada um
+  repetido `count` vezes (`multiSteps`, só os que têm botão de rolagem), e a carta de cada um leva
+  `sequence {index, total}` — validada na api (1–20, index ≤ total) e repassada pra mesa, que mostra
+  o selo "MULTIATAQUE k/N" no palco desde o começo (`monsterSequenceStamp`, `CastStageView.stamp`).
+  A primeira rolagem leva as outras em `followUps`; quando uma termina, a sessão abre a próxima
+  (cada uma num modal novo: `@for … track key`). VOLTAR À FICHA ou o monstro sair da mesa
+  interrompem.
 
 ## Próximos passos
 

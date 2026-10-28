@@ -317,6 +317,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   o XP dos derrotados no combate acumula e, ao encerrar, o mestre vê o total e **escolhe** se
   distribui (opcional). Monstro que chega a **0 PV** gera uma pergunta ao mestre se foi
   derrotado. → `conceitos/monstros.md`
+- **2026-10-28** — Encerrar combate com monstros ainda nele **pergunta de cada um** se foi
+  derrotado (sim = fluxo normal de derrota) antes da pergunta do XP. Rolou pela ficha (mestre ou
+  jogador), a **gaveta fecha**; no **multiataque**, os ataques vão em sequência na tela de
+  lançamento com o selo "MULTIATAQUE k/N" pra mesa, e a ficha fecha no último. → `conceitos/monstros.md`
 
 ## Privacidade e segurança
 
