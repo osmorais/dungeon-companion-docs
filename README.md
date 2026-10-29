@@ -53,7 +53,9 @@ Artes originais (PNG gerados no ChatGPT, grandes demais pro repositório web) em
 
 Configuração do Claude Code que mora fora dos repositórios (hook do brief, `/fechar-entrega`,
 `settings.json`, memória) e como instalar em outro computador:
-[`claude-setup/LEIA-ME.md`](claude-setup/LEIA-ME.md).
+[`claude-setup/LEIA-ME.md`](claude-setup/LEIA-ME.md). Prompts genéricos pra levar essa lógica de
+memória a outros projetos (estudo sem git, projeto novo completo, reorganizar docs existentes):
+[`claude-setup/prompts/`](claude-setup/prompts/).
 
 Outros: [`scripts/`](dungeon-companion/scripts/) (Node, rodar de dentro de
 `dungeon-companion-api` depois de `npm run build`; leem o `.env` de produção) e

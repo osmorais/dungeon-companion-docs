@@ -2,7 +2,7 @@
 resumo: Configuração do Claude Code fora dos repositórios (hook do brief, /fechar-entrega, /abrir-prs, settings, memória) e como instalar em outro computador.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-24
+atualizado: 2026-10-29
 ---
 
 # Configuração do Claude Code (fora dos repositórios)
@@ -19,6 +19,17 @@ ao trocar de computador:
 | `skills/abrir-prs/SKILL.md` | `~/.claude/skills/abrir-prs/SKILL.md` | Skill `/abrir-prs`: mesma branch na api, no web e no docs, commit com a identidade configurada, push da branch e PR pra `main` (sem merge) |
 | `dungeon-companion.env.example` | `~/.claude/dungeon-companion.env` | **Configuração por máquina** (não vai pro git): pasta dos repositórios (`PROJECTS_DIR`), pasta dos docs (`DOCS_DIR`), identidade dos commits (`GIT_USER_NAME`, `GIT_USER_EMAIL`) e conta do `gh` (`GH_USER`) da skill `/abrir-prs`. Lida pelo hook, pela skill e pelos dois scripts |
 | `memory/*.md` | `~/.claude/projects/<pasta do projeto>/memory/` | Memória do Claude (não testar a UI no navegador; ler os docs, o doc de LGPD e o de magias antes de mexer) |
+
+## Prompts pra levar a lógica pra outros projetos
+
+Genéricos (não citam este projeto), em [`prompts/`](prompts/) — fora do `instalar.sh` e do
+`sincronizar.sh`:
+
+| Prompt | Pra quê |
+|---|---|
+| [`1-estudo-sem-git.md`](prompts/1-estudo-sem-git.md) | Estudo/análise (ex.: POC) só coletando informações, sem git: memória numa pasta portátil, com exportar/importar por zip pra outra pessoa continuar |
+| [`2-projeto-novo-completo.md`](prompts/2-projeto-novo-completo.md) | Projeto novo de software com toda a lógica: docs curados, hook de início de sessão, `/fechar-entrega`, memória enxuta e `claude-setup/` |
+| [`3-reorganizar-docs-existentes.md`](prompts/3-reorganizar-docs-existentes.md) | Reorganizar documentos que já existem nessa estrutura, sem perder conteúdo, com plano aprovado antes |
 
 ## Instalar num computador novo
 
