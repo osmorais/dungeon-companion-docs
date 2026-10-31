@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-10-28
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Estado atual
@@ -27,7 +27,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.15.1 (2026-10-28, encerrar combate pergunta pelos monstros que sobraram,
+- **Versão do sistema**: 1.16.0 (2026-10-30, grimório de magias com o layout do catalogar
+  monstros e filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação
+  bônus e reação; descrição da Vidência corrigida —
+  [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.15.1 (2026-10-28, encerrar combate pergunta pelos monstros que sobraram,
   carta do monstro na pergunta de derrota, ficha do monstro fecha ao rolar e multiataque em
   sequência na tela de lançamento com o selo "MULTIATAQUE k/N"); antes, 1.15.0 (mesmo dia, XP do combate no fim da luta: derrotar só confirma
   e soma o XP do monstro no combate, encerrar mostra o total e distribuir é opcional, aviso ao
@@ -57,8 +60,11 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `65b8bd1` e web `c725ab9` (1.15.1, sem migração), push direto na
-  `main` em 2026-10-28, api antes do web. Antes: api `3200b21` e web `b513c4e` (1.15.0), push direto na `main` em
+- **Últimos commits**: api `c64408b` (1.16.0: versão e a Vidência no seed) e web `03c710c`
+  (1.16.0), push direto na `main` em 2026-10-30, api antes do web, sem migração (a Vidência foi
+  corrigida no banco antes, ver abaixo); o GitHub avisou de novo da regra de PR ignorada. Antes:
+  api `65b8bd1` e web `c725ab9` (1.15.1, sem migração), push direto na `main` em 2026-10-28, api
+  antes do web. Antes: api `3200b21` e web `b513c4e` (1.15.0), push direto na `main` em
   2026-10-28, api antes do web, com a coluna `combat_encounter.defeated_xp` criada antes (ver
   abaixo). Antes: web `db89d5b` e api `af2e9a7` (1.14.1; na api só a versão), push direto
   na `main` em 2026-10-27, api antes do web — o GitHub avisou que a regra "mudança só por pull
@@ -81,7 +87,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 517 (`npm run test:unit`), web 745 (`npm run test:run`) — na 1.15.1 —
+- **Testes**: api 517 (`npm run test:unit`), web 772 (`npm run test:run`) — na 1.16.0 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -104,6 +110,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
 | E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1) | [`conceitos/email.md`](conceitos/email.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
+| Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
@@ -139,6 +146,10 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   acumulado dos monstros derrotados no combate (1.15.0). Uma transação, antes do deploy da api,
   autorizado pelo usuário; 66 combates, nenhum em andamento, todos com 0. `schema-diff` vazio
   depois.
+- **2026-10-30**: descrição da magia **Vidência** (`spell.id_spell` 354), que estava com o texto
+  de Vínculo Protetor, trocada pelo texto do `referencias/magias.txt` (tabela de modificadores
+  em texto corrido; três erros de OCR corrigidos). Uma transação que só confirmava com 1 linha,
+  autorizado pelo usuário. Seed da api (`docs/database/database_inserts.sql`) com o mesmo texto.
 
 ## LGPD
 

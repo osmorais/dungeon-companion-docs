@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-27
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Gotchas
@@ -302,6 +302,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   `/code-review` também deixa uma cópia (`prN`).
 
 ## Conteúdo do livro
+
+- `docs/database/database_inserts.sql` da api tem fim de linha **CRLF**. Editar com Python em modo
+  texto (`open(p).read()`/`write`) troca tudo pra LF e o diff pega o arquivo inteiro: ler e gravar
+  em binário (`'rb'`/`'wb'`) ou usar o Edit (2026-10-30, Vidência).
 
 - `referencias/livro.txt` tem colunas embaralhadas (texto de uma magia aparece no lugar de
   outra). Usar `referencias/magias.txt` (extração limpa, ordem alfabética) para magias.

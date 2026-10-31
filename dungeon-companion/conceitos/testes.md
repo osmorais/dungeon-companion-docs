@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-28
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -110,6 +110,9 @@ src/app/spell-cast/spell-cast-context.spec.ts             # etapa com magia ou a
 src/app/spell-cast/spell-cast-stage.component.spec.ts     # carta virada, dados rolando, revelação
 src/app/game-card/card-hand.component.spec.ts             # a "mão": navegação, arrastar, clique fora
 src/app/spell-catalog-list/spell-grimoire.component.spec.ts # grimório do mestre: busca, páginas, Esc
+src/app/spell-catalog-list/spell-catalog-list.component.spec.ts # grimório: páginas de 8, filtros, erro
+src/app/spell-filters/spell-filters.spec.ts              # filtros de magia + integridade de SPELL_TAGS
+src/app/services/spell-catalog.service.spec.ts           # catálogo inteiro em lotes de 50
 src/app/app.spec.ts                                      # smoke test: o app é criado
 src/app/legal/legal-info.spec.ts                         # constantes/rotas da privacidade e termos
 src/app/legal/legal-page.component.spec.ts               # página de privacidade/termos
@@ -760,6 +763,17 @@ mostra a versão atual e todas as versões.
   `MAIL_RELAY_SECRET` falha sem chamar; erro do script vira mensagem com o status, sem o e-mail.
   O script PHP não tem teste unitário (não há PHP na máquina): testado no ar, sem enviar e-mail
   (ver `email.md`).
+
+### Web — grimório de magias com filtros (1.16.0)
+
+- `spell-filters.spec.ts`: busca sem acento, círculo (truque = 0), escola, classe (`CLASS_SPELLS`),
+  concentração/ação bônus/reação, ordem por círculo ou nome, elemento, função, faixas de alcance,
+  contagem de filtros ligados; `SPELL_TAGS` cobre as 361 magias (ids 2 a 362), toda magia tem
+  função, só valores conhecidos e sem repetição, toda categoria tem alguma magia.
+- `spell-catalog-list.component.spec.ts`: 8 cartas por página, filtrar volta pra página 1, limpar
+  mantém a ordem, erro ao carregar, carta em tela cheia.
+- `spell-catalog.service.spec.ts`: `getAll` pede os lotes que faltam e junta na ordem; um lote só
+  não faz outra chamada.
 
 ### Web — reducer de eventos do socket (`session-event.reducer.spec.ts`)
 

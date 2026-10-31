@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-28
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Decisões
@@ -15,6 +15,11 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 `.claude/rules/` dos repos.
 
 ## Produto e regras do jogo
+
+- **2026-10-30** — Grimório de magias com o layout do catalogar monstros. Filtros principais:
+  círculo, escola e classe; secundários: função (efeito da magia), elemento e alcance. Lista de
+  funções e elementos aprovada pelo usuário; a classificação das 361 magias fica no código
+  (`spell-tags.ts`), não no banco, e é feita à mão. → `conceitos/cartas.md`
 
 - **2026-09-10** — Level-up em fases: classe única primeiro, depois subclasse, depois
   multiclasse. HP **rolado** (não média). ASI **ou** talento. Revisão antes de confirmar. Sem IA,

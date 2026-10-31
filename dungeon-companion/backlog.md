@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-27
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Backlog
@@ -52,6 +52,12 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
 - [ ] Cura do Toque Vampírico; curas de valor fixo.
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
+- [ ] Opcional: filtros (os do grimório da 1.16.0) também no grimório do Quadro do Mestre
+      (`app-spell-grimoire`), que continua só com a busca.
+- [ ] Carta da magia mostra ALCANCE "0 m" (pessoal) e "1 m" (toque): `range_distance` usa 0 e 1
+      como código (ver `spellRange` em `spell-filters.ts`). Mostrar PESSOAL/TOQUE na carta.
+- [ ] Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
+      de uma lista no código (como `spell-tags.ts`).
 
 ## Cartas
 
@@ -218,7 +224,8 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 - [ ] Teste instável na api: o `before each` de "Criação de personagem → ficha gravada"
       (`character-creation.unit.ts`) estourou os 2 s uma vez em 15 rodadas (máquina carregada,
-      2026-10-24). Se repetir, subir o `timeout` do bloco.
+      2026-10-24). Se repetir, subir o `timeout` do bloco. Em 2026-10-30 uma rodada deu
+      "492 passing, 1 failing" e as 4 seguintes deram 517 (não deu pra ver qual teste).
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
 - [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (13,3 kB na 1.7.4; o erro é
       só em 32 kB) — se crescer muito, separar partes (DANO/CURA, SUA VEZ) em componentes.

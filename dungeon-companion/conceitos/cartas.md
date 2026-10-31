@@ -1,8 +1,8 @@
 ---
-resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
+resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0), o grimório de magias com filtros (1.16.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-26
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Cartas e lançamento de magia
@@ -57,10 +57,43 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
   `styles.scss`: mínimo ~190px no desktop, 2 por linha no celular), LANÇAR/PREPARAR embaixo de cada
   carta (`<ng-template #spellActions>`, o mesmo da lista e da tela cheia). Botão **CARTAS | LISTA**
   (`grimoireMode`), não guardado — reabre em CARTAS.
-- **Grimório de Magias** (`spell-catalog-list`): grade de cartas com a busca e paginação de
-  antes; esqueleto `.card-skeleton`.
+- **Grimório de Magias** (`spell-catalog-list`): grade de cartas; desde a 1.16.0 com filtros
+  (ver "Grimório de magias com filtros" abaixo).
 - **Ficha**: círculos continuam começando fechados; dentro, grade de cartas (celular e desktop).
   Tela cheia com PREPARAR (x/y) e LANÇAR.
+
+## Grimório de magias com filtros (1.16.0)
+
+Web `03c710c`; api `c64408b` (só a versão e a Vidência no seed).
+
+- **Layout**: o mesmo do catalogar monstros (`monster-catalog-create`, ver
+  [`monstros.md`](monstros.md)): filtros numa coluna fixa à esquerda (no celular só a busca, o
+  resto recolhe em ▼ FILTROS), cartas em páginas de 8 (`.sc-*` em
+  `spell-catalog-list.component.scss`), carta em tela cheia (`app-card-viewer`) ao tocar.
+- **Carregamento**: `SpellCatalogService.getAll()` pede a primeira página de 50 (teto da api) e
+  as que faltam em paralelo (`forkJoin`); 361 magias, ~258 kB de descrição. Filtro e ordem no
+  navegador. A api não mudou.
+- **Filtros** (`spell-filters/spell-filters.ts`, painel `app-spell-filters`, que reaproveita o
+  SCSS do `app-monster-filters`): busca no nome sem acento; círculo (TRUQUE, 1º a 9º); escola;
+  classe (pela `CLASS_SPELLS` de `constants/spell-rules.ts`, a mesma da criação de ficha); função;
+  elemento; alcance; etiquetas CONCENTRAÇÃO (`duration`), AÇÃO BÔNUS e REAÇÃO (`casting_time`);
+  ordem por círculo ou nome. Ritual não existe nos dados.
+- **Alcance**: `range_distance` 0 = pessoal, 1 (e o 2 da Palavra de Recordação) = toque, o resto em
+  metros → PESSOAL · TOQUE · ATÉ 9 M · 18 M OU MAIS (`spellRange`).
+- **Função e elemento** (`spell-filters/spell-tags.ts`, `SPELL_TAGS`): uma linha por magia,
+  `id: [elementos, funções], // nome`, com `// prettier-ignore`. Classificação **feita à mão** em
+  2026-10-30 sobre as descrições (uma heurística por palavras-chave serviu só de rascunho e errava
+  muito), com a lista de categorias aprovada pelo usuário. Elementos: fogo, frio, elétrico, trovão,
+  ácido, veneno, necrótico, radiante, energia, psíquico, físico (concussão/cortante/perfurante).
+  Funções: dano em alvo único, dano em área, atordoar/incapacitar, controlar mente,
+  prender/imobilizar, enfraquecer, fortalecer, proteger, curar/reviver, invocar,
+  mover/teletransportar, furtividade/enganar, detectar/informar, utilidade. Critérios dos casos
+  duvidosos: magia que deixa escolher o tipo de dano entra em todos os elementos (Arma Elemental,
+  Orbe Cromática, Proteção contra Energia, Glifo de Vigilância, Muralha Prismática); Destruições e
+  Auxílio Divino = dano em alvo único; Banimento, Labirinto e Imobilizar Pessoa/Monstro =
+  atordoar/incapacitar; Nevasca = frio sem dano. Magia nova no banco precisa de linha aqui (o teste
+  confere as 361).
+- O grimório do Quadro do Mestre (`app-spell-grimoire`) continua sem filtros.
 
 ## Aviso de lançamento de magia (1.5.0)
 
