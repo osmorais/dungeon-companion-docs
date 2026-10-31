@@ -2,7 +2,7 @@
 resumo: Quadro do Mestre (1.2.0) — gaveta só do mestre na sessão (lateral no desktop, de baixo no celular), e a gaveta AÇÕES DE PERSONAGEM do jogador: o que tem, como cada parte funciona, endpoints e limites.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-10-30
 ---
 
 # Dungeon Companion — Quadro do Mestre
@@ -117,9 +117,11 @@ mesa, depois o que é de preparação e organização.
 
 - Botão **GRIMÓRIO (TODAS AS MAGIAS)** em DADOS E MAGIAS → `grimoire` → o session-panel fecha o
   quadro e abre `app-spell-grimoire` (`dungeon-companion-web/src/app/spell-catalog-list/spell-grimoire.component.*`,
-  genérico): todas as magias do catálogo (`SpellCatalogService.getCatalog`), busca pelo nome (espera
-  300 ms e volta pra página 1), 20 por página, cartas (`.card-grid`) e a carta em tela cheia ao tocar.
-  Camada 190.
+  genérico): todas as magias do catálogo, 20 por página, cartas (`.card-grid`) e a carta em tela
+  cheia ao tocar. Camada 190. Desde a 1.16.1 carrega o catálogo inteiro
+  (`SpellCatalogService.getAll`) e usa os filtros do Grimório de Magias (`app-spell-filters`,
+  ver [`cartas.md`](cartas.md)): coluna à esquerda no desktop (cada coluna rola por dentro do
+  quadro); no celular uma coluna só, com os filtros recolhidos em ▼ FILTROS.
 - Fecha pelo VOLTAR, fundo ou Esc e **reabre o quadro** (`dmGrimoireOpen`). O Esc que fecha a carta
   em tela cheia não fecha o grimório junto (`viewerJustClosed`).
 

@@ -93,7 +93,8 @@ Web `03c710c`; api `c64408b` (só a versão e a Vidência no seed).
   Auxílio Divino = dano em alvo único; Banimento, Labirinto e Imobilizar Pessoa/Monstro =
   atordoar/incapacitar; Nevasca = frio sem dano. Magia nova no banco precisa de linha aqui (o teste
   confere as 361).
-- O grimório do Quadro do Mestre (`app-spell-grimoire`) continua sem filtros.
+- O grimório do Quadro do Mestre (`app-spell-grimoire`) usa os mesmos filtros desde a 1.16.1 (ver
+  [`quadro-do-mestre.md`](quadro-do-mestre.md)).
 
 ## Aviso de lançamento de magia (1.5.0)
 

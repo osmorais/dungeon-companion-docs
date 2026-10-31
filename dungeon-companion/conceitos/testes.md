@@ -109,7 +109,7 @@ src/app/spell-cast/spell-cast-stage.model.spec.ts         # dados do aviso de la
 src/app/spell-cast/spell-cast-context.spec.ts             # etapa com magia ou arma, verbo do aviso
 src/app/spell-cast/spell-cast-stage.component.spec.ts     # carta virada, dados rolando, revelação
 src/app/game-card/card-hand.component.spec.ts             # a "mão": navegação, arrastar, clique fora
-src/app/spell-catalog-list/spell-grimoire.component.spec.ts # grimório do mestre: busca, páginas, Esc
+src/app/spell-catalog-list/spell-grimoire.component.spec.ts # grimório do mestre: filtros, páginas, Esc
 src/app/spell-catalog-list/spell-catalog-list.component.spec.ts # grimório: páginas de 8, filtros, erro
 src/app/spell-filters/spell-filters.spec.ts              # filtros de magia + integridade de SPELL_TAGS
 src/app/services/spell-catalog.service.spec.ts           # catálogo inteiro em lotes de 50
@@ -516,6 +516,9 @@ Contexto: [`quadro-do-mestre.md`](quadro-do-mestre.md).
 - Web `spell-grimoire.component.spec.ts` (novo): carrega o catálogo em cartas (20 por página); busca
   com espera e volta pra página 1; paginação não passa das pontas; Esc fecha, mas não junto com a
   carta em tela cheia.
+  Na 1.16.1 passou a carregar o catálogo inteiro (`getAll`) e filtrar no navegador: os testes de
+  busca com espera viraram filtros (busca, círculo, elemento, voltar pra página 1, limpar mantém a
+  ordem) e entrou o de erro ao carregar.
 
 ### Baralho e mão (2026-10-22, versão 1.6.5)
 

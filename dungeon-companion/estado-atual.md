@@ -27,7 +27,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.16.0 (2026-10-30, grimório de magias com o layout do catalogar
+- **Versão do sistema**: 1.16.1 (2026-10-30, os mesmos filtros no grimório do Quadro do Mestre —
+  [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md)); antes, 1.16.0 (mesmo dia, grimório de magias com o layout do catalogar
   monstros e filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação
   bônus e reação; descrição da Vidência corrigida —
   [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.15.1 (2026-10-28, encerrar combate pergunta pelos monstros que sobraram,
@@ -60,7 +61,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `c64408b` (1.16.0: versão e a Vidência no seed) e web `03c710c`
+- **Últimos commits**: api `746b110` (só a versão) e web `749d766` (1.16.1), push direto na `main`
+  em 2026-10-30, api antes do web, sem migração. Antes: api `c64408b` (1.16.0: versão e a Vidência no seed) e web `03c710c`
   (1.16.0), push direto na `main` em 2026-10-30, api antes do web, sem migração (a Vidência foi
   corrigida no banco antes, ver abaixo); o GitHub avisou de novo da regra de PR ignorada. Antes:
   api `65b8bd1` e web `c725ab9` (1.15.1, sem migração), push direto na `main` em 2026-10-28, api
@@ -87,7 +89,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 517 (`npm run test:unit`), web 772 (`npm run test:run`) — na 1.16.0 —
+- **Testes**: api 517 (`npm run test:unit`), web 774 (`npm run test:run`) — na 1.16.1 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -110,7 +112,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
 | E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1) | [`conceitos/email.md`](conceitos/email.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
-| Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
+| Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
