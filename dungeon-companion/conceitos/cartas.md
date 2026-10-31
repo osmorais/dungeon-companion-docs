@@ -53,6 +53,20 @@ cartas na **1.6.0** (web `1b6d39c`), com a mesma carta e a mesma moldura.
 
 ## Onde as cartas aparecem
 
+Todos os lugares que desenham carta de magia (`spellToCard` em `game-card/spell-card.ts` →
+`app-game-card`). Mudou a carta (tamanho, números, alcance), conferir cada um:
+
+| Tela | Arquivo (web) | Tamanho | Detalhe |
+|---|---|---|---|
+| Grimório da sessão (gaveta de ações) | `player-actions-modal` | `mini` + tela cheia | abaixo |
+| Baralho MAGIAS PRONTAS e a "mão" | `player-actions-modal` + `app-card-deck`/`app-card-hand` | `mini` (vizinhas) + `full` (da vez) | "Baralho e mão" abaixo |
+| Ficha | `character-sheet` | `mini` + tela cheia | abaixo |
+| Grimório de Magias (`/spell-catalog`) | `spell-catalog-list` | `mini` com 4 números + tela cheia | "Grimório de magias com filtros" |
+| Grimório do mestre (Quadro do Mestre) | `spell-catalog-list/spell-grimoire` | `mini` com 4 números + tela cheia | [`quadro-do-mestre.md`](quadro-do-mestre.md) |
+| Criação de ficha, etapa de magias (1.6.7) | `character-wizard` (`spellCardFor`, `spellCardStateFor`) | `mini` + tela cheia | sem etiqueta PREPARADA; escolhida = `ready`, sem vaga = `locked` |
+| Tela de lançamento (aviso da mesa) | `session-panel` → `app-spell-cast-stage` | `mini` (2 números), sem descrição | "Aviso de lançamento de magia" abaixo |
+| Vitrine da tela inicial | `landing/landing-cards` | `full` (da vez) + `mini` (vizinhas) | [`tela-inicial.md`](tela-inicial.md) |
+
 - **Grimório da sessão** (segunda tela da gaveta de ações): grade `.card-grid` (global no
   `styles.scss`: mínimo ~190px no desktop, 2 por linha no celular), LANÇAR/PREPARAR embaixo de cada
   carta (`<ng-template #spellActions>`, o mesmo da lista e da tela cheia). Botão **CARTAS | LISTA**
