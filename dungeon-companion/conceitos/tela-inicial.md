@@ -2,7 +2,7 @@
 resumo: Tela inicial pública (/ pra visitantes, 1.8.0): rotas, seções, card de exemplo, vitrine de cartas, o fluxo de sessão expirada (1.8.1) e o menu de seções no celular (1.12.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Tela inicial (visitantes)
@@ -27,8 +27,8 @@ feita por outro desenvolvedor) e foi ajustada na **1.8.1** (web `d82da91` e `f2c
 - **SAIR (1.8.2, `3bf5f79`)**: `logout()` → `clearSession('/login')`. Na 1.8.0 ia pra `/`, mas
   quem saía da Home já estava em `/`: o roteador ignora navegação pra mesma URL e a Home ficava
   na tela. O `clearSession` agora só aceita `'/login'` ou `null`.
-- A tela não chama a API (o aviso de servidor acordando, `app-server-wakeup`, faz `fetch /ping` em
-  qualquer página, inclusive esta).
+- A tela não chama a API. (Até a 1.17.1 o aviso de servidor acordando, `app-server-wakeup`, fazia
+  `fetch /ping` em qualquer página; saiu na 1.17.2 com a api na VPS.)
 
 ## Página (`src/app/landing/`)
 

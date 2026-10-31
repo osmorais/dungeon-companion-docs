@@ -29,7 +29,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.1 (2026-10-31, api saiu do Render grátis pra uma VPS da Hostinger,
+- **Versão do sistema**: 1.17.2 (2026-10-31, sem a tela "despertando o servidor" ao abrir o site —
+  [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md)); antes, 1.17.1 (mesmo dia, api saiu do Render grátis pra uma VPS da Hostinger,
   sempre ligada — [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md) —, Política de
   Privacidade sem o Render, e descrições completas de Barreira de Lâminas, Muralha de Vento e
   Conjurar Rajada); antes, 1.17.0 (mesmo dia, selo de dano/cura nas cartas de magia: base no
@@ -68,7 +69,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `1c7c518` (deploy pelo GitHub Actions) e `2e7e8fc` (versão 1.17.1),
+- **Últimos commits**: api `23d625e` (só a versão) e web `30684d0` (1.17.2: tira o `server-wakeup/`), push
+  direto na `main` em 2026-10-31, api antes do web, sem migração. Antes: api `1c7c518` (deploy pelo GitHub Actions) e `2e7e8fc` (versão 1.17.1),
   web `494d7ce` (1.17.1: `apiUrl` na VPS, Política, magias), push direto na `main` em 2026-10-31,
   api antes do web, sem migração (as 3 descrições foram corrigidas no banco antes, ver abaixo). O
   `2e7e8fc` foi o primeiro deploy pela Action. Antes: api `c316ab5` e web `bead301` (1.17.0), push
@@ -101,7 +103,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 527 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.1 —
+- **Testes**: api 527 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.2 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

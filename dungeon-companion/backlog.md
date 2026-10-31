@@ -250,9 +250,6 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       465/587 do `smtp.hostinger.com` saem (testado). Envolve `email.service.ts` (SMTP direto,
       `SMTP_*` já estão no `/etc/forja-api.env`), testes, [`conceitos/email.md`](conceitos/email.md),
       a decisão de 2026-10-25 em `decisoes.md` e aposentar o script PHP e o `MAIL_RELAY_*`.
-- [ ] **Tela "servidor acordando"** (`server-wakeup/`, web): aparece a cada carga em produção até o
-      `/ping` responder — feita pro Render grátis. Com a VPS sempre ligada, decidir se tira ou só
-      mostra depois de uns segundos sem resposta.
 - [ ] **Otimizar as imagens do site** nós mesmos: os fundos de `public/backgrounds/` são PNG de
       1,3–1,7 MB (2036 px de largura). Gerar WebP com boa qualidade (~150–300 KB) e trocar em
       `background.service.ts`; conferir também os PNG grandes de `src/assets`. Motivo: a

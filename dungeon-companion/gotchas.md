@@ -213,7 +213,7 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - **Sprite do dragão** (`public/dragon-sprite.png` e `dragon-sprite-sombrio.png`): grade **4×4**,
   virado pra **direita**, fundo transparente, as 4 linhas formam um ciclo de 16 quadros de bater de
   asas. Vem da variável de tema `--dragon-sprite`, usada pelo `LoadingOverlayComponent`
-  (`background-size: 400% 400%`) e pelo `dragon-animation` (wizard/servidor acordando, 512 px).
+  (`background-size: 400% 400%`) e pelo `dragon-animation` (wizard; até a 1.17.1 também a tela de servidor acordando, 512 px).
   Trocar a imagem mantendo a grade não exige mexer no CSS. Tudo em `public/` vai pro ar: não
   deixar cópia antiga lá dentro.
 - **Assets**: `src/assets/*.png`, referenciados como `assets/nome.png` (sem barra inicial).

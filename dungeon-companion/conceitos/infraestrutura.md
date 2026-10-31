@@ -143,5 +143,7 @@ restart sem senha.
   operadores).
 - O Render ficou ligado como **reserva** por alguns dias (recebe os mesmos pushes). Voltar: trocar
   o `apiUrl` de volta e dar push no web. Depois, apagar o serviço do Render (backlog).
+- Na 1.17.2 saiu do web a tela "despertando o servidor" (`server-wakeup/`), que esperava o
+  `/ping` do Render a cada carga do site.
 - `forjaarcana.com` e `api.forjaarcana.com` agora são o mesmo *site* pro navegador: o cookie
   httpOnly deixa de ser third-party (o fallback por token no Socket.io continua funcionando).
