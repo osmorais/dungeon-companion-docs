@@ -52,8 +52,6 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
 - [ ] Cura do Toque Vampírico; curas de valor fixo.
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
-- [ ] Carta da magia mostra ALCANCE "0 m" (pessoal) e "1 m" (toque): `range_distance` usa 0 e 1
-      como código (ver `spellRange` em `spell-filters.ts`). Mostrar PESSOAL/TOQUE na carta.
 - [ ] Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
       de uma lista no código (como `spell-tags.ts`).
 

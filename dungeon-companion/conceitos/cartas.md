@@ -78,8 +78,14 @@ Web `03c710c`; api `c64408b` (só a versão e a Vidência no seed).
   classe (pela `CLASS_SPELLS` de `constants/spell-rules.ts`, a mesma da criação de ficha); função;
   elemento; alcance; etiquetas CONCENTRAÇÃO (`duration`), AÇÃO BÔNUS e REAÇÃO (`casting_time`);
   ordem por círculo ou nome. Ritual não existe nos dados.
-- **Alcance**: `range_distance` 0 = pessoal, 1 (e o 2 da Palavra de Recordação) = toque, o resto em
-  metros → PESSOAL · TOQUE · ATÉ 9 M · 18 M OU MAIS (`spellRange`).
+- **Alcance**: `range_distance` 0 = pessoal, 1 = toque, o resto em metros → PESSOAL · TOQUE ·
+  ATÉ 9 M · 18 M OU MAIS (`spellRange`; o 2 da Palavra de Recordação cai em ATÉ 9 M). Desde a
+  1.16.2 a carta também mostra "Pessoal"/"Toque" em vez de "0 m"/"1 m" (`spellRangeLabel` em
+  `game-card/spell-card.ts`, vale pra toda carta de magia).
+- **Legibilidade (1.16.2)**: a carta `mini` mostrava só 2 números (TEMPO, ALCANCE) com ~6 px.
+  `app-game-card` ganhou `miniStats` (padrão 2, as outras telas não mudam) e as variáveis
+  `--gc-stat-label-size`/`--gc-stat-value-size`; as duas listas do grimório mostram os 4 números
+  com 8–10 px.
 - **Função e elemento** (`spell-filters/spell-tags.ts`, `SPELL_TAGS`): uma linha por magia,
   `id: [elementos, funções], // nome`, com `// prettier-ignore`. Classificação **feita à mão** em
   2026-10-30 sobre as descrições (uma heurística por palavras-chave serviu só de rascunho e errava

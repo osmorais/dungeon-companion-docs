@@ -27,7 +27,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.16.1 (2026-10-30, os mesmos filtros no grimório do Quadro do Mestre —
+- **Versão do sistema**: 1.16.2 (2026-10-30, cartas dos grimórios com os 4 números legíveis e
+  alcance "Pessoal"/"Toque" — [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.16.1 (mesmo dia, os mesmos filtros no grimório do Quadro do Mestre —
   [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md)); antes, 1.16.0 (mesmo dia, grimório de magias com o layout do catalogar
   monstros e filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação
   bônus e reação; descrição da Vidência corrigida —
@@ -61,7 +62,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `746b110` (só a versão) e web `749d766` (1.16.1), push direto na `main`
+- **Últimos commits**: api `1222542` (só a versão) e web `dcb2a58` (1.16.2), push direto na `main`
+  em 2026-10-30, api antes do web, sem migração. Antes: api `746b110` (só a versão) e web `749d766` (1.16.1), push direto na `main`
   em 2026-10-30, api antes do web, sem migração. Antes: api `c64408b` (1.16.0: versão e a Vidência no seed) e web `03c710c`
   (1.16.0), push direto na `main` em 2026-10-30, api antes do web, sem migração (a Vidência foi
   corrigida no banco antes, ver abaixo); o GitHub avisou de novo da regra de PR ignorada. Antes:
@@ -89,7 +91,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 517 (`npm run test:unit`), web 774 (`npm run test:run`) — na 1.16.1 —
+- **Testes**: api 517 (`npm run test:unit`), web 776 (`npm run test:run`) — na 1.16.2 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
