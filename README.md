@@ -35,7 +35,9 @@ passos" de lá).
 | [`conceitos/tela-inicial.md`](dungeon-companion/conceitos/tela-inicial.md) | conceito | Tela inicial pública (1.8.0): rotas e sessão expirada, seções, card de exemplo, barra fixa (1.8.1) |
 | [`conceitos/monstros.md`](dungeon-companion/conceitos/monstros.md) | conceito | Bestiário do livro: tabela `monster` (428 fichas), formato do JSON, como foi gerado, correções |
 | [`conceitos/email.md`](dungeon-companion/conceitos/email.md) | conceito | E-mail de recuperação de senha (1.12.1): api → script PHP no site (Hostinger), assinatura, configuração fora do git, como testar |
+| [`conceitos/infraestrutura.md`](dungeon-companion/conceitos/infraestrutura.md) | conceito | Onde a api roda (VPS da Hostinger, 1.17.1): acesso, nginx, HTTPS, serviço systemd, variáveis, deploy pelo GitHub Actions |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
+| [`procedimentos/servidor-api.md`](dungeon-companion/procedimentos/servidor-api.md) | procedimento | Manual da VPS da api: acessar, saúde, logs, atualizações, mapa de arquivos (quem chama quem), troubleshooting, remontar do zero |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
 | [`procedimentos/artes-cartas.md`](dungeon-companion/procedimentos/artes-cartas.md) | procedimento | Prompts do ChatGPT pras artes das cartas de magia e de arma, e onde salvar |

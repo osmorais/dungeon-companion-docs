@@ -2,10 +2,14 @@
 resumo: E-mail de recuperação de senha (1.12.1): a api chama por HTTPS um script PHP no site (Hostinger), que envia pelo SMTP de lá — assinatura, configuração fora do git e como testar.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — E-mail (recuperação de senha)
+
+> **2026-10-31**: a api saiu do Render pra uma VPS ([`infraestrutura.md`](infraestrutura.md)), que
+> deixa sair SMTP (465/587). O usuário quer voltar o envio pra api — está no backlog. Até lá, vale
+> o que está abaixo.
 
 Único e-mail que o sistema manda. Até a 1.12.0 a api enviava direto pelo SMTP da Hostinger
 (`nodemailer`), mas o **Render bloqueia as portas de e-mail** (25/465/587) e o "esqueci minha
@@ -32,12 +36,13 @@ novo).
 4. O script **só sabe mandar esse e-mail**: com o segredo vazado, ainda não serve pra mandar
    conteúdo qualquer. Não grava nem registra o endereço (o `error_log` leva só o motivo técnico).
 5. A api responde **sempre a mesma mensagem**, mesmo quando o envio falha — antes, um 500 só
-   pra conta existente revelava quem tem conta. A falha vai pro log do Render
+   pra conta existente revelava quem tem conta. A falha vai pro log da api (era o Render; hoje `journalctl -u forja-api`)
    (`[auth] e-mail de recuperação não enviado: <motivo>`), sem o endereço.
 
 ## Configuração (fora do git)
 
-- **Render**: `MAIL_RELAY_SECRET` (sem fallback: sem ele a api falha antes de chamar o script).
+- **api** (`/etc/forja-api.env` na VPS desde a 1.17.1; antes, no Render): `MAIL_RELAY_SECRET`
+  (sem fallback: sem ele a api falha antes de chamar o script).
   `.env` local da api tem o mesmo valor. As variáveis `SMTP_*` não são mais usadas.
 - **Hostinger**: `forja-mail-config.php` na pasta que **contém** o `public_html`
   (`domains/forjaarcana.com/`, a do aviso `DO_NOT_UPLOAD_HERE` — arquivos ali não são servidos
@@ -46,7 +51,7 @@ novo).
   ```php
   <?php
   return [
-      'secret' => '<o mesmo MAIL_RELAY_SECRET do Render>',
+      'secret' => '<o mesmo MAIL_RELAY_SECRET da api>',
       'smtp_host' => 'smtp.hostinger.com',
       'smtp_port' => 465,
       'smtp_user' => '<conta de e-mail do site>',
@@ -55,7 +60,7 @@ novo).
       'frontend_url' => 'https://forjaarcana.com',
   ];
   ```
-- Trocar o segredo: gerar um novo (`openssl rand -hex 32`), pôr no Render e no arquivo da
+- Trocar o segredo: gerar um novo (`openssl rand -hex 32`), pôr na api (`/etc/forja-api.env` + `sudo systemctl restart forja-api`) e no arquivo da
   Hostinger, e redeploy da api. Entre um e outro, a recuperação de senha não envia.
 
 ## Testar sem mandar e-mail

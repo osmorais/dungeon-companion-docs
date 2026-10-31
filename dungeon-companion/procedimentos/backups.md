@@ -2,7 +2,7 @@
 resumo: Backups do repositório da api (antes da reescrita de autor) e como fazer rollback.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-14
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Backups e rollback
@@ -83,7 +83,8 @@ git push --force --mirror git@github.com:osmorais/dungeon-companion-api.git
 ⚠️ Sobrescreve **o remoto inteiro** com o estado do backup: tudo que tiver sido commitado no api
 depois de 2026-10-14 é **apagado do GitHub**. Antes de rodar: fazer um novo backup do estado atual
 (`git clone --mirror` em outra pasta), conferir o que existe depois de `3af1e96`, e desligar o
-deploy automático do Render. Depois, cada clone local precisa de
+deploy automático da api (GitHub Actions → workflow "Deploy API" → Disable; era o Render até a
+1.17.0). Depois, cada clone local precisa de
 `git fetch origin && git reset --hard origin/main`.
 
 ### Fazer um backup novo (mesmo procedimento)

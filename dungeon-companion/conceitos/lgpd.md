@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -317,12 +317,14 @@ com os Termos e a Política de Privacidade" no cadastro (mobile e desktop) e no 
 
 ### 7. Transferência internacional e operadores (art. 33)
 Precisam constar na política:
-- **Render** — servidor da API (EUA);
+- ~~**Render** — servidor da API (EUA);~~ até a 1.17.0. Desde a 1.17.1 (2026-10-31): **Hostinger**
+  — VPS do servidor da API (data center a confirmar no hPanel; ver
+  [`infraestrutura.md`](infraestrutura.md)). Política atualizada no web `494d7ce`;
 - **Neon** — Postgres;
 - **Supabase** — imagens (confirmar a região do projeto);
 - **Google** — login (Google Identity Services) e Google Fonts;
 - **Hostinger** — hospedagem do site e envio de e-mail (desde a 1.12.1 por um script no próprio
-  site, chamado pela api: o e-mail de quem pediu a recuperação passa do Render pra Hostinger por
+  site, chamado pela api: o e-mail de quem pediu a recuperação passa da api pra Hostinger por
   HTTPS e não é guardado — ver `email.md`);
 - **Anthropic/OpenAI** — só se a geração por IA for reativada (chaves continuam no `.env`).
 
@@ -351,7 +353,7 @@ responsável") + seção na política. **Confirmar o alcance com advogado.**
 - JWT em `localStorage` por 8h, sem revogação no logout — aceitável, mas um XSS roubaria o
   token. Registrar como risco conhecido.
 - `console.error` com objetos de erro inteiros (`session-socket.gateway.ts`) — conferir se não
-  vaza dado pessoal nos logs do Render. Menor.
+  vaza dado pessoal nos logs da api (VPS desde a 1.17.1). Menor.
 
 ### 11. Canal do titular (art. 41)
 Agente de pequeno porte (Resolução CD/ANPD nº 2/2022) é dispensado de nomear encarregado (DPO),
@@ -436,8 +438,10 @@ Todos os 15 itens técnicos estão implementados. Restam:
    subclasses vieram do Livro do Jogador em português (`livro.txt`/`magias.txt`), que é protegido —
    só o SRD é de uso livre. Desde a 1.10.0 o mesmo vale pras 428 fichas do Manual dos Monstros em
    português (tabela `monster`), inclusive as que não estão no SRD, mostradas a todo mestre.
-3. Depois do deploy do item 10: conferir nos logs do Render a linha
-   `[rate-limit] IP do cliente obtido via ...` (não pode ser "conexão direta").
+3. Depois do deploy do item 10: conferir nos logs do servidor a linha
+   `[rate-limit] IP do cliente obtido via ...` (não pode ser "conexão direta"). Desde a 1.17.1 o
+   servidor é a VPS (`journalctl -u forja-api`), onde o nginx apaga o `cf-connecting-ip` e
+   substitui o `x-forwarded-for` — o esperado é `x-forwarded-for (último)`.
 4. Apagar as 38 imagens órfãs antigas (`dungeon-companion/historico/imagens-orfas-2026-10-14.md`).
 
 ## 2026-10-24 — Nome de usuário (1.9.0)

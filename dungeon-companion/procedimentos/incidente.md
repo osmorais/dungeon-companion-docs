@@ -2,7 +2,7 @@
 resumo: Plano de resposta a incidente de segurança (LGPD art. 48) + registro de incidentes.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-10-31
 ---
 
 # Forja Arcana — Plano de resposta a incidente de segurança
@@ -19,39 +19,45 @@ indevido ou perda de dados pessoais dos usuários. Ver `dungeon-companion/concei
 
 - **Controlador:** Osmar de Morais Junior (pessoa física).
 - **Canal do titular:** mensageiro@forjaarcana.com.
-- **Operadores** (avisar/consultar conforme o caso): Render (API), Neon (banco), Supabase
-  (imagens), Hostinger (site + e-mail), Google (login).
+- **Operadores** (avisar/consultar conforme o caso): Hostinger (site, e-mail e, desde a 1.17.1,
+  a VPS da API), Neon (banco), Supabase (imagens), Google (login). Render (API até a 1.17.0, de
+  reserva até ser apagado).
 
 ## O que conta como incidente
 
 Qualquer evento que comprometa a **confidencialidade, integridade ou disponibilidade** de dados
 pessoais. Exemplos neste sistema:
 - vazamento do `.env` / de alguma credencial (JWT_SECRET, senha do banco, chave do Supabase, segredo ou senha do e-mail);
-- acesso indevido ao banco Neon, ao bucket do Supabase ou ao painel do Render/Hostinger;
+- acesso indevido ao banco Neon, ao bucket do Supabase, ao painel da Hostinger ou à VPS (SSH);
 - falha de código que exponha dados de um usuário a outro (ex.: o endpoint que listava todas as
   sessões, corrigido em 2026-10-14);
 - perda de dados sem backup (ver `dungeon-companion/procedimentos/backups.md`).
 
 ## Passo 1 — Conter (imediatamente)
 
-Trocar as credenciais possivelmente expostas (no Render → Environment, e no `.env` local):
+Trocar as credenciais possivelmente expostas (na VPS: `sudo nano /etc/forja-api.env` e
+`sudo systemctl restart forja-api`; e no `.env` local — ver `conceitos/infraestrutura.md`):
 
 | Credencial | Onde trocar | Efeito colateral |
 |---|---|---|
-| `JWT_SECRET` | Render | **Desloga todo mundo** (tokens antigos param de valer) — desejável se houver suspeita de token roubado |
-| `PGPASSWORD` | Neon → Roles | Atualizar no Render antes de reiniciar |
-| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → API settings | Atualizar no Render |
+| `JWT_SECRET` | `/etc/forja-api.env` | **Desloga todo mundo** (tokens antigos param de valer) — desejável se houver suspeita de token roubado |
+| `PGPASSWORD` | Neon → Roles | Atualizar no `/etc/forja-api.env` antes de reiniciar |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → API settings | Atualizar no `/etc/forja-api.env` |
 | Senha do e-mail do site | Hostinger → e-mail | Atualizar o `smtp_pass` do `forja-mail-config.php` (Hostinger, fora do `public_html`) — desde a 1.12.1 a api não usa mais `SMTP_PASS` |
-| `MAIL_RELAY_SECRET` | gerar outro (`openssl rand -hex 32`) | Pôr no Render **e** no `'secret'` do `forja-mail-config.php`; até os dois baterem, o e-mail de recuperação não sai. Ver `conceitos/email.md` |
+| `MAIL_RELAY_SECRET` | gerar outro (`openssl rand -hex 32`) | Pôr no `/etc/forja-api.env` **e** no `'secret'` do `forja-mail-config.php`; até os dois baterem, o e-mail de recuperação não sai. Ver `conceitos/email.md` |
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` | painel de cada um | Hoje sem uso (IA desativada) — revogar se vazou |
-| Senhas dos painéis (Render, Neon, Supabase, Hostinger, GitHub) | cada painel | Ativar 2FA onde não tiver |
+| Senhas dos painéis (Neon, Supabase, Hostinger, GitHub; Render enquanto existir) | cada painel | Ativar 2FA onde não tiver |
+| Chave do CI (`VPS_SSH_KEY`) | gerar outra, trocar a linha `restrict,command=...` no `authorized_keys` do `deploy` e o secret no GitHub | Só dispara deploy da `main`; deploys param até o secret novo |
+| Deploy key do GitHub (`~/.ssh/github_deploy` na VPS) | GitHub → repo da api → Deploy keys | Só leitura; o deploy para até cadastrar a nova |
+| Acesso SSH à VPS | revisar `~/.ssh/authorized_keys` do `deploy`; trocar a senha root e a do `deploy` | Se a VPS em si foi invadida: tratar o servidor como perdido e reinstalar pelo hPanel |
 
 Se o problema for de código: tirar a funcionalidade do ar (reverter o commit e fazer deploy)
 antes de investigar com calma.
 
 ## Passo 2 — Preservar evidências
 
-Antes de apagar/limpar qualquer coisa, salvar: logs do Render do período, horário em que o
+Antes de apagar/limpar qualquer coisa, salvar: logs da api do período (`journalctl -u forja-api
+--since ...` e `/var/log/nginx/access.log`), horário em que o
 problema foi percebido, o que foi exposto e como foi descoberto, commits envolvidos. Anotar tudo
 com data e hora.
 

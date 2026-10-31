@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Gotchas
@@ -174,7 +174,8 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   (`.pa-hand-actions`) — seletor com classe do componente que recebe não casa.
 - **Mudança de contrato do socket/endpoint entre api e web** (1.6.1): quando o web passa a mandar um
   campo que a api antiga recusa (ex.: `weapon` no `/spell-cast-stage`), fazer o **push da api
-  primeiro** (Render) e só depois o do web (Hostinger).
+  primeiro** (VPS, pelo GitHub Actions; era o Render até a 1.17.0) e só depois o do web
+  (Hostinger).
 - **Estilo de componente × classe global** (1.3.8): regra no SCSS do componente tem o mesmo peso
   de `.d-card:hover`/`.m-card:hover` (o atributo de encapsulamento soma uma classe) e vem depois,
   então ganha. Não repetir `border-color`/`background` em modificador do card dentro do
@@ -269,8 +270,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 ## Sessão em tempo real / permissões
 
 - Socket.io autentica por `socket.handshake.auth.token` (JWT do localStorage), com fallback pro
-  cookie: o navegador bloqueia o cookie httpOnly como third-party em produção (Hostinger × Render
-  são domínios diferentes).
+  cookie: o navegador bloqueava o cookie httpOnly como third-party em produção (Hostinger × Render
+  eram domínios diferentes). Desde a 1.17.1 a api é `api.forjaarcana.com`, mesmo site do
+  `forjaarcana.com`; o token continua sendo o caminho principal.
 - **`RevealedMonster`** (`{id_monster_session, name, image_url}`) é o único jeito de o jogador
   saber de um monstro. O array `monsters` completo é só do mestre. Campo novo de monstro pro
   jogador entra ali.
@@ -289,7 +291,30 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - O `release-notes.spec.ts` confere o `package.json` do web; o da api é conferido **à mão**.
 - O **Render bloqueia SMTP** (portas 25/465/587): e-mail direto da api não sai, e o erro só
   aparece como timeout/conexão recusada. Por isso o e-mail sai por um script PHP no site
-  (`conceitos/email.md`). HTTPS de saída funciona.
+  (`conceitos/email.md`). HTTPS de saída funciona. Na VPS (1.17.1) as portas 465/587 saem.
+- **VPS** (`conceitos/infraestrutura.md`):
+  - **nginx aceita só 1 MB** por requisição por padrão: upload de imagem (até 10 MB na api) dá
+    413. Por isso o `client_max_body_size 12m`.
+  - O `clientIp` do rate-limit confia em `cf-connecting-ip`. Sem Cloudflare na frente, qualquer um
+    forjaria esse header: o nginx **apaga** ele e **substitui** o `X-Forwarded-For` por
+    `$remote_addr`. Trocar de proxy ou pôr Cloudflare na frente exige rever isso.
+  - O `sshd` usa **a primeira** ocorrência de cada opção, lendo `sshd_config.d/` em ordem
+    alfabética: a imagem traz `50-cloud-init.conf` (que libera senha), por isso o nosso é
+    `00-forja.conf`. Conferir com `sudo sshd -T`.
+  - O certbot cria um **segundo bloco `server`** (só o redirect da porta 80): opção posta no bloco
+    original não vale pra ele. `server_tokens off` foi pro `nginx.conf`, onde o Ubuntu 26.04 traz
+    `server_tokens build;` (não a linha comentada das versões antigas) — olhar o arquivo antes de
+    editar com `sed`, que não avisa quando não acha nada.
+  - A chave SSH do usuário tem passphrase: **push** (e SSH) pelo terminal do Claude falha com
+    `Permission denied (publickey)`. O commit sai daqui, o push o usuário roda.
+  - O `dotenv` loga `injected env (0) from .env` ao subir: normal, as variáveis vêm do
+    `EnvironmentFile` do systemd.
+- A **CDN da Hostinger** (`server: hcdn`) tinha a **otimização de imagens** ligada: reduzia pra
+  1600 px e convertia pra WebP com ~2% do tamanho (fundo de 1,3 MB virava 23 KB, borrado). O
+  usuário desligou em 2026-10-31 (hPanel → site → Performance → CDN) e limpou o cache (as imagens
+  ficam 7 dias no cache). Se imagem do site aparecer pior que o arquivo do repo, comparar com
+  `curl -sI -H 'Accept: image/webp' https://forjaarcana.com/<caminho>` (`content-type` e
+  `content-length`). A api (VPS) e as imagens do Supabase não passam por essa CDN.
 - A Hostinger **executa PHP** no site do web: `.php` em `public/` vai pro ar junto com o build
   (conferido em 2026-10-25). Arquivo com segredo **não** vai em `public/` (é publicado e está no
   git): fica na pasta que contém o `public_html`, a do aviso `DO_NOT_UPLOAD_HERE` (lá não é

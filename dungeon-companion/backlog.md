@@ -29,8 +29,18 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       português, e desde a 1.10.0 as 428 fichas do Manual dos Monstros em português (inclusive as
       que não estão no SRD) aparecem pra todo mestre (só o SRD é de uso livre). Risco para a
       divulgação — apontado na revisão dos PRs da 1.10.0; decidir se mantém.
-- [ ] Conferir nos logs do Render a linha `[rate-limit] IP do cliente obtido via ...` (não pode ser
-      "conexão direta").
+- [ ] Conferir no log da VPS (`journalctl -u forja-api | grep rate-limit`) a linha
+      `[rate-limit] IP do cliente obtido via x-forwarded-for (último)` (não pode ser "conexão
+      direta" nem `cf-connecting-ip`) — [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md).
+- [ ] **Apagar o serviço do Render** depois de alguns dias com a VPS estável (ficou de reserva na
+      virada da 1.17.1, em 2026-10-31). Antes, conferir que nada mais chama
+      `dungeon-companion-api.onrender.com`.
+- [ ] Conferir em qual **data center** a VPS ficou (hPanel) e a região do Neon (no `PGHOST`): se o
+      banco estiver nos EUA e a VPS no Brasil, cada consulta cruza o continente — avaliar mudar.
+      Atualizar a seção 7 do [`conceitos/lgpd.md`](conceitos/lgpd.md) com o país da VPS.
+- [ ] **Renovação da VPS** em 2028-10 (contrato de 24 meses a R$ 29,99/mês; renova a R$ 59,99/mês).
+- [ ] Opcional: ativar o **Ubuntu Pro** na VPS (grátis pra uso pessoal; amplia as correções de
+      segurança).
 - [ ] Apagar as **38 imagens órfãs** do Supabase (61 MB, exclusão manual pelo painel). Lista e
       cuidados: [`historico/imagens-orfas-2026-10-14.md`](historico/imagens-orfas-2026-10-14.md).
       Conferir depois com `scripts/lgpd/orphans-list.js`.
@@ -38,8 +48,8 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
-- [ ] Tirar as variáveis `SMTP_*` do Render e do `.env` local da api: sem uso desde a 1.12.1
-      (o e-mail sai pelo script do site, ver [`conceitos/email.md`](conceitos/email.md)).
+- [ ] Tirar a variável `FRONTEND_URL` do `/etc/forja-api.env`, se ainda estiver lá (sem uso no
+      código).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 
@@ -52,10 +62,17 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
 - [ ] Cura do Toque Vampírico; curas de valor fixo.
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
-- [ ] Descrições **cortadas** no banco (faltam o dano e o fim do texto, que estão no
-      `referencias/magias.txt`): Barreira de Lâminas (6d10 cortante), Muralha de Vento (3d8
-      concussão) e Conjurar Rajada (3d8). Achado em 2026-10-31; corrigir no banco e no
-      `database_inserts.sql` com autorização. Pode haver outras: comparar todas com o livro.
+- [ ] **Descrições de magia mais curtas que o livro** (comparação de 2026-10-31 com
+      `referencias/magias.txt`, só leitura): ~100 das 357 que o leitor achou no livro têm menos de
+      85% do tamanho do texto do livro. Dois tipos: **cortadas** (começo igual ao livro, param no
+      meio: Perdição, Onda Destrutiva, Destruição Lancinante, Terreno Alucinógeno, Inseto Gigante,
+      Moldar Rochas) e **resumidas** com outras palavras (as piores: Consagrar, Aura Mágica de
+      Nystul, Metamorfose, Similaridade, Projeção Astral, Ilusão Menor, Desejo, Convocar Familiar).
+      Barreira de Lâminas, Muralha de Vento e Conjurar Rajada já foram trocadas (1.17.1). Antes
+      de corrigir em massa: conferir cada uma (o leitor junta a magia seguinte quando não acha o
+      nome dela, ex.: Vidência + Vínculo Protetor) e decidir com o usuário. Correção no banco e no
+      `database_inserts.sql`, com autorização. Contradiz o "361/361 conferidas" de
+      `historico/spells-progress.md`.
 - [ ] Selo de dano: na tela de lançamento aparece o valor base, não o do personagem (a api não
       tem a ficha de quem lança ali). Se incomodar, mandar o selo junto no `spell-cast-stage`.
 - [ ] Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
@@ -229,6 +246,22 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       2026-10-24). Se repetir, subir o `timeout` do bloco. Em 2026-10-30 uma rodada deu
       "492 passing, 1 failing" e as 4 seguintes deram 517 (não deu pra ver qual teste).
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
+- [ ] **Voltar o envio de e-mail pra api** (pedido do usuário em 2026-10-31): na VPS as portas
+      465/587 do `smtp.hostinger.com` saem (testado). Envolve `email.service.ts` (SMTP direto,
+      `SMTP_*` já estão no `/etc/forja-api.env`), testes, [`conceitos/email.md`](conceitos/email.md),
+      a decisão de 2026-10-25 em `decisoes.md` e aposentar o script PHP e o `MAIL_RELAY_*`.
+- [ ] **Tela "servidor acordando"** (`server-wakeup/`, web): aparece a cada carga em produção até o
+      `/ping` responder — feita pro Render grátis. Com a VPS sempre ligada, decidir se tira ou só
+      mostra depois de uns segundos sem resposta.
+- [ ] **Otimizar as imagens do site** nós mesmos: os fundos de `public/backgrounds/` são PNG de
+      1,3–1,7 MB (2036 px de largura). Gerar WebP com boa qualidade (~150–300 KB) e trocar em
+      `background.service.ts`; conferir também os PNG grandes de `src/assets`. Motivo: a
+      otimização automática da CDN da Hostinger, que fazia isso, comprimia demais e foi
+      **desligada** em 2026-10-31 (ver [`gotchas.md`](gotchas.md)).
+- [ ] Dependências **descontinuadas** na api (avisos do `npm ci`): eslint 8, glob 7/10, rimraf 3,
+      inflight. Quase tudo ferramenta de build/lint; atualizar com calma.
+- [ ] O teste instável abaixo agora também **trava o deploy** (o GitHub Actions roda
+      `test:unit` antes): se a Action falhar só nele, rodar de novo pelo botão "Re-run".
 - [ ] `player-actions-modal.component.scss` passou do aviso de 12 kB (13,3 kB na 1.7.4; o erro é
       só em 32 kB) — se crescer muito, separar partes (DANO/CURA, SUA VEZ) em componentes.
 - [ ] `session-panel.component.scss` está perto do orçamento de 32 kB (compilado 28,3 kB na

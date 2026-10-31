@@ -357,3 +357,13 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   identidade dos commits e conta do `gh` da skill `/abrir-prs`) fica em
   `~/.claude/dungeon-companion.env`, fora do git; nada fixo no hook, na skill nem nos scripts.
   → `claude-setup/LEIA-ME.md`
+- **2026-10-31** — A api sai do Render grátis (servidor dormindo) pra uma **VPS KVM 1 da
+  Hostinger** (24 meses), em vez do Render pago (US$ 7/mês) ou da AWS (R$ 70–275/mês): mesmo
+  fornecedor e domínio do site, 4 GB, SMTP liberado; o usuário aceita cuidar do servidor e quis
+  aprender fazendo. Ubuntu 26.04, Node pelo NodeSource (não nvm), systemd (não pm2), sem Docker,
+  sem backup diário pago e sem o scanner Monarx. → `conceitos/infraestrutura.md`
+- **2026-10-31** — A migração entrou na mesma versão (1.17.1) da correção das três magias, que
+  ainda não tinha commit. → `estado-atual.md`
+- **2026-10-31** — As `SMTP_*` ficam no `/etc/forja-api.env`: o usuário quer voltar o envio de
+  e-mail pra api, agora que a VPS não bloqueia SMTP (substituirá a decisão de 2026-10-25 quando
+  for feito). → `backlog.md`

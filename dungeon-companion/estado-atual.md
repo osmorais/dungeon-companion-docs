@@ -18,7 +18,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 ## Os dois repositórios
 
 - `~/projects/dungeon-companion-api` — LoopBack 4 (Node), Postgres (Neon) via driver `postgres`
-  (sem ORM). Deploy no **Render** (`git push` dispara).
+  (sem ORM). Roda numa **VPS da Hostinger** (`api.forjaarcana.com`) desde a 1.17.1; `git push`
+  na `main` dispara o deploy pelo GitHub Actions —
+  [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md).
 - `~/projects/dungeon-companion-web` — Angular 21 (Signals + RxJS). Deploy na **Hostinger**
   (auto-deploy pelo Git). Domínio público: `forjaarcana.com`.
 - Imagens no **Supabase Storage** (projeto próprio, bucket público `monster-images`).
@@ -27,7 +29,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.0 (2026-10-31, selo de dano/cura nas cartas de magia: base no
+- **Versão do sistema**: 1.17.1 (2026-10-31, api saiu do Render grátis pra uma VPS da Hostinger,
+  sempre ligada — [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md) —, Política de
+  Privacidade sem o Render, e descrições completas de Barreira de Lâminas, Muralha de Vento e
+  Conjurar Rajada); antes, 1.17.0 (mesmo dia, selo de dano/cura nas cartas de magia: base no
   catálogo, do personagem na ficha — [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.16.2 (2026-10-30, cartas dos grimórios com os 4 números legíveis e
   alcance "Pessoal"/"Toque" — [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.16.1 (mesmo dia, os mesmos filtros no grimório do Quadro do Mestre —
   [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md)); antes, 1.16.0 (mesmo dia, grimório de magias com o layout do catalogar
@@ -63,8 +68,11 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `c316ab5` e web `bead301` (1.17.0), push direto na `main` em
-  2026-10-31, api antes do web, sem migração. Antes: api `1222542` (só a versão) e web `dcb2a58` (1.16.2), push direto na `main`
+- **Últimos commits**: api `1c7c518` (deploy pelo GitHub Actions) e `2e7e8fc` (versão 1.17.1),
+  web `494d7ce` (1.17.1: `apiUrl` na VPS, Política, magias), push direto na `main` em 2026-10-31,
+  api antes do web, sem migração (as 3 descrições foram corrigidas no banco antes, ver abaixo). O
+  `2e7e8fc` foi o primeiro deploy pela Action. Antes: api `c316ab5` e web `bead301` (1.17.0), push
+  direto na `main` em 2026-10-31, api antes do web, sem migração. Antes: api `1222542` (só a versão) e web `dcb2a58` (1.16.2), push direto na `main`
   em 2026-10-30, api antes do web, sem migração. Antes: api `746b110` (só a versão) e web `749d766` (1.16.1), push direto na `main`
   em 2026-10-30, api antes do web, sem migração. Antes: api `c64408b` (1.16.0: versão e a Vidência no seed) e web `03c710c`
   (1.16.0), push direto na `main` em 2026-10-30, api antes do web, sem migração (a Vidência foi
@@ -93,7 +101,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 527 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.0 —
+- **Testes**: api 527 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.1 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -114,7 +122,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3); linhas de NPC e de monstro com a moldura, o anel, a barra de vida, fundo próprio (taverna/covil) e botões com ícone (1.13.1) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0); login e cadastro com visual renovado, e-mail como identificador do gerenciador de senhas (1.13.3) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
-| E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1) | [`conceitos/email.md`](conceitos/email.md) |
+| E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1). Na VPS as portas 465/587 saem: o usuário quer voltar o envio pra api | [`conceitos/email.md`](conceitos/email.md) |
+| Infraestrutura da api | VPS Hostinger KVM 1 (Ubuntu 26.04), nginx + HTTPS, serviço systemd, deploy pelo GitHub Actions (1.17.1); Render de reserva até ser apagado | [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md), manual: [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1); selo de dano/cura nas cartas (1.17.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8) | [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
@@ -156,9 +165,13 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   de Vínculo Protetor, trocada pelo texto do `referencias/magias.txt` (tabela de modificadores
   em texto corrido; três erros de OCR corrigidos). Uma transação que só confirmava com 1 linha,
   autorizado pelo usuário. Seed da api (`docs/database/database_inserts.sql`) com o mesmo texto.
+- **2026-10-31**: descrições de **Barreira de Lâminas** (41), **Muralha de Vento** (233) e
+  **Conjurar Rajada** (81), que eram resumos sem o dano, trocadas pelo texto do
+  `referencias/magias.txt` (quatro erros de OCR corrigidos). Uma transação que só confirmava com
+  as 3 linhas e o texto antigo conferido, autorizado pelo usuário. Seed da api com o mesmo texto.
 
 ## LGPD
 
 A Política de Privacidade mudou em 17/10 (imagens de referência), em 20/10 (preferência de tema
-no armazenamento local, versão 1.3.0) em 22/10 (preferência do Tom, versão 1.6.8) e de novo em 22/10 (ranking global, versão 1.7.0: o que aparece pra todos e a opção de sair) e em 24/10 (nome de usuário, versão 1.9.0: público na mesa e no ranking; o nome da conta Google deixou de ser guardado). **Falta o usuário decidir** se e como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
+no armazenamento local, versão 1.3.0) em 22/10 (preferência do Tom, versão 1.6.8) e de novo em 22/10 (ranking global, versão 1.7.0: o que aparece pra todos e a opção de sair) e em 24/10 (nome de usuário, versão 1.9.0: público na mesa e no ranking; o nome da conta Google deixou de ser guardado) e em 31/10 (servidor da api sai do Render e vai pra Hostinger, versão 1.17.1). **Falta o usuário decidir** se e como avisar os usuários. O texto final ainda depende de revisão jurídica. Ver
 [`conceitos/lgpd.md`](conceitos/lgpd.md).
