@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Decisões
@@ -15,6 +15,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 `.claude/rules/` dos repos.
 
 ## Produto e regras do jogo
+
+- **2026-10-31** — Dano da magia num **selo na arte** da carta (não numa linha do pergaminho).
+  Catálogo e criação de ficha mostram o valor base do livro; ficha e mesa, o do personagem. As 26
+  magias de dano sem mecânica ganham o dano só pra exibir; cura também aparece. → `conceitos/cartas.md`
 
 - **2026-10-30** — Grimório de magias com o layout do catalogar monstros. Filtros principais:
   círculo, escola e classe; secundários: função (efeito da magia), elemento e alcance. Lista de

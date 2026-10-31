@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Backlog
@@ -52,6 +52,12 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
 - [ ] Cura do Toque Vampírico; curas de valor fixo.
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
+- [ ] Descrições **cortadas** no banco (faltam o dano e o fim do texto, que estão no
+      `referencias/magias.txt`): Barreira de Lâminas (6d10 cortante), Muralha de Vento (3d8
+      concussão) e Conjurar Rajada (3d8). Achado em 2026-10-31; corrigir no banco e no
+      `database_inserts.sql` com autorização. Pode haver outras: comparar todas com o livro.
+- [ ] Selo de dano: na tela de lançamento aparece o valor base, não o do personagem (a api não
+      tem a ficha de quem lança ali). Se incomodar, mandar o selo junto no `spell-cast-stage`.
 - [ ] Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
       de uma lista no código (como `spell-tags.ts`).
 

@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -766,6 +766,19 @@ mostra a versão atual e todas as versões.
   `MAIL_RELAY_SECRET` falha sem chamar; erro do script vira mensagem com o status, sem o e-mail.
   O script PHP não tem teste unitário (não há PHP na máquina): testado no ar, sem enviar e-mail
   (ver `email.md`).
+
+### Selo de dano da magia (1.17.0)
+
+- Api `character-sheet/spell-card-damage.unit.ts`: base da mecânica (Bola de Fogo 8d6 fogo, truque
+  sem escalar), várias rolagens e dados extras (Mísseis Mágicos, Tempestade de Gelo), "+" no que
+  soma ao ataque, cura com "+ mod" e PV temporários, cadastro só de exibição (Malogro, Palavra de
+  Poder Matar), magia sem selo, o cadastro não repete magia com mecânica, `formatSpellDice`,
+  `withCardDamage`. `character-options.service.unit.ts`: as opções trazem o `card_damage`. O
+  teste da etapa de lançamento (`game-session.service.unit.ts`) passou a esperar
+  `card_damage: null` na carta.
+- Web `spell-card.spec.ts`: selo com o base, com o valor do personagem (truque 3d10, cura 1d8+3,
+  "+1d6"), PV temporários, sem selo, `formatSpellDice`. `game-card.component.spec.ts`: o selo
+  aparece, verde na cura, some sem dado.
 
 ### Web — grimório de magias com filtros (1.16.0)
 

@@ -2,7 +2,7 @@
 resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0), o grimório de magias com filtros (1.16.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-10-31
 ---
 
 # Dungeon Companion — Cartas e lançamento de magia
@@ -115,6 +115,28 @@ Web `03c710c`; api `c64408b` (só a versão e a Vidência no seed).
   confere as 361).
 - O grimório do Quadro do Mestre (`app-spell-grimoire`) usa os mesmos filtros desde a 1.16.1 (ver
   [`quadro-do-mestre.md`](quadro-do-mestre.md)).
+
+## Selo de dano da magia (1.17.0)
+
+- **Selo** (`GameCardData.seal`, `.gc-seal` no `game-card.component.scss`): canto de baixo da arte,
+  por cima da moldura; valor em cima ("8d6", "3× 1d4+1", "+2d6") e tipo embaixo ("FOGO", "CURA",
+  "PV TEMP."). Borda carmesim no dano, verde na cura. Na carta expandida o pergaminho fica por cima.
+- **Valor** (`spellSeal` em `spell-card.ts`): com `roll` (só na ficha, magia com mecânica), o valor
+  do personagem no círculo da magia — truque já escalado pelo nível, cura com o modificador somado,
+  Discípulo da Vida incluso; sem `roll`, o base que a api manda em `card_damage`. Decisão do
+  usuário: base no catálogo, do personagem na ficha. Na tela de lançamento aparece o **base** (a
+  carta vem de `findSpellCard`, sem a ficha de quem lança; os dados rolados aparecem embaixo).
+- **Api** (`services/character-sheet/spell-card-damage.ts`): `spellCardDamage(id, círculo)` calcula
+  o base pelas mecânicas (`resolveSpellRollAtSlot` no círculo da magia, nível 1, modificador 0;
+  "+ mod" escrito quando soma o atributo; "+" na frente quando soma no ataque) e, pras 26 magias de
+  dano sem mecânica, usa `SPELL_CARD_DAMAGE_EXTRA` (só exibição, conferido com
+  `referencias/magias.txt`; casos especiais: Animar Objetos mostra o objeto Miúdo "1d4+4", Palavra
+  de Poder Matar "MORTE / até 100 PV", Prismáticas "10d6 / varia", Conjurar Rajada "3d8 / da
+  arma"). `withCardDamage` junta o `card_damage` no catálogo, nas opções da criação de ficha, na
+  ficha e na carta da tela de lançamento. Ganhou mecânica de verdade: sair do `EXTRA` (o teste
+  confere que não repete).
+- `formatSpellDice` existe igual nos dois lados (api pro base, web pro valor da ficha).
+- Vitrine da tela inicial: `card_damage` escrito à mão nas magias de exemplo (`landing-cards.ts`).
 
 ## Aviso de lançamento de magia (1.5.0)
 
