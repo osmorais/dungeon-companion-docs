@@ -268,9 +268,6 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
         busca specs OpenAPI remotas — caminho que a api não usa. Esperar a LoopBack atualizar;
         conferir de tempos em tempos (`npm audit --omit=dev`). O `@anthropic-ai/sdk` (moderado) só
         importa se a IA for reativada.
-      - Upload de imagem: aceitar só PNG/JPEG/WebP/GIF conferindo os primeiros bytes do arquivo
-        (hoje vale o `mimetype` que o navegador manda; SVG com script passa e fica no bucket
-        público).
       - Headers no site (Hostinger, `.htaccess` em `public/`): HSTS, `frame-ancestors`/
         `X-Frame-Options`, `Referrer-Policy` (o link de redefinição tem o token na URL) e
         `nosniff` — testar que as rotas do Angular continuam abrindo.

@@ -324,7 +324,10 @@ fixo (`HS256`); ficha com 403/404 no lugar de 500; HSTS e sem `X-Powered-By` na 
 Depois, ainda em 2026-11-02 (sem versão): `npm audit fix` na api (37 → 27 alertas em produção, sem
 crítico; LoopBack 15.0.16, `multer`, `body-parser`, `handlebars`, `js-yaml` atualizados) e
 `nodemailer` 8 → 10 (traz os próprios tipos; `@types/nodemailer` saiu). Os 27 restantes estão
-dentro da LoopBack (ver backlog). Pendente no backlog: validação real do tipo da imagem no upload (hoje vale o `mimetype` do cliente, SVG passa) e
+dentro da LoopBack (ver backlog). Na 1.17.6: upload de imagem só PNG, JPEG, WebP e GIF, pelo **conteúdo** do arquivo
+(`src/services/image-type.ts`, chamado em `SupabaseStorageService.uploadImage`, que grava com o tipo
+detectado e devolve 422 nos outros); o filtro do multer e o `accept` do site usam a mesma lista.
+SVG (que pode ter script) e HTML renomeado não chegam mais ao bucket público. Pendente no backlog:
 headers de segurança no site (HSTS, `frame-ancestors`, `Referrer-Policy`, `nosniff`). Conferido e
 ok: permissões em todas as rotas, SQL parametrizado, sem `innerHTML`/`bypassSecurityTrust` no web,
 nenhum segredo no git, CORS só do site, explorer/openapi desligados.
