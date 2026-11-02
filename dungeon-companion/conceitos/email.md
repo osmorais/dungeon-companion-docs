@@ -1,8 +1,8 @@
 ---
-resumo: E-mail de recuperação de senha — desde a 1.17.3 a api envia direto pelo SMTP da Hostinger (nodemailer), da VPS; antes (1.12.1–1.17.2) passava por um script PHP no site. Configuração, erros e como testar.
+resumo: E-mail de recuperação de senha — desde a 1.17.3 a api envia direto pelo SMTP da Hostinger (nodemailer), da VPS; antes (1.12.1–1.17.2) passava por um script PHP no site. Modelo (cores do site, nome de usuário, proteção do modo escuro), configuração, erros e como testar.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — E-mail (recuperação de senha)
@@ -30,8 +30,9 @@ o `MAIL_RELAY_SECRET`/`MAIL_RELAY_URL`.
    - conecta em `SMTP_HOST`:`SMTP_PORT` (padrão `smtp.hostinger.com`:465, SSL; outra porta usa
      STARTTLS), com timeout de 15 s pra conectar, cumprimentar e cada leitura;
    - monta o link `FRONTEND_URL` (padrão `https://forjaarcana.com`) + `/reset-password?token=…` e
-     o HTML de `src/services/email-templates/password-reset.template.ts` (o mesmo modelo de
-     sempre, com o logo `forja_arcana.png` do site);
+     o HTML de `src/services/email-templates/password-reset.template.ts` (ver "Modelo" abaixo);
+   - o nome de usuário vem do `AuthService.forgotPassword` (que devolve `{token, username}` ou
+     `null`); conta sem nome escolhido é saudada como "aventureiro";
    - remetente `SMTP_FROM` (padrão: o próprio `SMTP_USER`), assunto
      "🗝️ Redefinição de Senha - Forja Arcana".
 3. Falha no envio: o serviço joga um erro **só com os códigos** do nodemailer (ex.:
@@ -43,6 +44,29 @@ o `MAIL_RELAY_SECRET`/`MAIL_RELAY_URL`.
 
 Testes: `src/__tests__/unit/services/email.service.unit.ts` (transporte substituído por stub em
 `EmailService.createTransport`).
+
+## Modelo do e-mail (1.17.4)
+
+- Cores do tema **FANTASIA** do site (`styles.scss` do web): fundo `#1d0a0a`, painel `#40190b`
+  com borda `#99430a` e sombra preta, botão `#6b1616` com texto `#ffaa00`, destaques em dourado
+  `#ccaa44`, texto creme `#efeeeb`. Fonte `Courier New` (a Press Start 2P do site não carrega
+  em e-mail sem servidor de fontes de terceiro).
+- Saudação: "Saudações, **<nome de usuário>**." O nome (e o link) passam por `escapeHtml`.
+- **Modo escuro do celular**: até a 1.17.3 alguns apps invertiam o e-mail escuro e o fundo ficava
+  branco. O modelo se declara só escuro e tem uma proteção por família de app:
+  - `<meta name="color-scheme" content="dark">` + `supported-color-schemes` e o mesmo no CSS
+    (Apple Mail / iOS não mexem);
+  - todo fundo também como `background-image: linear-gradient(cor, cor)` e `bgcolor` (o Gmail
+    inverte a cor de fundo, não a imagem);
+  - texto dentro de `.gm-screen` > `.gm-diff` com `mix-blend-mode` (regra `u + .body`, que só
+    casa no Gmail): desfaz a inversão do texto;
+  - regras `[data-ogsc]`/`[data-ogsb]` reaplicam as cores no Outlook.
+  Nenhum app garante 100%: se algum ainda clarear, anotar qual app e versão.
+- Testes: `email.service.unit.ts` confere saudação com e sem nome, escape e as proteções.
+- Pra ver o HTML sem mandar e-mail (api compilada): `node -e "const
+  {passwordResetTemplate}=require('./dist/services/email-templates/password-reset.template');
+  require('fs').writeFileSync('preview.html', passwordResetTemplate('https://forjaarcana.com/reset-password?token=x','https://forjaarcana.com/forja_arcana.png','gorak'))"`
+  e abrir o `preview.html` no navegador.
 
 ## Configuração
 

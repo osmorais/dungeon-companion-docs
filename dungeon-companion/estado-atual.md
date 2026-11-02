@@ -29,7 +29,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.3 (2026-11-02, e-mail de recuperação direto da api pelo SMTP da
+- **Versão do sistema**: 1.17.4 (2026-11-02, e-mail de recuperação com as cores do site, a saudação
+  pelo nome de usuário e proteção contra a inversão do modo escuro —
+  [`conceitos/email.md`](conceitos/email.md)); antes, 1.17.3 (mesmo dia, e-mail de recuperação direto da api pelo SMTP da
   Hostinger, sem o script PHP do site — [`conceitos/email.md`](conceitos/email.md)); antes, 1.17.2 (2026-10-31, sem a tela "despertando o servidor" ao abrir o site —
   [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md)); antes, 1.17.1 (mesmo dia, api saiu do Render grátis pra uma VPS da Hostinger,
   sempre ligada — [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md) —, Política de
@@ -70,7 +72,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `ac370da` (1.17.3: nodemailer de volta) e web `b4b80b9` (1.17.3: tira o
+- **Últimos commits**: api `80a9969` e web `b0f8847` (1.17.4, só a versão e a nota no web), sem
+  migração, api antes do web. Antes: api `ac370da` (1.17.3: nodemailer de volta) e web `b4b80b9` (1.17.3: tira o
   `public/mail/`), sem migração; push da api primeiro e do web só depois do e-mail testado. Antes: api `23d625e` (só a versão) e web `30684d0` (1.17.2: tira o `server-wakeup/`), push
   direto na `main` em 2026-10-31, api antes do web, sem migração. Antes: api `1c7c518` (deploy pelo GitHub Actions) e `2e7e8fc` (versão 1.17.1),
   web `494d7ce` (1.17.1: `apiUrl` na VPS, Política, magias), push direto na `main` em 2026-10-31,
@@ -105,7 +108,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 529 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.3 —
+- **Testes**: api 533 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.4 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
