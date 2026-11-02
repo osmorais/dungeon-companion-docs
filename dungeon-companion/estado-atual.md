@@ -29,7 +29,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.7 (2026-11-02, headers de segurança no site pelo `public/.htaccess` do
+- **Versão do sistema**: 1.17.8 (2026-11-02, data e hora do último acesso de cada usuário
+  (`users.last_access_at`) pra contar ativos, com a Política atualizada —
+  [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.7 (mesmo dia, headers de segurança no site pelo `public/.htaccess` do
   web — [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.6 (mesmo dia, upload de imagem só PNG, JPEG, WebP e GIF, conferido
   pelo conteúdo do arquivo — [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.5 (mesmo dia, ajustes de segurança: cookie de login `SameSite=Lax`,
   `/ping` sem ecoar headers, JWT só HS256, ficha com 403/404 — revisão em
@@ -76,7 +78,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
+- **Últimos commits**: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
+  criada em produção antes do deploy da api (ver abaixo). Antes: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
   2026-11-02 (api 1.17.5 a 1.17.7 de uma vez, depois web e docs). Na VPS, à mão: HSTS e
   `proxy_hide_header X-Powered-By` no nginx. Conferido no ar: headers da api e do site, rotas
   diretas, login (e-mail e Google), mesa, upload (PNG aceito, SVG recusado) e e-mail de
@@ -119,7 +122,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 542 (`npm run test:unit`), web 783 (`npm run test:run`) — na 1.17.7 —
+- **Testes**: api 547 (`npm run test:unit`), web 783 (`npm run test:run`) — na 1.17.8 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -187,6 +190,9 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   **Conjurar Rajada** (81), que eram resumos sem o dano, trocadas pelo texto do
   `referencias/magias.txt` (quatro erros de OCR corrigidos). Uma transação que só confirmava com
   as 3 linhas e o texto antigo conferido, autorizado pelo usuário. Seed da api com o mesmo texto.
+- **2026-11-02**: `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_access_at TIMESTAMPTZ` (nula, sem
+  padrão), autorizado pelo usuário, antes do deploy da 1.17.8. Conferido no `information_schema`;
+  33 contas, todas nulas; `schema-diff.js` vazio. Registrada no `database.sql`.
 
 ## LGPD
 

@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Decisões
@@ -370,3 +370,7 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-11-01** — O e-mail de recuperação volta a sair **direto da api** pelo SMTP da Hostinger
   (`nodemailer`), da VPS; o script PHP do site e o `MAIL_RELAY_*` saem. Versão 1.17.3, com nota
   genérica em `/novidades`. → `conceitos/email.md`
+- **2026-11-02** — Registrar o **último acesso** de cada usuário (`users.last_access_at`) pra
+  saber quantos estão ativos. Conta como acesso qualquer requisição logada, gravada no máximo uma
+  vez por hora; a contagem é só em números gerais (`scripts/db/usuarios-ativos.js`). Política
+  atualizada (seções 2 e 3), versão 1.17.8. → `conceitos/lgpd.md`

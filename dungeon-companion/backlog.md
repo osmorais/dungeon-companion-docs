@@ -24,7 +24,8 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
 - [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência), 20/10
       (preferência de tema no navegador, 1.3.0), 22/10 (preferência do Tom, 1.6.8), 22/10 (ranking
-      global, 1.7.0) e 24/10 (nome de usuário, 1.9.0) — decidir se e como.
+      global, 1.7.0), 24/10 (nome de usuário, 1.9.0), 31/10 (servidor na Hostinger, 1.17.1) e 02/11
+      (data do último acesso, 1.17.8) — decidir se e como.
 - [ ] **Direitos autorais**: descrições de magias e várias subclasses vieram do Livro do Jogador em
       português, e desde a 1.10.0 as 428 fichas do Manual dos Monstros em português (inclusive as
       que não estão no SRD) aparecem pra todo mestre (só o SRD é de uso livre). Risco para a

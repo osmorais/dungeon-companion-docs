@@ -31,6 +31,7 @@ Superfície pequena, nenhum dado sensível (art. 5º, II):
 | Legenda da imagem de referência | `session_reference_image.title` | Opcional, até 120 caracteres, texto livre visível pra mesa (aviso no formulário) |
 | Anotações do mestre | `game_session.dm_notes` | Desde a 1.2.0 (Quadro do Mestre). Texto livre até 10.000 caracteres, só o dono da sessão lê/grava (`GET/PUT /api/game-session/{id}/dm-notes`), nunca vai no detalhe da sessão. Pode citar pessoas reais. Sai na exportação (`sessions_as_dm[].dm_notes`) e some com a sessão/conta (cascata). Coberto pela política ("anotações", "sessões de jogo") — sem mudança no texto |
 | Rolagens/ações | `session_roll_log` etc. | Já podado pras últimas 30 por sessão |
+| Último acesso | `users.last_access_at` | Desde a 1.17.8 (2026-11-02): data e hora do último acesso, gravada a cada requisição autenticada no máximo uma vez por hora (`LastAccessService`). Só pra contar usuários ativos em números gerais (`scripts/db/usuarios-ativos.js`, que nunca lista quem). Legítimo interesse (seções 2 e 3 da Política, 02/11). Sai na exportação (`account.last_access_at`) e some com a conta |
 
 Pontos positivos já existentes: coleta mínima, nome opcional, bcrypt, "esqueci a senha" não
 revela se o e-mail existe, nenhum analytics/rastreador, único cookie é o de autenticação
