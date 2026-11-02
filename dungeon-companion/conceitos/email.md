@@ -61,6 +61,7 @@ Testes: `src/__tests__/unit/services/email.service.unit.ts` (transporte substitu
   - texto dentro de `.gm-screen` > `.gm-diff` com `mix-blend-mode` (regra `u + .body`, que só
     casa no Gmail): desfaz a inversão do texto;
   - regras `[data-ogsc]`/`[data-ogsb]` reaplicam as cores no Outlook.
+  Testado no **Gmail** com o celular no modo escuro (2026-11-02): fundo escuro e texto legível.
   Nenhum app garante 100%: se algum ainda clarear, anotar qual app e versão.
 - Testes: `email.service.unit.ts` confere saudação com e sem nome, escape e as proteções.
 - Pra ver o HTML sem mandar e-mail (api compilada): `node -e "const

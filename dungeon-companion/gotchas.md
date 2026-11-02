@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Gotchas
@@ -298,6 +298,19 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   - O `clientIp` do rate-limit confia em `cf-connecting-ip`. Sem Cloudflare na frente, qualquer um
     forjaria esse header: o nginx **apaga** ele e **substitui** o `X-Forwarded-For` por
     `$remote_addr`. Trocar de proxy ou pôr Cloudflare na frente exige rever isso.
+  - O IP do cliente vem **só** do `clientIp` (headers lidos direto). Não usar `req.ip`/`req.ips`
+    nem ligar o `trust proxy` do Express sem revisão: a lista de proxies confiáveis do
+    `proxy-addr` já teve falha (alerta da Hostinger, 2026-11-02, `proxy-addr` 2.0.7 com subnet
+    IPv6 de prefixo curto confiando em todo mundo). Não era explorável aqui (sem `trust proxy`,
+    sem `req.ip`); o lock dos dois repos foi pra 2.0.8 por precaução.
+- **Alertas de dependência da Hostinger** (2026-11-02): conferir onde o pacote entra (`npm ls
+  <pacote> --all`) antes de alarmar — no web quase tudo é ferramenta de build (`@angular/build`,
+  `@angular/cli`), que não vai pro site publicado. O `piscina` 5.1.4 (alerta crítico) vinha
+  **travado** pelo `@angular/build@21.2.7`: só sai atualizando o Angular inteiro na mesma linha
+  (framework 21.2.9 → 21.2.25, build/cli → 21.2.29), porque o compilador exige a versão exata do
+  `@angular/core`. O `npm update`/`npm install` com versões novas dá `ERESOLVE` contra a árvore
+  instalada; o que funcionou: subir as faixas no `package.json`, apagar do lock só as entradas
+  `node_modules/@angular/*` e a pasta `node_modules/@angular`, e `npm install`.
   - O `sshd` usa **a primeira** ocorrência de cada opção, lendo `sshd_config.d/` em ordem
     alfabética: a imagem traz `50-cloud-init.conf` (que libera senha), por isso o nosso é
     `00-forja.conf`. Conferir com `sudo sshd -T`.
