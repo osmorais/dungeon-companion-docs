@@ -2,7 +2,7 @@
 resumo: Onde a api roda (VPS da Hostinger desde a 1.17.1) — servidor, nginx, HTTPS, serviço systemd, variáveis, deploy automático pelo GitHub Actions, acesso e manutenção.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Infraestrutura da api (VPS)
@@ -80,6 +80,9 @@ navegador → api.forjaarcana.com (443) → nginx → 127.0.0.1:3000 (api, servi
   **substitui** o `X-Forwarded-For` por `$remote_addr`. Também repassa `Host` e
   `X-Forwarded-Proto`.
 - `server_tokens off` no `/etc/nginx/nginx.conf` (vale pros dois blocos `server`).
+- Desde a 1.17.5: `add_header Strict-Transport-Security "max-age=31536000" always` (HSTS: o
+  navegador só fala HTTPS com a api por 1 ano) e `proxy_hide_header X-Powered-By` (esconde o
+  "Express" da api), dentro do `location /`.
 - O site padrão do nginx foi desligado (atalho `sites-enabled/default` removido).
 - Mudou a configuração: `sudo nginx -t && sudo systemctl reload nginx`.
 

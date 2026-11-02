@@ -2,7 +2,7 @@
 resumo: Manual da VPS da api — acessar, ver se está saudável e atualizada, logs, mapa dos arquivos (quem chama quem), rotinas, troubleshooting e como remontar do zero.
 tipo: procedimento
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Manual do servidor da api (VPS)
@@ -85,7 +85,8 @@ chmod 600 ~/.ssh/id_ed25519
 ```bash
 curl -s https://api.forjaarcana.com/ping; echo
 ```
-Esperado: JSON com `"greeting":"Hello from LoopBack"`. Testa DNS → firewall → nginx → HTTPS → api.
+Esperado: `{"status":"ok","date":"..."}` (até a 1.17.4 era `"greeting":"Hello from LoopBack"` com os
+headers da requisição). Testa DNS → firewall → nginx → HTTPS → api.
 
 Teste que também passa pelo **banco** (só leitura):
 ```bash
@@ -556,6 +557,9 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header X-Forwarded-For $remote_addr;
         proxy_set_header CF-Connecting-IP "";
+
+        add_header Strict-Transport-Security "max-age=31536000" always;
+        proxy_hide_header X-Powered-By;
     }
 }
 EOF

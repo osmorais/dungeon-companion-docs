@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -314,6 +314,18 @@ com os Termos e a Política de Privacidade" no cadastro (mobile e desktop) e no 
   `POST /api/game-session/monster-session/{id}/image`) e ao excluir personagem/monstro/conta.
 - Avaliar limpeza dos arquivos já órfãos (comparar listagem do bucket com as `image_url` do
   banco) — **perguntar antes de apagar qualquer coisa em produção**.
+
+### Revisão de segurança de 2026-11-02 (1.17.5)
+
+Análise dos dois repositórios depois da VPS. Feito na 1.17.5: cookie de login `SameSite=Lax` e
+`JWTStrategy` lendo o header antes do cookie (fecha CSRF em `POST` sem corpo e upload por
+formulário); `/ping` sem ecoar os headers (devolvia `Cookie`/`Authorization`); JWT com algoritmo
+fixo (`HS256`); ficha com 403/404 no lugar de 500; HSTS e sem `X-Powered-By` na api (nginx).
+Pendente no backlog: `npm audit` da api (37 em produção, nenhuma explorável do jeito que o código
+usa), validação real do tipo da imagem no upload (hoje vale o `mimetype` do cliente, SVG passa) e
+headers de segurança no site (HSTS, `frame-ancestors`, `Referrer-Policy`, `nosniff`). Conferido e
+ok: permissões em todas as rotas, SQL parametrizado, sem `innerHTML`/`bypassSecurityTrust` no web,
+nenhum segredo no git, CORS só do site, explorer/openapi desligados.
 
 ### 7. Transferência internacional e operadores (art. 33)
 Precisam constar na política:

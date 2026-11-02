@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-01
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Backlog
@@ -261,6 +261,17 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       `background.service.ts`; conferir também os PNG grandes de `src/assets`. Motivo: a
       otimização automática da CDN da Hostinger, que fazia isso, comprimia demais e foi
       **desligada** em 2026-10-31 (ver [`gotchas.md`](gotchas.md)).
+- [ ] **Segurança (revisão de 2026-11-02, ver [`conceitos/lgpd.md`](conceitos/lgpd.md))**:
+      - `npm audit fix` na api (37 alertas em produção: 1 crítico `handlebars`, 10 altos —
+        `multer`, `body-parser`, `undici`, `js-yaml`…); `nodemailer` 8 → 10 em passo separado,
+        com teste de envio.
+      - Upload de imagem: aceitar só PNG/JPEG/WebP/GIF conferindo os primeiros bytes do arquivo
+        (hoje vale o `mimetype` que o navegador manda; SVG com script passa e fica no bucket
+        público).
+      - Headers no site (Hostinger, `.htaccess` em `public/`): HSTS, `frame-ancestors`/
+        `X-Frame-Options`, `Referrer-Policy` (o link de redefinição tem o token na URL) e
+        `nosniff` — testar que as rotas do Angular continuam abrindo.
+      - Dependências de build do web (26 alertas): só ferramenta, atualizar com o tempo.
 - [ ] Dependências **descontinuadas** na api (avisos do `npm ci`): eslint 8, glob 7/10, rimraf 3,
       inflight. Quase tudo ferramenta de build/lint; atualizar com calma.
 - [ ] O teste instável abaixo agora também **trava o deploy** (o GitHub Actions roda

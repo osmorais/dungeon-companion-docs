@@ -273,6 +273,11 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   cookie: o navegador bloqueava o cookie httpOnly como third-party em produção (Hostinger × Render
   eram domínios diferentes). Desde a 1.17.1 a api é `api.forjaarcana.com`, mesmo site do
   `forjaarcana.com`; o token continua sendo o caminho principal.
+- **Cookie de login `SameSite=Lax`** (1.17.5; era `None` por causa do Render): só funciona porque
+  api e site são o mesmo site. Se a api voltar pra outro domínio, o cookie para de ir — o site
+  não depende dele (manda `Authorization: Bearer`, que a `JWTStrategy` lê **antes** do cookie).
+  Não voltar pra `None` sem rever CSRF: com `None`, outro site dispara `POST` sem corpo e upload
+  por formulário com o cookie do usuário.
 - **`RevealedMonster`** (`{id_monster_session, name, image_url}`) é o único jeito de o jogador
   saber de um monstro. O array `monsters` completo é só do mestre. Campo novo de monstro pro
   jogador entra ali.
