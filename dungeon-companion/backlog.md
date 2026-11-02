@@ -262,9 +262,12 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       otimização automática da CDN da Hostinger, que fazia isso, comprimia demais e foi
       **desligada** em 2026-10-31 (ver [`gotchas.md`](gotchas.md)).
 - [ ] **Segurança (revisão de 2026-11-02, ver [`conceitos/lgpd.md`](conceitos/lgpd.md))**:
-      - `npm audit fix` na api (37 alertas em produção: 1 crítico `handlebars`, 10 altos —
-        `multer`, `body-parser`, `undici`, `js-yaml`…); `nodemailer` 8 → 10 em passo separado,
-        com teste de envio.
+      - Restam 27 alertas do `npm audit --omit=dev` na api (25 moderados, 2 altos), todos
+        dentro da própria LoopBack 15 (o "conserto" do npm seria voltar pra versões antigas
+        dela). Os 2 altos (`undici` 5 e `@fastify/busboy`) vêm do `openapi-typescript`, que só
+        busca specs OpenAPI remotas — caminho que a api não usa. Esperar a LoopBack atualizar;
+        conferir de tempos em tempos (`npm audit --omit=dev`). O `@anthropic-ai/sdk` (moderado) só
+        importa se a IA for reativada.
       - Upload de imagem: aceitar só PNG/JPEG/WebP/GIF conferindo os primeiros bytes do arquivo
         (hoje vale o `mimetype` que o navegador manda; SVG com script passa e fica no bucket
         público).

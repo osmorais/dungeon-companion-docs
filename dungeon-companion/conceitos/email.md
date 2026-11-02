@@ -24,7 +24,8 @@ o `MAIL_RELAY_SECRET`/`MAIL_RELAY_URL`.
 
 1. `POST /auth/forgot-password` (`auth.controller.ts`): limites de tentativa por IP e por e-mail,
    gera o token e guarda só o hash (ver [`lgpd.md`](lgpd.md)).
-2. `EmailService.sendPasswordReset(email, token)` (`src/services/email.service.ts`):
+2. `EmailService.sendPasswordReset(email, token)` (`src/services/email.service.ts`), com
+   `nodemailer` 10 (desde 2026-11-02; os tipos vêm do próprio pacote, sem `@types/nodemailer`):
    - lê a configuração **a cada envio** (sem fallback pra conta: sem `SMTP_USER`/`SMTP_PASS`
      falha antes de conectar);
    - conecta em `SMTP_HOST`:`SMTP_PORT` (padrão `smtp.hostinger.com`:465, SSL; outra porta usa

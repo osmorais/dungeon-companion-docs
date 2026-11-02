@@ -321,8 +321,10 @@ Análise dos dois repositórios depois da VPS. Feito na 1.17.5: cookie de login 
 `JWTStrategy` lendo o header antes do cookie (fecha CSRF em `POST` sem corpo e upload por
 formulário); `/ping` sem ecoar os headers (devolvia `Cookie`/`Authorization`); JWT com algoritmo
 fixo (`HS256`); ficha com 403/404 no lugar de 500; HSTS e sem `X-Powered-By` na api (nginx).
-Pendente no backlog: `npm audit` da api (37 em produção, nenhuma explorável do jeito que o código
-usa), validação real do tipo da imagem no upload (hoje vale o `mimetype` do cliente, SVG passa) e
+Depois, ainda em 2026-11-02 (sem versão): `npm audit fix` na api (37 → 27 alertas em produção, sem
+crítico; LoopBack 15.0.16, `multer`, `body-parser`, `handlebars`, `js-yaml` atualizados) e
+`nodemailer` 8 → 10 (traz os próprios tipos; `@types/nodemailer` saiu). Os 27 restantes estão
+dentro da LoopBack (ver backlog). Pendente no backlog: validação real do tipo da imagem no upload (hoje vale o `mimetype` do cliente, SVG passa) e
 headers de segurança no site (HSTS, `frame-ancestors`, `Referrer-Policy`, `nosniff`). Conferido e
 ok: permissões em todas as rotas, SQL parametrizado, sem `innerHTML`/`bypassSecurityTrust` no web,
 nenhum segredo no git, CORS só do site, explorer/openapi desligados.
