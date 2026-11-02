@@ -76,8 +76,11 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração; depois
-  do deploy do web, limpar o cache da CDN. Antes: api `86e5b9d` e web `71b6ecf` (1.17.6), sem migração. Antes, sem versão: api
+- **Últimos commits**: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
+  2026-11-02 (api 1.17.5 a 1.17.7 de uma vez, depois web e docs). Na VPS, à mão: HSTS e
+  `proxy_hide_header X-Powered-By` no nginx. Conferido no ar: headers da api e do site, rotas
+  diretas, login (e-mail e Google), mesa, upload (PNG aceito, SVG recusado) e e-mail de
+  recuperação. Antes: api `86e5b9d` e web `71b6ecf` (1.17.6), sem migração. Antes, sem versão: api
   `c03482b` (`npm audit fix` e `nodemailer` 10). Antes: api `87abd83` e web `b0942dd` (1.17.5), sem migração, api antes do web; HSTS e
   `X-Powered-By` no nginx da VPS, à mão. Entre a 1.17.4 e a 1.17.5, sem versão: api `e6543fd`
   (`proxy-addr` 2.0.8) e web `942f7d6` (Angular 21.2.25, `piscina` 5.3.2). Antes: api `80a9969` e web `b0f8847` (1.17.4, só a versão e a nota no web), sem

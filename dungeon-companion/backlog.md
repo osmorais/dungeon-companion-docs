@@ -48,10 +48,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
-- [ ] Depois da 1.17.3 no ar e testada: apagar o `forja-mail-config.php` da Hostinger (pasta acima
-      do `public_html`; tem a senha do e-mail) e tirar o `MAIL_RELAY_SECRET` do
-      `/etc/forja-api.env` e do `.env` local da api — sem uso
-      ([`conceitos/email.md`](conceitos/email.md)).
+- [ ] Tirar o `MAIL_RELAY_SECRET` do `/etc/forja-api.env` (`sudo sed -i '/^MAIL_RELAY_SECRET=/d'
+      /etc/forja-api.env && sudo systemctl restart forja-api`) e do `.env` local da api — sem uso
+      desde a 1.17.3 ([`conceitos/email.md`](conceitos/email.md)). O `forja-mail-config.php` da
+      Hostinger já foi apagado (2026-11-02).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 

@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -91,6 +91,9 @@ services/rate-limit.service.unit.ts       # limite de tentativas + IP do cliente
 services/character-options.service.unit.ts # perícias do antecedente (nome e id da tabela skill)
 services/secret-roll-requests.unit.ts     # pedidos de teste secreto (uso único, dono, validade)
 services/auth.service.unit.ts             # hash do token de redefinição de senha
+services/auth-security.unit.ts            # cookie Lax, header antes do cookie, JWT só HS256 (1.17.5)
+services/email.service.unit.ts            # e-mail de recuperação pelo SMTP (1.17.3/1.17.4)
+services/image-type.unit.ts               # tipo da imagem pelo conteúdo no upload (1.17.6)
 ```
 
 ### Web
@@ -760,12 +763,20 @@ mostra a versão atual e todas as versões.
   janela vence e libera; chaves/limites independentes; e-mail sem diferenciar maiúsculas;
   chave vazia ignorada; valores dos limites; `clientIp` (Cloudflare → último XFF → conexão).
 - `auth.service.unit.ts`: `hashResetToken` (SHA-256); esqueci a senha grava só o hash e devolve o
-  token puro; redefinir busca/consome pelo hash; token inválido.
-- `email.service.unit.ts` (1.12.1): assinatura HMAC de `"<timestamp>.<corpo>"`; manda só e-mail e
-  token, assinados e com timestamp atual, pro script do site; `MAIL_RELAY_URL`; sem
-  `MAIL_RELAY_SECRET` falha sem chamar; erro do script vira mensagem com o status, sem o e-mail.
-  O script PHP não tem teste unitário (não há PHP na máquina): testado no ar, sem enviar e-mail
-  (ver `email.md`).
+  token puro (e o nome de usuário pra saudação, 1.17.4); redefinir busca/consome pelo hash; token
+  inválido.
+- `email.service.unit.ts` (1.17.3, refeito; o da 1.12.1 testava o script PHP, que saiu): SMTP da
+  Hostinger na 465 com SSL e timeout; `SMTP_HOST`/`SMTP_PORT` (587 = STARTTLS); destinatário, link
+  do token e logo; `SMTP_FROM` e `FRONTEND_URL`; sem `SMTP_USER`/`SMTP_PASS` falha sem conectar;
+  erro do SMTP sobe só com os códigos, sem o endereço. Modelo (1.17.4): saudação com o nome ou
+  "aventureiro", nome escapado, proteções do modo escuro.
+- `auth-security.unit.ts` (1.17.5): cookie `SameSite=Lax` e httpOnly; com header e cookie vale o
+  header; só cookie ainda funciona; verificação recusa JWT que não seja HS256. A ficha devolve 403
+  (outro usuário) e 404 (inexistente) — em `character-sheet.service.unit.ts`.
+- `image-type.unit.ts` (1.17.6): PNG, JPEG, GIF e WebP pelos primeiros bytes; SVG, HTML, vazio e
+  RIFF que não é WebP recusados; filtro do multer; `uploadImage` grava com o tipo detectado e dá
+  422 pra SVG disfarçado, sem subir nada. Web: `reference-images.spec.ts` recusa SVG e HEIC.
+- Aceitação `ping.controller.acceptance.ts` (precisa de banco): `/ping` não ecoa os headers.
 
 ### Selo de dano da magia (1.17.0)
 

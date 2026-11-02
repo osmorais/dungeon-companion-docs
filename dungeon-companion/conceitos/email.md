@@ -17,8 +17,10 @@ atualizado: 2026-11-02
 | 1.12.1 – 1.17.2 | api → HTTPS assinado → script PHP no site (`public/mail/recuperar-senha.php`) → SMTP | o Render bloqueia as portas de e-mail (25/465/587) |
 | **desde 1.17.3** (2026-11-02) | api → SMTP da Hostinger (`nodemailer`), da VPS | a VPS ([`infraestrutura.md`](infraestrutura.md)) deixa sair a 465/587; pedido do usuário |
 
-Saíram na 1.17.3: o script PHP (web), o `forja-mail-config.php` da Hostinger, a assinatura HMAC e
-o `MAIL_RELAY_SECRET`/`MAIL_RELAY_URL`.
+Saíram na 1.17.3: o script PHP (web), a assinatura HMAC e o `MAIL_RELAY_SECRET`/`MAIL_RELAY_URL`
+do código. O `forja-mail-config.php` da Hostinger (com a senha do e-mail) foi apagado pelo usuário
+em 2026-11-02; o `MAIL_RELAY_SECRET` ainda está no `/etc/forja-api.env` e no `.env` local, sem
+uso (backlog).
 
 ## Fluxo
 
