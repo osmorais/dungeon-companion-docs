@@ -327,8 +327,11 @@ crítico; LoopBack 15.0.16, `multer`, `body-parser`, `handlebars`, `js-yaml` atu
 dentro da LoopBack (ver backlog). Na 1.17.6: upload de imagem só PNG, JPEG, WebP e GIF, pelo **conteúdo** do arquivo
 (`src/services/image-type.ts`, chamado em `SupabaseStorageService.uploadImage`, que grava com o tipo
 detectado e devolve 422 nos outros); o filtro do multer e o `accept` do site usam a mesma lista.
-SVG (que pode ter script) e HTML renomeado não chegam mais ao bucket público. Pendente no backlog:
-headers de segurança no site (HSTS, `frame-ancestors`, `Referrer-Policy`, `nosniff`). Conferido e
+SVG (que pode ter script) e HTML renomeado não chegam mais ao bucket público. Na 1.17.7: headers de
+segurança no site pelo `public/.htaccess` do web (HSTS, `X-Frame-Options: DENY` +
+`frame-ancestors 'none'`, `Referrer-Policy: strict-origin-when-cross-origin` — o token do link de
+redefinição não vaza pra outros sites —, `nosniff`, `Permissions-Policy`). Pendente no backlog: CSP
+completa. Conferido e
 ok: permissões em todas as rotas, SQL parametrizado, sem `innerHTML`/`bypassSecurityTrust` no web,
 nenhum segredo no git, CORS só do site, explorer/openapi desligados.
 

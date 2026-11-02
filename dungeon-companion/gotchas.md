@@ -333,6 +333,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   ficam 7 dias no cache). Se imagem do site aparecer pior que o arquivo do repo, comparar com
   `curl -sI -H 'Accept: image/webp' https://forjaarcana.com/<caminho>` (`content-type` e
   `content-length`). A api (VPS) e as imagens do Supabase não passam por essa CDN.
+- **`public/.htaccess` do web substitui o da Hostinger** (1.17.7): o deploy pelo Git sobrescreve o
+  `.htaccess` que ela criou no `public_html`, que é quem manda as rotas do Angular pro
+  `index.html`. Por isso as regras dela estão copiadas no nosso (junto com os headers de
+  segurança). Mexer nesse arquivo sem as regras de rota = link direto (`/conta`, link do e-mail
+  de redefinição) dando 404. A regra `^\.builds - [F]` dela vem **antes** da de "arquivo
+  existe" no nosso (no dela vinha depois e nunca era alcançada). Depois de mudar: limpar o
+  cache da CDN e testar uma rota direta.
 - A Hostinger **executa PHP** no site do web: `.php` em `public/` vai pro ar junto com o build
   (conferido em 2026-10-25). Arquivo com segredo **não** vai em `public/` (é publicado e está no
   git): fica na pasta que contém o `public_html`, a do aviso `DO_NOT_UPLOAD_HERE` (lá não é

@@ -29,7 +29,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.6 (2026-11-02, upload de imagem só PNG, JPEG, WebP e GIF, conferido
+- **Versão do sistema**: 1.17.7 (2026-11-02, headers de segurança no site pelo `public/.htaccess` do
+  web — [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.6 (mesmo dia, upload de imagem só PNG, JPEG, WebP e GIF, conferido
   pelo conteúdo do arquivo — [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.5 (mesmo dia, ajustes de segurança: cookie de login `SameSite=Lax`,
   `/ping` sem ecoar headers, JWT só HS256, ficha com 403/404 — revisão em
   [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.4 (mesmo dia, e-mail de recuperação com as cores do site, a saudação
@@ -75,7 +76,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `86e5b9d` e web `71b6ecf` (1.17.6), sem migração. Antes, sem versão: api
+- **Últimos commits**: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração; depois
+  do deploy do web, limpar o cache da CDN. Antes: api `86e5b9d` e web `71b6ecf` (1.17.6), sem migração. Antes, sem versão: api
   `c03482b` (`npm audit fix` e `nodemailer` 10). Antes: api `87abd83` e web `b0942dd` (1.17.5), sem migração, api antes do web; HSTS e
   `X-Powered-By` no nginx da VPS, à mão. Entre a 1.17.4 e a 1.17.5, sem versão: api `e6543fd`
   (`proxy-addr` 2.0.8) e web `942f7d6` (Angular 21.2.25, `piscina` 5.3.2). Antes: api `80a9969` e web `b0f8847` (1.17.4, só a versão e a nota no web), sem
@@ -114,7 +116,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 542 (`npm run test:unit`), web 783 (`npm run test:run`) — na 1.17.6 —
+- **Testes**: api 542 (`npm run test:unit`), web 783 (`npm run test:run`) — na 1.17.7 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

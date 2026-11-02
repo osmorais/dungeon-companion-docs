@@ -268,9 +268,10 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
         busca specs OpenAPI remotas — caminho que a api não usa. Esperar a LoopBack atualizar;
         conferir de tempos em tempos (`npm audit --omit=dev`). O `@anthropic-ai/sdk` (moderado) só
         importa se a IA for reativada.
-      - Headers no site (Hostinger, `.htaccess` em `public/`): HSTS, `frame-ancestors`/
-        `X-Frame-Options`, `Referrer-Policy` (o link de redefinição tem o token na URL) e
-        `nosniff` — testar que as rotas do Angular continuam abrindo.
+      - CSP completa no site (de onde podem vir scripts, estilos, imagens, conexões): hoje só
+        `frame-ancestors` e `upgrade-insecure-requests` (1.17.7). Delicado por causa do login do
+        Google, dos estilos do Angular, das imagens do Supabase e da api — testar com
+        `Content-Security-Policy-Report-Only` antes de valer.
       - Dependências de build do web (26 alertas): só ferramenta, atualizar com o tempo.
 - [ ] Dependências **descontinuadas** na api (avisos do `npm ci`): eslint 8, glob 7/10, rimraf 3,
       inflight. Quase tudo ferramenta de build/lint; atualizar com calma.

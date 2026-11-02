@@ -258,7 +258,7 @@ GitHub Actions: .github/workflows/deploy.yml
 | GitHub → repo da api → Settings → Secrets → Actions | `VPS_SSH_KEY`, `VPS_KNOWN_HOSTS` |
 | GitHub → repo da api → Settings → Deploy keys | "VPS Hostinger" (só leitura) |
 | Repo da api | `.github/workflows/deploy.yml` |
-| Repo do web | `src/environments/environment.prod.ts` → `apiUrl: 'https://api.forjaarcana.com'` |
+| Repo do web | `src/environments/environment.prod.ts` → `apiUrl: 'https://api.forjaarcana.com'`; `public/.htaccess` → rotas do Angular e headers de segurança do **site** (1.17.7; ver `gotchas.md`) |
 | WSL | `~/.ssh/id_ed25519` (sua chave, com passphrase), `~/.ssh/forja_ci.pub` (só a pública do CI, pra identificar a linha no `authorized_keys`) |
 | hPanel | DNS do `api`, VPS (console, backups semanais), CDN do site (otimização de imagem **desligada**) |
 
