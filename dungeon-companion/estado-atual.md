@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-02
 ---
 
 # Dungeon Companion — Estado atual
@@ -29,7 +29,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.2 (2026-10-31, sem a tela "despertando o servidor" ao abrir o site —
+- **Versão do sistema**: 1.17.3 (2026-11-02, e-mail de recuperação direto da api pelo SMTP da
+  Hostinger, sem o script PHP do site — [`conceitos/email.md`](conceitos/email.md)); antes, 1.17.2 (2026-10-31, sem a tela "despertando o servidor" ao abrir o site —
   [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md)); antes, 1.17.1 (mesmo dia, api saiu do Render grátis pra uma VPS da Hostinger,
   sempre ligada — [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md) —, Política de
   Privacidade sem o Render, e descrições completas de Barreira de Lâminas, Muralha de Vento e
@@ -69,7 +70,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `23d625e` (só a versão) e web `30684d0` (1.17.2: tira o `server-wakeup/`), push
+- **Últimos commits**: api `ac370da` (1.17.3: nodemailer de volta) e web `b4b80b9` (1.17.3: tira o
+  `public/mail/`), sem migração; push da api primeiro e do web só depois do e-mail testado. Antes: api `23d625e` (só a versão) e web `30684d0` (1.17.2: tira o `server-wakeup/`), push
   direto na `main` em 2026-10-31, api antes do web, sem migração. Antes: api `1c7c518` (deploy pelo GitHub Actions) e `2e7e8fc` (versão 1.17.1),
   web `494d7ce` (1.17.1: `apiUrl` na VPS, Política, magias), push direto na `main` em 2026-10-31,
   api antes do web, sem migração (as 3 descrições foram corrigidas no banco antes, ver abaixo). O
@@ -103,7 +105,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 527 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.2 —
+- **Testes**: api 529 (`npm run test:unit`), web 782 (`npm run test:run`) — na 1.17.3 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -124,7 +126,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Card do personagem na sessão (molduras, barra de XP e de vida) | molduras dos dois temas no card, nos avisos e nos toasts; barra de XP; DANO/CURA do próprio PV na gaveta de ações (1.7.1), com animação, CURA TOTAL e DANO TOTAL (1.7.3); gaveta abre sozinha na vez do jogador, barra de XP clicável pra subir de nível, avatar com anel nas barras das gavetas (1.7.4); fundo padrão de masmorra pra quem não tem imagem (1.8.1); moldura nova no tema SOMBRIO, com corte por tema (1.8.3); linhas de NPC e de monstro com a moldura, o anel, a barra de vida, fundo próprio (taverna/covil) e botões com ícone (1.13.1) | [`conceitos/molduras.md`](conceitos/molduras.md) |
 | Nome de usuário (único; mesa e ranking) | cadastro, escolha no primeiro acesso (contas antigas e Google), troca em Minha Conta, mesa/listas/ranking com o nome atual (1.9.0); login e cadastro com visual renovado, e-mail como identificador do gerenciador de senhas (1.13.3) | [`conceitos/nome-de-usuario.md`](conceitos/nome-de-usuario.md) |
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
-| E-mail (recuperação de senha) | api chama por HTTPS o script PHP do site (Hostinger), assinado; o script envia pelo SMTP de lá (1.12.1). Na VPS as portas 465/587 saem: o usuário quer voltar o envio pra api | [`conceitos/email.md`](conceitos/email.md) |
+| E-mail (recuperação de senha) | api envia direto pelo SMTP da Hostinger (`nodemailer`), da VPS (1.17.3); de 1.12.1 a 1.17.2 passava por um script PHP no site | [`conceitos/email.md`](conceitos/email.md) |
 | Infraestrutura da api | VPS Hostinger KVM 1 (Ubuntu 26.04), nginx + HTTPS, serviço systemd, deploy pelo GitHub Actions (1.17.1); Render de reserva até ser apagado | [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md), manual: [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1); selo de dano/cura nas cartas (1.17.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |

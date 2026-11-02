@@ -2,7 +2,7 @@
 resumo: Onde a api roda (VPS da Hostinger desde a 1.17.1) — servidor, nginx, HTTPS, serviço systemd, variáveis, deploy automático pelo GitHub Actions, acesso e manutenção.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Infraestrutura da api (VPS)
@@ -105,9 +105,9 @@ Proteções: `NoNewPrivileges`, `PrivateTmp`, `ProtectSystem=full`, `ProtectHome
 
 Dono root, permissão `600`: só o systemd lê e entrega à api (o `deploy` não lê). Os valores vieram
 do Render. Além deles: `NODE_ENV=production`, `PORT=3000` e **`HOST=127.0.0.1`** (a api só escuta
-dentro do servidor; o código cai em `0.0.0.0` sem isso). As `SMTP_*` continuam lá de propósito
-pra volta do e-mail pela api (ver [`email.md`](email.md)). `MAIL_RELAY_URL` não está definida (o
-código tem padrão). O `dotenv` do código loga `injected env (0) from .env`: normal, não há `.env`
+dentro do servidor; o código cai em `0.0.0.0` sem isso). As `SMTP_*` são a conta do e-mail
+de recuperação, enviado direto pela api desde a 1.17.3 (ver [`email.md`](email.md)); o
+`MAIL_RELAY_SECRET` ficou sem uso nessa versão. O `dotenv` do código loga `injected env (0) from .env`: normal, não há `.env`
 em `/srv/api`.
 
 Editar: `sudo nano /etc/forja-api.env` e `sudo systemctl restart forja-api`. Conferir só os

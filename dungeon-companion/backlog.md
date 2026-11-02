@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Backlog
@@ -48,8 +48,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
       Termos (aviso de marca da Wizards of the Coast — protege o site; mudar exige atualizar a data
       dos Termos e passar pela revisão jurídica) e as partes que ninguém vê na tela (comando da IA
       em `ai-agent.service.ts`, descrições do Swagger, comentários, `CLAUDE.md`, `database.sql`).
-- [ ] Tirar a variável `FRONTEND_URL` do `/etc/forja-api.env`, se ainda estiver lá (sem uso no
-      código).
+- [ ] Depois da 1.17.3 no ar e testada: apagar o `forja-mail-config.php` da Hostinger (pasta acima
+      do `public_html`; tem a senha do e-mail) e tirar o `MAIL_RELAY_SECRET` do
+      `/etc/forja-api.env` e do `.env` local da api — sem uso
+      ([`conceitos/email.md`](conceitos/email.md)).
 - [ ] **~109 rolagens excedentes** numa sessão antiga (`session_roll_log`, de antes da poda de 30
       por sessão). O usuário nunca respondeu se quer limpar — **perguntar antes de qualquer DELETE**.
 
@@ -246,10 +248,6 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       2026-10-24). Se repetir, subir o `timeout` do bloco. Em 2026-10-30 uma rodada deu
       "492 passing, 1 failing" e as 4 seguintes deram 517 (não deu pra ver qual teste).
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
-- [ ] **Voltar o envio de e-mail pra api** (pedido do usuário em 2026-10-31): na VPS as portas
-      465/587 do `smtp.hostinger.com` saem (testado). Envolve `email.service.ts` (SMTP direto,
-      `SMTP_*` já estão no `/etc/forja-api.env`), testes, [`conceitos/email.md`](conceitos/email.md),
-      a decisão de 2026-10-25 em `decisoes.md` e aposentar o script PHP e o `MAIL_RELAY_*`.
 - [ ] **Otimizar as imagens do site** nós mesmos: os fundos de `public/backgrounds/` são PNG de
       1,3–1,7 MB (2036 px de largura). Gerar WebP com boa qualidade (~150–300 KB) e trocar em
       `background.service.ts`; conferir também os PNG grandes de `src/assets`. Motivo: a

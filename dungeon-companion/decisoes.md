@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Decisões
@@ -282,9 +282,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   baixo, botão do Google em 320 px) foram testados no iPhone SE e **dispensados**, e o da animação
   sem movimento reduzido também ficou de fora. Sugestão: entrar com e-mail **ou** nome de usuário.
   → `backlog.md`
-- **2026-10-25** — E-mail de recuperação de senha enviado por um **script PHP no próprio site**
+- ~~**2026-10-25** — E-mail de recuperação de senha enviado por um **script PHP no próprio site**
   (Hostinger, mesmo servidor do e-mail), chamado pela api por HTTPS com assinatura — e não pelo
-  plano pago do Render nem por um serviço de e-mail por API (terceiro novo). → `conceitos/email.md`
+  plano pago do Render nem por um serviço de e-mail por API (terceiro novo).~~ Substituída em
+  2026-11-01 (abaixo). → `conceitos/email.md`
 
 - **2026-10-25** — Ação do monstro na **tela de lançamento**, com a carta do monstro agindo e a
   **carta da ação com os números** (ataque, dano, CD — os dados já mostram). Rolagem de monstro
@@ -365,5 +366,7 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 - **2026-10-31** — A migração entrou na mesma versão (1.17.1) da correção das três magias, que
   ainda não tinha commit. → `estado-atual.md`
 - **2026-10-31** — As `SMTP_*` ficam no `/etc/forja-api.env`: o usuário quer voltar o envio de
-  e-mail pra api, agora que a VPS não bloqueia SMTP (substituirá a decisão de 2026-10-25 quando
-  for feito). → `backlog.md`
+  e-mail pra api, agora que a VPS não bloqueia SMTP. → `backlog.md`
+- **2026-11-01** — O e-mail de recuperação volta a sair **direto da api** pelo SMTP da Hostinger
+  (`nodemailer`), da VPS; o script PHP do site e o `MAIL_RELAY_*` saem. Versão 1.17.3, com nota
+  genérica em `/novidades`. → `conceitos/email.md`

@@ -2,7 +2,7 @@
 resumo: Plano de resposta a incidente de segurança (LGPD art. 48) + registro de incidentes.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Forja Arcana — Plano de resposta a incidente de segurança
@@ -43,8 +43,7 @@ Trocar as credenciais possivelmente expostas (na VPS: `sudo nano /etc/forja-api.
 | `JWT_SECRET` | `/etc/forja-api.env` | **Desloga todo mundo** (tokens antigos param de valer) — desejável se houver suspeita de token roubado |
 | `PGPASSWORD` | Neon → Roles | Atualizar no `/etc/forja-api.env` antes de reiniciar |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase → API settings | Atualizar no `/etc/forja-api.env` |
-| Senha do e-mail do site | Hostinger → e-mail | Atualizar o `smtp_pass` do `forja-mail-config.php` (Hostinger, fora do `public_html`) — desde a 1.12.1 a api não usa mais `SMTP_PASS` |
-| `MAIL_RELAY_SECRET` | gerar outro (`openssl rand -hex 32`) | Pôr no `/etc/forja-api.env` **e** no `'secret'` do `forja-mail-config.php`; até os dois baterem, o e-mail de recuperação não sai. Ver `conceitos/email.md` |
+| Senha do e-mail do site | hPanel → E-mails | Atualizar o `SMTP_PASS` no `/etc/forja-api.env` e reiniciar a api (desde a 1.17.3 a api envia direto); até lá o e-mail de recuperação não sai. Ver `conceitos/email.md` |
 | `ANTHROPIC_API_KEY` / `OPENAI_API_KEY` | painel de cada um | Hoje sem uso (IA desativada) — revogar se vazou |
 | Senhas dos painéis (Neon, Supabase, Hostinger, GitHub; Render enquanto existir) | cada painel | Ativar 2FA onde não tiver |
 | Chave do CI (`VPS_SSH_KEY`) | gerar outra, trocar a linha `restrict,command=...` no `authorized_keys` do `deploy` e o secret no GitHub | Só dispara deploy da `main`; deploys param até o secret novo |

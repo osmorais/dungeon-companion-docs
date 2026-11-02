@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -323,9 +323,9 @@ Precisam constar na política:
 - **Neon** — Postgres;
 - **Supabase** — imagens (confirmar a região do projeto);
 - **Google** — login (Google Identity Services) e Google Fonts;
-- **Hostinger** — hospedagem do site e envio de e-mail (desde a 1.12.1 por um script no próprio
-  site, chamado pela api: o e-mail de quem pediu a recuperação passa da api pra Hostinger por
-  HTTPS e não é guardado — ver `email.md`);
+- **Hostinger** — hospedagem do site e envio de e-mail (desde a 1.17.3 a api entrega direto ao
+  SMTP da Hostinger; de 1.12.1 a 1.17.2 passava por um script no site. O endereço de quem pediu
+  a recuperação não é guardado nem vai pro log — ver `email.md`);
 - **Anthropic/OpenAI** — só se a geração por IA for reativada (chaves continuam no `.env`).
 
 ### 8. Recursos do Google em todas as páginas

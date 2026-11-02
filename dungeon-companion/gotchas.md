@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Gotchas
@@ -290,7 +290,7 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - Angular `outputPath` sem a subpasta `browser/`, pro deploy na Hostinger funcionar.
 - O `release-notes.spec.ts` confere o `package.json` do web; o da api é conferido **à mão**.
 - O **Render bloqueia SMTP** (portas 25/465/587): e-mail direto da api não sai, e o erro só
-  aparece como timeout/conexão recusada. Por isso o e-mail sai por um script PHP no site
+  aparece como timeout/conexão recusada. Por isso o e-mail saiu por um script PHP no site (até a 1.17.2)
   (`conceitos/email.md`). HTTPS de saída funciona. Na VPS (1.17.1) as portas 465/587 saem.
 - **VPS** (`conceitos/infraestrutura.md`):
   - **nginx aceita só 1 MB** por requisição por padrão: upload de imagem (até 10 MB na api) dá

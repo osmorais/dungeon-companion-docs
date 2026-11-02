@@ -2,7 +2,7 @@
 resumo: Manual da VPS da api — acessar, ver se está saudável e atualizada, logs, mapa dos arquivos (quem chama quem), rotinas, troubleshooting e como remontar do zero.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-01
 ---
 
 # Dungeon Companion — Manual do servidor da api (VPS)
@@ -201,7 +201,7 @@ nginx                     /etc/nginx/sites-enabled/api.forjaarcana.com  (atalho)
 127.0.0.1:3000            api (Node), processo do serviço forja-api
   │  variáveis de /etc/forja-api.env (entregues pelo systemd)
   ▼
-Neon (Postgres) · Supabase (imagens) · script de e-mail no site (Hostinger)
+Neon (Postgres) · Supabase (imagens) · smtp.hostinger.com:465 (e-mail de recuperação, desde a 1.17.3)
 ```
 
 ### Caminho de um deploy
@@ -231,7 +231,7 @@ GitHub Actions: .github/workflows/deploy.yml
 |---|---|---|---|
 | `/srv/api/` | deploy | Clone do repo da api. `dist/` é o JavaScript compilado que roda | `forja-deploy` atualiza; `forja-api` executa |
 | `/srv/api/dist/index.js` | deploy | Ponto de entrada da api | `ExecStart` do serviço |
-| `/etc/forja-api.env` | root, `600` | Variáveis: `NODE_ENV`, `PORT`, `HOST=127.0.0.1`, `CORS_ORIGIN`, `JWT_SECRET`, `PG*`, `ENDPOINT_ID`, `SUPABASE_*`, `MAIL_RELAY_SECRET`, `GOOGLE_CLIENT_ID`, `SMTP_*` (pra volta do e-mail) | systemd lê (como root) e entrega à api |
+| `/etc/forja-api.env` | root, `600` | Variáveis: `NODE_ENV`, `PORT`, `HOST=127.0.0.1`, `CORS_ORIGIN`, `JWT_SECRET`, `PG*`, `ENDPOINT_ID`, `SUPABASE_*`, `GOOGLE_CLIENT_ID`, `SMTP_*` (e-mail de recuperação, 1.17.3), `FRONTEND_URL` (opcional) | systemd lê (como root) e entrega à api |
 | `/etc/systemd/system/forja-api.service` | root | Define o serviço da api (usuário, pasta, variáveis, reinício, proteções) | systemd |
 | `/etc/systemd/system/multi-user.target.wants/forja-api.service` | root | Atalho criado pelo `enable`: liga a api no boot | systemd |
 | `/etc/nginx/nginx.conf` | root | Configuração geral do nginx. Mudamos só `server_tokens off` | nginx |
@@ -341,6 +341,13 @@ no log e as linhas `X-Forwarded-For $remote_addr` / `CF-Connecting-IP ""` do ngi
 - **`Connection refused` logo depois de `reboot`**: o servidor ainda está ligando; esperar.
 - **Trancado do lado de fora**: console do hPanel (seção 2).
 - `ssh root@...` dá `Permission denied`: **é o esperado**.
+
+### E-mail de recuperação não chega
+
+Pedir pelo site com uma conta sua e olhar `journalctl -u forja-api -f`: a linha
+`[auth] e-mail de recuperação não enviado: <código>` diz o motivo (tabela em
+[`../conceitos/email.md`](../conceitos/email.md)). Sem essa linha, o servidor de e-mail aceitou:
+conferir o spam.
 
 ### Disco ou memória
 
