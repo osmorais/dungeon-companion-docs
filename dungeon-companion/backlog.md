@@ -248,6 +248,14 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       2026-10-24). Se repetir, subir o `timeout` do bloco. Em 2026-10-30 uma rodada deu
       "492 passing, 1 failing" e as 4 seguintes deram 517 (não deu pra ver qual teste).
 - [ ] `npm test` da api tem débito de lint antigo (por isso a regra usa `npm run test:unit`).
+- [ ] **`CONNECT_TIMEOUT` do banco** (2026-11-02, 03:08 e 03:09 UTC): dois "esqueci minha senha"
+      deram 500 porque a api não conectou no Neon (`write CONNECT_TIMEOUT undefined:undefined`, em
+      `clearExpiredResetTokens`), no mesmo processo; minutos depois funcionou. Suspeita: o Neon
+      grátis dormindo de madrugada (ou rede VPS → Neon). Se repetir: ver o horário em
+      `journalctl -u forja-api | grep CONNECT_TIMEOUT`, o painel do Neon e a região do `PGHOST`
+      (item da VPS acima); opções: subir o `connect_timeout` do driver em
+      `postgres.datasource.ts` ou tentar de novo uma vez antes de dar erro. Roteiro no
+      [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md).
 - [ ] **Otimizar as imagens do site** nós mesmos: os fundos de `public/backgrounds/` são PNG de
       1,3–1,7 MB (2036 px de largura). Gerar WebP com boa qualidade (~150–300 KB) e trocar em
       `background.service.ts`; conferir também os PNG grandes de `src/assets`. Motivo: a

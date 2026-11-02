@@ -304,6 +304,31 @@ GitHub Actions: .github/workflows/deploy.yml
 3. `/ping` ok e o teste do `username-available` falha: banco. Log da api; conferir `PG*` e
    `ENDPOINT_ID`; ver se o Neon está no ar / fora da cota do plano grátis.
 
+### Banco não conecta (`CONNECT_TIMEOUT`)
+
+Log da api com `Error: write CONNECT_TIMEOUT` vindo de `node_modules/postgres` e a requisição
+com **500**: a api não conseguiu abrir conexão com o Neon no tempo do driver. Aconteceu em
+2026-11-02 de madrugada (duas vezes, depois voltou sozinho) — ver o item no
+[`../backlog.md`](../backlog.md).
+
+1. Ainda falha? `curl -s "http://127.0.0.1:3000/auth/username-available?username=teste_xyz"`
+   (passou = foi passageiro).
+2. Desde quando e quantas vezes:
+   `journalctl -u forja-api --since "<data>" | grep -c CONNECT_TIMEOUT`. Ver se foi durante um
+   deploy: `journalctl -u forja-api --since "<hora>" | grep -E "Server is running|CONNECT_TIMEOUT"`
+   (erros **antes** de um `Server is running` = deploy no meio; no mesmo processo, sem restart
+   no meio = banco ou rede).
+3. Variáveis do banco presentes: `sudo cut -d= -f1 /etc/forja-api.env | grep -E '^(PG|ENDPOINT)'`
+   (cinco nomes). `undefined:undefined` na mensagem é o formato do driver com URL de conexão, não
+   prova de variável faltando, mas conferir não custa.
+4. Rede até o Neon: `getent ahosts <PGHOST>` e
+   `timeout 5 bash -c "</dev/tcp/<PGHOST>/5432" && echo aberta || echo "sem resposta"`.
+5. Painel do Neon (console.neon.tech): projeto ativo? Cota do plano grátis estourada (o banco
+   para de aceitar conexão até o mês virar)? Status do serviço.
+
+O banco é de todo o site: se não volta, login, fichas e mesa param juntos (o Render, enquanto
+existir, usa o mesmo banco e não ajuda).
+
 ### Sessão em tempo real não atualiza
 
 - Log do navegador mostrando WebSocket falhando: conferir no arquivo do nginx as linhas `Upgrade`,
