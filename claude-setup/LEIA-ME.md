@@ -2,7 +2,7 @@
 resumo: Configuração do Claude Code fora dos repositórios (hook do brief, /fechar-entrega, /abrir-prs, settings, memória) e como instalar em outro computador.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-29
+atualizado: 2026-11-03
 ---
 
 # Configuração do Claude Code (fora dos repositórios)
@@ -30,6 +30,7 @@ Genéricos (não citam este projeto), em [`prompts/`](prompts/) — fora do `ins
 | [`1-estudo-sem-git.md`](prompts/1-estudo-sem-git.md) | Estudo/análise (ex.: POC) só coletando informações, sem git: memória numa pasta portátil, com exportar/importar por zip pra outra pessoa continuar |
 | [`2-projeto-novo-completo.md`](prompts/2-projeto-novo-completo.md) | Projeto novo de software com toda a lógica: docs curados, hook de início de sessão, `/fechar-entrega`, memória enxuta e `claude-setup/` |
 | [`3-reorganizar-docs-existentes.md`](prompts/3-reorganizar-docs-existentes.md) | Reorganizar documentos que já existem nessa estrutura, sem perder conteúdo, com plano aprovado antes |
+| [`4-memoria-individual-sem-git.md`](prompts/4-memoria-individual-sem-git.md) | Projeto da empresa, pra enviar sozinho a outras pessoas: só a lógica de memória (docs curados individuais fora do git, hook, `/fechar-entrega`, memória), sem escrever nada nos repositórios de código |
 
 ## Instalar num computador novo
 
