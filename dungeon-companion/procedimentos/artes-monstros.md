@@ -2,7 +2,7 @@
 resumo: Plano e prompts do ChatGPT pras imagens dos monstros do bestiário (medalhão em pixel art), em levas começando pelos mais usados, e onde salvar.
 tipo: procedimento
 status: ativo
-atualizado: 2026-10-25
+atualizado: 2026-11-05
 ---
 
 # Dungeon Companion — Artes dos monstros (bestiário)
@@ -70,8 +70,8 @@ A ordem abaixo segue os monstros mais comuns em aventuras de nível baixo, que �
 estão. **Pra refinar pelo uso real**: contar em produção quantas vezes cada monstro foi catalogado
 e posto em sessão (`monster_catalog` e `monster_session` agrupados por `monster_api_slug`, só
 leitura, sem dado de usuário) — precisa de autorização pra consulta no banco de produção.
-Monstros catalogados antes da 1.10.0 têm slug em inglês (ex.: `skeleton`), então a contagem tem que
-juntar os dois nomes.
+Monstros catalogados antes da 1.10.0 (slug em inglês da dnd5eapi) ficam fora da contagem: estão
+descontinuados (decisão de 2026-11-05).
 
 ### Leva 1 — encontros de nível 1 a 3
 
@@ -135,5 +135,7 @@ Entrega no web (pedir quando a leva 1 estiver pronta):
 - reduzir os PNGs pra WebP (~384 px, mantendo os pixels nítidos) em `src/assets/monsters/`;
 - lista dos slugs que têm arte (pra não pedir imagem que não existe) e a imagem padrão do monstro
   passa a ser a do slug, na mesa, no início do combate e no catálogo;
-- monstros catalogados antes da 1.10.0 (slug em inglês) não casam com o slug da arte — ver o item
-  de migração em `backlog.md`, seção "Monstros".
+- monstros catalogados antes da 1.10.0 (slug em inglês da dnd5eapi) **não recebem arte**: estão
+  descontinuados (decisão de 2026-11-05), sem migração de slug.
+
+Card no kanban: "Artes dos monstros mais comuns" ([`../kanban.md`](../kanban.md)).

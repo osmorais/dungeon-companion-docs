@@ -2,7 +2,7 @@
 resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0), bestiário do mestre e catalogar em cartas com filtros (1.14.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-28
+atualizado: 2026-11-05
 ---
 
 # Dungeon Companion — Monstros
@@ -25,7 +25,9 @@ Api `395e250` (merge `1b1c62d`, PR #3), web `a628317` (merge `4c0d64b`, PR #5).
 - A **dnd5eapi saiu** (`SrdMonsterService` apagado na 1.10.0). Monstros catalogados antes ficam
   com a ficha em inglês da API. **Desde a 1.14.0 o site não trata mais essas fichas** (decisão de
   2026-10-27): `isMechanicalStatBlock`, o texto da "ficha antiga" e os "sem testes" ficaram
-  comentados no web. Elas aparecem quebradas — ver o backlog.
+  comentados no web. Elas aparecem quebradas. **Desde 2026-11-05 estão descontinuadas de vez**:
+  nada novo é adequado pra elas (artes, resistências, migração de slug); ver `decisoes.md`. Apagar essas linhas
+  (`monster_catalog`/`monster_session` com slug fora da tabela `monster`) em produção só com autorização.
 - O site lê do `data_snapshot`: `name`, `size`, `type`, `alignment`, `armor_class[0].value`,
   `hit_points`, `hit_dice`, `speed` (chave: valor), os 6 atributos, `challenge_rating`, `xp` e,
   desde a 1.11.0, os campos estruturados das habilidades e as defesas/sentidos (abaixo).

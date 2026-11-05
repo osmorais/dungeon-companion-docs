@@ -19,6 +19,7 @@ passos" de lá).
 |---|---|---|
 | [`estado-atual.md`](dungeon-companion/estado-atual.md) | estado | Versão, commits, testes, mudanças em produção. **Ler primeiro.** |
 | [`backlog.md`](dungeon-companion/backlog.md) | backlog | Todas as pendências, por área |
+| [`kanban.md`](dungeon-companion/kanban.md) | backlog | Cards do kanban no Monday (2026-11-05): o que cada um cobre, decisões tomadas e dúvidas em aberto |
 | [`decisoes.md`](dungeon-companion/decisoes.md) | decisoes | Decisões do usuário (regras, escopo, privacidade) |
 | [`gotchas.md`](dungeon-companion/gotchas.md) | gotchas | Armadilhas técnicas por área |
 | [`conceitos/magias-mecanicas.md`](dungeon-companion/conceitos/magias-mecanicas.md) | conceito | Catálogo `spell-mechanics.ts`, modal de rolagem, aplicar no alvo, efeitos de tela |

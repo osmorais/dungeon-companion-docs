@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-02
+atualizado: 2026-11-05
 ---
 
 # Dungeon Companion — Backlog
@@ -14,9 +14,14 @@ outro doc.
 
 Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem pedido explícito.
 
+Desde 2026-11-05 as tarefas também ficam num **kanban no Monday**. Item com a marca **(card: Nome)**
+já virou card lá; resumo, decisões e dúvidas de cada card em [`kanban.md`](kanban.md) (inclui cards
+de funcionalidades novas que não estavam aqui: amigos, chat, sussurros, Minha Conta, telas de
+criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes dos monstros).
+
 ## Ações do usuário / fora do código
 
-- [ ] **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
+- [ ] (relacionado ao card: Ambiente de homologação) **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
 
@@ -60,10 +65,10 @@ Nada aqui foi pedido pelo usuário ainda: são candidatos. Não começar sem ped
 
 Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 
-- [ ] Arma Elemental (bônus de ataque).
-- [ ] Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante.
-- [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano).
-- [ ] Cura do Toque Vampírico; curas de valor fixo.
+- [ ] Arma Elemental (bônus de ataque). (card: Magias com mecânica pendente)
+- [ ] Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante. (card: Magias com mecânica pendente)
+- [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano). (card: Magias com mecânica pendente)
+- [ ] Cura do Toque Vampírico; curas de valor fixo. (card: Magias com mecânica pendente)
 - [ ] Opcional: trocar o CSS dos efeitos de tela por sprites pixel art (o usuário busca os arquivos).
 - [ ] **Descrições de magia mais curtas que o livro** (comparação de 2026-10-31 com
       `referencias/magias.txt`, só leitura): ~100 das 357 que o leitor achou no livro têm menos de
@@ -76,9 +81,9 @@ Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
       nome dela, ex.: Vidência + Vínculo Protetor) e decidir com o usuário. Correção no banco e no
       `database_inserts.sql`, com autorização. Contradiz o "361/361 conferidas" de
       `historico/spells-progress.md`.
-- [ ] Selo de dano: na tela de lançamento aparece o valor base, não o do personagem (a api não
+- [ ] (card: Magias com mecânica pendente) Selo de dano: na tela de lançamento aparece o valor base, não o do personagem (a api não
       tem a ficha de quem lança ali). Se incomodar, mandar o selo junto no `spell-cast-stage`.
-- [ ] Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
+- [ ] (card: Magias com mecânica pendente) Filtro de magia de **ritual**: a tabela `spell` não guarda isso. Precisaria de coluna nova ou
       de uma lista no código (como `spell-tags.ts`).
 
 ## Cartas
@@ -92,11 +97,11 @@ Contexto: [`conceitos/cartas.md`](conceitos/cartas.md).
 Contexto: [`conceitos/avatar.md`](conceitos/avatar.md). O usuário gera as folhas no ChatGPT e
 coloca em `artes/avatar/<categoria>/`; o recorte segue o mesmo processo dos cabelos.
 
-- [ ] **Barbas** novas (próxima categoria pedida).
-- [ ] Opcional (oferecido na 1.8.1): pele original do meio-orc (`race/base_half_orc.png`, oliva)
+- [ ] **Barbas** novas (próxima categoria pedida). (card: Avatar: barbas, roupas e chapéus/elmos)
+- [ ] (card: Avatar: barbas, roupas e chapéus/elmos) Opcional (oferecido na 1.8.1): pele original do meio-orc (`race/base_half_orc.png`, oliva)
       como mais um tom no personalizador — hoje só o card de exemplo da tela inicial usa.
-- [ ] **Roupas** novas (folha masculina e feminina).
-- [ ] **Chapéus/elmos**: camada nova acima do cabelo + aba nova no personalizador.
+- [ ] **Roupas** novas (folha masculina e feminina). (card: Avatar: barbas, roupas e chapéus/elmos)
+- [ ] **Chapéus/elmos**: camada nova acima do cabelo + aba nova no personalizador. (card: Avatar: barbas, roupas e chapéus/elmos)
 - [ ] Mover as folhas das molduras pra `artes/molduras/` e corrigir o nome `modulras-card-sombrio.png`
       (lembrar de ajustar `scripts/molduras/frames.py` e o comentário no `styles.scss` do web).
 - [ ] **Rostos** (sobrancelha, olhos, nariz, boca): exige refazer as 18 bases sem rosto (9 raças ×
@@ -108,12 +113,12 @@ coloca em `artes/avatar/<categoria>/`; o recorte segue o mesmo processo dos cabe
 Contexto e limitações atuais: [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md),
 seção "O que ficou de fora".
 
-- [ ] Vantagem condicional rolar 2d20 sozinha (hoje é só lembrete).
+- [ ] Vantagem condicional rolar 2d20 sozinha (hoje é só lembrete). (card: Automação de traços)
 - [ ] Resistências vindas de magia (Proteção contra Energia, Pele de Pedra…) e de itens nas defesas
-      do alvo.
-- [ ] Defesas automáticas de monstros (hoje ficam com o mestre).
-- [ ] Indomável verificar se a resistência falhou.
-- [ ] Seção E (visão no escuro, Ação Ardilosa, Forma Selvagem, companheiro animal, Ataque Extra…)
+      do alvo. (card: Resistências, imunidades e vulnerabilidades)
+- [ ] Defesas automáticas de monstros (hoje ficam com o mestre). (card: Resistências, imunidades e vulnerabilidades)
+- [ ] Indomável verificar se a resistência falhou. (card: Automação de traços)
+- [ ] (card: Automação de traços) Seção E (visão no escuro, Ação Ardilosa, Forma Selvagem, companheiro animal, Ataque Extra…)
       continua texto — só se o usuário quiser.
 
 ## Bloco "Média" da auditoria (o que restou)
@@ -121,6 +126,8 @@ seção "O que ficou de fora".
 Contexto: [`conceitos/auditoria-mecanicas.md`](conceitos/auditoria-mecanicas.md) e
 [`historico/media-progress.md`](historico/media-progress.md). Deslocamento de voo ficou de fora
 por decisão do usuário.
+
+Card: **Mecânicas de classe restantes** cobre os itens abaixo, menos os catálogos grandes.
 
 - [ ] **Guerreiro — Mestre de Batalha**: Superioridade em Combate (dados de superioridade +
       manobras, reaproveita o padrão `ChiAbility`) e Estudioso da Guerra.
@@ -161,7 +168,7 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 - [ ] Opcional: mostrar na ficha de onde vem o PV máximo (dado rolado × média por nível).
 - [ ] Quadro do Mestre: rolagens ocultas somem quando o log de 30 rolagens por sessão enche — se
       incomodar, guardar mais (ou guardar as ocultas à parte) na api.
-- [ ] Quadro do Mestre: dano em área não aplica resistência do alvo sozinho (mestre marca ½).
+- [ ] Quadro do Mestre: dano em área não aplica resistência do alvo sozinho (mestre marca ½). (card: Resistências, imunidades e vulnerabilidades)
 - [ ] Quadro do Mestre: descanso do grupo não atualiza ficha/ações já abertas dos jogadores
       (só ao reabrir).
 - [ ] Opcional: levar o padrão mobile (`.m-*`) pra login/cadastro/senha e conta (1.3.6 cobriu
@@ -188,22 +195,16 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 ## Monstros
 
-- [ ] **Decidir o papel do catálogo do mestre** depois do bestiário (1.10.0). Catalogar existia pra
+- [ ] (relacionado ao card: Melhorar tela de criar nova sessão — decidir junto) **Decidir o papel do catálogo do mestre** depois do bestiário (1.10.0). Catalogar existia pra
       trazer a ficha da dnd5eapi; hoje só serve pra personalizar (nome, imagem) e como atalho, mas
       continua obrigatório pra pôr monstro na mesa (o "catalogar agora" da sessão cria entrada como
       efeito colateral). Proposta (2026-10-25): "+ ADICIONAR" com abas BESTIÁRIO (direto da tabela
       `monster`, sem catalogar) e MEUS MONSTROS; catálogo vira "Meus monstros" (personalizar:
       nome editável + imagem). Em aberto: tela só de consulta ao bestiário e o nome ("Meus
       monstros" × "Catálogo"). Sem mudança no banco (`monster_session.data_snapshot` já é cópia).
-- [ ] **Fichas antigas da dnd5eapi** (catalogadas/em sessão antes da 1.10.0, ex.: Ancient Blue
-      Dragon): desde a 1.14.0 o site não as trata mais (decisão de 2026-10-27; código comentado)
-      e elas aparecem **quebradas** (ações erradas ou sumidas, "SENTIDOS: [object Object]").
-      Falta tirar de cena: o mestre remove pelo ✕ do bestiário e cataloga de novo, ou apagar em
-      produção (`monster_catalog`/`monster_session` com slug fora da tabela `monster`) — só com
-      autorização.
-- [ ] **Resistência dos monstros ao dano dos jogadores**: hoje o dano entra cheio num monstro
+- [ ] (card: Resistências, imunidades e vulnerabilidades) **Resistência dos monstros ao dano dos jogadores**: hoje o dano entra cheio num monstro
       resistente a fogo. A ficha já tem as listas (`damage_resistances` etc.), em texto do livro.
-- [ ] Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o modal corta o dano
+- [ ] (card: Resistências, imunidades e vulnerabilidades) Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o modal corta o dano
       inteiro pela metade (mesmo comportamento das magias). Resolver junto com o item acima.
 - [ ] Bestiário: o "Cuspir Veneno" da Naga Guardiã está marcado como ataque — aparece ATACAR sem
       dano no acerto, mais o botão de resistência com o dano. Corrigir no seed e em produção.
@@ -231,7 +232,7 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
-- [ ] Opcional: **entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7):
+- [ ] (card: Login com e-mail ou nome de usuário) **Entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7):
       o campo do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail
       ou `LOWER(username)`, com a mesma mensagem de erro nos dois casos). O preenchimento automático
       já foi resolvido de outro jeito na 1.13.3 (o e-mail é o identificador nas duas telas).

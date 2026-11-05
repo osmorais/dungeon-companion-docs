@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-02
+atualizado: 2026-11-05
 ---
 
 # Dungeon Companion — Decisões
@@ -15,6 +15,13 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 `.claude/rules/` dos repos.
 
 ## Produto e regras do jogo
+
+- **2026-11-05** — Monstros importados da **dnd5eapi** (catalogados/em sessão antes da 1.10.0, slug em
+  inglês) estão **descontinuados de vez**: nenhuma funcionalidade nova é adequada pra eles (artes,
+  resistências, migração de slug etc.). Complementa a decisão de 2026-10-27. → `conceitos/monstros.md`
+- **2026-11-05** — Tarefas organizadas num **kanban no Monday**; os cards escritos com o Claude e o
+  que já foi decidido em cada um ficam resumidos em `kanban.md`.
+- **2026-11-05** — Chat entre amigos (card "Mensagens") em **tempo real por WebSocket**. → `kanban.md`
 
 - **2026-10-31** — Dano da magia num **selo na arte** da carta (não numa linha do pergaminho).
   Catálogo e criação de ficha mostram o valor base do livro; ficha e mesa, o do personagem. As 26
@@ -334,6 +341,12 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 
 ## Privacidade e segurança
 
+- **2026-11-05** — Mensagens (chat entre amigos e, pela mesma regra, as da sessão): criptografia
+  **em trânsito** (HTTPS/WSS) e **em repouso** na api (AES-256-GCM, IV por mensagem, chave só na VPS
+  com versão gravada, conteúdo nunca nos logs). **Ponta a ponta (E2E) fica fora** da v1. Política
+  diz "criptografado no servidor". Retenção de **12 meses** (job diário); o usuário apaga as próprias
+  mensagens e conversas; a exclusão da conta apaga o que ela enviou ("usuário removido" pro outro
+  lado). Mensagens da sessão somem com a sessão ou em 12 meses. → `kanban.md`
 - **2026-10-14** — Dados ficam até o usuário excluir a conta (sem expiração de conta inativa).
   → `conceitos/lgpd.md`
 - **2026-10-14** — Riscos aceitos: enumeração de e-mail e revogação de JWT. → `conceitos/lgpd.md`
