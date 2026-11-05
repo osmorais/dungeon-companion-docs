@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-11-02
+atualizado: 2026-11-03
 ---
 
 # Dungeon Companion — Estado atual
@@ -79,7 +79,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
 - **Últimos commits**: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
-  criada em produção antes do deploy da api (ver abaixo). Antes: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
+  criada em produção antes do deploy da api (ver abaixo); push em 2026-11-02. Conferido em
+  2026-11-03 com `scripts/db/usuarios-ativos.js`: gravando (35 contas, 4 ativas em 24 h). Antes: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
   2026-11-02 (api 1.17.5 a 1.17.7 de uma vez, depois web e docs). Na VPS, à mão: HSTS e
   `proxy_hide_header X-Powered-By` no nginx. Conferido no ar: headers da api e do site, rotas
   diretas, login (e-mail e Google), mesa, upload (PNG aceito, SVG recusado) e e-mail de
