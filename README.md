@@ -38,6 +38,7 @@ passos" de lá).
 | [`conceitos/email.md`](dungeon-companion/conceitos/email.md) | conceito | E-mail de recuperação de senha: api → SMTP da Hostinger (1.17.3; antes, script PHP no site), configuração, erros e como testar |
 | [`conceitos/infraestrutura.md`](dungeon-companion/conceitos/infraestrutura.md) | conceito | Onde a api roda (VPS da Hostinger, 1.17.1): acesso, nginx, HTTPS, serviço systemd, variáveis, deploy pelo GitHub Actions |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
+| [`conceitos/criacao-de-ficha.md`](dungeon-companion/conceitos/criacao-de-ficha.md) | conceito | Criação de ficha (wizard): sugestão de atributos pela classe (1.17.10), armas do catálogo sem bônus (1.17.9) |
 | [`procedimentos/servidor-api.md`](dungeon-companion/procedimentos/servidor-api.md) | procedimento | Manual da VPS da api: acessar, saúde, logs, atualizações, mapa de arquivos (quem chama quem), troubleshooting, remontar do zero |
 | [`procedimentos/backups.md`](dungeon-companion/procedimentos/backups.md) | procedimento | Backups do repositório e como fazer rollback |
 | [`procedimentos/incidente.md`](dungeon-companion/procedimentos/incidente.md) | procedimento | Plano de resposta a incidente de segurança + registro |
