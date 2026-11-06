@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-11-03
+atualizado: 2026-11-06
 ---
 
 # Dungeon Companion — Estado atual
@@ -29,7 +29,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.8 (2026-11-02, data e hora do último acesso de cada usuário
+- **Versão do sistema**: 1.17.9 (2026-11-06, dano das cartas de arma na criação de personagem
+  sem o "undefined" no final — [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.17.8 (2026-11-02, data e hora do último acesso de cada usuário
   (`users.last_access_at`) pra contar ativos, com a Política atualizada —
   [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.7 (mesmo dia, headers de segurança no site pelo `public/.htaccess` do
   web — [`conceitos/lgpd.md`](conceitos/lgpd.md)); antes, 1.17.6 (mesmo dia, upload de imagem só PNG, JPEG, WebP e GIF, conferido
@@ -78,7 +79,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
+- **Últimos commits**: api `25e3312` (só a versão) e web `f4fa057` (1.17.9), sem migração,
+  commitados em 2026-11-06 (push pelo usuário: a chave SSH pede senha). Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
   criada em produção antes do deploy da api (ver abaixo); push em 2026-11-02. Conferido em
   2026-11-03 com `scripts/db/usuarios-ativos.js`: gravando (35 contas, 4 ativas em 24 h). Antes: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
   2026-11-02 (api 1.17.5 a 1.17.7 de uma vez, depois web e docs). Na VPS, à mão: HSTS e
@@ -123,7 +125,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 547 (`npm run test:unit`), web 783 (`npm run test:run`) — na 1.17.8 —
+- **Testes**: api 547 (`npm run test:unit`), web 784 (`npm run test:run`) — na 1.17.9 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

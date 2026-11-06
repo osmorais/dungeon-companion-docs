@@ -2,7 +2,7 @@
 resumo: Cartas de card game (magias na 1.4.0, armas na 1.6.0, monstros na 1.11.0), o grimório de magias com filtros (1.16.0) e os avisos da mesa (lançamento de magia na 1.5.0; revelação e derrota de monstro na 1.11.0): componentes, imagens, eventos e fluxo.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-06
 ---
 
 # Dungeon Companion — Cartas e lançamento de magia
@@ -250,6 +250,9 @@ os dados são revelados no mesmo instante; a rolagem fica dentro do aviso **só 
 - **Onde**: gaveta de ações (baralho ARMAS na coluna COMBATE → "mão", desde a 1.6.5; ver
   "Baralho e mão") e ficha (grade com ATACAR no celular e no desktop; a
   tela cheia substituiu o modal da arma).
+- Na criação de ficha as armas vêm do catálogo sem `attack_bonus` nem `damage_modifier` (só a
+  ficha calcula): `damageLabel` mostra só o dado e `signed` trata ausente como 0 (até a 1.17.8 saía
+  "1d4undefined"; corrigido na **1.17.9**, web `f4fa057`).
 - Desde a **1.6.1** o ataque com arma usa o aviso da mesa (ver "Ataque com arma no aviso").
 
 ## Ataque com arma no aviso (1.6.1)

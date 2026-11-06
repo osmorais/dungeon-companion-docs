@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-02
+atualizado: 2026-11-06
 ---
 
 # Dungeon Companion — Gotchas
@@ -54,6 +54,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 ## Web (Angular)
 
+- **`WeaponRow` da criação de ficha não tem `attack_bonus` nem `damage_modifier`**, embora o tipo
+  diga `number`: a api manda as armas do catálogo cruas (`character-options.repository.ts`) e só a
+  ficha calcula os dois. Concatenar sem tratar dá "1d4undefined" (corrigido na 1.17.9 em
+  `weapon-card.ts`) — qualquer tela nova com arma do catálogo precisa tratar o ausente.
 - **`clip-path: polygon(...)` precisa de vírgula entre os pontos** (`0% 0%, 30% 0%, …`): sem vírgula
   o navegador ignora em silêncio e o elemento fica inteiro — os cacos da quebra (1.7.2) viraram
   painéis inteiros girando. Há teste do formato em `cast-shatter.component.spec.ts`.
