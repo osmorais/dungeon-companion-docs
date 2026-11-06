@@ -29,7 +29,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.17.10 (2026-11-06, sugestão de onde pôr os maiores atributos pela
+- **Versão do sistema**: 1.17.11 (2026-11-06, raça escolhida por miniaturas com a arte, detalhes
+  do personagem em cima, sem o campo de nível e "Selecione..." nas listas do passo 1 da criação —
+  [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.10 (mesmo dia, sugestão de onde pôr os maiores atributos pela
   classe, na criação de ficha — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.9 (mesmo dia, dano das cartas de arma na criação de personagem
   sem o "undefined" no final — [`conceitos/cartas.md`](conceitos/cartas.md)); antes, 1.17.8 (2026-11-02, data e hora do último acesso de cada usuário
   (`users.last_access_at`) pra contar ativos, com a Política atualizada —
@@ -80,9 +82,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: api `5a1be96` (só a versão) e web `101a210` (1.17.10), sem migração,
-  commitados em 2026-11-06, sem push ainda (a chave SSH pede senha; o push fica com o usuário,
-  api antes do web). Antes, também sem push: api `25e3312` (só a versão) e web `f4fa057` (1.17.9). Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
+- **Últimos commits**: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração,
+  commitados em 2026-11-06, sem push ainda (a chave SSH pede senha; push pelo usuário, api antes
+  do web). Antes: api `5a1be96` (só a versão) e web `101a210` (1.17.10), sem migração, push pelo
+  usuário em 2026-11-06, junto com os da 1.17.9: api `25e3312` (só a versão) e web `f4fa057`. Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
   criada em produção antes do deploy da api (ver abaixo); push em 2026-11-02. Conferido em
   2026-11-03 com `scripts/db/usuarios-ativos.js`: gravando (35 contas, 4 ativas em 24 h). Antes: api `689d66b` (só a versão) e web `817e152` (1.17.7), sem migração, push em
   2026-11-02 (api 1.17.5 a 1.17.7 de uma vez, depois web e docs). Na VPS, à mão: HSTS e
@@ -127,7 +130,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (o #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27).
-- **Testes**: api 547 (`npm run test:unit`), web 788 (`npm run test:run`) — na 1.17.10 —
+- **Testes**: api 547 (`npm run test:unit`), web 791 (`npm run test:run`) — na 1.17.11 —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -152,7 +155,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Infraestrutura da api | VPS Hostinger KVM 1 (Ubuntu 26.04), nginx + HTTPS, serviço systemd, deploy pelo GitHub Actions (1.17.1); Render de reserva até ser apagado | [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md), manual: [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1); selo de dano/cura nas cartas (1.17.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
-| Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8); dano das cartas de arma sem "undefined" (1.17.9); sugestão de atributos pela classe (1.17.10) | [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md), antes: [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
+| Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8); dano das cartas de arma sem "undefined" (1.17.9); sugestão de atributos pela classe (1.17.10); raça por miniaturas com arte, detalhes primeiro, sem nível (1.17.11) | [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md), antes: [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
 

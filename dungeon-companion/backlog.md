@@ -21,8 +21,6 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
 
 ## Ações do usuário / fora do código
 
-- [ ] **Push da 1.17.9 e da 1.17.10** (2026-11-06): api `25e3312`/`5a1be96`, web `f4fa057`/`101a210`
-  e os docs ficaram commitados sem push — a chave SSH pede senha. Api antes do web.
 - [ ] (relacionado ao card: Ambiente de homologação) **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
@@ -247,6 +245,8 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 ## Criação de ficha
 
+- [ ] **Arte do Humano** (id 9) pras miniaturas de raça — hoje mostra a inicial. Pôr o PNG em
+  `artes/races/9humano.png`, rodar `design/races/process.py` e incluir o 9 em `race-images.ts`.
 - [ ] **Botão "aplicar sugestão" nos atributos**: distribuir os valores (matriz padrão ou rolagem)
   pela prioridade da classe (1.17.10 só sugere) — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md).
 

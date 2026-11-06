@@ -1,5 +1,5 @@
 ---
-resumo: Criação de ficha (wizard do web) — por enquanto, a sugestão de atributos pela classe (1.17.10) e as armas do catálogo sem bônus (1.17.9).
+resumo: Criação de ficha (wizard do web) — passo 1 com raça por miniaturas (1.17.11), sugestão de atributos pela classe (1.17.10) e armas do catálogo sem bônus (1.17.9).
 tipo: conceito
 status: ativo
 atualizado: 2026-11-06
@@ -11,6 +11,25 @@ O wizard fica em `dungeon-companion-web/src/app/character-wizard/` (passos e mé
 atributo no `CLAUDE.md` do web). Este doc começou na 1.17.10 e ainda não cobre o wizard inteiro:
 o histórico anterior (validação na API, barra de progresso, cartas nas etapas) está em
 [`historico/diario-2026-09-10_a_2026-10-18.md`](../historico/diario-2026-09-10_a_2026-10-18.md).
+
+## Passo 1: detalhes primeiro e raça por miniaturas (1.17.11, web `27b9a87`)
+
+- Ordem: **Detalhes do personagem** (nome, idade, alinhamento) em cima, **Construção básica**
+  embaixo, nos dois layouts. O campo NÍVEL saiu da tela (a criação é sempre nível 1;
+  `core_build.level` continua 1 no dado enviado).
+- **Raça**: o select virou uma grade de miniaturas (`ng-template #racePicker`, usado no mobile e no
+  desktop; 3 por linha no celular). Escolher chama `selectRace()`, que grava o id e chama o mesmo
+  `onRaceChange()` de antes (clicar na já escolhida não faz nada). Depois de escolher, a arte da
+  raça aparece maior logo abaixo, com o nome; a grade continua visível pra trocar. Traços,
+  ferramenta, aumento de atributo, sub-raça e truque racial seguem embaixo, como antes.
+- **Artes**: originais (PNG 1254x1254, fundo escuro) em [`artes/races/`](../artes/races/), com o
+  nome `<id_race><nome>.png`; `dungeon-companion-web/design/races/process.py` grava
+  `src/assets/races/race-<id>.webp` em 512 px (16–26 kB cada; precisa de Pillow). Quais ids têm
+  arte: `src/app/constants/race-images.ts` (`raceImage`). **Humano (id 9) ainda sem arte**: a tela
+  mostra a inicial no lugar.
+- Classe, antecedente e alinhamento ganharam `<option [value]="0" disabled>Selecione...</option>`
+  (o estado inicial desses ids é 0, e o select aparecia vazio).
+- Testes: `race-images.spec.ts`; escolha da raça em `character-wizard.component.spec.ts`.
 
 ## Sugestão de atributos pela classe (1.17.10, web `101a210`)
 
