@@ -25,8 +25,8 @@ o histórico anterior (validação na API, barra de progresso, cartas nas etapas
 - **Artes**: originais (PNG 1254x1254, fundo escuro) em [`artes/races/`](../artes/races/), com o
   nome `<id_race><nome>.png`; `dungeon-companion-web/design/races/process.py` grava
   `src/assets/races/race-<id>.webp` em 512 px (16–26 kB cada; precisa de Pillow). Quais ids têm
-  arte: `src/app/constants/race-images.ts` (`raceImage`). **Humano (id 9) ainda sem arte**: a tela
-  mostra a inicial no lugar.
+  arte: `src/app/constants/race-images.ts` (`raceImage`); as 9 raças têm arte desde a 1.17.12
+  (Humano, web `78c69c4`). Raça sem arte (id fora da lista) aparece com a inicial do nome.
 - Classe, antecedente e alinhamento ganharam `<option [value]="0" disabled>Selecione...</option>`
   (o estado inicial desses ids é 0, e o select aparecia vazio).
 - Testes: `race-images.spec.ts`; escolha da raça em `character-wizard.component.spec.ts`.

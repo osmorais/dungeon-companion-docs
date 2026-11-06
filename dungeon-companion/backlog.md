@@ -245,8 +245,6 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 ## Criação de ficha
 
-- [ ] **Arte do Humano** (id 9) pras miniaturas de raça — hoje mostra a inicial. Pôr o PNG em
-  `artes/races/9humano.png`, rodar `design/races/process.py` e incluir o 9 em `race-images.ts`.
 - [ ] **Botão "aplicar sugestão" nos atributos**: distribuir os valores (matriz padrão ou rolagem)
   pela prioridade da classe (1.17.10 só sugere) — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md).
 
