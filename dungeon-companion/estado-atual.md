@@ -84,8 +84,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
 - **Últimos commits**: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
-  commitados em 2026-11-06, sem push ainda (a chave SSH pede senha; push pelo usuário, api antes
-  do web). Antes: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração, push pelo
+  push pelo usuário (a chave SSH pede senha), api antes do web. Antes: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração, push pelo
   usuário em 2026-11-06. Antes: api `5a1be96` (só a versão) e web `101a210` (1.17.10), sem migração, push pelo
   usuário em 2026-11-06, junto com os da 1.17.9: api `25e3312` (só a versão) e web `f4fa057`. Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
   criada em produção antes do deploy da api (ver abaixo); push em 2026-11-02. Conferido em
