@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-05
+atualizado: 2026-11-09
 ---
 
 # Dungeon Companion — Decisões
@@ -15,6 +15,16 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
 `.claude/rules/` dos repos.
 
 ## Produto e regras do jogo
+
+- **2026-11-09** — Solicitação de amizade: cancelar e reenviar continua livre, com **no máximo uma
+  notificação por remetente e por dia**. A espera de 30 dias vale só depois de recusa. → `conceitos/amigos.md`
+- **2026-11-09** — Botões da tela de Amigos respondem **já no clique** e voltam se a API recusar. → `conceitos/amigos.md`
+- **2026-11-09** — Tela de Amigos **sem abas**: cards na área principal e coluna com pedidos e
+  convites; card com moldura e fundo dos personagens, **sem anel**, só o nome; amigos online
+  primeiro; bloqueados em janela aberta por um link; ações por ícone com dica. → `conceitos/amigos.md`
+- **2026-11-09** — O mestre convida amigos **ao criar a sessão e de dentro dela**. → `conceitos/amigos.md`
+- **2026-11-09** — Home no desktop: "Para todos" à direita do quadro central e fundo escuro ligando
+  o papel escolhido às opções. Topo: TEMA e TOM à esquerda; notificação só com o ícone, ao lado do SAIR.
 
 - **2026-11-05** — Monstros importados da **dnd5eapi** (catalogados/em sessão antes da 1.10.0, slug em
   inglês) estão **descontinuados de vez**: nenhuma funcionalidade nova é adequada pra eles (artes,

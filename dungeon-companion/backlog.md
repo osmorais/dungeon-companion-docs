@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-06
+atualizado: 2026-11-09
 ---
 
 # Dungeon Companion — Backlog
@@ -25,6 +25,9 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
 
+- [ ] **Trocar credenciais** que apareceram por engano na saída de um comando numa sessão do Claude
+      em 2026-11-09, se forem as de produção: senha do Postgres, `JWT_SECRET` (desloga todos os
+      usuários) e senha do Supabase. O `GOOGLE_CLIENT_ID` é público.
 - [ ] **Revisão jurídica** da Política de Privacidade, dos Termos de Uso e dos prazos do plano de
       incidente ([`procedimentos/incidente.md`](procedimentos/incidente.md)).
 - [ ] **Avisar os usuários** das mudanças da Política em 17/10 (imagens de referência), 20/10
@@ -247,6 +250,28 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 - [ ] **Botão "aplicar sugestão" nos atributos**: distribuir os valores (matriz padrão ou rolagem)
   pela prioridade da classe (1.17.10 só sugere) — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md).
+
+## Amigos
+
+- [ ] **Antes do deploy da 1.18.0:** confirmar que as tabelas e colunas da 1.18.0 existem em produção
+      (criar antes do deploy da api, com autorização) e ajustar a data da entrada nas notas de versão.
+- [ ] **Presença offline:** no teste local (2026-11-09) dois amigos apareceram offline um para o
+      outro mesmo com o status online, e a api não tinha nenhuma conexão de navegador aberta no
+      momento da conferência. O endpoint `/social` respondeu normalmente. Testar após o deploy,
+      olhando em DevTools → Network → WS se o socket conecta (101) e se "Mostrar aos meus amigos
+      quando estou online" está marcada. Sem isso, os cards ficam todos apagados.
+- [ ] Corridas raras apontadas no code review: mesa acima do limite quando dois convidados aceitam
+      ao mesmo tempo (contagem e insert em `addPlayer` não são atômicos, sem constraint); aceitar
+      convite não é transacional (queda entre `claim` e `addPlayer` deixa o convite `accepted` sem
+      jogador); aceitar solicitação e bloquear ao mesmo tempo pode deixar amizade e bloqueio juntos.
+- [ ] Socket social guarda o token da conexão inicial: token rejeitado ao reconectar deixa o tempo
+      real parado até recarregar a página.
+- [ ] Limpeza: `docs/database/database.sql` lista só 2 dos 5 valores de `notification.type` (a regra
+      manda manter o comentário atualizado); `UserBlockService.isBlockedEither` sem uso;
+      `GET /api/friend-requests/count` sem uso pelo web.
+- [ ] Limitações aceitas: convite que falha na criação da sessão não avisa (dá pra convidar de novo
+      dentro dela); criação mostra até 50 amigos, sem busca e sem recado; erro ao convidar pelo
+      card perde o recado digitado; ícone de remover/recusar é o caractere ✕, sem arte própria.
 
 ## Técnico
 

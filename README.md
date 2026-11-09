@@ -37,6 +37,7 @@ passos" de lá).
 | [`conceitos/monstros.md`](dungeon-companion/conceitos/monstros.md) | conceito | Bestiário do livro: tabela `monster` (428 fichas), formato do JSON, como foi gerado, correções |
 | [`conceitos/email.md`](dungeon-companion/conceitos/email.md) | conceito | E-mail de recuperação de senha: api → SMTP da Hostinger (1.17.3; antes, script PHP no site), configuração, erros e como testar |
 | [`conceitos/infraestrutura.md`](dungeon-companion/conceitos/infraestrutura.md) | conceito | Onde a api roda (VPS da Hostinger, 1.17.1): acesso, nginx, HTTPS, serviço systemd, variáveis, deploy pelo GitHub Actions |
+| [`conceitos/amigos.md`](dungeon-companion/conceitos/amigos.md) | conceito | Sistema de amigos (1.18.0): solicitações, bloqueio, presença, notificações, convites para mesa e a tela /amigos |
 | [`conceitos/subclasses.md`](dungeon-companion/conceitos/subclasses.md) | conceito | Conteúdo de subclasse extraído do livro, com nível de confiança |
 | [`conceitos/criacao-de-ficha.md`](dungeon-companion/conceitos/criacao-de-ficha.md) | conceito | Criação de ficha (wizard): raça por miniaturas com arte (1.17.11), sugestão de atributos pela classe (1.17.10), armas do catálogo sem bônus (1.17.9) |
 | [`procedimentos/servidor-api.md`](dungeon-companion/procedimentos/servidor-api.md) | procedimento | Manual da VPS da api: acessar, saúde, logs, atualizações, mapa de arquivos (quem chama quem), troubleshooting, remontar do zero |

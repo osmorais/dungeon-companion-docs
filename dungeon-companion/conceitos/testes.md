@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-02
+atualizado: 2026-11-09
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -354,6 +354,20 @@ Fases 1 a 3 descritas em `dungeon-companion/conceitos/tracos-mecanicos.md` (seç
 - Web `player-actions-modal.component.spec.ts`: `isLongCastingTime` (minuto/hora sim; ação, ação
   bônus, reação, vazio não); em combate pede confirmação e cancelar não gasta o espaço;
   confirmar lança; fora de combate lança sem perguntar.
+
+### Amigos (2026-11-09, versão 1.18.0)
+
+Contexto: [`amigos.md`](amigos.md).
+
+- Api `services/friend.service.unit.ts`, `session-invite.service.unit.ts`, `user-block.service.unit.ts`,
+  `notification.service.unit.ts`: regras, permissões, um aviso por dia, conectados primeiro e
+  convite fechado ao entrar na mesa (`game-session.service.unit.ts`).
+- Web `friends/friends.component.spec.ts`: `PagedState`, busca única, eventos do socket e resposta
+  imediata com volta no erro; `friends/icon-action.component.spec.ts`.
+- Web `notification-center/notification-center.component.spec.ts`: aceitar e recusar pelo painel.
+- Web `session-invite-modal/session-friends-invite.component.spec.ts` e
+  `session-create/session-create.component.spec.ts`: convites do mestre.
+- Os SQLs novos não são exercitados: os testes da api usam stubs.
 
 ### Quadro do Mestre (2026-10-20, versão 1.2.0)
 

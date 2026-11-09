@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-06
+atualizado: 2026-11-09
 ---
 
 # Dungeon Companion — Gotchas
@@ -53,6 +53,16 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   (primeiro consumidor: talento Habilidoso).
 
 ## Web (Angular)
+
+- **`[ngModel]` não volta sozinho se salvar falhar:** o valor ligado não mudou, então o Angular não
+  reescreve a caixa. Aplicar a escolha no signal já no clique e desfazer no erro
+  (`AccountComponent.savePreference`).
+- **Fechar ao clicar fora com `contains(event.target)` falha** se o botão clicado sumir da tela antes
+  do clique chegar ao `document`: usar `event.composedPath().includes(host)`.
+- **`output()` emitido depois de destruir o componente dá erro:** se a janela fecha no clique, quem
+  envia a requisição é o componente pai (`FriendsComponent.sendInvite`).
+- **Teste com `createComponent` e `ngOnInit()` à mão** roda o `ngOnInit` de novo quando um timer falso
+  dispara a detecção de mudanças: usar `fixture.detectChanges()`.
 
 - **`WeaponRow` da criação de ficha não tem `attack_bonus` nem `damage_modifier`**, embora o tipo
   diga `number`: a api manda as armas do catálogo cruas (`character-options.repository.ts`) e só a
@@ -273,6 +283,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 ## Sessão em tempo real / permissões
 
+- **Status de presença depende do socket `/social`:** sem conexão aberta o amigo aparece offline,
+  seja qual for o status escolhido. Fica em memória: reiniciar a api zera. → `conceitos/amigos.md`
+
 - Socket.io autentica por `socket.handshake.auth.token` (JWT do localStorage), com fallback pro
   cookie: o navegador bloqueava o cookie httpOnly como third-party em produção (Hostinger × Render
   eram domínios diferentes). Desde a 1.17.1 a api é `api.forjaarcana.com`, mesmo site do
@@ -293,6 +306,11 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   anúncio não se repete.
 
 ## Deploy / infraestrutura
+
+- **O `.env` da api usa `CHAVE = 'valor'`, com espaços:** script que tira só os nomes com regex de
+  `CHAVE=valor` não casa e imprime os valores. Pra listar, casar `^\s*[A-Z_]+\s*=` e cortar no `=`.
+- **SSH pro GitHub não funciona no ambiente do Claude:** buscar branch por HTTPS (repositórios
+  públicos), sem mudar o `origin`; o push sai do terminal do usuário.
 
 - Bucket do Supabase precisa ser **público**. Se o upload funciona mas a imagem não carrega,
   conferir `client.storage.getBucket()` / `updateBucket({public: true})`.

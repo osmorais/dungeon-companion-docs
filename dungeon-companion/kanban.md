@@ -2,7 +2,7 @@
 resumo: Cards criados no kanban do Monday (2026-11-05) — o que cada um cobre, decisões já tomadas, dúvidas em aberto e itens do backlog que absorve.
 tipo: backlog
 status: ativo
-atualizado: 2026-11-05
+atualizado: 2026-11-09
 ---
 
 # Dungeon Companion — Cards no kanban (Monday)
@@ -21,6 +21,8 @@ ficou em aberto.
 ## Funcionalidades sociais e de conta
 
 ### 1. Adicionar amigos
+**Entregue na 1.18.0**, com tela própria em `/amigos` no lugar da gaveta e já com convite pra mesa e bloqueio: [`conceitos/amigos.md`](conceitos/amigos.md).
+
 Convites por nome de usuário (busca exata/prefixo, sem listar todos), aceitar/recusar/cancelar,
 desfazer amizade, badge de convites, status online só pra amigos, **gaveta lateral** aberta pelo
 header. Tabela `friendships` (`requester_id`, `addressee_id`, `status`). "Online" = atividade
