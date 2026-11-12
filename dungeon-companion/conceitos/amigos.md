@@ -7,7 +7,7 @@ atualizado: 2026-11-09
 
 # Dungeon Companion — Amigos
 
-Entrou na **1.18.0** (PRs web #9 e api #6, branch `feat/1.18.0-amigos` nos dois repositórios).
+Entrou na **1.18.0** (2026-11-09, PRs web #9 e api #6).
 LGPD: [`lgpd.md`](lgpd.md). Pendências: seção "Amigos" do [`backlog.md`](../backlog.md).
 
 ## Tabelas

@@ -29,7 +29,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: em produção, 1.17.12. A **1.18.0** (sistema de amigos — [`conceitos/amigos.md`](conceitos/amigos.md)) está pronta na branch `feat/1.18.0-amigos`, **ainda não publicada**; a data nas notas de versão (2026-11-08) precisa virar a do dia em que for ao ar. 1.17.12 (2026-11-06, arte do Humano nas miniaturas de raça —
+- **Versão do sistema**: 1.18.0 (publicada em 2026-11-09, sistema de amigos — [`conceitos/amigos.md`](conceitos/amigos.md); as notas de versão dizem 2026-11-08, e o usuário decidiu deixar assim); antes, 1.17.12 (2026-11-06, arte do Humano nas miniaturas de raça —
   [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.11 (mesmo dia, raça escolhida por miniaturas com a arte, detalhes
   do personagem em cima, sem o campo de nível e "Selecione..." nas listas do passo 1 da criação —
   [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.10 (mesmo dia, sugestão de onde pôr os maiores atributos pela
@@ -83,7 +83,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: na branch `feat/1.18.0-amigos`, api `f57cbb0` e `ca99253`, web `8e0fcf5` e `77ae26b` (2026-11-09), sobre os commits originais do sistema de amigos; sem push até esta atualização (sai do terminal do usuário); publicar api e web juntos. Na `main`: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
+- **Últimos commits**: 1.18.0 na `main` em 2026-11-09: api `cd79743` e `5898445` (cherry-pick de `f57cbb0` e `ca99253`, que ficaram fora do merge do PR #6 `0d8c68c`), web `9a33c7e` (merge do PR #9, com `8e0fcf5` e `77ae26b`), sem migração no deploy (estrutura conferida antes, ver abaixo). Antes: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
   push pelo usuário (a chave SSH pede senha), api antes do web. Antes: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração, push pelo
   usuário em 2026-11-06. Antes: api `5a1be96` (só a versão) e web `101a210` (1.17.10), sem migração, push pelo
   usuário em 2026-11-06, junto com os da 1.17.9: api `25e3312` (só a versão) e web `f4fa057`. Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
@@ -130,8 +130,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **PRs**: abertos web #9 e api #6 (1.18.0, sistema de amigos, code review feito em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: api 664 (`npm run test:unit`), web 909 (`npm run test:run`) — na branch da 1.18.0 (na 1.17.12: 547 e 791) —
+- **PRs**: nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
+- **Testes**: api 664 (`npm run test:unit`), web 909 (`npm run test:run`) — na 1.18.0 (na 1.17.12: 547 e 791) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -156,7 +156,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Infraestrutura da api | VPS Hostinger KVM 1 (Ubuntu 26.04), nginx + HTTPS, serviço systemd, deploy pelo GitHub Actions (1.17.1); Render de reserva até ser apagado | [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md), manual: [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md) |
 | Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1); selo de dano/cura nas cartas (1.17.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
-| Amigos (solicitações, bloqueio, presença, notificações, convites para mesa) | pronto na branch da 1.18.0, não publicado; presença aparecendo offline no teste local, a investigar após o deploy | [`conceitos/amigos.md`](conceitos/amigos.md) |
+| Amigos (solicitações, bloqueio, presença, notificações, convites para mesa) | em produção (1.18.0); presença apareceu offline no teste local, falta testar em produção | [`conceitos/amigos.md`](conceitos/amigos.md) |
 | Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8); dano das cartas de arma sem "undefined" (1.17.9); sugestão de atributos pela classe (1.17.10); raça por miniaturas com arte, detalhes primeiro, sem nível (1.17.11); arte do Humano (1.17.12) | [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md), antes: [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
@@ -203,6 +203,12 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
 - **2026-11-02**: `ALTER TABLE users ADD COLUMN IF NOT EXISTS last_access_at TIMESTAMPTZ` (nula, sem
   padrão), autorizado pelo usuário, antes do deploy da 1.17.8. Conferido no `information_schema`;
   33 contas, todas nulas; `schema-diff.js` vazio. Registrada no `database.sql`.
+
+- **2026-11-09**: conferência só de leitura da 1.18.0, antes do deploy, autorizada pelo usuário: 5
+  tabelas (`friend_request`, `friendship`, `user_block`, `notification`, `session_invite`), 4 colunas
+  em `users` e 3 índices únicos presentes; 10 FKs a partir de `users` em `CASCADE`; `schema-diff.js`
+  vazio. Quando essa estrutura foi criada não ficou registrado. As linhas existentes (8
+  solicitações, 1 amizade, 12 notificações, 2 convites) são, provavelmente, de testes locais.
 
 ## LGPD
 

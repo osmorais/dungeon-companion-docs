@@ -253,11 +253,9 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 ## Amigos
 
-- [ ] **Antes do deploy da 1.18.0:** confirmar que as tabelas e colunas da 1.18.0 existem em produção
-      (criar antes do deploy da api, com autorização) e ajustar a data da entrada nas notas de versão.
 - [ ] **Presença offline:** no teste local (2026-11-09) dois amigos apareceram offline um para o
       outro mesmo com o status online, e a api não tinha nenhuma conexão de navegador aberta no
-      momento da conferência. O endpoint `/social` respondeu normalmente. Testar após o deploy,
+      momento da conferência. O endpoint `/social` respondeu normalmente. Testar em produção,
       olhando em DevTools → Network → WS se o socket conecta (101) e se "Mostrar aos meus amigos
       quando estou online" está marcada. Sem isso, os cards ficam todos apagados.
 - [ ] Corridas raras apontadas no code review: mesa acima do limite quando dois convidados aceitam
