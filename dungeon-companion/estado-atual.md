@@ -232,6 +232,9 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   níveis ficaram sem escolha), `hp_gained` dos níveis 6 a 10 recalculado com um Vigoroso só, PV
   máximo 173 → 133 e atual 159 → 119 (−40). Uma transação, autorizado pelo usuário; era o único
   personagem com talento repetido.
+- **2026-11-12**: colunas `character.chosen_languages` e `character.chosen_tools` (JSONB, nulas;
+  idiomas e ferramentas "à escolha", 1.24.0). Uma transação, antes do deploy da api, autorizado
+  pelo usuário; 97 fichas, todas nulas (escolhem na ficha). Registrado no `database.sql`.
 
 ## LGPD
 
