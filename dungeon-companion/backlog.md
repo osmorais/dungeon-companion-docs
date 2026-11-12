@@ -21,9 +21,6 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
 
 ## Ações do usuário / fora do código
 
-- [ ] **Publicar 1.20.0 a 1.22.0**: branch `feat/companheiro-animal` nos dois repositórios (api
-      `098b1f2`, web `8100855`), sem push. A tabela `session_companion` já existe em produção, então
-      a api pode subir; abrir PR e mergear api antes do web.
 - [ ] (relacionado ao card: Ambiente de homologação) **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.

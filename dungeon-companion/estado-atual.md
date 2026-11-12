@@ -29,8 +29,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.22.0 (2026-11-12, Companheiro Animal do patrulheiro — **ainda sem
-  push nem deploy**, junto com a 1.20.0 e a 1.21.0 —
+- **Versão do sistema**: 1.23.0 (publicada em 2026-11-12, artes próprias de 24 monstros do
+  bestiário — [`procedimentos/artes-monstros.md`](procedimentos/artes-monstros.md)); antes,
+  1.22.0 (mesmo dia, Companheiro Animal do patrulheiro —
   [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md)); antes, 1.21.0 (mesmo dia,
   Forma Selvagem); antes, 1.20.0 (mesmo dia, Ataque Extra, Ação Ardilosa e visão no escuro);
   antes, 1.19.0 (mesmo dia, publicada pelos PRs api #7 e web #10: resistência pedida pelo mestre
@@ -89,11 +90,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: branch `feat/companheiro-animal` (criada a partir de `feat/forma-selvagem`,
-  que veio de `fix/resistencia-rapida-e-carta-sem-cd`), **sem push**: api `098b1f2` (1.22.0),
-  `d262be8` (1.20.0 + 1.21.0) e `31614b7` (resistência e ficha mais rápidas, sem versão própria);
-  web `8100855` (1.22.0), `67b644e` (1.20.0 + 1.21.0) e `d0d35c6` (carta da ação de monstro sem a
-  CD). Migração da 1.22.0 (`session_companion`) **já rodou** em produção — a api nova pode subir.
+- **Últimos commits**: 1.20.0 a 1.23.0 na `main` em 2026-11-12, pela branch
+  `feat/companheiro-animal`: api `68e9381` (merge do PR #9, com `f991ad9` 1.23.0, `098b1f2`
+  1.22.0, `d262be8` 1.20.0 + 1.21.0 e `31614b7` resistência e ficha mais rápidas), web `a7ced45`
+  (merge do PR #12, com `bbccb6e` 1.23.0, `8100855` 1.22.0, `67b644e` 1.20.0 + 1.21.0 e `d0d35c6`
+  carta da ação de monstro sem a CD). Migração da 1.22.0 (`session_companion`) rodou antes do
+  deploy. Conferido depois: api respondendo e `assets/monsters/goblin.webp` no site.
   Antes: 1.19.0 na `main` em 2026-11-12: api `07afbf7` (merge do PR #7, com `888ae23`), web
   `c56d2f8` (merge do PR #10, com `cf6509d`), sem migração. Antes: 1.18.0 na `main` em 2026-11-09: api `cd79743` e `5898445` (cherry-pick de `f57cbb0` e `ca99253`, que ficaram fora do merge do PR #6 `0d8c68c`), web `9a33c7e` (merge do PR #9, com `8e0fcf5` e `77ae26b`), sem migração no deploy (estrutura conferida antes, ver abaixo). Antes: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
   push pelo usuário (a chave SSH pede senha), api antes do web. Antes: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração, push pelo
@@ -143,7 +145,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: api 711 (`npm run test:unit`), web 967 (`npm run test:run`) — na 1.22.0 (na 1.18.0: 664 e 909) —
+- **Testes**: api 711 (`npm run test:unit`), web 973 (`npm run test:run`) — na 1.23.0 (na 1.18.0: 664 e 909) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma

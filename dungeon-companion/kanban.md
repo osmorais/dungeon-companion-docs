@@ -2,7 +2,7 @@
 resumo: Cards criados no kanban do Monday (2026-11-05) — o que cada um cobre, decisões já tomadas, dúvidas em aberto e itens do backlog que absorve.
 tipo: backlog
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Cards no kanban (Monday)
@@ -161,8 +161,9 @@ Presets antigos sem `hat` continuam funcionando. Folhas geradas pelo usuário no
 
 ### 14. Artes dos monstros mais comuns
 As 36 artes das 3 levas de `procedimentos/artes-monstros.md` (gerar é com o usuário) e a entrega no
-web: WebP ~384 px em `src/assets/monsters/<slug>.webp`, ordem imagem do mestre → arte do slug →
-`monster.png`, em todos os lugares do monstro, conferir medalhão na carta e no anel.
+web. **Levas 1 e 2 (24 artes) publicadas na 1.23.0** (2026-11-12), com a ordem imagem do mestre →
+arte do slug → `monster.png` em todos os lugares do monstro. Falta a leva 3: gerar, pôr o WebP em
+`src/assets/monsters/` e o slug em `MONSTER_ART_SLUGS`.
 - O card tinha uma seção "Monstros antigos" (slug em inglês da dnd5eapi): **tirar**, pela decisão de
   2026-11-05 — esses monstros não recebem adequação.
 - Dúvidas: criaturas "de D&D" da leva 3 antes da decisão de direitos autorais; código aqui ou card
