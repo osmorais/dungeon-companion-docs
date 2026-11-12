@@ -227,6 +227,11 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   `ix_session_companion_game`; FKs para `game_session` e `player_session` com `ON DELETE CASCADE`,
   um companheiro por jogador na sessão. Uma transação, antes do deploy da api, autorizado pelo
   usuário; tabela vazia, `schema-diff` vazio depois.
+- **2026-11-12**: personagem **#193** com o Vigoroso escolhido 3 vezes (níveis 4, 6 e 8, falha
+  corrigida na 1.23.1): talento tirado dos níveis 6 e 8 (`feat_id` e `asi_type` nulos — esses dois
+  níveis ficaram sem escolha), `hp_gained` dos níveis 6 a 10 recalculado com um Vigoroso só, PV
+  máximo 173 → 133 e atual 159 → 119 (−40). Uma transação, autorizado pelo usuário; era o único
+  personagem com talento repetido.
 
 ## LGPD
 
