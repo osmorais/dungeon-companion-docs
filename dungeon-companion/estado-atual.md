@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Estado atual
@@ -29,7 +29,13 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.18.0 (publicada em 2026-11-09, sistema de amigos — [`conceitos/amigos.md`](conceitos/amigos.md); as notas de versão dizem 2026-11-08, e o usuário decidiu deixar assim); antes, 1.17.12 (2026-11-06, arte do Humano nas miniaturas de raça —
+- **Versão do sistema**: 1.22.0 (2026-11-12, Companheiro Animal do patrulheiro — **ainda sem
+  push nem deploy**, junto com a 1.20.0 e a 1.21.0 —
+  [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md)); antes, 1.21.0 (mesmo dia,
+  Forma Selvagem); antes, 1.20.0 (mesmo dia, Ataque Extra, Ação Ardilosa e visão no escuro);
+  antes, 1.19.0 (mesmo dia, publicada pelos PRs api #7 e web #10: resistência pedida pelo mestre
+  com a CD guardada na api, vantagem condicional automática e Indomável só depois da falha);
+  antes, 1.18.0 (publicada em 2026-11-09, sistema de amigos — [`conceitos/amigos.md`](conceitos/amigos.md); as notas de versão dizem 2026-11-08, e o usuário decidiu deixar assim); antes, 1.17.12 (2026-11-06, arte do Humano nas miniaturas de raça —
   [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.11 (mesmo dia, raça escolhida por miniaturas com a arte, detalhes
   do personagem em cima, sem o campo de nível e "Selecione..." nas listas do passo 1 da criação —
   [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); antes, 1.17.10 (mesmo dia, sugestão de onde pôr os maiores atributos pela
@@ -83,7 +89,13 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: 1.18.0 na `main` em 2026-11-09: api `cd79743` e `5898445` (cherry-pick de `f57cbb0` e `ca99253`, que ficaram fora do merge do PR #6 `0d8c68c`), web `9a33c7e` (merge do PR #9, com `8e0fcf5` e `77ae26b`), sem migração no deploy (estrutura conferida antes, ver abaixo). Antes: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
+- **Últimos commits**: branch `feat/companheiro-animal` (criada a partir de `feat/forma-selvagem`,
+  que veio de `fix/resistencia-rapida-e-carta-sem-cd`), **sem push**: api `098b1f2` (1.22.0),
+  `d262be8` (1.20.0 + 1.21.0) e `31614b7` (resistência e ficha mais rápidas, sem versão própria);
+  web `8100855` (1.22.0), `67b644e` (1.20.0 + 1.21.0) e `d0d35c6` (carta da ação de monstro sem a
+  CD). Migração da 1.22.0 (`session_companion`) **já rodou** em produção — a api nova pode subir.
+  Antes: 1.19.0 na `main` em 2026-11-12: api `07afbf7` (merge do PR #7, com `888ae23`), web
+  `c56d2f8` (merge do PR #10, com `cf6509d`), sem migração. Antes: 1.18.0 na `main` em 2026-11-09: api `cd79743` e `5898445` (cherry-pick de `f57cbb0` e `ca99253`, que ficaram fora do merge do PR #6 `0d8c68c`), web `9a33c7e` (merge do PR #9, com `8e0fcf5` e `77ae26b`), sem migração no deploy (estrutura conferida antes, ver abaixo). Antes: api `776b412` (só a versão) e web `78c69c4` (1.17.12), sem migração,
   push pelo usuário (a chave SSH pede senha), api antes do web. Antes: api `f8655ab` (só a versão) e web `27b9a87` (1.17.11), sem migração, push pelo
   usuário em 2026-11-06. Antes: api `5a1be96` (só a versão) e web `101a210` (1.17.10), sem migração, push pelo
   usuário em 2026-11-06, junto com os da 1.17.9: api `25e3312` (só a versão) e web `f4fa057`. Antes: api `f6b652a` e web `f1dce82` (1.17.8), coluna `users.last_access_at`
@@ -131,7 +143,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: api 664 (`npm run test:unit`), web 909 (`npm run test:run`) — na 1.18.0 (na 1.17.12: 547 e 791) —
+- **Testes**: api 711 (`npm run test:unit`), web 967 (`npm run test:run`) — na 1.22.0 (na 1.18.0: 664 e 909) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
@@ -139,7 +151,7 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Área | Estado | Doc |
 |---|---|---|
 | Magias mecânicas (ataque, resistência, cura, crítico, aplicar no alvo, efeitos de tela) | fases 1–4 feitas | [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md) |
-| Traços e habilidades mecânicos | fases 1–4 feitas | [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md) |
+| Traços e habilidades mecânicos | fases 1–4 + 1.19 a 1.22 (vantagem pelo contexto, Ataque Extra, Ação Ardilosa, visão no escuro, Forma Selvagem, Companheiro Animal) | [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md) |
 | Level-up (HP rolado, ASI/talento, subclasse, magias novas, XP) | fases 1–3 feitas; multiclasse não começada | [`historico/levelup-plan.md`](historico/levelup-plan.md) |
 | Auditoria de automação mecânica (classe por classe) | "Fácil" feito, "Média" quase todo | [`conceitos/auditoria-mecanicas.md`](conceitos/auditoria-mecanicas.md) |
 | Subclasses (conteúdo do livro) | gravado em `rules.ts`; alguns pontos sem conferência | [`conceitos/subclasses.md`](conceitos/subclasses.md) |
@@ -209,6 +221,10 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
   em `users` e 3 índices únicos presentes; 10 FKs a partir de `users` em `CASCADE`; `schema-diff.js`
   vazio. Quando essa estrutura foi criada não ficou registrado. As linhas existentes (8
   solicitações, 1 amizade, 12 notificações, 2 convites) são, provavelmente, de testes locais.
+- **2026-11-12**: tabela `session_companion` (Companheiro Animal, 1.22.0) + índice
+  `ix_session_companion_game`; FKs para `game_session` e `player_session` com `ON DELETE CASCADE`,
+  um companheiro por jogador na sessão. Uma transação, antes do deploy da api, autorizado pelo
+  usuário; tabela vazia, `schema-diff` vazio depois.
 
 ## LGPD
 

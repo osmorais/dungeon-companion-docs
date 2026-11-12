@@ -1,8 +1,8 @@
 ---
-resumo: Traços e habilidades de classe/raça/talento que rolam, somam e aplicam na sessão. Fases 1–4 feitas; limites em "O que ficou de fora".
+resumo: Traços e habilidades de classe/raça/talento que rolam, somam e aplicam na sessão. Fases 1–4 e 1.19–1.22 (vantagem pelo contexto, Ataque Extra, Forma Selvagem, Companheiro Animal) feitas; limites em "O que ficou de fora".
 tipo: conceito
 status: ativo
-atualizado: 2026-10-16
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Plano: traços e habilidades mecânicos
@@ -260,14 +260,78 @@ alvo, Evasão, Esquiva só com ataque), tela de ações (lembretes filtrados por
 Inspiração/Indomável nas opções, fluxo do aliado, tipo de dano da arma) e sessão (aliados e
 defesas nos alvos).
 
-### O que ficou de fora (depois das 4 fases)
+### 1.19.0 — resistência pedida com CD e vantagem pelo contexto (2026-11-12, api `888ae23`, web `cf6509d`, PRs #7/#10)
 
-- Tudo da seção E continua texto (visão no escuro, Ação Ardilosa, Forma Selvagem, companheiro
-  animal, Ataque Extra etc.).
-- Vantagem condicional é só **lembrete**: o modal não rola 2d20 sozinho; o jogador decide.
+- O pedido de teste de resistência do mestre (ou de quem lançou a magia) guarda a **CD e o
+  contexto** só na api (`SecretRollRequestStore`, `services/secret-roll-requests.ts`): a resposta
+  diz se passou ou falhou, e o jogador nunca vê a CD (decisão de 2026-11-12). Cada pedido aceita
+  até 3 respostas (rolar de novo com Sortudo/Indomável).
+- Contextos `save_against` (veneno, enfeitiçado, amedrontado, magia, "visível"): magias, ações de
+  monstro e traços dizem contra o que valem; a vantagem condicional (Anão contra veneno, Elfo
+  contra enfeitiçado, Halfling Bravura…) entra **sozinha** quando o pedido traz o contexto.
+  Rolagem manual, sem contexto, continua com o lembrete.
+- **Indomável** só aparece depois de uma resistência que falhou (a api sabe a CD).
+- Teste secreto do mestre ganhou os campos CD e CONTRA.
+- Depois (sem versão própria, api `31614b7`, web `d0d35c6`): `findCharacterById` e
+  `findPlayersForRequest` com consultas em paralelo, rolagem publicada antes das estatísticas, e
+  a carta da ação de monstro mostra RESISTÊNCIA + atributo em vez da CD.
+
+### 1.20.0 — Ataque Extra, Ação Ardilosa e visão no escuro (2026-11-12, api/web `d262be8`/`67b644e`)
+
+- `combat_features.attacks_per_action` (Ataque Extra de Guerreiro, Bárbaro, Paladino, Ranger,
+  Monge…): o modal de rolagem mostra "ataque 1 de N". No combate, a conta segue pela vez
+  (`AttackCounterService` no web, chave `<combate>:<rodada>:<participante>`): reabrir as ações
+  continua do próximo ataque. A Rajada de Golpes conta à parte ("golpe").
+- `cunning_action` (Ladino nv2): Disparar, Desengajar e Esconder anunciam na mesa como habilidade;
+  Esconder já abre o teste de Furtividade.
+- `darkvision_m`: alcance da visão no escuro na ficha e nos cards da mesa (ícone da lua).
+
+### 1.21.0 — Forma Selvagem (2026-11-12, api/web `d262be8`/`67b644e`)
+
+- Regras em `services/character-sheet/wild-shape.ts` (tabela Formas de Besta: ND, nado e voo
+  por nível; Círculo da Lua com ND maior). Estado em `character.active_effects.wild_shape` (cópia
+  da ficha da besta do bestiário: PV, CA, FOR/DES/CON, deslocamento, ações).
+- Rotas (`wild-shape.controller.ts`): `GET /api/character-sheet/{id}/wild-shape/options`,
+  `POST` e `DELETE /api/character-sheet/{id}/wild-shape`. Transformar gasta um uso do recurso.
+- PV: enquanto transformado, a mesa mostra o PV da forma (`player_hp_updated` com
+  `max_hit_points` e `wild_shape_name`). Dano que zera a forma volta o druida e o que sobrar
+  (`overflow`) passa pra ele (`applyHpToWildShape`, `writeWildShapeHp`). Vale também pro dano
+  aplicado por outro jogador (`apply-amount`, corrigido na 1.22.0).
+- Magias travadas transformado até o nível 18 (Magias da Besta). Ataques da besta pelas mesmas
+  cartas das ações de monstro (`monsterActions`). `clearActiveEffectsInSession` mantém a forma.
+- Web: `player-actions-modal/wild-shape-picker.component.ts` (seletor com busca, reaproveitado
+  pelo companheiro) e seção FORMA SELVAGEM no modal de ações.
+
+### 1.22.0 — Companheiro Animal (2026-11-12, api `098b1f2`, web `8100855`)
+
+- Ranger do Conclave da Besta (`mestre-das-feras`) a partir do nível 3
+  (`combat_features.animal_companion`). Regras em `services/character-sheet/companion.ts`: besta
+  de ND ≤ 1/4, até Médio; PV máximo = maior entre o da besta e 4 × nível do ranger; CA, ataque e
+  dano + proficiência do ranger; 2 ataques por comando no nível 11.
+- Tabela `session_companion` (um por jogador na sessão, cascata com `game_session` e
+  `player_session`): besta, nome, PV atual, cópia da ficha e a **cor** sorteada entre as livres
+  da mesa (`COMPANION_COLORS`), mantida ao trocar de besta.
+- Rotas (`companion.controller.ts`): `GET /api/game-session/{id}/companion-options?id_player_session=`,
+  `POST /api/game-session/{id}/companion` (escolhe ou troca, PV cheio),
+  `DELETE /api/game-session/companion/{id}`, `PATCH /api/game-session/companion/{id}/hp`.
+  Permissão: jogador do ranger ou mestre. Eventos `companion_set` e `companion_hp_updated`.
+- Mesa: o detalhe traz `companions`; card próprio (`session-panel/companion-card.component.ts`)
+  na lista de NPCs, com contorno na cor do par — o card do ranger ganha o mesmo contorno. Sem
+  participante próprio no combate: age na vez do ranger, e as ações ficam numa seção do modal de
+  ações dele (ESCOLHER/TROCAR/DISPENSAR e os ataques já com a proficiência, `companionConfig`).
+- Alvo de dano/cura (`target_kind: 'companion'` no `apply-amount`), sem PV temporário.
+- Sai na exportação da conta (`participations[].animal_companion`).
+
+### O que ficou de fora
+
+- Vantagem condicional numa rolagem **manual** (sem pedido com contexto) continua lembrete.
 - Resistências vindas de **magia** (Proteção contra Energia, Pele de Pedra…) e de itens não entram
   nas defesas do alvo — só raça, Fúria, Esquiva Sobrenatural e Evasão.
 - Monstros não têm defesas automáticas (resistências do bestiário ficam com o mestre); NPCs têm
   as mesmas defesas dos jogadores, mas não a Resistência Implacável.
-- Indomável não verifica se a resistência falhou (a CD não é conhecida pelo modal) — o botão fica
-  disponível em toda resistência enquanto houver uso.
+- Forma Selvagem: a duração é só informativa (não volta sozinha); PV da forma de **druida NPC**
+  não passa pela forma ao levar dano.
+- Companheiro: as resistências da besta não contam no dano aplicado nele; ranger NPC não tem
+  companheiro (só jogador na mesa).
+- Magias só de resistência (sem rolagem de ataque) não pedem o teste pelo modal de ações.
+- Continua texto o resto da seção E (traços sem número ou que dependem do mestre).

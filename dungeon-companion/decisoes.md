@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Decisões
@@ -397,3 +397,10 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   saber quantos estão ativos. Conta como acesso qualquer requisição logada, gravada no máximo uma
   vez por hora; a contagem é só em números gerais (`scripts/db/usuarios-ativos.js`). Política
   atualizada (seções 2 e 3), versão 1.17.8. → `conceitos/lgpd.md`
+- **2026-11-12** — Teste de resistência pedido pelo mestre (por ação de monstro ou não): a **CD
+  nunca aparece** pros jogadores; fica guardada na api, que diz se passou ou falhou.
+  → `conceitos/tracos-mecanicos.md`
+- **2026-11-12** — Companheiro Animal: aparece na seção de NPCs, sem iniciativa própria (age na
+  vez do ranger), pode ser alvo, as ações ficam no modal de ações do ranger e uma cor sorteada
+  liga o card dele ao do ranger. Guardado numa **tabela nova** (`session_companion`), não em
+  `monster_session`. → `conceitos/tracos-mecanicos.md`

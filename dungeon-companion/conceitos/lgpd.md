@@ -2,7 +2,7 @@
 resumo: Adequação à LGPD: 16 itens técnicos feitos, decisões, cookies, scripts de verificação e o que falta fora do código.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Adequação à LGPD (uso público)
@@ -31,6 +31,7 @@ Superfície pequena, nenhum dado sensível (art. 5º, II):
 | Legenda da imagem de referência | `session_reference_image.title` | Opcional, até 120 caracteres, texto livre visível pra mesa (aviso no formulário) |
 | Anotações do mestre | `game_session.dm_notes` | Desde a 1.2.0 (Quadro do Mestre). Texto livre até 10.000 caracteres, só o dono da sessão lê/grava (`GET/PUT /api/game-session/{id}/dm-notes`), nunca vai no detalhe da sessão. Pode citar pessoas reais. Sai na exportação (`sessions_as_dm[].dm_notes`) e some com a sessão/conta (cascata). Coberto pela política ("anotações", "sessões de jogo") — sem mudança no texto |
 | Rolagens/ações | `session_roll_log` etc. | Já podado pras últimas 30 por sessão |
+| Companheiro Animal | `session_companion` | Desde a 1.22.0: a besta do ranger na mesa (bestiário, nome da besta, PV, cor). Sem dado pessoal; só o jogador do ranger e o mestre mudam. Sai na exportação (`participations[].animal_companion`) e some com a sessão, o jogador da sessão ou a conta (cascata) — sem mudança na Política |
 | Amigos | `friend_request`, `friendship`, `user_block`, `session_invite`, `notification` | Desde a 1.18.0: solicitações, amizades, bloqueios, convites (recado até 200 caracteres, texto livre, só o convidado vê) e notificações. Saem na exportação e somem com a conta (cascata a partir de `users`). Política atualizada em 03/11 (seções 2, 3 e outros usuários) — [`amigos.md`](amigos.md) |
 | Presença | Memória da api; `users.discoverable`, `accept_friend_requests`, `presence_visibility`, `show_last_seen` | Desde a 1.18.0: online/ausente/ocupado só em memória, nunca gravado; amigos veem se a pessoa permitir; preferências em /conta. "Visto por último" usa `users.last_access_at` e só aparece com `show_last_seen`. Quem esconde a presença não é adiantado na ordem da lista |
 | Último acesso | `users.last_access_at` | Desde a 1.17.8 (2026-11-02): data e hora do último acesso, gravada a cada requisição autenticada no máximo uma vez por hora (`LastAccessService`). Só pra contar usuários ativos em números gerais (`scripts/db/usuarios-ativos.js`, que nunca lista quem). Legítimo interesse (seções 2 e 3 da Política, 02/11). Sai na exportação (`account.last_access_at`) e some com a conta |

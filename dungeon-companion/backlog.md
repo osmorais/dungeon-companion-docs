@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Backlog
@@ -21,6 +21,9 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
 
 ## Ações do usuário / fora do código
 
+- [ ] **Publicar 1.20.0 a 1.22.0**: branch `feat/companheiro-animal` nos dois repositórios (api
+      `098b1f2`, web `8100855`), sem push. A tabela `session_companion` já existe em produção, então
+      a api pode subir; abrir PR e mergear api antes do web.
 - [ ] (relacionado ao card: Ambiente de homologação) **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
@@ -116,12 +119,17 @@ coloca em `artes/avatar/<categoria>/`; o recorte segue o mesmo processo dos cabe
 Contexto e limitações atuais: [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md),
 seção "O que ficou de fora".
 
-- [ ] Vantagem condicional rolar 2d20 sozinha (hoje é só lembrete). (card: Automação de traços)
+- [ ] Vantagem condicional rolar 2d20 sozinha também na rolagem **manual** (desde a 1.19.0 entra
+      sozinha só quando o pedido de resistência traz o contexto). (card: Automação de traços)
 - [ ] Resistências vindas de magia (Proteção contra Energia, Pele de Pedra…) e de itens nas defesas
       do alvo. (card: Resistências, imunidades e vulnerabilidades)
 - [ ] Defesas automáticas de monstros (hoje ficam com o mestre). (card: Resistências, imunidades e vulnerabilidades)
-- [ ] Indomável verificar se a resistência falhou. (card: Automação de traços)
-- [ ] (card: Automação de traços) Seção E (visão no escuro, Ação Ardilosa, Forma Selvagem, companheiro animal, Ataque Extra…)
+- [ ] Forma Selvagem: a duração é só informativa (não volta sozinha quando acaba). (card: Automação de traços)
+- [ ] Forma Selvagem de **druida NPC**: o dano aplicado vai direto no PV do druida, sem passar pela
+      forma. (card: Automação de traços)
+- [ ] Companheiro Animal: as resistências da besta não contam no dano aplicado nele. (card: Resistências, imunidades e vulnerabilidades)
+- [ ] Magias só de resistência (sem jogada de ataque) não pedem o teste pelo modal de ações. (card: Automação de traços)
+- [ ] (card: Automação de traços) O resto da seção E (traços sem número ou que dependem do mestre)
       continua texto — só se o usuário quiser.
 
 ## Bloco "Média" da auditoria (o que restou)

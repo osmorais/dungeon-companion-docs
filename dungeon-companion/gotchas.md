@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Gotchas
@@ -51,6 +51,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   mecânica está em `spell-mechanics.ts`.
 - `character_level_history.choice_data` (JSONB) é o mecanismo genérico de escolhas do level-up
   (primeiro consumidor: talento Habilidoso).
+
+- Script de banco no scratchpad com `require('postgres')`/`require('dotenv')` falha com
+  "Cannot find module": o Node procura os pacotes a partir da pasta do script. Rodar de dentro da
+  api com `NODE_PATH=$PWD/node_modules node <script>` (e `dotenv` apontando pro `.env` da api).
 
 ## Web (Angular)
 

@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-09
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -354,6 +354,23 @@ Fases 1 a 3 descritas em `dungeon-companion/conceitos/tracos-mecanicos.md` (seç
 - Web `player-actions-modal.component.spec.ts`: `isLongCastingTime` (minuto/hora sim; ação, ação
   bônus, reação, vazio não); em combate pede confirmação e cancelar não gasta o espaço;
   confirmar lança; fora de combate lança sem perguntar.
+
+### Traços: resistência pedida, Ataque Extra, Forma Selvagem e Companheiro (2026-11-12, versões 1.19.0 a 1.22.0)
+
+- API: `services/game-session.service.unit.ts` (pedido de resistência com CD e contexto, passou/
+  falhou, até 3 respostas; `apply-amount` em companheiro e em druida transformado com o dano que
+  sobra), `services/secret-roll-requests.unit.ts`, `character-sheet/combat-features.unit.ts`
+  (vantagem pelo contexto, `attacks_per_action`, `cunning_action`, `darkvision_m`,
+  `animal_companion`), `character-sheet/spell-mechanics.unit.ts` (`save_against` das magias),
+  `character-sheet/companion.unit.ts` (regras do companheiro: nível, ND/tamanho, PV, cor, CA) e
+  `services/companion.service.unit.ts` (opções, escolher/trocar, dispensar, PV; permissões
+  ranger × mestre × outro jogador), além dos testes da Forma Selvagem.
+- Web: `roll-modal/vantagem-indomavel.spec.ts`, `secret-roll/secret-roll.spec.ts`,
+  `player-actions-modal/secao-e.spec.ts` (Ataque Extra, contador por vez, Ação Ardilosa),
+  `player-actions-modal/forma-selvagem.spec.ts`, `player-actions-modal/companheiro-animal.spec.ts`
+  (`companionConfig`, seletor com outra lista, escolher/dispensar), reducer
+  (`companion_set`, `companion_hp_updated`, ranger saindo leva o companheiro) e
+  `session-panel.component.spec.ts` (companheiro como alvo, cor no card do ranger, permissões).
 
 ### Amigos (2026-11-09, versão 1.18.0)
 
