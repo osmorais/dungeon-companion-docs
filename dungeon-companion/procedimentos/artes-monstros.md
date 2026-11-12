@@ -2,7 +2,7 @@
 resumo: Plano e prompts do ChatGPT pras imagens dos monstros do bestiário (medalhão em pixel art), em levas começando pelos mais usados, e onde salvar.
 tipo: procedimento
 status: ativo
-atualizado: 2026-11-05
+atualizado: 2026-11-12
 ---
 
 # Dungeon Companion — Artes dos monstros (bestiário)
@@ -12,7 +12,14 @@ geradas pelo usuário no ChatGPT. Hoje todo monstro sem imagem enviada pelo mest
 mesma arte padrão (`dungeon-companion-web/src/assets/monster.png`, um dragão vermelho num medalhão);
 a ideia é ter uma arte por monstro, **começando pelos mais usados**.
 
+**Andamento (2026-11-12)**: levas 1 e 2 prontas (24 artes) e no site desde a 1.23.0 (branch
+`feat/companheiro-animal`, junto da 1.22.0). Leva 3 ainda não gerada.
+
 ## Formato (igual à arte padrão)
+
+> As levas 1 e 2 vieram como **cena retangular** (1199 × 1312 e 1254 × 1254, sem transparência),
+> não como medalhão. Funcionou: a carta usa a arte em `cover` e o anel redondo da mesa recorta o
+> centro. A leva 3 pode seguir o mesmo formato das levas 1 e 2.
 
 - Medalhão redondo em pixel art, 1024 × 1024 px, borda dourada fina com quatro losangos (topo, base
   e laterais), cena escura de fundo **dentro** do círculo e **transparente fora** dele — como o
@@ -130,7 +137,13 @@ aumenta o risco de direitos autorais já anotado no `backlog.md`. Decidir antes 
 
 ## Depois das imagens
 
-Entrega no web (pedir quando a leva 1 estiver pronta):
+**Feito na 1.23.0** (levas 1 e 2): WebP 512 px de largura (qualidade 85, ~100 KB cada) em
+`src/assets/monsters/<slug>.webp`; lista `MONSTER_ART_SLUGS` e `defaultMonsterImage(slug)` /
+`monsterImage(imageUrl, slug)` em `src/app/game-card/monster-card.ts`; a api manda o
+`monster_slug` junto do monstro revelado, do aviso de revelação/derrota e da ação de monstro.
+Arte nova: pôr o PNG aqui, o WebP no web e o slug na lista.
+
+Plano original:
 
 - reduzir os PNGs pra WebP (~384 px, mantendo os pixels nítidos) em `src/assets/monsters/`;
 - lista dos slugs que têm arte (pra não pedir imagem que não existe) e a imagem padrão do monstro
