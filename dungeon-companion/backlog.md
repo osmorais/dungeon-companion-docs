@@ -252,6 +252,15 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       "1.18.1"; no desktop, os botões JOGADOR/MESTRE têm `aria-controls="home-window"`, que só existe
       com um papel aberto.
 
+- [ ] **Padronizar as outras telas no visual da Home 1.25.x** (pedido do usuário em 2026-11-14):
+      fluxo é esqueleto no Figma (arquivo "Forja Arcana — Telas",
+      https://www.figma.com/design/6nYAxgywgq6aQa9g4QRj0v) → aprovação → implementação com as
+      classes `.fa-*` do `styles.scss`. Feitas na 1.25.2: Sessões criadas, Criar sessão, Bestiário e Catalogar
+      monstro, mais a troca de tela animada (classes `.fa-*`, incluindo `.fa-field`/`.fa-input`/`.fa-pick`). Próximas a combinar com o
+      usuário (minhas aventuras, personagens, entrar em sessão, detalhe do monstro, grimório...).
+      O Figma Starter tem 3 páginas e limite de chamadas do MCP: esqueletos novos podem ir pro
+      canvas do claude.ai. Toda tela: uma `.fa-window--main` e um `.fa-heading` (transição).
+
 - [ ] (card: Login com e-mail ou nome de usuário) **Entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7):
       o campo do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail
       ou `LOWER(username)`, com a mesma mensagem de erro nos dois casos). O preenchimento automático

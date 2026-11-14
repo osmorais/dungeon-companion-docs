@@ -61,6 +61,21 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 ## Web (Angular)
 
+- **Nome de transição repetido cancela a animação** (1.25.2). Duas janelas com o mesmo
+  `view-transition-name` na tela = o navegador pula a transição inteira (troca seca). Por isso só
+  a janela principal (`.fa-window--main`) e um `.fa-heading` por tela recebem nome; troca dentro
+  da mesma tela (cartas → ficha) usa `runViewTransition` do `route-transition.ts`.
+- **`view-transition-name` só durante a transição** (1.25.2). O nome cria contexto de
+  empilhamento; fixo na página (`router-outlet + *`), prenderia modais e gavetas da sessão debaixo
+  do rodapé. Os nomes ficam sob `:root[data-route-dir]`, que o `route-transition.ts` põe só
+  enquanto a transição roda. E não nomear o `.app-bg`: a raiz da transição é pintada por baixo
+  dos grupos nomeados, então o fundo cobriria a página.
+
+- **Testes no Windows: rodar da pasta com a caixa certa** (2026-11-14). A pasta real é
+  `D:\ESTUDOSorjaArcana\...`. Rodar `npm run test:run` a partir de `D:\estudos\...` carrega o
+  `@angular/core` duas vezes e ~320 testes falham com `NG0203` (inject fora do contexto) — não é
+  regressão. O `npm run build` não sofre com isso.
+
 - **`[ngModel]` não volta sozinho se salvar falhar:** o valor ligado não mudou, então o Angular não
   reescreve a caixa. Aplicar a escolha no signal já no clique e desfazer no erro
   (`AccountComponent.savePreference`).
