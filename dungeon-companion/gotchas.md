@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Gotchas
@@ -55,6 +55,9 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 - Script de banco no scratchpad com `require('postgres')`/`require('dotenv')` falha com
   "Cannot find module": o Node procura os pacotes a partir da pasta do script. Rodar de dentro da
   api com `NODE_PATH=$PWD/node_modules node <script>` (e `dotenv` apontando pro `.env` da api).
+
+- **`on` é palavra reservada no Postgres**: `COUNT(*) FILTER (...) AS on` dá erro de sintaxe —
+  usar outro apelido.
 
 ## Web (Angular)
 
@@ -286,6 +289,21 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   mudou Home, sessões, Minha Conta e as outras telas de conta.
 
 ## Sessão em tempo real / permissões
+
+- **O socket.io reaproveita uma conexão só por servidor** (multiplexação): o socket da mesa pegava
+  carona na conexão do `/social`, aberta antes, e a query com o `sessionId` se perdia; o servidor
+  desconectava o socket da mesa e o mestre ficava só no polling (sem avisos, com atraso). Depende
+  da ordem em que as telas abrem. Resolvido na 1.24.1: `forceNew` no socket da mesa e `sessionId`
+  também no `auth` (vale por namespace). `disconnect(true)` no servidor derruba a conexão
+  inteira — inclusive a do `/social`. → `session-socket.service.ts`, `session-socket.gateway.ts`
+- **Depois de publicar, a mesa precisa recarregar a página.** Uma aba aberta antes do deploy fica
+  com o site antigo e recebe eventos novos que não sabe tratar (ex.: pedido de resistência de
+  monstro abria como pedido de jogador e dava "Não foi possível carregar a ficha"). Não há aviso
+  de nova versão (decisão de 2026-11-13).
+- **API local esquecida rodando código antigo:** o site local recarrega sozinho, a api não. Depois
+  de mudar a api, reiniciar o `npm start` (senão vem 422 de campo que ela não conhece, como o
+  `id_monster_sessions`). A api local só aceita chamadas de `localhost:4200` (`CORS_ORIGIN` do
+  `.env`): pra rodar um PR em paralelo, use a porta 4200.
 
 - **Status de presença depende do socket `/social`:** sem conexão aberta o amigo aparece offline,
   seja qual for o status escolhido. Fica em memória: reiniciar a api zera. → `conceitos/amigos.md`

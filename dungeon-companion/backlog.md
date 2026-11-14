@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Backlog
@@ -120,12 +120,13 @@ seção "O que ficou de fora".
       sozinha só quando o pedido de resistência traz o contexto). (card: Automação de traços)
 - [ ] Resistências vindas de magia (Proteção contra Energia, Pele de Pedra…) e de itens nas defesas
       do alvo. (card: Resistências, imunidades e vulnerabilidades)
-- [ ] Defesas automáticas de monstros (hoje ficam com o mestre). (card: Resistências, imunidades e vulnerabilidades)
+- [ ] Defesas compostas dos monstros ("concussão, cortante e perfurante de ataques não-mágicos"):
+      dependem de a arma ser mágica e ficam com o mestre — só os tipos simples entram sozinhos desde
+      a 1.24.4. Também não automáticas: Resistência Lendária e Resistência à Magia. (card: Resistências, imunidades e vulnerabilidades)
 - [ ] Forma Selvagem: a duração é só informativa (não volta sozinha quando acaba). (card: Automação de traços)
 - [ ] Forma Selvagem de **druida NPC**: o dano aplicado vai direto no PV do druida, sem passar pela
       forma. (card: Automação de traços)
 - [ ] Companheiro Animal: as resistências da besta não contam no dano aplicado nele. (card: Resistências, imunidades e vulnerabilidades)
-- [ ] Magias só de resistência (sem jogada de ataque) não pedem o teste pelo modal de ações. (card: Automação de traços)
 - [ ] (card: Automação de traços) O resto da seção E (traços sem número ou que dependem do mestre)
       continua texto — só se o usuário quiser.
 
@@ -171,6 +172,14 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 ## Combate e sessão
 
+- [ ] Fluxo de lançamento com alvos (1.25.0): a **Esquiva Sobrenatural** (marcação manual por
+      alvo) não aparece; **NPC e companheiro** não recebem pedido de resistência automático e levam
+      o dano inteiro; com o ROLAR direto do aviso (1.24.5) não dá mais pra escolher "rolar com
+      vantagem" do lembrete antes. Decidir se algum desses volta.
+- [ ] **Combates esquecidos abertos**: em 2026-11-13 havia três com status "em andamento" (um
+      desde 02/11). Não travam mais o preparo de magias de outra mesa (1.24.3), mas ficam no banco.
+      Avaliar encerrar sozinho depois de X horas sem atividade ou um aviso pro mestre.
+
 - [ ] Opcional: colocar no inventário da sessão o item dos kits escolhidos no Habilidoso (hoje só dá
       a proficiência, como no livro).
 - [ ] Opcional: mostrar na ficha de onde vem o PV máximo (dado rolado × média por nível).
@@ -210,10 +219,9 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
       `monster`, sem catalogar) e MEUS MONSTROS; catálogo vira "Meus monstros" (personalizar:
       nome editável + imagem). Em aberto: tela só de consulta ao bestiário e o nome ("Meus
       monstros" × "Catálogo"). Sem mudança no banco (`monster_session.data_snapshot` já é cópia).
-- [ ] (card: Resistências, imunidades e vulnerabilidades) **Resistência dos monstros ao dano dos jogadores**: hoje o dano entra cheio num monstro
-      resistente a fogo. A ficha já tem as listas (`damage_resistances` etc.), em texto do livro.
-- [ ] (card: Resistências, imunidades e vulnerabilidades) Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o modal corta o dano
-      inteiro pela metade (mesmo comportamento das magias). Resolver junto com o item acima.
+- [ ] (card: Resistências, imunidades e vulnerabilidades) Dano com **dois tipos** (cortante + fogo): se o alvo resiste a só um, o dano
+      inteiro muda (metade, zero ou dobro), como nas magias — as defesas de monstro (1.24.4) seguem
+      a mesma regra.
 - [ ] Bestiário: o "Cuspir Veneno" da Naga Guardiã está marcado como ataque — aparece ATACAR sem
       dano no acerto, mais o botão de resistência com o dano. Corrigir no seed e em produção.
 - [ ] Lembrete do covil usa a iniciativa de quem joga, sem olhar quem **atrasou** o turno: com
@@ -240,6 +248,10 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
+- [ ] Code review da Home nova (1.25.1): o comentário da classe em `home.component.ts` ainda diz
+      "1.18.1"; no desktop, os botões JOGADOR/MESTRE têm `aria-controls="home-window"`, que só existe
+      com um papel aberto.
+
 - [ ] (card: Login com e-mail ou nome de usuário) **Entrar com e-mail ou nome de usuário** (sugestão do usuário no review do PR #7):
       o campo do login aceita os dois. Precisa de mudança na api (`/auth/login` procura por e-mail
       ou `LOWER(username)`, com a mesma mensagem de erro nos dois casos). O preenchimento automático
@@ -253,12 +265,20 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
 
 ## Criação de ficha
 
+- [ ] Escolhas de ferramenta **da classe** (os 3 instrumentos do Bardo, ferramenta ou instrumento
+      do Monge) ainda não existem; só as do antecedente (1.24.0).
+- [ ] A criação ainda deixa escolher arma sem proficiência (a ficha só não soma o bônus desde a
+      1.23.3) — avisar na escolha?
+- [ ] Estilo de Luta **Duelo**: o +2 só entra se a arma for a única da lista (aproximação).
+
 - [ ] **Botão "aplicar sugestão" nos atributos**: distribuir os valores (matriz padrão ou rolagem)
   pela prioridade da classe (1.17.10 só sugere) — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md).
 
 ## Amigos
 
-- [ ] **Presença offline:** no teste local (2026-11-09) dois amigos apareceram offline um para o
+- [ ] **Presença offline:** provável causa achada na 1.24.1 — o socket da mesa pegava carona na
+      conexão do `/social`, o servidor o derrubava e com ele caía a conexão inteira (social junto).
+      Conferir em produção se sumiu antes de investigar mais. No teste local (2026-11-09) dois amigos apareceram offline um para o
       outro mesmo com o status online, e a api não tinha nenhuma conexão de navegador aberta no
       momento da conferência. O endpoint `/social` respondeu normalmente. Testar em produção,
       olhando em DevTools → Network → WS se o socket conecta (101) e se "Mostrar aos meus amigos

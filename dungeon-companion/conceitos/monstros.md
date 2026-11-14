@@ -2,7 +2,7 @@
 resumo: Bestiário do livro (tabela `monster`, 428 fichas do Manual dos Monstros em português): formato do JSON, como foi gerado, ações mecânicas do monstro na mesa, descrição (lore) e carta do monstro, ficha na gaveta e ação na tela de lançamento (1.13.0), bestiário do mestre e catalogar em cartas com filtros (1.14.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-11-05
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Monstros
@@ -279,3 +279,15 @@ Ver `backlog.md`, seção "Monstros".
 Aplicar dano/cura (rolagem e dano em área do Quadro do Mestre) lista **só monstros revelados**, pra
 todos — antes o mestre via os escondidos, e num lançamento público o nome ia pra mesa no "APLICOU …
 em …". O PV do escondido continua editável pelo card e pela gaveta.
+
+## Defesas ao dano (1.24.4) e arte primeiro no bestiário (1.23.2)
+
+- `services/monster-defenses.ts` (api) e `monsterApplyDefenses` (web, `apply-target.ts`): só os
+  tipos simples da ficha (`damage_immunities`, `damage_resistances`, `damage_vulnerabilities`);
+  "contundente" = "concussão". Imune 0, resistente metade (pra baixo), vulnerável o dobro; os
+  dois juntos se anulam. Entradas compostas ("…de ataques não-mágicos") ficam com o mestre.
+- O **jogador** não vê a ficha: manda `damage_type` no `apply-amount` e a api ajusta; o
+  `amount_applied` leva a `defense` e o aviso da mesa diz "(imune)". O **mestre** tem a ficha e o
+  modal já ajusta antes.
+- No bestiário e na tela de catalogar, cartas com arte (do bestiário ou do mestre) vêm primeiro
+  (`filterMonsters(..., hasArt)`), cada grupo na ordenação escolhida.

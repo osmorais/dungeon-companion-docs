@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -354,6 +354,23 @@ Fases 1 a 3 descritas em `dungeon-companion/conceitos/tracos-mecanicos.md` (seç
 - Web `player-actions-modal.component.spec.ts`: `isLongCastingTime` (minuto/hora sim; ação, ação
   bônus, reação, vazio não); em combate pede confirmação e cancelar não gasta o espaço;
   confirmar lança; fora de combate lança sem perguntar.
+
+### Lançamento, resistência de monstros e criação (2026-11-13, versões 1.23.1 a 1.25.1)
+
+- API: `character-sheet/weapon-proficiency.unit.ts` (simples × marciais, proficiências por arma,
+  subclasses), `character-sheet/language-tool-choices.unit.ts` (vagas, validação, ficha),
+  `services/monster-defenses.unit.ts`, `services/attack-check.service.unit.ts` (acerto contra a CA
+  por tipo de alvo, monstro escondido, opção da mesa), `services/session-socket.gateway.unit.ts`
+  (`sessionId` pelo auth/query), e casos em `game-session.service.unit.ts` (resistência de monstro
+  pro mestre, `save_resolved`, imune sem pedido, defesas ao aplicar, alvos no palco) e
+  `character-sheet.service.unit.ts` (talento repetido, preparo de magia por mesa, escolhas na
+  ficha).
+- Web: `roll-modal/escolha-de-alvos.spec.ts` (escolha, SEM ALVO, pedido automático, aplicar
+  conforme passou/falhou, aviso de quem não rolou, acerto automático, vários ataques),
+  `language-tool-picker/language-tool-picker.spec.ts`, `services/session-socket.service.spec.ts`,
+  `monster-filters.spec.ts` (arte primeiro), `game-card/monster-card.spec.ts` (arte padrão), e
+  casos no reducer, `secret-roll.spec.ts` (prompt do mestre pro monstro, fechar sozinho),
+  `session-panel.component.spec.ts` e `home.component.spec.ts` (Home nova, do PR).
 
 ### Traços: resistência pedida, Ataque Extra, Forma Selvagem e Companheiro (2026-11-12, versões 1.19.0 a 1.22.0)
 

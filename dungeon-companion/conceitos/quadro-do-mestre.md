@@ -2,7 +2,7 @@
 resumo: Quadro do Mestre (1.2.0) — gaveta só do mestre na sessão (lateral no desktop, de baixo no celular), e a gaveta AÇÕES DE PERSONAGEM do jogador: o que tem, como cada parte funciona, endpoints e limites.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-30
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Quadro do Mestre
@@ -196,3 +196,10 @@ confirmação de PV temporário (diferente do card).
   mais antigas somem da lista.
 - Dano em área não aplica resistência automaticamente (o mestre marca ½), igual ao DANO do card.
 - Descanso do grupo não avisa telas de ficha/ações já abertas dos jogadores (atualizam ao reabrir).
+
+## Acerto automático (1.25.0)
+
+O botão de POLLING saiu; no lugar, **ACERTO AUTOMÁTICO: ON/OFF**. Liga `game_session.auto_hit_check`
+(`PATCH /api/game-session/{id}/settings`, só o mestre; a mesa recebe `session_settings_updated`).
+Ligado, o ataque com alvo escolhido é conferido contra a CA pela api — ver
+[`magias-mecanicas.md`](magias-mecanicas.md).

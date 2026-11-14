@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Decisões
@@ -349,6 +349,22 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   jogador), a **gaveta fecha**; no **multiataque**, os ataques vão em sequência na tela de
   lançamento com o selo "MULTIATAQUE k/N" pra mesa, e a ficha fecha no último. → `conceitos/monstros.md`
 
+- **2026-11-12** — Resistência de **monstro** pedida por quem lança: o pedido vai pro mestre, que
+  rola com o bônus da ficha; a mesa vê **só passou/falhou** (o total fica oculto).
+  → `conceitos/magias-mecanicas.md`
+- **2026-11-12** — Monstro imune ao dano da magia (esqueleto × veneno) nem recebe o pedido de
+  resistência; imunidade/resistência/vulnerabilidade da ficha valem ao aplicar dano.
+  → `conceitos/monstros.md`
+- **2026-11-12** — Personagem com Vigoroso repetido (#193): talentos repetidos tirados e PV
+  recalculado; os dois níveis ficaram sem escolha. → `estado-atual.md`
+- **2026-11-13** — Lançamento (magia, arma, ação de monstro): **primeiro os alvos**, pelos anéis
+  (vários de uma vez; SEM ALVO segue o fluxo antigo); no fim só **APLICAR O DANO** e **CONCLUIR
+  SEM APLICAR**; aplicar com alvos que não rolaram a resistência pede confirmação e deixa esses
+  de fora. Acerto contra a CA **configurável no Quadro do Mestre** (no lugar do botão de polling).
+  → `conceitos/magias-mecanicas.md`
+- **2026-11-13** — Sem aviso de "nova versão disponível": depois de publicar, a mesa recarrega a
+  página. → `gotchas.md`
+
 ## Privacidade e segurança
 
 - **2026-11-05** — Mensagens (chat entre amigos e, pela mesma regra, as da sessão): criptografia
@@ -377,6 +393,8 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   Checagens baratas (build, lint, testes unitários) continuam.
 - Commit e push **só com pedido explícito a cada vez**, mesmo depois de várias aprovações
   seguidas.
+- **2026-11-12** — A pedido do usuário, as entregas 1.23.1 a 1.25.0 foram **direto na `main`**,
+  sem branch; PR de outro desenvolvedor continua por PR (code review e merge da `main` antes).
 - **2026-10-25** — Configuração do Claude por máquina (pasta dos repositórios, pasta dos docs,
   identidade dos commits e conta do `gh` da skill `/abrir-prs`) fica em
   `~/.claude/dungeon-companion.env`, fora do git; nada fixo no hook, na skill nem nos scripts.

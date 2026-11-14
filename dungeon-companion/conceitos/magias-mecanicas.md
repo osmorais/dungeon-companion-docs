@@ -2,7 +2,7 @@
 resumo: Catálogo de mecânica de magias (spell-mechanics.ts), modal de rolagem, aplicar no alvo, efeitos de tela. Fases 1–4 feitas.
 tipo: conceito
 status: ativo
-atualizado: 2026-10-22
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Plano: magias mecânicas (rolar ataque/dano/cura ao lançar)
@@ -287,3 +287,30 @@ imagens. Componente novo `spell-impact/`.
   recebe o toast vê o mesmo efeito, sem mudança na API. Mudança de comportamento: rolagem de
   cura passou a disparar efeito (antes não disparava nada).
 - Melhoria possível: trocar o CSS por sprites pixel art (o usuário se ofereceu pra buscar).
+
+## Lançamento com alvos escolhidos no começo (1.24.2 a 1.25.0)
+
+Vale pra magia, ataque com arma e ação de monstro (modal `roll-modal` com `cast`).
+
+- **Alvos primeiro** (1.25.0): antes de rolar, "QUEM VOCÊ ESTÁ ATINGINDO?" com os anéis da mesa
+  (`ApplyTarget.avatar`: avatar montado de jogador/NPC, arte de monstro/companheiro; o jogador vê
+  só monstros revelados). Vários de uma vez; **SEM ALVO** segue o fluxo antigo (lista no fim).
+  Cura repartida (Preservar a Vida) não pergunta.
+- **Resistência**: ao confirmar, o pedido já vai (`requestSecretRoll`). Jogador rola na própria
+  tela; **monstro** (1.24.2) vai pro mestre, que rola com o bônus de resistência da ficha
+  (`monsterChecks`); a rolagem do monstro fica oculta e a mesa recebe só `save_resolved`
+  (passou/falhou), guardado em `SessionStateService.saveOutcomes`. NPC e companheiro não têm
+  pedido (recebem o dano inteiro). Monstro **imune** ao tipo do dano nem recebe o pedido (1.24.4,
+  `damage_type` no pedido; a resposta volta `immune`).
+- **Aviso do alvo** (1.24.5): o ROLAR já rola o d20 (`autoRoll`) dentro da camada do aviso, na
+  frente da tela de lançamento; com o resultado (carimbo PASSOU/FALHOU), fecha sozinho em ~2 s
+  (`RESULT_READ_MS`) e o alvo volta a acompanhar o lançamento.
+- **Ataque**: cada ataque vai num dos alvos, na ordem. Com o **acerto automático** da mesa
+  (`game_session.auto_hit_check`, Quadro do Mestre), `POST /api/game-session/{id}/attack-check`
+  compara o total com a CA do alvo sem revelar a CA (20 natural acerta, 1 erra); errou = o painel
+  quebra. Com Sortudo/Inspiração disponíveis, espera o CONFERIR ACERTO. Desligado: "passou da CA?".
+- **Fim**: só **APLICAR O DANO** (cada alvo conforme a resistência: falhou inteiro; passou metade
+  ou nada, conforme a magia; imune 0) e **CONCLUIR SEM APLICAR**. Quem não rolou: aviso de
+  confirmação e fica de fora. Aplicar já fecha (saída de vitória).
+- **Palco de todos**: a etapa (`spell_cast_stage`) leva `targets` com o resultado de cada um e o
+  palco mostra o carimbo grande (PASSOU/FALHOU/IMUNE/rolando).

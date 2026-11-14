@@ -2,7 +2,7 @@
 resumo: Onde o Dungeon Companion (Forja Arcana) está agora — versão, commits, testes, produção. Ler primeiro.
 tipo: estado
 status: ativo
-atualizado: 2026-11-12
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Estado atual
@@ -29,8 +29,20 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.23.0 (publicada em 2026-11-12, artes próprias de 24 monstros do
-  bestiário — [`procedimentos/artes-monstros.md`](procedimentos/artes-monstros.md)); antes,
+- **Versão do sistema**: 1.25.1 (publicada em 2026-11-13, Home nova de quem está logado — PR web
+  #11 / api #8 de outro desenvolvedor, versão 1.19.1 renumerada no merge —
+  [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md)); antes, 1.25.0 (mesmo dia,
+  lançamento com alvos escolhidos no começo, acerto automático contra a CA e carimbo
+  PASSOU/FALHOU — [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md)); antes,
+  1.24.5 (resistência rolada direto do aviso); 1.24.4 (imunidade/resistência/vulnerabilidade de
+  monstros — [`conceitos/monstros.md`](conceitos/monstros.md)); 1.24.3 (trava de preparar magias
+  só do combate da mesa); 1.24.2 (resistência de monstros pedida por quem lança); 1.24.1 (mesa
+  do mestre em tempo real de novo: socket com conexão própria); 1.24.0 (escolha de idiomas e
+  ferramentas — [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md)); 1.23.3
+  (proficiência em armas, impressão, idioma extra, CA do monge); 1.23.2 (bestiário com arte
+  primeiro); 1.23.1 (talento repetido no level-up); antes, 1.23.0 (publicada em 2026-11-12,
+  artes próprias de 24 monstros do bestiário —
+  [`procedimentos/artes-monstros.md`](procedimentos/artes-monstros.md)); antes,
   1.22.0 (mesmo dia, Companheiro Animal do patrulheiro —
   [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md)); antes, 1.21.0 (mesmo dia,
   Forma Selvagem); antes, 1.20.0 (mesmo dia, Ataque Extra, Ação Ardilosa e visão no escuro);
@@ -90,7 +102,15 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: 1.20.0 a 1.23.0 na `main` em 2026-11-12, pela branch
+- **Últimos commits**: 1.25.1 na `main` em 2026-11-13: api `84f0f78` (merge do PR #8, com
+  `8f5e15c`, merge da `main` feito pelo Claude), web `de507f2` (merge do PR #11, com `0586063` do
+  autor e `8592dc1`, merge da `main`). Antes, de 1.23.1 a 1.25.0 com commits direto na `main` (a
+  pedido do usuário, sem branch): api `81e892e` (1.23.1), `c456b5e` (1.23.2), `3c3a21d` (1.23.3),
+  `6f40186` (1.24.0), `251749e` (1.24.1), `8666350` (1.24.2), `07b4d53` (1.24.3), `dd3de13`
+  (1.24.4), `9f4ce73` (1.24.5), `f9ca106` (1.25.0); web `23048ac`, `94c3cf9`, `0a51b1b`,
+  `389a2f9`, `dc63cd5`, `e117a9e`, `a87011e`, `31d8b0e`, `1fc4f5d`, `c0a35d0` e `6c27e3a`
+  (1.25.0). Migrações (`chosen_languages`/`chosen_tools` e `auto_hit_check`) rodaram antes do
+  deploy da api. Antes: 1.20.0 a 1.23.0 na `main` em 2026-11-12, pela branch
   `feat/companheiro-animal`: api `68e9381` (merge do PR #9, com `f991ad9` 1.23.0, `098b1f2`
   1.22.0, `d262be8` 1.20.0 + 1.21.0 e `31614b7` resistência e ficha mais rápidas), web `a7ced45`
   (merge do PR #12, com `bbccb6e` 1.23.0, `8100855` 1.22.0, `67b644e` 1.20.0 + 1.21.0 e `d0d35c6`
@@ -145,21 +165,21 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
 - **PRs**: nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: api 711 (`npm run test:unit`), web 973 (`npm run test:run`) — na 1.23.0 (na 1.18.0: 664 e 909) —
+- **Testes**: api 756 (`npm run test:unit`), web 1016 (`npm run test:run`) — na 1.25.1 (na 1.23.0: 711 e 973) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
 
 | Área | Estado | Doc |
 |---|---|---|
-| Magias mecânicas (ataque, resistência, cura, crítico, aplicar no alvo, efeitos de tela) | fases 1–4 feitas | [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md) |
+| Magias mecânicas (ataque, resistência, cura, crítico, aplicar no alvo, efeitos de tela) | fases 1–4 feitas; lançamento com alvos escolhidos no começo, resistência pedida a jogadores e monstros, acerto automático opcional (1.24.2–1.25.0) | [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md) |
 | Traços e habilidades mecânicos | fases 1–4 + 1.19 a 1.22 (vantagem pelo contexto, Ataque Extra, Ação Ardilosa, visão no escuro, Forma Selvagem, Companheiro Animal) | [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md) |
 | Level-up (HP rolado, ASI/talento, subclasse, magias novas, XP) | fases 1–3 feitas; multiclasse não começada | [`historico/levelup-plan.md`](historico/levelup-plan.md) |
 | Auditoria de automação mecânica (classe por classe) | "Fácil" feito, "Média" quase todo | [`conceitos/auditoria-mecanicas.md`](conceitos/auditoria-mecanicas.md) |
 | Subclasses (conteúdo do livro) | gravado em `rules.ts`; alguns pontos sem conferência | [`conceitos/subclasses.md`](conceitos/subclasses.md) |
 | Descrições de magia (361) | auditadas contra o livro | [`historico/spells-progress.md`](historico/spells-progress.md) |
 | LGPD | 16 itens técnicos feitos; faltam itens fora do código | [`conceitos/lgpd.md`](conceitos/lgpd.md) |
-| Quadro do Mestre (gaveta só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); gaveta de baixo com barra fixa na base, no celular (1.3.16) e no desktop (1.3.17) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
+| Quadro do Mestre (gaveta só do mestre: rolagens ocultas, grupo, anotações, descanso, dano em área, apagar sessão) | 4 fases feitas (1.2.0); gaveta de baixo com barra fixa na base, no celular (1.3.16) e no desktop (1.3.17); opção de acerto automático no lugar do polling (1.25.0) | [`conceitos/quadro-do-mestre.md`](conceitos/quadro-do-mestre.md) |
 | Cartas (magias e armas) e aviso de lançamento/ataque | magias em cartas (1.4.0), aviso único da mesa com as cartas (1.5.0), armas em cartas (1.6.0), ataque com arma no aviso (1.6.1), dano/cura aplicado dentro do aviso (1.7.1), aviso sincronizado pra todos com a rolagem dentro dele pra quem lança, quebra ao errar e saída de vitória (1.7.2); carta do monstro: aviso de revelação, destaque no painel de combate e explosão na derrota (1.11.0); carrossel dos monstros revelados, carta do monstro na troca de vez e carta da ação de monstro na tela de lançamento, descrição na carta pequena (1.13.0); moldura própria da carta do monstro no SOMBRIO e fundo por tema (altar/tapete) na tela de lançamento e nos avisos (1.13.2) | [`conceitos/cartas.md`](conceitos/cartas.md) |
 | Avatar (personalizador e camadas de imagem) | abas com miniaturas (1.6.9), 8 penteados novos (1.6.9), tons de pele por raça (1.6.10); faltam barbas, roupas, chapéus e rostos | [`conceitos/avatar.md`](conceitos/avatar.md) |
 | Ranking global (feitos das mesas) | 12 categorias, contagem desde a 1.7.0, em lista (1.7.1), opção de sair em /conta | [`conceitos/ranking.md`](conceitos/ranking.md) |
@@ -168,10 +188,10 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 | Tela inicial pública (`/` pra visitantes) | página com seções, vitrine de cartas e card de exemplo (1.8.0); sessão expirada cai nela, barra do topo fixa, card de exemplo igual ao da mesa, sem citar D&D 5e (1.8.1); SAIR leva pro login e código de exemplo `XXXXX` (1.8.2); dado do card sem cobrir o "AO VIVO" (1.11.1); menu de seções no celular e no tablet, vitrine sem passar por cima da barra (1.12.0) | [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md) |
 | E-mail (recuperação de senha) | api envia direto pelo SMTP da Hostinger (`nodemailer`), da VPS (1.17.3); de 1.12.1 a 1.17.2 passava por um script PHP no site | [`conceitos/email.md`](conceitos/email.md) |
 | Infraestrutura da api | VPS Hostinger KVM 1 (Ubuntu 26.04), nginx + HTTPS, serviço systemd, deploy pelo GitHub Actions (1.17.1); Render de reserva até ser apagado | [`conceitos/infraestrutura.md`](conceitos/infraestrutura.md), manual: [`procedimentos/servidor-api.md`](procedimentos/servidor-api.md) |
-| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8) | [`conceitos/monstros.md`](conceitos/monstros.md) |
+| Monstros (bestiário do livro) | tabela `monster` com as 428 fichas do Manual dos Monstros em português, ataques/dano/CD estruturados, em produção (2026-10-24); catalogar (tela e "+ adicionar" da sessão) lê a tabela, sem a dnd5eapi (1.10.0); ações mecânicas na ficha da mesa, só do mestre (ataque, resistência, dano, testes, usos, recarga, multiataque, lendárias, reação, covil, defesas e sentidos) e descrição (lore) dos 428 (1.11.0); ficha do monstro na gaveta de baixo, no lugar do modal, e ação do monstro na tela de lançamento (1.13.0); ações do monstro em cartas (baralho e mão) na gaveta (1.13.2); derrotar com confirmação, aviso de 0 PV ao mestre e XP acumulado do combate, distribuído (opcional) ao encerrar (1.15.0); encerrar pergunta pelos monstros que sobraram, ficha fecha ao rolar, multiataque em sequência na tela de lançamento (1.15.1); bestiário do mestre, catalogar e detalhe em cartas, com a ficha da gaveta (só leitura), filtros e páginas de 8, selo PERIGOSO no ND 5+; fichas antigas da dnd5eapi fora de uso (1.14.0, PR #8); imunidade/resistência/vulnerabilidade ao dano e arte primeiro no bestiário (1.23.2, 1.24.4) | [`conceitos/monstros.md`](conceitos/monstros.md) |
 | Grimório de magias (`/spell-catalog`) | layout do catalogar monstros, cartas em páginas de 8, filtros por círculo, escola, classe, função, elemento, alcance, concentração, ação bônus e reação; função e elemento das 361 magias classificados à mão (1.16.0); mesmos filtros no grimório do Quadro do Mestre (1.16.1); selo de dano/cura nas cartas (1.17.0) | [`conceitos/cartas.md`](conceitos/cartas.md) |
-| Amigos (solicitações, bloqueio, presença, notificações, convites para mesa) | em produção (1.18.0); presença apareceu offline no teste local, falta testar em produção | [`conceitos/amigos.md`](conceitos/amigos.md) |
-| Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8); dano das cartas de arma sem "undefined" (1.17.9); sugestão de atributos pela classe (1.17.10); raça por miniaturas com arte, detalhes primeiro, sem nível (1.17.11); arte do Humano (1.17.12) | [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md), antes: [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
+| Amigos (solicitações, bloqueio, presença, notificações, convites para mesa) | em produção (1.18.0); presença apareceu offline no teste local, falta testar em produção; socket da mesa sem pegar carona no `/social` (1.24.1) — pode ter resolvido a presença offline, a conferir | [`conceitos/amigos.md`](conceitos/amigos.md) |
+| Criação de ficha | validada na API (422), perícias/armas/itens do kit corrigidos; barra de progresso e cartas nas etapas de magia/arma (1.6.7); painéis no celular e Tom com OK/desativar (1.6.8); dano das cartas de arma sem "undefined" (1.17.9); sugestão de atributos pela classe (1.17.10); raça por miniaturas com arte, detalhes primeiro, sem nível (1.17.11); arte do Humano (1.17.12); proficiência em armas e idiomas/ferramentas à escolha (1.23.3, 1.24.0) | [`conceitos/criacao-de-ficha.md`](conceitos/criacao-de-ficha.md), antes: [`historico/diario-2026-09-10_a_2026-10-18.md`](historico/diario-2026-09-10_a_2026-10-18.md) |
 
 ## Mudanças feitas direto no banco de produção
 
@@ -235,6 +255,9 @@ Sempre com autorização do usuário, numa transação. Mais antigas: ver o diá
 - **2026-11-12**: colunas `character.chosen_languages` e `character.chosen_tools` (JSONB, nulas;
   idiomas e ferramentas "à escolha", 1.24.0). Uma transação, antes do deploy da api, autorizado
   pelo usuário; 97 fichas, todas nulas (escolhem na ficha). Registrado no `database.sql`.
+- **2026-11-13**: coluna `game_session.auto_hit_check` (BOOLEAN, NOT NULL, padrão `false`;
+  acerto automático do ataque contra a CA, 1.25.0). Uma transação, antes do deploy da api,
+  autorizado pelo usuário; 25 sessões, todas desligadas. Registrado no `database.sql`.
 
 ## LGPD
 

@@ -2,7 +2,7 @@
 resumo: Criação de ficha (wizard do web) — passo 1 com raça por miniaturas (1.17.11), sugestão de atributos pela classe (1.17.10) e armas do catálogo sem bônus (1.17.9).
 tipo: conceito
 status: ativo
-atualizado: 2026-11-06
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Criação de ficha
@@ -52,3 +52,19 @@ o histórico anterior (validação na API, barra de progresso, cartas nas etapas
 As armas das opções da criação vêm cruas da tabela `weapon`, sem `attack_bonus` nem
 `damage_modifier` (só a ficha calcula). A carta trata o ausente — ver
 [`cartas.md`](cartas.md) e [`gotchas.md`](../gotchas.md).
+
+## Proficiência em armas, idiomas e ferramentas (1.23.3 e 1.24.0)
+
+- **Armas** (`character-sheet/weapon-proficiency.ts`): o ataque só soma a proficiência se a classe,
+  raça, sub-raça ou subclasse sabe usar a arma (categoria simples/marcial por nome do catálogo e
+  as proficiências por arma das regras, ex.: "Bastões" = Bordão). Guerra, Tempestade e Bravura
+  ganham marciais. A criação grava `has_proficiency` de verdade; a carta mostra "SEM
+  PROFICIÊNCIA". Arma versátil traz `versatile_die`.
+- **Ficha impressa**: dano com o atributo, versátil com as duas mãos, armadura vestida e escudo.
+- **Idiomas e ferramentas à escolha** (`character-sheet/language-tool-choices.ts`): Humano e
+  Meio-Elfo ganham 1 idioma extra; antecedente traz os dele e as ferramentas genéricas ("Um tipo de
+  kit de jogo", instrumento, ferramentas de artesão). Escolhidos na criação (obrigatório pra
+  avançar) ou depois na ficha (botão no quadro de proficiências, `PATCH
+  /api/character-sheet/{id}/language-tool-choices`). Gravados em `character.chosen_languages` /
+  `chosen_tools`; o que falta aparece como "Idioma à escolha N".
+- **Monge com escudo** perde a Defesa sem Armadura (CA 10 + DES + 2).

@@ -2,7 +2,7 @@
 resumo: Tela inicial pública (/ pra visitantes, 1.8.0): rotas, seções, card de exemplo, vitrine de cartas, o fluxo de sessão expirada (1.8.1) e o menu de seções no celular (1.12.0).
 tipo: conceito
 status: ativo
-atualizado: 2026-10-31
+atualizado: 2026-11-13
 ---
 
 # Dungeon Companion — Tela inicial (visitantes)
@@ -74,3 +74,16 @@ celular de verdade (`.lp-hide-mobile` dentro do `@media`), ENTRAR com 44 px de a
 - **Vitrine de cartas** com `isolation: isolate` (ver `gotchas.md`, "Web"): a carta da vez não
   passa mais por cima da barra do topo.
 
+## Home de quem está logado (1.25.1, PR web #11 / api #8)
+
+Feita por outro desenvolvedor (versão 1.19.1 renumerada pra 1.25.1 no merge da `main`, feito
+pelo Claude depois do code review). `src/app/home/home.component.*`.
+
+- **Desktop:** o menu começa no centro; ao escolher JOGADOR ou MESTRE ele corre num trilho até a
+  lateral e a janela das opções entra à direita (título da área, chamada e as opções). Clicar de
+  novo no papel, no ✕ da janela ou Esc volta o menu ao centro. Com o menu no centro, o Tom aponta
+  pra ele.
+- **Celular:** dois "vagões" lado a lado (menu e opções do papel); ‹ VOLTAR, Esc ou arrastar pra
+  direita (`HOME_SWIPE_BACK_PX`) volta.
+- PARA TODOS: Grimório, Ranking e Amigos.
+- Pendências do code review no `backlog.md` (seção Tela inicial).
