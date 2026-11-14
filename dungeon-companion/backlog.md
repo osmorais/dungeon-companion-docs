@@ -256,8 +256,9 @@ Contexto: [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md).
       fluxo é esqueleto no Figma (arquivo "Forja Arcana — Telas",
       https://www.figma.com/design/6nYAxgywgq6aQa9g4QRj0v) → aprovação → implementação com as
       classes `.fa-*` do `styles.scss`. Feitas na 1.25.2: Sessões criadas, Criar sessão, Bestiário e Catalogar
-      monstro, mais a troca de tela animada (classes `.fa-*`, incluindo `.fa-field`/`.fa-input`/`.fa-pick`). Próximas a combinar com o
-      usuário (minhas aventuras, personagens, entrar em sessão, detalhe do monstro, grimório...).
+      monstro, mais a troca de tela animada; na 1.25.3, Meus personagens, Entrar em uma aventura e
+      Minhas aventuras (classes `.fa-*`, incluindo `.fa-field`/`.fa-input`/`.fa-pick`). Próximas a combinar com o
+      usuário (detalhe do monstro, grimório, ficha, conta, amigos, ranking...).
       O Figma Starter tem 3 páginas e limite de chamadas do MCP: esqueletos novos podem ir pro
       canvas do claude.ai. Toda tela: uma `.fa-window--main` e um `.fa-heading` (transição).
 

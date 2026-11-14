@@ -32,7 +32,12 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 - **Versão do sistema**: 1.25.1 na `main`. A **1.25.2** (Sessões criadas, Criar sessão em 3 etapas,
   Bestiário e Catalogar monstro no visual da Home, com classes `.fa-*` no `styles.scss`, e troca de
   tela animada com View Transitions — `route-transition.ts`) está na branch
-  `feat/1.25.2-telas-home` (web e api), em PR (web #13 e api #10), **não publicada**; esqueletos no Figma "Forja
+  `feat/1.25.2-telas-home` (web e api), em PR (web #13 e api #10), **não publicada**. A **1.25.3** (Meus personagens, Entrar em uma aventura
+  em 2 etapas com código em 5 casas, Minhas aventuras reaproveitando a tela de Sessões criadas
+  com `data.role = 'player'` na rota — a pasta `my-sessions/` saiu; `+ CRIAR PERSONAGEM` via
+  `services/open-character-wizard.ts`) está na branch `feat/1.25.3-telas-jogador` (web e api,
+  em cima da 1.25.2), em PR (web #15 e api #12, com base na branch da 1.25.2: trocar pra `main`
+  depois que o #13/#10 entrarem), **não publicada**; esqueletos no Figma "Forja
   Arcana — Telas" e no canvas https://claude.ai/artifact/7B5xVnHQrwjmqsoPpKRWWF. Antes, 1.25.1 (publicada em 2026-11-13, Home nova de quem está logado — PR web
   #11 / api #8 de outro desenvolvedor, versão 1.19.1 renumerada no merge —
   [`conceitos/tela-inicial.md`](conceitos/tela-inicial.md)); antes, 1.25.0 (mesmo dia,
@@ -168,8 +173,8 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **PRs**: abertos web #13 e api #10 (1.25.2, em 2026-11-14). Antes, nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: web 1040 na 1.25.2 (rodar de `D:\ESTUDOS\...`, com a caixa certa, senão ~320 falham com NG0203); api 756 (`npm run test:unit`), web 1016 (`npm run test:run`) — na 1.25.1 (na 1.23.0: 711 e 973) —
+- **PRs**: abertos web #13 e api #10 (1.25.2) e web #15 e api #12 (1.25.3, empilhados na 1.25.2), em 2026-11-14. Antes, nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
+- **Testes**: web 1052 na 1.25.3 (1040 na 1.25.2) (rodar de `D:\ESTUDOS\...`, com a caixa certa, senão ~320 falham com NG0203); api 756 (`npm run test:unit`), web 1016 (`npm run test:run`) — na 1.25.1 (na 1.23.0: 711 e 973) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
