@@ -237,6 +237,81 @@ Destruição Divina e magias somadas); o modificador não dobra. Vale também po
   arma) e Manto do Cruzado (1d4 radiante, arma): lançadas antes (gastam o espaço ao lançar);
   no acerto o jogador marca "Magias ativas no alvo". Em vários raios, a Destruição vale só no
   primeiro; as contínuas continuam marcadas.
+- 1.25.3 (2026-11-14): **Marca da Punição** (2d6 radiante +1d6/círculo acima do 2º, qualquer
+  arma) entrou como as Destruições (gasta o espaço no acerto; no livro é ação bônus antes).
+  **Auxílio Divino** (1d4 radiante, arma) e **Rogar Maldição** (1d8 necrótico, qualquer ataque —
+  só a opção de dano das quatro; o jogador marca no acerto se escolheu essa) entraram como as
+  contínuas. Rogar Maldição tem `save` WIS: a CD vai no aviso de lançamento (`spellSaveInfo`
+  aceita rider `each_hit` com resistência). Saíram de `SPELL_CARD_DAMAGE_EXTRA`.
+- 1.26.0 (2026-11-14): **Arma Mágica** (+1 ataque e dano; +2 no 4º, +3 no 6º) e **Arma
+  Elemental** (+1 ataque e 1d4 do elemento; +2/2d4 no 5º–6º, +3/3d4 no 7º+) viram efeito ativo
+  guardado no personagem: `active_effects.spell_weapon` (uma por vez, como a concentração; lançar
+  outra substitui), com o bônus já calculado pela API no círculo gasto (`buildSpellWeaponEffect`
+  em `combat-features.ts`). O web manda `PATCH active-effects {spell_weapon: {id_spell,
+  slot_level, element}}` depois de gastar o espaço (tela de ações e ficha); o elemento é escolhido
+  num seletor antes do LANÇAR. Entra sozinho em todo ataque com arma (não no desarmado), aparece em
+  "EFEITOS ATIVOS" com "Encerrar" (`{spell_weapon: null}`) e some no fim do combate e no descanso
+  longo (os dois já reescrevem o `active_effects`). Simplificações: vale pra todas as armas de
+  quem lançou (no livro, uma arma tocada, que pode ser de um aliado) e não há controle de
+  concentração (lançar outra magia de concentração não encerra sozinho). IDs e elementos copiados
+  no web (`roll-modal/spell-weapon.ts`), com teste nos dois lados.
+- 1.26.0 (2026-11-14): **Bênção** (+1d4 em ataque e resistência, 3 alvos +1 por círculo acima
+  do 1º), **Orientação** (+1d4 num teste de habilidade) e **Resistência** (+1d4 numa resistência),
+  no molde da Inspiração Bárdica: ao lançar na mesa, a tela de ações pede os alvos (caixas "você"
+  + jogadores, até o limite) antes de gastar o espaço; `POST /api/game-session/{id}/spell-boon`
+  (`grantSpellBoon`: quem age pelo personagem, magia na lista dele, círculo válido, alvos da
+  sessão, limite de alvos) guarda `{from}` em `active_effects.bless|guidance|resistance` de cada
+  alvo. No `roll-modal`, `blessing` rola 1d4 junto com o d20 em toda jogada de ataque (arma,
+  desarmado e magia) e resistência, sem gastar (o d4 fica o mesmo no Sortudo/Indomável);
+  `boostDie` vira botão "ORIENTAÇÃO/RESISTÊNCIA (d4)" depois do d20 (testes na tela de ações e
+  resistências pedidas, `secret-roll-prompt`) e gasta via `PATCH active-effects {consume_boon}`.
+  Aparecem em "EFEITOS ATIVOS" com "Encerrar" (o mesmo `consume_boon`); somem no fim do combate
+  e no descanso longo. Simplificações: sem controle de concentração; NPC/companheiro não recebem;
+  fora da mesa (ficha isolada) o lançamento não entrega o efeito. Regra de alvos copiada no web
+  (`roll-modal/spell-boons.ts`), com teste nos dois lados.
+- 1.26.0 (2026-11-14): **magias na CA** pelo mesmo fluxo da Bênção (`SPELL_BOONS` +
+  escolha de alvos): **Armadura Arcana** (`mage_armor`: base 13 + DES sem armadura, fica a maior
+  com a Defesa sem Armadura; não vale de armadura nem em Forma Selvagem), **Escudo da Fé**
+  (`shield_of_faith`, +2), **Escudo Arcano** (`shield`, +5, `selfOnly` — a escolha mostra só
+  "você"), **Pele de Árvore** (`barkskin`, CA mínima 16) e **Velocidade** (`haste`, +2 e lembrete
+  de vantagem em resistência de DES nos `d20_reminders`). `applySpellArmorClass`
+  (`combat-features.ts`) entra no `loadCharacter` e no `updateEquipment`, então vale na ficha e no
+  acerto automático contra o personagem (`AttackCheckService` lê a CA da ficha). Fim: Escudo
+  Arcano no começo do próximo turno de quem lançou (`CombatService.onTurnStart` →
+  `clearShieldSpellOnTurnStart`); Armadura Arcana sobrevive ao fim do combate (8 h —
+  `clearActiveEffectsInSession` guarda `wild_shape` e `mage_armor`); as outras no fim do
+  combate; todas no descanso longo e no "Encerrar". Simplificações: Pele de Árvore (1 h) e Escudo
+  da Fé (10 min) acabam no fim do combate; Velocidade não dobra o deslocamento nem dá a ação
+  extra nem a letargia ao acabar; a CA mostrada na tela só atualiza ao recarregar a ficha.
+- 1.26.0 (2026-11-14): **penalidades de magia no monstro** — coluna nova
+  `monster_session.spell_effects JSONB` (**migração precisa rodar em produção antes do deploy da
+  api**; registrada em `docs/database/database.sql`). `services/monster-spell-effects.ts`:
+  `bane` (Perdição, −1d4 em ataque e resistência), `faerie_fire` (Fogo das Fadas, vantagem contra),
+  `guiding_bolt` (Raio Guiador, vantagem no próximo ataque contra, gasta), `vicious_mockery`
+  (Zombaria Viciosa, desvantagem no próximo ataque dele, gasta), `enfeebled` (Raio do
+  Enfraquecimento, lembrete de metade do dano com arma de Força). Como entram:
+  - pedido de resistência pra monstro leva `on_fail_effect` (`requestSecretRoll`); na resposta do
+    mestre, falhou → a API marca; passou ao rolar de novo (Sortudo/Indomável) → desmarca a que
+    esse pedido pôs. Zombaria Viciosa usa o fluxo de alvos do `roll-modal`; Perdição, Fogo das
+    Fadas e Raio do Enfraquecimento (resistência sem dano, sem modal) ganharam a escolha de
+    monstros na tela de ações (Perdição 3 +1/círculo, Raio 1, Fogo das Fadas sem limite);
+  - Raio Guiador: acertou um monstro (`rollDamageNow`) → `PATCH
+    /api/game-session/{id}/monster/{idMonster}/spell-effects` liga `guiding_bolt`; o próximo
+    ataque contra ele já abre com vantagem e desliga ao rolar o d20.
+  - Efeito: ataque do jogador num monstro com Fogo das Fadas/Raio Guiador abre com vantagem
+    (`advantageFrom` soma `advantageAgainst(currentAttackTarget.spellEffects)`); rolagem do
+    monstro pelo mestre (`SessionPanel.withMonsterSpellEffects`) leva `penaltyDie` (Perdição),
+    `disadvantageFrom` (Zombaria, gasta ao abrir) e lembrete do Enfraquecimento; resistência do
+    monstro pedida por magia (`secret-roll-prompt`, `monsterEffects`) tira 1d4 com Perdição.
+  - Mestre vê "PENALIDADES DE MAGIA" na gaveta do monstro, com "Tirar". Evento
+    `monster_spell_effects_updated` (monstro escondido: só o mestre, `isDmOnlyEvent`); o fim do
+    combate limpa (`clearMonsterSpellEffectsInSession` + reducer no `combat_ended`).
+  - Permissão do PATCH: mestre em qualquer monstro da sessão; jogador só em monstro revelado.
+  - Limitações: o aviso de revelar monstro não leva as penalidades (a mesa vê ao recarregar);
+    Raio do Enfraquecimento só lembra; personagens (jogadores/NPCs) não recebem essas penalidades.
+- Lançar uma magia `rider` não abre rolagem (`spellRollConfig` devolve `null`). Até a 1.25.2
+  caía no fim da função e abria um ataque mágico falso (d20 + 0 com o dado da magia) ao lançar
+  Bruxaria, Marca do Caçador ou Manto do Cruzado.
 - Lâmina Flamejante entrou como ataque mágico (3d6 fogo, +1d6 a cada 2 círculos).
 - Fora: Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante (dano por turno/em área) e
   Arma Elemental (mexe no bônus de ataque).
