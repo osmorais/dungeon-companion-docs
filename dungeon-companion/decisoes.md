@@ -2,7 +2,7 @@
 resumo: Decisões do usuário sobre regras, escopo e produto — o que já foi decidido e não deve ser reperguntado.
 tipo: decisoes
 status: ativo
-atualizado: 2026-11-13
+atualizado: 2026-11-14
 ---
 
 # Dungeon Companion — Decisões
@@ -364,6 +364,14 @@ Regras de processo (testes, versão, banco, LGPD, commit) não ficam aqui: estã
   → `conceitos/magias-mecanicas.md`
 - **2026-11-13** — Sem aviso de "nova versão disponível": depois de publicar, a mesa recarrega a
   página. → `gotchas.md`
+- **2026-11-14** — Magias de apoio com mecânica (1.26.0): efeito guardado no personagem do alvo
+  (`active_effects`), como a Inspiração Bárdica — Bênção soma 1d4 sozinha; Orientação/Resistência
+  viram botão de um uso; magias de CA mudam a CA da ficha e do acerto automático. Penalidades em
+  monstros numa **coluna nova** `monster_session.spell_effects` (opção "a"), não no `action_state`.
+  → [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md)
+- **2026-11-14** — Os quatro blocos de magias (dano no ataque, arma, 1d4 em alvos, CA e
+  penalidades) saem juntos numa versão só (1.26.0), porque nada tinha sido commitado e os
+  arquivos se misturam. → [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md)
 
 ## Privacidade e segurança
 

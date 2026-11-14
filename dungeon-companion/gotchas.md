@@ -2,7 +2,7 @@
 resumo: Armadilhas técnicas do Dungeon Companion que já custaram tempo — conferir antes de mexer na área.
 tipo: gotchas
 status: ativo
-atualizado: 2026-11-13
+atualizado: 2026-11-14
 ---
 
 # Dungeon Companion — Gotchas
@@ -58,6 +58,10 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
 
 - **`on` é palavra reservada no Postgres**: `COUNT(*) FILTER (...) AS on` dá erro de sintaxe —
   usar outro apelido.
+- **`jsonb_strip_nulls` é recursivo**: tira campo nulo em qualquer nível, inclusive dentro de
+  objetos guardados (ex.: a Forma Selvagem em `active_effects.wild_shape`). Pra montar o JSON
+  "só com as chaves que existem", juntar pedaços com `||` e `CASE ... ELSE '{}'::jsonb END`
+  (como em `clearActiveEffectsInSession`, 1.26.0).
 
 ## Web (Angular)
 
@@ -302,6 +306,13 @@ só aparece o ponteiro. Consolidado em 2026-10-20 a partir do diário e dos docs
   telas, cada uma com o próprio SCSS. Estilo compartilhado no `styles.scss` vai **sob uma classe
   de escopo** (como `.auth-retro` do login/cadastro, 1.13.3) — no PR #7 o visual novo do login
   mudou Home, sessões, Minha Conta e as outras telas de conta.
+- **`spellRollConfig` cai no ataque mágico no fim da função**: todo `kind` de magia sem caso
+  próprio vira um ataque (d20 + bônus, dado da magia como dano). Foi assim que lançar Bruxaria,
+  Marca do Caçador e Manto do Cruzado abria um ataque falso até a 1.25.2 (`kind: 'rider'` agora
+  devolve `null`). `kind` novo em `SpellMechanics` → caso explícito em `spellRollConfig`.
+- **`session-panel` nos testes não tem `id()`**: a rota não existe no spec, então `this.id()` vem
+  vazio. Método que chama a API com o id da sessão usa
+  `this.sessionDetail()?.game_session.id_game_session` (como `toggleAutoHit`).
 
 ## Sessão em tempo real / permissões
 

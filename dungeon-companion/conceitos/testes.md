@@ -2,7 +2,7 @@
 resumo: Suítes unitárias (api: Mocha, web: Vitest) — como rodar, estrutura, o que está coberto.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-13
+atualizado: 2026-11-14
 ---
 
 # Dungeon Companion — Testes unitários (regressão)
@@ -82,6 +82,7 @@ services/character-creation.unit.ts       # criação → gravação → ficha c
 character-sheet/spell-mechanics.unit.ts   # catálogo de mecânica de magia + dados por círculo/nível
 character-sheet/ability-mechanics.unit.ts # o que o "USAR" das habilidades de classe faz
 character-sheet/combat-features.unit.ts   # traços no ataque (crítico, somas, ataque poderoso, desarmado)
+services/monster-spell-effects.unit.ts    # penalidades de magia no monstro (1.26.0)
 services/combat.service.unit.ts           # iniciativa, turnos, atraso, adicionar participantes
 services/game-session.service.unit.ts     # visibilidade, PV, monstros, XP, rolagens
 services/account.service.unit.ts          # perfil, exportação e exclusão de conta (LGPD)
@@ -128,6 +129,10 @@ src/app/modal-burst/modal-burst.component.spec.ts        # explosão na entrada 
 src/app/secret-roll/secret-roll.spec.ts                  # teste secreto (mestre pede, jogador rola)
 src/app/player-actions-modal/player-actions-modal.component.spec.ts # "USAR" das habilidades
 src/app/roll-modal/spell-roll-config.spec.ts             # magia → configuração do modal de rolagem
+src/app/roll-modal/spell-weapon.spec.ts                  # Arma Mágica/Elemental (cópia da api)
+src/app/roll-modal/spell-boons.spec.ts                   # Bênção, Orientação, Resistência, magias de CA
+src/app/roll-modal/monster-spell-effects.spec.ts         # penalidades de magia no monstro (cópia da api)
+src/app/roll-modal/penalidades-monstro.spec.ts           # penalidades no modal de rolagem
 ```
 
 ---
@@ -272,6 +277,29 @@ Simula o caminho completo sem banco: payload no formato do wizard → `createCha
   (partículas por intensidade, classes do elemento, névoa/brilhos/valor, variante de PV
   temporários); serviço com `effect` e duração maior da cura; impacto escolhe magia × golpe;
   modal e toast passam tipo/rótulo (cura agora dispara).
+
+### Magias de apoio e penalidades no monstro (2026-11-14, 1.26.0)
+
+- API: `spell-mechanics.unit.ts` (Auxílio Divino, Marca da Punição, Rogar Maldição como somas no
+  ataque); `combat-features.unit.ts` (Arma Mágica/Elemental por círculo, alvos de Bênção e das
+  magias de CA, `applySpellArmorClass`, vantagem da Velocidade, tabelas espelhadas no web);
+  `character-sheet.service.unit.ts` (guardar/encerrar magia na arma, gastar Orientação, CA da
+  ficha com as magias); `game-session.service.unit.ts` (`grantSpellBoon` com limite, Escudo
+  Arcano só em si, `updateMonsterSpellEffect` por permissão, penalidade marcada na falha e
+  desmarcada ao passar de novo); `combat.service.unit.ts` (Escudo Arcano sai no começo da vez,
+  fim do combate limpa as penalidades); `services/monster-spell-effects.unit.ts` (módulo novo).
+- Web: `spell-weapon.spec.ts`, `spell-boons.spec.ts`, `monster-spell-effects.spec.ts` (cópias das
+  tabelas da api); `penalidades-monstro.spec.ts` (vantagem contra o alvo, Raio Guiador marca e
+  gasta, Zombaria leva `on_fail_effect`, Perdição tira 1d4, desvantagem marcada);
+  `roll-modal.component.spec.ts` (Bênção automática e mantida no Indomável, botão da Resistência);
+  `vantagem-indomavel.spec.ts` (`d20Options` por tipo de rolagem); `spell-roll-config.spec.ts`
+  (magia que soma dano não abre rolagem; CD do Rogar Maldição no aviso);
+  `player-actions-modal.component.spec.ts` (ataque com magia na arma, escolha de alvos e de
+  monstros com limite, efeitos recebidos); `session-panel.component.spec.ts` (rolagem do monstro
+  com Perdição/Zombaria/Enfraquecimento); `secret-roll.spec.ts` (resistência do monstro com
+  Perdição); `session-event.reducer.spec.ts` (`monster_spell_effects_updated`, fim do combate).
+- Mudaram de propósito: dois testes de `getSession` (api) e um de `applyTargetsFor` (web), que
+  comparam o monstro revelado / alvo de monstro campo a campo e agora levam as penalidades.
 
 ### Traços mecânicos (2026-10-16)
 

@@ -2,7 +2,7 @@
 resumo: Todas as pendências do Dungeon Companion num lugar só, por área. Fonte única do "o que falta".
 tipo: backlog
 status: ativo
-atualizado: 2026-11-13
+atualizado: 2026-11-14
 ---
 
 # Dungeon Companion — Backlog
@@ -21,6 +21,9 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
 
 ## Ações do usuário / fora do código
 
+- [ ] **1.26.0**: testar na mesa, push e PR da branch `feat/1.26.0-magias-de-apoio` (api e web) —
+      a coluna `monster_session.spell_effects` já foi criada em produção (2026-11-14). Combinar a ordem com a 1.25.3 (PRs
+      web #15 / api #12), que conflita em `release-notes.ts` e nos `package.json`.
 - [ ] (relacionado ao card: Ambiente de homologação) **Decidir**: a `main` da api e do web tem a regra "mudança só por pull request", e os pushes
       diretos (como o da 1.14.1, em 2026-10-27) passam porque a conta ignora a regra. Se a regra
       é pra valer (outro desenvolvedor no projeto), as entregas passam a ir por branch + PR.
@@ -68,7 +71,22 @@ criar/entrar em sessão, tutorial do Tom, painel de admin, homologação, artes 
 
 Contexto: [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md).
 
-- [ ] Arma Elemental (bônus de ataque). (card: Magias com mecânica pendente)
+- [ ] **Ajuda** (+5 PV máximos e atuais em até 3 alvos, +5 por círculo acima do 2º, 8 h): mexe no
+      PV máximo, que passa por vários caminhos (sessão, Forma Selvagem, aplicar dano, `hp-math`).
+      Ficou fora da 1.26.0.
+- [ ] **Concentração não é controlada** (1.26.0): Bênção, Arma Mágica/Elemental, Escudo da Fé,
+      Pele de Árvore, Velocidade, Perdição, Fogo das Fadas… não acabam sozinhas quando quem lançou
+      lança outra magia de concentração ou perde a concentração — hoje é o "Encerrar"/"Tirar".
+- [ ] Limitações aceitas na 1.26.0 (o mestre resolve pela descrição):
+      Arma Mágica/Elemental valem pra todas as armas de quem lançou (não dá pra lançar na arma de
+      um aliado); Pele de Árvore (1 h) e Escudo da Fé (10 min) acabam no fim do combate; Velocidade
+      não dobra o deslocamento nem dá a ação extra nem a letargia; a CA mostrada na tela só muda ao
+      recarregar a ficha (o acerto automático já usa a certa); Rogar Maldição só tem a opção de
+      dano; Raio do Enfraquecimento só lembra o mestre da metade do dano; Bênção e as magias de
+      CA não chegam em NPC nem companheiro; na ficha isolada (fora da mesa) lançar essas magias não
+      entrega o efeito; penalidades (Perdição, Fogo das Fadas…) só em monstros, não em jogadores.
+- [ ] O aviso de revelar monstro (`monster_revealed`) não leva as penalidades de magia: a mesa só
+      vê as que já estavam nele (marcadas pelo mestre com o monstro escondido) ao recarregar.
 - [ ] Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante. (card: Magias com mecânica pendente)
 - [ ] Crítico também na ficha isolada (lá o ataque com arma ainda não rola dano). (card: Magias com mecânica pendente)
 - [ ] Cura do Toque Vampírico; curas de valor fixo. (card: Magias com mecânica pendente)
@@ -172,6 +190,9 @@ Contexto: [`conceitos/subclasses.md`](conceitos/subclasses.md).
 
 ## Combate e sessão
 
+- [ ] **Combate com Duas Armas**: não existe o ataque da mão secundária, que pela regra não soma
+      o modificador positivo no dano (só com o Estilo de Luta "Combate com Duas Armas", que hoje
+      pode ser escolhido mas não tem efeito mecânico). Levantado em 2026-11-14.
 - [ ] Fluxo de lançamento com alvos (1.25.0): a **Esquiva Sobrenatural** (marcação manual por
       alvo) não aparece; **NPC e companheiro** não recebem pedido de resistência automático e levam
       o dano inteiro; com o ROLAR direto do aviso (1.24.5) não dá mais pra escolher "rolar com

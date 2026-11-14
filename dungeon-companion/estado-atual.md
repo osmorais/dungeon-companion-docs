@@ -29,10 +29,20 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 ## Versão e commits
 
-- **Versão do sistema**: 1.25.1 na `main`. A **1.25.2** (Sessões criadas, Criar sessão em 3 etapas,
+- **Versão do sistema**: **1.26.0** na branch `feat/1.26.0-magias-de-apoio` (api e web, em cima
+  da `main` com a 1.25.2), **não publicada, sem PR**: magias de apoio e penalidades com mecânica —
+  Auxílio Divino, Marca da Punição e Rogar Maldição somando dano no ataque; Arma Mágica e Arma
+  Elemental; Bênção, Orientação e Resistência entregues aos alvos da mesa; Armadura Arcana, Escudo
+  da Fé, Escudo Arcano, Pele de Árvore e Velocidade na CA; Perdição, Fogo das Fadas, Raio Guiador,
+  Zombaria Viciosa e Raio do Enfraquecimento como penalidades no monstro; e a correção de lançar
+  Bruxaria/Marca do Caçador/Manto do Cruzado abrindo um ataque falso —
+  [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md). A coluna nova
+  `monster_session.spell_effects` **já está em produção** (2026-11-14, antes do deploy). Conflita com a 1.25.3 (abaixo) em
+  `release-notes.ts` e nos `package.json`: quem entrar depois resolve à mão (1.25.3 → 1.26.0 é um
+  passo válido). A **1.25.2** (Sessões criadas, Criar sessão em 3 etapas,
   Bestiário e Catalogar monstro no visual da Home, com classes `.fa-*` no `styles.scss`, e troca de
-  tela animada com View Transitions — `route-transition.ts`) está na branch
-  `feat/1.25.2-telas-home` (web e api), em PR (web #13 e api #10), **não publicada**. A **1.25.3** (Meus personagens, Entrar em uma aventura
+  tela animada com View Transitions — `route-transition.ts`) entrou na `main` pelos PRs web #13 e
+  api #10 (merges web `255d070`, api `249b718`). A **1.25.3** (Meus personagens, Entrar em uma aventura
   em 2 etapas com código em 5 casas, Minhas aventuras reaproveitando a tela de Sessões criadas
   com `data.role = 'player'` na rota — a pasta `my-sessions/` saiu; `+ CRIAR PERSONAGEM` via
   `services/open-character-wizard.ts`) está na branch `feat/1.25.3-telas-jogador` (web e api,
@@ -111,7 +121,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   (`dungeon-companion-web/src/app/release-notes/release-notes.ts`). A 1.8.0 (2026-10-23, tela
   inicial pra visitantes) foi feita por outro desenvolvedor (web `ec8f7c6`, autor
   `eduardopontesmorais@gmail.com`).
-- **Últimos commits**: 1.25.1 na `main` em 2026-11-13: api `84f0f78` (merge do PR #8, com
+- **Últimos commits**: 1.26.0 na branch `feat/1.26.0-magias-de-apoio` em 2026-11-14: api
+  `47846eb`, web `4d57ff6` (um commit em cada, sem push). 1.25.2 na `main`: api `249b718` (merge
+  do PR #10), web `255d070` (merge do PR #13). 1.25.1 na `main` em 2026-11-13: api `84f0f78` (merge do PR #8, com
   `8f5e15c`, merge da `main` feito pelo Claude), web `de507f2` (merge do PR #11, com `0586063` do
   autor e `8592dc1`, merge da `main`). Antes, de 1.23.1 a 1.25.0 com commits direto na `main` (a
   pedido do usuário, sem branch): api `81e892e` (1.23.1), `c456b5e` (1.23.2), `3c3a21d` (1.23.3),
@@ -173,15 +185,15 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
   apaga um `x.txt`), sem efeito. No web fica
   de fora, de propósito, `public/dragon-sprite-old.png` (cópia local do sprite antigo; não
   commitar — tudo em `public/` vai pro ar).
-- **PRs**: abertos web #13 e api #10 (1.25.2) e web #15 e api #12 (1.25.3, empilhados na 1.25.2), em 2026-11-14. Antes, nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
-- **Testes**: web 1052 na 1.25.3 (1040 na 1.25.2) (rodar de `D:\ESTUDOS\...`, com a caixa certa, senão ~320 falham com NG0203); api 756 (`npm run test:unit`), web 1016 (`npm run test:run`) — na 1.25.1 (na 1.23.0: 711 e 973) —
+- **PRs**: abertos web #15 e api #12 (1.25.3, criados em cima da branch da 1.25.2: trocar a base pra `main`, já que web #13 e api #10 entraram). A 1.26.0 ainda não tem PR. Antes, nenhum aberto (web #9 e api #6 entraram na 1.18.0, em 2026-11-09). O #8 entrou na 1.14.0 e o #7 na 1.13.3, ambos em 2026-10-27.
+- **Testes**: api 786 (`npm run test:unit`) e web 1081 (`npm run test:run`) na 1.26.0; web 1052 na 1.25.3 (1040 na 1.25.2) (rodar de `D:\ESTUDOS\...`, com a caixa certa, senão ~320 falham com NG0203); api 756 (`npm run test:unit`), web 1016 (`npm run test:run`) — na 1.25.1 (na 1.23.0: 711 e 973) —
   [`conceitos/testes.md`](conceitos/testes.md).
 
 ## Áreas e onde está cada uma
 
 | Área | Estado | Doc |
 |---|---|---|
-| Magias mecânicas (ataque, resistência, cura, crítico, aplicar no alvo, efeitos de tela) | fases 1–4 feitas; lançamento com alvos escolhidos no começo, resistência pedida a jogadores e monstros, acerto automático opcional (1.24.2–1.25.0) | [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md) |
+| Magias mecânicas (ataque, resistência, cura, crítico, aplicar no alvo, efeitos de tela) | fases 1–4 feitas; lançamento com alvos escolhidos no começo, resistência pedida a jogadores e monstros, acerto automático opcional (1.24.2–1.25.0); magias de apoio (dano no ataque, arma, 1d4 em alvos, CA) e penalidades no monstro (1.26.0, na branch) | [`conceitos/magias-mecanicas.md`](conceitos/magias-mecanicas.md) |
 | Traços e habilidades mecânicos | fases 1–4 + 1.19 a 1.22 (vantagem pelo contexto, Ataque Extra, Ação Ardilosa, visão no escuro, Forma Selvagem, Companheiro Animal) | [`conceitos/tracos-mecanicos.md`](conceitos/tracos-mecanicos.md) |
 | Level-up (HP rolado, ASI/talento, subclasse, magias novas, XP) | fases 1–3 feitas; multiclasse não começada | [`historico/levelup-plan.md`](historico/levelup-plan.md) |
 | Auditoria de automação mecânica (classe por classe) | "Fácil" feito, "Média" quase todo | [`conceitos/auditoria-mecanicas.md`](conceitos/auditoria-mecanicas.md) |
@@ -206,6 +218,9 @@ produção) e o `backlog.md`. Detalhe de implementação vai pro doc de conceito
 
 Sempre com autorização do usuário, numa transação. Mais antigas: ver o diário.
 
+- **2026-11-14**: coluna `monster_session.spell_effects` (JSONB, nula) — penalidades de magia no
+  monstro (1.26.0). Rodada antes do deploy da api, numa transação, autorizada pelo usuário;
+  12 linhas em `monster_session`, todas com `spell_effects` nulo; `schema-diff.js` sem diferença.
 - **2026-10-16**: 102 linhas de `character_skill` marcadas como treinadas + 6 inseridas (perícias
   do antecedente das fichas antigas); 4 descrições de magia corrigidas; coluna
   `character.active_effects`; 23 itens novos no catálogo `item` (ids 101–123) + 257 linhas de

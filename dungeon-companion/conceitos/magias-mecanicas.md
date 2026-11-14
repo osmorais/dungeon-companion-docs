@@ -1,8 +1,8 @@
 ---
-resumo: Catálogo de mecânica de magias (spell-mechanics.ts), modal de rolagem, aplicar no alvo, efeitos de tela. Fases 1–4 feitas.
+resumo: Catálogo de mecânica de magias (spell-mechanics.ts), modal de rolagem, aplicar no alvo, efeitos de tela, magias de apoio e penalidades no monstro (1.26.0). Fases 1–4 feitas.
 tipo: conceito
 status: ativo
-atualizado: 2026-11-13
+atualizado: 2026-11-14
 ---
 
 # Dungeon Companion — Plano: magias mecânicas (rolar ataque/dano/cura ao lançar)
@@ -313,8 +313,8 @@ Destruição Divina e magias somadas); o modificador não dobra. Vale também po
   caía no fim da função e abria um ataque mágico falso (d20 + 0 com o dado da magia) ao lançar
   Bruxaria, Marca do Caçador ou Manto do Cruzado.
 - Lâmina Flamejante entrou como ataque mágico (3d6 fogo, +1d6 a cada 2 círculos).
-- Fora: Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante (dano por turno/em área) e
-  Arma Elemental (mexe no bônus de ataque).
+- Fora: Golpe Constritor, Saraivada de Espinhos, Flecha Relampejante (dano por turno/em área).
+  Arma Elemental (mexe no bônus de ataque) entrou na 1.26.0 como efeito ativo (abaixo).
 
 **Aplicar no alvo (opcional)** — decisão inicial do usuário: manter as permissões de PV; em
 2026-10-17 (versão 1.1.1) o usuário liberou o jogador pra aplicar em aliados e monstros.
